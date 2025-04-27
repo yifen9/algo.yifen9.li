@@ -93,18 +93,26 @@ end
 
 function atcoder_solution_info_extract(sol::String)
     parts = split(sol, "_", limit=3)
-    if length(parts) < 3
-        return nothing
-    end
-    return (
+    parts_len = length(parts)
+
+    if parts_len == 1
+        return (
+        size = 1,
+        result = parts[1]
+    )
+    elseif parts_len == 2
+        return (
+        size = 2,
+        result = parts[1],
+        strategy = parts[2]
+    )
+    else
+        return (
+        size = parts_len,
         result = parts[1],
         strategy = parts[2],
         performance = parts[3]
     )
-end
-
-function atcoder_solution_info_whole(sol_info)::String
-    return string(sol_info.result, "_", sol_info.strategy, "_", task_info.performance)
 end
 
 function atcoder_task_info_extract(task::String)
@@ -119,10 +127,6 @@ function atcoder_task_info_extract(task::String)
     )
 end
 
-function atcoder_task_info_whole(task_info)::String
-    return string(task_info.id, "_", task_info.label, "_", replace(task_info.name, " " => "_"))
-end
-
 function atcoder_contest_info_extract(contest::String)
     parts = split(contest, "_", limit=3)
     if length(parts) < 2
@@ -132,10 +136,6 @@ function atcoder_contest_info_extract(contest::String)
         name = parts[1],
         id = parts[2]
     )
-end
-
-function atcoder_contest_info_whole(contest_info)::String
-    return string(replace(contest_info.name, " " => "_"), contest_info.id)
 end
 
 function atcoder_solution_generate(file::String, task::String, contest::String)
@@ -185,22 +185,21 @@ function atcoder_task_generate(task::String, contest::String)
         println(f, "- **Task Link:** [$title]($link_task)\n")
 
         println(f, "## Solutions\n")
-        println(f, "| File | Language | Result | Strategy | Performance | Size |")
-        println(f, "|------|----------|--------|----------|-------------|------|")
+        println(f, "| File | Language | Size | Result | Strategy | Performance |")
+        println(f, "|------|----------|------|--------|----------|-------------|")
 
         for sol in sort(readdir(dir_src))
             if isfile(joinpath(dir_src, sol))
-                sol_info = atcoder_solution_info_extract(sol)
-                @show sol
-                @show sol_info
-                sol_info_name = name_clean(splitext(sol)[1])
-                sol_info_result = sol_info.result
-                sol_info_strategy = sol_info.strategy
-                sol_info_performance = sol_info.performance
-
+                sol_name = splitext(sol)[1]
                 ext = uppercase(file_extension_get(sol))
                 size = size_human_readable(stat(joinpath(dir_src, sol)).size)
-                println(f, "| [$sol_info_name]($sol/index.md) | $ext | $sol_info_result | $sol_info_strategy | $sol_info_performance | $size |")
+
+                sol_info = atcoder_solution_info_extract(splitext(sol)[1])
+                sol_info_result = sol_info.result
+                sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
+                sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
+
+                println(f, "| [$sol_name]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
             end
         end
     end
