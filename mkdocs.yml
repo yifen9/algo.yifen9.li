@@ -25,6 +25,7 @@ theme:
   # favicon: assets/favicon.png
   features:
     - content.code.copy
+    - content.tabs.link
     - navigation.indexes
     - navigation.instant
     - navigation.tabs
@@ -82,7 +83,7 @@ markdown_extensions:
 plugins:
   - awesome-pages
   - include-markdown:
-      preserve_includer_indent: true
+      preserve-includer-indent: true
   - search
 
 nav:
