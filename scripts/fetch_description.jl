@@ -17,6 +17,7 @@ const BROWSER_HEADERS = Dict(
     ], " ")
 )
 
+const DIR_SRC_ATCODER = "src/atcoder"
 
 function fetch_raw_html(url::String)::String
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
@@ -44,45 +45,39 @@ function fetch_description_md(contest_id, task_id, lang)::String
     return html_to_markdown(snippet)
 end
 
-
 function fetch_all()
-    for class in readdir(DIR_SRC_ATCODER)
-        path_class = joinpath(DIR_SRC_ATCODER, class)
-        if !isdir(path_class)
-            continue
-        end
+    for cls in readdir(DIR_SRC_ATCODER)
+        path_cls = joinpath(DIR_SRC_ATCODER, cls)
+        isdir(path_cls) || continue
 
-        for contest in readdir(path_class)
-            path_contest = joinpath(path_class, contest)
-            if !isdir(path_contest)
-                continue
-            end
+        for contest in readdir(path_cls)
+            path_contest = joinpath(path_cls, contest)
+            isdir(path_contest) || continue
 
-            contest_id = split(basename(String(class)), "_", limit=3)[2] * contest
+            contest_id = split(cls, "_", limit=3)[2] * contest
 
             for task in readdir(path_contest)
                 path_task = joinpath(path_contest, task)
-                if !isdir(path_task)
-                    continue
-                end
+                isdir(path_task) || continue
 
-                task_id = split(basename(String(task)), "_", limit=3)[1]
+                task_id = split(task, "_", limit=3)[1]
 
-                for (lang, suffix) in [("en", "en"), ("ja", "ja")]
-                    path_desc = joinpath(path_task, "description_$suffix.md")
-                    # if isfile(path_desc)
+                for (lang, suffix) in [("ja", "ja"), ("en", "en")]
+                    out = joinpath(path_task, "description_$suffix.md")
+                    # if isfile(out)
                     #     println("  - $lang exists, skip")
                     #     continue
                     # end
                     try
-                        text = fetch_description_html(contest_id, task_id, lang)
+                        md = fetch_description_md(contest_id, task_id, lang)
                         mkpath(path_task)
-                        open(path_desc, "w") do f
-                            write(f, text)
+                        open(out, "w") do io
+                            write(io, md)
                         end
-                        println("  - $lang fetched")
-                    catch e
-                        println("[ERROR] $lang failed: ", e)
+                        println("  - $lang fetched → $out")
+                    catch err
+                        @warn("fetch failed", contest_id=contest_id,
+                              task_id=task_id, lang=lang, error=err)
                     end
                 end
             end
