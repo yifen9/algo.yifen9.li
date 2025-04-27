@@ -12,64 +12,26 @@ using Printf
 using Markdown
 
 # Configuration
-const ATCODER_USER = "tourist"
-const CF_HANDLE   = "tourist"
+const USER_ATCODER = "tourist"
+
+
 const DIR_DOCS    = "docs"
 
-# Utility: slugify problem id for filenames
-slugify(id::String) = lowercase(replace(id, r"[^A-Za-z0-9]+" => "-"))
-
 # Fetch submissions from AtCoder Problems API
-function fetch_atcoder_submissions(user::String)
+function fetch_submissions_atcoder(user::String)
     url = "https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user=$(user)&from_second=1560046356"
     resp = HTTP.get(url)
     return JSON.parse(String(resp.body))
 end
 
-# Fetch submissions from Codeforces API
-function fetch_codeforces_submissions(handle::String)
-    url = "https://codeforces.com/api/user.status?handle=$(handle)"
-    resp = HTTP.get(url)
-    data = JSON.parse(String(resp.body))
-    return data["result"]
-end
-
-# Generate markdown for a single submission
-function generate_md(sub, source::String)
-    cid = source == "AtCoder" ? sub["contest_id"] : sub["contestId"]
-    pid = source == "AtCoder" ? sub["problem_id"] : sub["problem"]["index"]
-    title = source == "AtCoder" ? string(pid) : string(pid)
-    time = Dates.format(Dates.unix2datetime(sub["epoch_second"]), "yyyy-mm-dd HH:MM")
-    link = source == "AtCoder" ?
-        "https://atcoder.jp/contests/$(cid)/tasks/$(sub["problem_id"])" :
-        "https://codeforces.com/problemset/problem/$(cid)/$(pid)"
-
-    md = Markdown.parse(raw"
-# $(pid)
-
-- **Source:** [$(source)]($(link))
-- **Time:** $(time)
-")
-    return md
-end
-
-# Write markdown file
-function write_md(dir::String, filename::String, content)
-    mkpath(dir)
-    path = joinpath(dir, filename)
-    open(path, "w") do io
-        Markdown.write(io, content)
-    end
-end
-
 # Main: process AtCoder
-subs_at = fetch_atcoder_submissions(ATCODER_USER)
+subs_at = fetch_submissions_atcoder(USER_ATCODER)
 for s in subs_at
     if s["result"] == "AC"
         dir = joinpath(DIR_DOCS, "atcoder", s["contest_id"], s["problem_id"])
-        fname = joinpath(dir, "index.md")
+        file = joinpath(dir, "index.md")
         mkpath(dir)
-        open(file_docs, "w") do f
+        open(file, "w") do f
             cid = s["contest_id"]
             pid = s["problem_id"]
             title = string(pid)
@@ -80,20 +42,5 @@ for s in subs_at
             println(f, "- **Source:** [$(source)]($(link))", "\n")
             println(f, "- **Time:** $(time)", "\n")
         end
-        # write_md(dir, fname, md)
     end
 end
-
-# Main: process Codeforces
-"""
-subs_cf = fetch_codeforces_submissions(CF_HANDLE)
-for s in subs_cf
-    if s["verdict"] == "OK"
-        cid = lpad(string(s["contestId"]), 0)
-        dir = joinpath(DIR_DOCS, "codeforces", cid)
-        fname = string(s["problemIndex"]) * "-" * slugify(s["problemIndex"]) * ".md"
-        md = generate_md(s, "Codeforces")
-        write_md(dir, fname, md)
-    end
-end
-"""
