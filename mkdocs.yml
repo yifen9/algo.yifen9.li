@@ -6,17 +6,17 @@ repo_url: https://github.com/yifen9/algo-notes
 
 theme:
   name: material
-  custom_dir: docs/overrides
+# custom_dir: docs/overrides
   palette:
     - scheme: default
-      primary: custom   # Custom color defined in extra CSS
-      accent: red
+#     primary: custom   # Custom color defined in extra CSS
+#     accent: red
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: custom
-      accent: red
+#     primary: custom
+#     accent: red
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
