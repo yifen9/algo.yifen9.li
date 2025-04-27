@@ -12,7 +12,7 @@ using Printf
 using Markdown
 
 # Configuration
-const ATCODER_USER = "AntoLee"
+const ATCODER_USER = "antolee"
 const CF_HANDLE   = "AntoLee"
 const DIR_DOCS    = "docs"
 
