@@ -225,11 +225,11 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         println(f, "\n")
         println(f, "## Task Statement\n")
-        println(f, "=== \"日本語\"\n")
+        println(f, "\n\n=== \"日本語\"\n\n")
         for line in eachline(joinpath(dir_src, "description_ja.md"))
             println(f, "    ", line)
         end
-        println(f, "\n=== \"English\"\n")
+        println(f, "\n\n=== \"English\"\n\n")
         for line in eachline(joinpath(dir_src, "description_en.md"))
             println(f, "    ", line)
         end
@@ -237,7 +237,10 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
     # Also generate each solution preview
     for sol in readdir(dir_src)
-        atcoder_solution_generate(sol, task, contest, class)
+        ext = file_extension_get(sol)
+        if ext != "md"
+            atcoder_solution_generate(sol, task, contest, class)
+        end
     end
 end
 
