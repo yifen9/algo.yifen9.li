@@ -18,14 +18,18 @@ function extract_text_by_id(doc, id::String)
     queue = [doc.root]
     while !isempty(queue)
         node = popfirst!(queue)
-        if node isa Gumbo.Element
-            @show node
+
+        if hasproperty(node, :attributes) && node.attributes !== nothing
             if any(attr -> attr.name == "id" && attr.value == id, node.attributes)
                 return join(text_content.(node.children))
             end
+        end
+
+        if hasproperty(node, :children) && node.children !== nothing
             append!(queue, node.children)
         end
     end
+
     error("ID=$id not found!")
 end
 
@@ -41,10 +45,15 @@ end
 
 function fetch_description(contest_id, task_id, lang)
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
-    @show url
+    println("[FETCH] $url")
     doc = fetch_html(url)
-    text = extract_text_by_id(doc, "task-statement")
-    return text
+
+    try
+        return extract_text_by_id(doc, "task-statement")
+    catch
+        println("[WARN] 'task-statement' not found, falling back to full text")
+        return text_content(doc.root)
+    end
 end
 
 function fetch_all()
