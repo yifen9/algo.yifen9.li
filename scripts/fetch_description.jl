@@ -17,6 +17,8 @@ const BROWSER_HEADERS = Dict(
     ], " ")
 )
 
+const DIR_SRC_ATCODER = "src/atcoder"
+
 function fetch_raw_html(url::String)::String
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
     return String(resp.body)
@@ -29,27 +31,16 @@ function extract_task_statement_html(html::String)::String
     return m.captures[1]
 end
 
-function html_to_markdown(html_snippet::AbstractString)::String
-    # 强制转成普通 String
-    html = String(html_snippet)
-    # var 标签转公式
-    html = replace(html, r"<var>(.*?)</var>"m) do ss
-        "\$" * ss.captures[1] * "\$"
-    end
-    # 调用 Pandoc
-    buf = IOBuffer(html)
-    pr  = pipeline(`pandoc -f html -t gfm --wrap=none`, stdin=buf)
+function html_to_markdown(html_snippet::String)::String
+    buf = IOBuffer(html_snippet)
+    pr = pipeline(`pandoc -f html -t gfm --wrap=none`, stdin=buf)
     return read(pr, String)
 end
 
-function fetch_description_md(
-    contest_id::AbstractString,
-    task_id::AbstractString,
-    lang::AbstractString
-)::String
+function fetch_description_md(contest_id, task_id, lang)::String
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
     println("[FETCH] $url")
-    page    = fetch_raw_html(url)
+    page = fetch_raw_html(url)
     snippet = extract_task_statement_html(page)
     return html_to_markdown(snippet)
 end
@@ -83,9 +74,10 @@ function fetch_all()
                         open(out, "w") do io
                             write(io, md)
                         end
-                        println("  • $lang → $out")
+                        println("  - $lang fetched → $out")
                     catch err
-                        @warn "fetch failed" contest_id=contest_id task_id=task_id lang=lang error=err
+                        @warn("fetch failed", contest_id=contest_id,
+                              task_id=task_id, lang=lang, error=err)
                     end
                 end
             end
