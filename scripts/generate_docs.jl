@@ -239,11 +239,11 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         # 日本語 Tab
         println(f, "=== \"日本語\"\n")
-        println(f, "    {% include-markdown \"description_ja.md\" %}\n")
+        println(f, "    {% include-markdown \"./description_ja.md\" %}\n")
 
         # English Tab
         println(f, "=== \"English\"\n")
-        println(f, "    {% include-markdown \"description_en.md\" %}\n")
+        println(f, "    {% include-markdown \"./description_en.md\" %}\n")
     end
 
     # Also generate each solution preview
