@@ -39,8 +39,8 @@ for sub in subs
 
             println(f, "# ", pid, "\n")
             println(f, "## Basic Info", "\n")
-            println(f, "- **Source:** [$(source)]($(link))", "\n")
             println(f, "- **Time:** $(time)", "\n")
+            println(f, "- **[Source]($(link))** ", "\n")
         end
     end
 end
