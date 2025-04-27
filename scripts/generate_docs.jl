@@ -134,9 +134,19 @@ function atcoder_contest_info_extract(contest::String)
         return nothing
     end
     return (
-        name = parts[1],
+        class = parts[1],
         id = parts[2]
     )
+end
+
+function atcoder_contest_class_converter(class::String)
+    D = Dict(
+        "abc" => "AtCoder Beginner Contest",
+        "arc" => "AtCoder Regular Contest",
+        "agc" => "AtCoder Grand Contest",
+        "ahc" => "AtCoder Heuristic Contest"
+    )
+    return D[class]
 end
 
 function atcoder_solution_generate(file::String, task::String, contest::String)
@@ -150,9 +160,12 @@ function atcoder_solution_generate(file::String, task::String, contest::String)
 
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
     open(file_docs, "w") do f
         println(f, "# $name\n")
+
         println(f, "<small>[← Back](../index.md)</small>\n")
+
         println(f, "## Basic Info", "\n")
         println(f, "- **Type: **", ext)
         println(f, "- **Size: **", size)
@@ -177,25 +190,26 @@ function atcoder_task_generate(task::String, contest::String)
     task_info_name = task_info.name
 
     contest_info = atcoder_contest_info_extract(contest)
-    contest_info_name = contest_info.name
+    contest_info_class = contest_info.class
     contest_info_id = contest_info.id
 
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
+    task_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id/tasks/$contest_info_class$(contest_info_id)_$task_info_id"
+
     open(file_docs, "w") do f
         println(f, "# $(name_clean(task_info_name))\n")
+
         println(f, "<small>[← Back](../index.md)</small>\n")
 
-        task_link = "https://atcoder.jp/contests/$contest_info_name$contest_info_id/tasks/$(lowercase(task))"
-
         println(f, "## Basic Info\n")
-        println(f, "- **ID:    ** $task_info_id\n")
-        println(f, "- **Label: ** $task_info_label\n")
-        println(f, "- **[Origin]($task_link)**\n")
+        println(f, "- **ID:    **", task_info_id)
+        println(f, "- **Label: **", task_info_label)
+        println(f, "- **[Origin]($task_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
-        println(f, "## Solutions\n")
+        println(f, "\n")
         println(f, "| File | Language | Size | Result | Strategy | Performance |")
         println(f, "|------|----------|------|--------|----------|-------------|")
 
@@ -224,19 +238,35 @@ function atcoder_contest_generate(contest::String)
     dir_docs = joinpath(DIR_DOCS_ATCODER, contest)
     mkpath(dir_docs)
 
-    file = joinpath(dir_docs, "index.md")
-    open(file, "w") do f
-        println(f, "# Contest: $contest\n")
+    contest_info = atcoder_contest_info_extract(contest)
+    contest_info_class = contest_info.class
+    contest_info_id = contest_info.id
+
+    file_docs = joinpath(dir_docs, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
+    contest_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id"
+
+    open(file_docs, "w") do f
+        println(f, "# $(name_clean(atcoder_contest_class_converter(contest_info_class))) $contest_info_id\n")
+
         println(f, "<small>[← Back](../index.md)</small>\n")
+
+        println(f, "## Basic Info\n")
+        println(f, "- **ID:    **", contest_info_id)
+        println(f, "- **Class: **", uppercase(contest_info_class))
+        println(f, "- **[Origin]($contest_link)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
+
+        println(f, "\n")
         println(f, "| Task | Title | Link |")
         println(f, "|------|-------|------|")
+
         for task in sort(readdir(dir_src))
-            if isdir(joinpath(dir_src, task))
-                parts = split(task, "_", limit=3)
-                code = parts[2]
-                title = parts[3]
-                println(f, "| $code | [$title](./$task/index.md) | [Task](https://atcoder.jp/contests/$contest/tasks/$(lowercase(task))) |")
-            end
+            parts = split(task, "_", limit=3)
+            code = parts[2]
+            title = parts[3]
+            println(f, "| $code | [$title](./$task/index.md) | [Task](https://atcoder.jp/contests/$contest/tasks/$(lowercase(task))) |")
         end
     end
 end
