@@ -319,37 +319,43 @@ function nested_nav_build_atcoder(path::String)
     nav = Vector{Any}()
     contests = readdir(path; join=true, sort=true)
     for contest in contests
-        contest_name = name_clean(basename(String(contest)))
-        contest_index = joinpath("atcoder", relpath(contest, "docs/atcoder"), "index.md")
+        if isdir(contest)
+            contest_name = name_clean(basename(String(contest)))
+            contest_index = joinpath("atcoder", relpath(contest, "docs/atcoder"), "index.md")
 
-        contest_children = Vector{Any}()
-        tasks = readdir(contest; join=true, sort=true)
-        for task in tasks
-            task_name = basename(task)
-            @show task_name
+            contest_children = Vector{Any}()
+            tasks = readdir(contest; join=true, sort=true)
+            for task in tasks
+                if isdir(task)
+                    task_name = basename(task)
+                    @show task_name
 
-            task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
+                    task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
-            task_info = atcoder_task_info_extract(task_name)
-            task_info_id = task_info.id
-            task_info_label = task_info.label
-            task_info_name = task_info.name
+                    task_info = atcoder_task_info_extract(task_name)
+                    task_info_id = task_info.id
+                    task_info_label = task_info.label
+                    task_info_name = task_info.name
 
-            task_children = Vector{Any}()
-            sols = readdir(task; join=true, sort=true)
-            for sol in sols
-                sol_base = basename(sol)
+                    task_children = Vector{Any}()
+                    sols = readdir(task; join=true, sort=true)
+                    for sol in sols
+                        if isdir(task)
+                            sol_base = basename(sol)
 
-                sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
+                            sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
 
-                sol_name = name_clean(splitext(sol_base)[1])
-                sol_ext = file_extension_get(sol_base)
+                            sol_name = name_clean(splitext(sol_base)[1])
+                            sol_ext = file_extension_get(sol_base)
 
-                push!(task_children, Dict("$sol_ext $sol_name" => [sol_index]))
+                            push!(task_children, Dict("$sol_ext $sol_name" => [sol_index]))
+                        end
+                    end
+                    push!(contest_children, Dict("$task_info_label $task_info_name" => [task_index]), task_children)
+                end
             end
-            push!(contest_children, Dict("$task_info_label $task_info_name" => [task_index]), task_children)
+            push!(nav, Dict(contest_name => vcat([contest_index], contest_children)))
         end
-        push!(nav, Dict(contest_name => vcat([contest_index], contest_children)))
     end
 
     return nav
@@ -406,8 +412,6 @@ end
 
 function main()
     atcoder_generate()
-
-    update_mkdocs_nav_atcoder()
 end
 
 main()
