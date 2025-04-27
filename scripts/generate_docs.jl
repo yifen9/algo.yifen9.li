@@ -179,6 +179,17 @@ function atcoder_task_generate(task::String, contest::String, class::String)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task)
     mkpath(dir_docs)
 
+    for suffix in ["ja", "en"]
+        let
+            src_desc = joinpath(dir_src, "description_$(suffix).md")
+            dst_desc = joinpath(dir_docs, "description_$(suffix).md")
+            if isfile(src_desc)
+                mkpath(dir_docs)
+                cp(src_desc, dst_desc; force=true)
+            end
+        end
+    end
+
     task_info = atcoder_task_info_extract(task)
     task_info_id = task_info.id
     task_info_label = task_info.label
@@ -228,11 +239,11 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         # 日本語 Tab
         println(f, "=== \"日本語\"\n")
-        println(f, "    {% include-markdown \"../../../src/atcoder/$class/$contest/$task/description_ja.md\" %}\n")
+        println(f, "    {% include-markdown \"./description_ja.md\" %}\n")
 
         # English Tab
         println(f, "=== \"English\"\n")
-        println(f, "    {% include-markdown \"../../../src/atcoder/$class/$contest/$task/description_en.md\" %}\n")
+        println(f, "    {% include-markdown \"./description_en.md\" %}\n")
     end
 
     # Also generate each solution preview
