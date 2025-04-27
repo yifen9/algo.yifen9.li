@@ -235,9 +235,9 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         end
 
         println(f, "\n## Task Statement\n")
-        println(f, "\n=== \"[日本語]($(joinpath("description_ja.md", "index.md")))/index.md)\"\n")
+        println(f, "\n=== \"[日本語]($(joinpath("description_ja", "index.md")))\"\n")
         println(f, "    {% include-markdown \"./description_ja.md\" %}\n")
-        println(f, "\n=== \"[English]($(joinpath("description_en.md", "index.md")))\"\n")
+        println(f, "\n=== \"[English]($(joinpath("description_en", "index.md")))\"\n")
         println(f, "    {% include-markdown \"./description_en.md\" %}\n")
     end
 
