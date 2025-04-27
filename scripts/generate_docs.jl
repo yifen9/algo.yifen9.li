@@ -97,12 +97,12 @@ function atcoder_solution_info_extract(sol::String)
 
     if parts_len == 1
         return (
-        size = 1,
+        size = parts_len,
         result = parts[1]
         )
     elseif parts_len == 2
         return (
-        size = 2,
+        size = parts_len,
         result = parts[1],
         strategy = parts[2]
         )
@@ -154,8 +154,8 @@ function atcoder_solution_generate(file::String, task::String, contest::String)
         println(f, "# $name\n")
         println(f, "<small>[← Back](../index.md)</small>\n")
         println(f, "## Basic Info", "\n")
-        println(f, "- **Type:    **", ext)
-        println(f, "- **Size:    **", size)
+        println(f, "- **Type: **", ext)
+        println(f, "- **Size: **", size)
         println(f, "- **[Origin]($file_origin)**", "\n")
 
         link_download = joinpath(DIR_BASE, dir_src)
@@ -171,37 +171,45 @@ function atcoder_task_generate(task::String, contest::String)
     dir_docs = joinpath(DIR_DOCS_ATCODER, contest, task)
     mkpath(dir_docs)
 
-    parts = split(task, "_", limit=3)
-    title = parts[3]
+    task_info = atcoder_task_info_extract(task)
+    task_info_id = task_info.id
+    task_info_label = task_info.label
+    task_info_name = task_info.name
 
-    file = joinpath(dir_docs, "index.md")
-    open(file, "w") do f
-        println(f, "# $title\n")
+    contest_info = atcoder_contest_info_extract(contest)
+    contest_info_name = contest_info.name
+    contest_info_id = contest_info.id
+
+    file_docs = joinpath(dir_docs, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
+    open(file_docs, "w") do f
+        println(f, "# $(name_clean(task_info_name))\n")
         println(f, "<small>[← Back](../index.md)</small>\n")
 
-        link_task = "https://atcoder.jp/contests/$contest/tasks/$(lowercase(task))"
+        task_link = "https://atcoder.jp/contests/$contest_info_name$contest_info_id/tasks/$(lowercase(task))"
 
         println(f, "## Basic Info\n")
-        println(f, "- **Contest:** [$contest](../index.md)")
-        println(f, "- **Task Link:** [$title]($link_task)\n")
+        println(f, "- **ID:    ** $task_info_id\n")
+        println(f, "- **Label: ** $task_info_label\n")
+        println(f, "- **[Origin]($task_link)**\n")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "## Solutions\n")
         println(f, "| File | Language | Size | Result | Strategy | Performance |")
         println(f, "|------|----------|------|--------|----------|-------------|")
 
         for sol in sort(readdir(dir_src))
-            if isfile(joinpath(dir_src, sol))
-                sol_name = splitext(sol)[1]
-                ext = uppercase(file_extension_get(sol))
-                size = size_human_readable(stat(joinpath(dir_src, sol)).size)
+            sol_name = splitext(sol)[1]
+            ext = uppercase(file_extension_get(sol))
+            size = size_human_readable(stat(joinpath(dir_src, sol)).size)
 
-                sol_info = atcoder_solution_info_extract(splitext(sol)[1])
-                sol_info_result = sol_info.result
-                sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
-                sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
+            sol_info = atcoder_solution_info_extract(splitext(sol)[1])
+            sol_info_result = sol_info.result
+            sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
+            sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
 
-                println(f, "| [$sol_name]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
-            end
+            println(f, "| [$sol_name]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
         end
     end
 
