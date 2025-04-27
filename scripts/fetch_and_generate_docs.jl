@@ -12,8 +12,8 @@ using Printf
 using Markdown
 
 # Configuration
-const ATCODER_USER = "AntoLee"
-const CF_HANDLE   = "AntoLee"
+const ATCODER_USER = "tourist"
+const CF_HANDLE   = "tourist"
 const DIR_DOCS    = "docs"
 
 # Utility: slugify problem id for filenames
