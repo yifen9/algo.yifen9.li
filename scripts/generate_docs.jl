@@ -157,7 +157,7 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
     open(file_docs, "w") do f
-        println(f, "# < $task_info_label > `$(name_clean(file))`\n")
+        println(f, "# $task_info_label > `$(name_clean(file))`\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -206,7 +206,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
     task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# < $task_info_label > $(name_clean(task_info_name))\n")
+        println(f, "# $task_info_label > $(name_clean(task_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -236,9 +236,9 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         println(f, "\n## Task Statement\n")
         println(f, "\n=== \"日本語\"\n")
-        println(f, "    {% include-markdown \"./description_ja.md\" %}\n")
+        println(f, "\n    <div>{% include-markdown \"./description_ja.md\" %}</div>\n")
         println(f, "\n=== \"English\"\n")
-        println(f, "    {% include-markdown \"./description_en.md\" %}\n")
+        println(f, "\n    <div>{% include-markdown \"./description_en.md\" %}</div>\n")
     end
 
     # Also generate each solution preview
@@ -266,7 +266,7 @@ function atcoder_contest_generate(contest::String, class::String)
     contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
 
     open(file_docs, "w") do f
-        println(f, "# < $(uppercase(class_info_label)) > $contest\n")
+        println(f, "# $(uppercase(class_info_label)) > $contest\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
