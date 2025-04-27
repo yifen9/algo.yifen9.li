@@ -66,8 +66,8 @@ end
 subs_at = fetch_atcoder_submissions(ATCODER_USER)
 for s in subs_at
     if s["result"] == "AC"
-        dir = joinpath(DIR_DOCS, "atcoder", s["contest_id"])
-        fname = joinpath(dir, slugify(s["problem_id"]) * ".md")
+        dir = joinpath(DIR_DOCS, "atcoder", s["contest_id"], s["problem_id"])
+        fname = joinpath(dir, "index.md")
         mkpath(dir)
         open(file_docs, "w") do f
             cid = s["contest_id"]
