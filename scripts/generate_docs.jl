@@ -128,30 +128,21 @@ function atcoder_task_info_extract(task::String)
     )
 end
 
-function atcoder_contest_info_extract(contest::String)
-    parts = split(contest, "_", limit=3)
-    if length(parts) < 2
+function atcoder_class_info_extract(class::String)
+    parts = split(class, "_", limit=3)
+    if length(parts) < 3
         return nothing
     end
     return (
-        class = parts[1],
-        id = parts[2]
+        id = parts[1],
+        label = parts[2],
+        name = parts[3]
     )
 end
 
-function atcoder_contest_class_converter(class::String)
-    D = Dict(
-        "abc" => "AtCoder Beginner Contest",
-        "arc" => "AtCoder Regular Contest",
-        "agc" => "AtCoder Grand Contest",
-        "ahc" => "AtCoder Heuristic Contest"
-    )
-    return D[class]
-end
-
-function atcoder_solution_generate(file::String, task::String, contest::String)
-    dir_src = joinpath(DIR_SRC_ATCODER, contest, task, file)
-    dir_docs = joinpath(DIR_DOCS_ATCODER, contest, task, file)
+function atcoder_solution_generate(file::String, task::String, contest::String, class::String)
+    dir_src = joinpath(DIR_SRC_ATCODER, class, contest, task, file)
+    dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task, file)
     mkpath(dir_docs)
 
     name = name_clean(splitext(file)[1])
@@ -179,9 +170,9 @@ function atcoder_solution_generate(file::String, task::String, contest::String)
     end
 end
 
-function atcoder_task_generate(task::String, contest::String)
-    dir_src = joinpath(DIR_SRC_ATCODER, contest, task)
-    dir_docs = joinpath(DIR_DOCS_ATCODER, contest, task)
+function atcoder_task_generate(task::String, contest::String, class::String)
+    dir_src = joinpath(DIR_SRC_ATCODER, class, contest, task)
+    dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task)
     mkpath(dir_docs)
 
     task_info = atcoder_task_info_extract(task)
@@ -189,14 +180,15 @@ function atcoder_task_generate(task::String, contest::String)
     task_info_label = task_info.label
     task_info_name = task_info.name
 
-    contest_info = atcoder_contest_info_extract(contest)
-    contest_info_class = contest_info.class
-    contest_info_id = contest_info.id
+    class_info = atcoder_class_info_extract(class)
+    class_info_id = class_info.id
+    class_info_label = class_info.label
+    class_info_name = class_info.name
 
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
-    task_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id/tasks/$contest_info_class$(contest_info_id)_$task_info_id"
+    task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
     open(file_docs, "w") do f
         println(f, "# $task_info_label $(name_clean(task_info_name))\n")
@@ -223,38 +215,39 @@ function atcoder_task_generate(task::String, contest::String)
             sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
             sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
 
-            println(f, "| [$sol_name]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
+            println(f, "| [$(name_clean(sol_name))]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
         end
     end
 
     # Also generate each solution preview
     for sol in readdir(dir_src)
-        atcoder_solution_generate(sol, task, contest)
+        atcoder_solution_generate(sol, task, contest, class)
     end
 end
 
-function atcoder_contest_generate(contest::String)
-    dir_src = joinpath(DIR_SRC_ATCODER, contest)
-    dir_docs = joinpath(DIR_DOCS_ATCODER, contest)
+function atcoder_contest_generate(contest::String, class::String)
+    dir_src = joinpath(DIR_SRC_ATCODER, class, contest)
+    dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest)
     mkpath(dir_docs)
 
-    contest_info = atcoder_contest_info_extract(contest)
-    contest_info_class = contest_info.class
-    contest_info_id = contest_info.id
+    class_info = atcoder_class_info_extract(class)
+    class_info_id = class_info.id
+    class_info_label = class_info.label
+    class_info_name = class_info.name
 
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
-    contest_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id"
+    contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
 
     open(file_docs, "w") do f
-        println(f, "# $(atcoder_contest_class_converter(String(contest_info_class))) $contest_info_id\n")
+        println(f, "# $(uppercase(class_info_label)) $contest\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
         println(f, "## Basic Info\n")
-        println(f, "- **ID:    **", contest_info_id)
-        println(f, "- **Class: **", uppercase(contest_info_class))
+        println(f, "- **ID:    **", contest)
+        println(f, "- **Class: **", name_clean(class_info_name))
         println(f, "- **[Origin]($contest_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
@@ -273,14 +266,60 @@ function atcoder_contest_generate(contest::String)
             item_count = dir_item_count(path_src_full)
             size = size_human_readable(size_directory_get(path_src_full))
 
-            task_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id/tasks/$contest_info_class$(contest_info_id)_$task_info_id"
+            task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
-            println(f, "| [$task_info_label](./$task/index.md) | $task_info_name | $contest_info_id | $item_count | $size | [$contest_info_class$(contest_info_id)_$task_info_id]($task_link) |")
+            println(f, "| [$task_info_label](./$task/index.md) | $task_info_name | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
         end
     end
 
     for task in readdir(dir_src)
-        atcoder_task_generate(task, contest)
+        atcoder_task_generate(task, contest, class)
+    end
+end
+
+function atcoder_class_generate(class::String)
+    dir_src = joinpath(DIR_SRC_ATCODER, class)
+    dir_docs = joinpath(DIR_DOCS_ATCODER, class)
+    mkpath(dir_docs)
+
+    class_info = atcoder_class_info_extract(class)
+    class_info_id = class_info.id
+    class_info_label = class_info.label
+    class_info_name = class_info.name
+
+    file_docs = joinpath(dir_docs, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
+    class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
+    open(file_docs, "w") do f
+        println(f, "# $(name_clean(class_info_name))\n")
+
+        println(f, "<small>[← Back](../index.md)</small>\n")
+
+        println(f, "## Basic Info\n")
+        println(f, "- **ID:    **", class_info_id)
+        println(f, "- **Label: **", uppercase(class_info_label))
+        println(f, "- **[Origin]($class_link)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
+
+        println(f, "\n")
+        println(f, "| Contest | Item | Size | Link |")
+        println(f, "|---------|------|------|------|")
+        for contest in sort(readdir(dir_src))
+
+            path_src_full = joinpath(dir_src, contest)
+
+            item_count = dir_item_count(path_src_full)
+            size = size_human_readable(size_directory_get(path_src_full))
+
+            contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
+
+            println(f, "| [$contest](./$contest/index.md) | $item_count | $size | [$class_info_label$(contest)]($contest_link) |")
+        end
+    end
+
+    for contest in sort(readdir(dir_src))
+        atcoder_contest_generate(contest)
     end
 end
 
@@ -291,72 +330,85 @@ function atcoder_generate()
     open(file, "w") do f
         println(f, "# AtCoder\n")
 
-        println(f, "## Contests\n")
-        println(f, "| Contest | Class | ID | Item | Size | Link |")
-        println(f, "|---------|-------|----|------|------|------|")
-        for contest in sort(readdir(DIR_SRC_ATCODER))
-            contest_info = atcoder_contest_info_extract(contest)
-            contest_info_class = contest_info.class
-            contest_info_id = contest_info.id
+        println(f, "## Classes\n")
+        println(f, "| Name | Label | ID | Item | Size | Link |")
+        println(f, "|------|-------|----|------|------|------|")
+        for class in sort(readdir(DIR_SRC_ATCODER))
+            class_info = atcoder_class_info_extract(class)
+            class_info_id = class_info.id
+            class_info_label = class_info.label
+            class_info_name = class_info.name
 
-            path_src_full = joinpath(DIR_SRC_ATCODER, contest)
+            path_src_full = joinpath(DIR_SRC_ATCODER, class)
 
             item_count = dir_item_count(path_src_full)
             size = size_human_readable(size_directory_get(path_src_full))
 
-            contest_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id"
+            class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
 
-            println(f, "| [$(name_clean(contest))](./$contest/index.md) | $contest_info_class | $contest_info_id | $item_count | $size | [$contest_info_class$(contest_info_id)]($contest_link) |")
+            println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $(uppercase(class_info_label)) | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
         end
     end
 
-    for contest in sort(readdir(DIR_SRC_ATCODER))
-        atcoder_contest_generate(contest)
+    for class in sort(readdir(DIR_SRC_ATCODER))
+        atcoder_class_generate(class)
     end
 end
 
 function atcoder_nested_nav_build(path::String)
     nav = Vector{Any}()
-    contests = readdir(path; join=true, sort=true)
-    for contest in contests
-        if isdir(contest)
-            contest_name = name_clean(basename(String(contest)))
-            contest_index = joinpath("atcoder", relpath(contest, "docs/atcoder"), "index.md")
+    classes = readdir(path; join=true, sort=true)
+    for class in classes
+        if isdir(class)
+            class_base = basename(String(contest))
+            contest_index = joinpath("atcoder", relpath(class, "docs/atcoder"), "index.md")
 
-            contest_children = Vector{Any}()
-            tasks = readdir(contest; join=true, sort=true)
-            for task in tasks
-                if isdir(task)
-                    task_name = basename(task)
-                    @show task_name
+            class_info = atcoder_class_info_extract(class_base)
+            class_info_id = class_info.id
+            class_info_label = class_info.label
+            class_info_name = class_info.name
 
-                    task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
+            class_children = Vector{Any}()
+            contests = readdir(path; join=true, sort=true)
+            for contest in contests
+                if isdir(contest)
+                    contest_name = name_clean(basename(String(contest)))
+                    contest_index = joinpath("atcoder", relpath(contest, "docs/atcoder"), "index.md")
 
-                    task_info = atcoder_task_info_extract(task_name)
-                    task_info_id = task_info.id
-                    task_info_label = task_info.label
-                    task_info_name = task_info.name
+                    contest_children = Vector{Any}()
+                    tasks = readdir(contest; join=true, sort=true)
+                    for task in tasks
+                        if isdir(task)
+                            task_name = basename(task)
+                            task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
-                    task_children = Vector{Any}()
-                    sols = readdir(task; join=true, sort=true)
-                    for sol in sols
-                        if isdir(sol)
-                            sol_base = basename(sol)
+                            task_info = atcoder_task_info_extract(task_name)
+                            task_info_id = task_info.id
+                            task_info_label = task_info.label
+                            task_info_name = task_info.name
 
-                            sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
+                            task_children = Vector{Any}()
+                            sols = readdir(task; join=true, sort=true)
+                            for sol in sols
+                                if isdir(sol)
+                                    sol_base = basename(sol)
 
-                            sol_name = name_clean(splitext(sol_base)[1])
-                            sol_ext = file_extension_get(sol_base)
+                                    sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
 
-                            push!(task_children, Dict("$sol_ext $sol_name" => [sol_index]))
+                                    sol_name = name_clean(splitext(sol_base)[1])
+                                    sol_ext = file_extension_get(sol_base)
+
+                                    push!(task_children, Dict("$sol_ext $sol_name" => [sol_index]))
+                                end
+                            end
+                            push!(contest_children, Dict("$task_info_label $task_info_name" => vcat([task_index], task_children)))
                         end
                     end
-                    push!(contest_children, Dict("$task_info_label $task_info_name" => vcat([task_index], task_children)))
+                    push!(class_children, Dict(contest_name => vcat([contest_index], contest_children)))
                 end
             end
-            push!(nav, Dict(contest_name => vcat([contest_index], contest_children)))
+            push!(nav, Dict("$(uppercase(class_info_label)) $(name_clean(class_info_name))" => vcat([class_index], class_children)))
         end
-    end
 
     return nav
 end
