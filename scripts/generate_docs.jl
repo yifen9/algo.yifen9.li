@@ -234,7 +234,6 @@ function atcoder_task_generate(task::String, contest::String, class::String)
             end
         end
 
-        println(f, "\n")
         println(f, "## Task Statement\n")
 
         # 日本語 Tab

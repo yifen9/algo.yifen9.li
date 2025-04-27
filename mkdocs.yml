@@ -81,7 +81,7 @@ markdown_extensions:
 plugins:
   - awesome-pages
   - include-markdown:
-      preserve_includer_indent: false
+      preserve_includer_indent: true
   - search
 
 nav:
