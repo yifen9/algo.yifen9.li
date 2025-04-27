@@ -145,15 +145,19 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task, file)
     mkpath(dir_docs)
 
-    name = name_clean(splitext(file)[1])
     ext = file_extension_get(file)
     size = size_human_readable(stat(dir_src).size)
+
+    task_info = atcoder_task_info_extract(task)
+    task_info_id = task_info.id
+    task_info_label = task_info.label
+    task_info_name = task_info.name
 
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
     open(file_docs, "w") do f
-        println(f, "# $ext $name\n")
+        println(f, "# $task_info_label $(name_clean(file))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -191,7 +195,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
     task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# $task_info_label $(name_clean(task_info_name))\n")
+        println(f, "# $contest $(name_clean(task_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -206,7 +210,6 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         println(f, "|------|------|------|--------|----------|-------------|")
 
         for sol in sort(readdir(dir_src))
-            sol_name = splitext(sol)[1]
             ext = file_extension_get(sol)
             size = size_human_readable(stat(joinpath(dir_src, sol)).size)
 
@@ -215,7 +218,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
             sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
             sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
 
-            println(f, "| [$(name_clean(sol_name))]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
+            println(f, "| [$(name_clean(sol))]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
         end
     end
 
@@ -346,7 +349,7 @@ function atcoder_generate()
 
             class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
 
-            println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $class_info_label | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
+            println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $(uppercase(class_info_label)) | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
         end
     end
 
