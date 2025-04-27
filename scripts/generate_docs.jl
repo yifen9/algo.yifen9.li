@@ -319,7 +319,7 @@ function atcoder_class_generate(class::String)
     end
 
     for contest in sort(readdir(dir_src))
-        atcoder_contest_generate(contest)
+        atcoder_contest_generate(contest, class)
     end
 end
 
