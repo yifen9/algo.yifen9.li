@@ -57,7 +57,8 @@ function fetch_all()
                 continue
             end
 
-            contest_id = lowercase(class[1]) * contest
+            contest_id = split(contest, "_", limit=3)[2] * contest
+            @show contest_id
 
             for task in readdir(path_contest)
                 path_task = joinpath(path_contest, task)
@@ -65,12 +66,8 @@ function fetch_all()
                     continue
                 end
 
-                parts = split(task, "_", limit=3)
-                if length(parts) < 3
-                    println("[WARN] Skipping invalid task dir: $path_task")
-                    continue
-                end
-                task_id = parts[1]
+                task_id = split(task, "_", limit=3)[1]
+                @show task_id
 
                 println("Fetching $contest_id / $task_id...")
 
