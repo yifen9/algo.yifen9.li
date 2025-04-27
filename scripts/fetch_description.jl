@@ -42,7 +42,7 @@ function fetch_description_md(contest_id, task_id, lang)::String
     println("[FETCH] $url")
     page = fetch_raw_html(url)
     snippet = extract_task_statement_html(page)
-    return html_to_markdown(snippet)
+    return replace(html_to_markdown(snippet), "`" => "$")
 end
 
 function fetch_all()
