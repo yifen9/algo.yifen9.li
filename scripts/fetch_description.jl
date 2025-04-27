@@ -1,11 +1,13 @@
 import Pkg
 Pkg.activate(".")
 Pkg.instantiate()
-Pkg.add("HTTP")
+Pkg.add("Cascadia")
 Pkg.add("Gumbo")
+Pkg.add("HTTP")
 
-using HTTP
+using Cascadia
 using Gumbo
+using HTTP
 
 const DIR_SRC_ATCODER = "src/atcoder"
 
@@ -14,33 +16,10 @@ function fetch_html(url::String)
     return parsehtml(String(resp.body))
 end
 
-function extract_text_by_id(doc, id::String)
-    queue = [doc.root]
-    while !isempty(queue)
-        node = popfirst!(queue)
-
-        if hasproperty(node, :attributes) && node.attributes !== nothing
-            if any(attr -> attr.name == "id" && attr.value == id, node.attributes)
-                return join(text_content.(node.children))
-            end
-        end
-
-        if hasproperty(node, :children) && node.children !== nothing
-            append!(queue, node.children)
-        end
-    end
-
-    error("ID=$id not found!")
-end
-
-function text_content(node)
-    if node isa Gumbo.HTMLText
-        return node.text
-    elseif node isa Gumbo.HTMLElement
-        return join(text_content.(node.children))
-    else
-        return ""
-    end
+function extract_by_selector(doc, selector::Selector)
+    nodes = eachmatch(selector, doc.root)
+    isempty(nodes) && error("No node for selector $(selector)")
+    return text(nodes[1])
 end
 
 function fetch_description(contest_id, task_id, lang)
@@ -49,11 +28,12 @@ function fetch_description(contest_id, task_id, lang)
     doc = fetch_html(url)
 
     try
-        return extract_text_by_id(doc, "task-statement")
+        return extract_by_selector(doc, Selector("div#task-statement"))
     catch
-        println("[WARN] 'task-statement' not found, falling back to full text")
-        return text_content(doc.root)
+        println("  [WARN] #task-statement not found, try .problem-statement")
     end
+
+    return text(doc.root)
 end
 
 function fetch_all()
@@ -81,10 +61,10 @@ function fetch_all()
 
                 for (lang, suffix) in [("en", "en"), ("ja", "ja")]
                     path_desc = joinpath(path_task, "description.$suffix.md")
-                    if isfile(path_desc)
-                        println("  - $lang exists, skip")
-                        continue
-                    end
+                    # if isfile(path_desc)
+                    #     println("  - $lang exists, skip")
+                    #     continue
+                    # end
                     try
                         text = fetch_description(contest_id, task_id, lang)
                         mkpath(path_task)
