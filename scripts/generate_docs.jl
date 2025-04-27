@@ -248,7 +248,7 @@ function atcoder_contest_generate(contest::String)
     contest_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# $(name_clean(atcoder_contest_class_converter(contest_info_class))) $contest_info_id\n")
+        println(f, "# $(name_clean(atcoder_contest_class_converter(String(contest_info_class)))) $contest_info_id\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
