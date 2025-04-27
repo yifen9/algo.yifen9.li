@@ -225,9 +225,9 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         println(f, "\n## Task Statement\n")
         println(f, "\n=== \"日本語\"\n")
-        println(f, "    {% include-markdown \"$(joinpath(dir_src, "description_ja.md"))\" %}\n")
+        println(f, "    {% include-markdown \"$(joinpath(file_origin, "description_ja.md"))\" %}\n")
         println(f, "\n=== \"English\"\n")
-        println(f, "    {% include-markdown \"$(joinpath(dir_src, "description_en.md"))\" %}\n")
+        println(f, "    {% include-markdown \"$(joinpath(file_origin, "description_en.md"))\" %}\n")
     end
 
     # Also generate each solution preview
