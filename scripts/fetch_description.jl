@@ -1,151 +1,94 @@
 import Pkg
 Pkg.activate(".")
 Pkg.instantiate()
-Pkg.add("Gumbo")
-Pkg.add("GumboQuery")
 Pkg.add("HTTP")
+Pkg.add("Gumbo")
 
-using Gumbo
-using GumboQuery
 using HTTP
-using Printf
+using Gumbo
 
 const DIR_SRC_ATCODER = "src/atcoder"
 
-# 抓取网页并解析 #task-statement 区域（题目描述）
-function problem_fetch(contest_id, task_id, lang)
+function fetch_html(url::String)
+    resp = HTTP.get(url)
+    return parsehtml(String(resp.body))
+end
+
+function extract_text_by_id(doc, id::String)
+    queue = [doc.root]
+    while !isempty(queue)
+        node = popfirst!(queue)
+        if node isa Gumbo.GumboElement
+            if any(attr -> attr.name == "id" && attr.value == id, node.attributes)
+                return join(text_content.(node.children))
+            end
+            append!(queue, node.children)
+        end
+    end
+    error("ID=$id not found!")
+end
+
+function text_content(node)
+    if node isa Gumbo.GumboText
+        return node.data
+    elseif node isa Gumbo.GumboNode
+        return join(text_content.(node.children))
+    else
+        return ""
+    end
+end
+
+function fetch_description(contest_id::String, task_id::String, lang::String)
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
-    println("[FETCH] $url")
-    resp = HTTP.get(url)
-    html = parsehtml(String(resp.body))
-    task_statement = first(eachmatch("#task-statement", html.root))
-    return task_statement !== nothing ? text_content(task_statement) : nothing
+    doc = fetch_html(url)
+    return extract_text_by_id(doc, "task-statement")
 end
 
-# 抓取比赛首页（比赛描述）
-function contest_fetch(contest_id, lang)
-    url = "https://atcoder.jp/contests/$(contest_id)?lang=$(lang)"
-    println("[FETCH] $url")
-    resp = HTTP.get(url)
-    html = parsehtml(String(resp.body))
-    main_content = first(eachmatch("#contest-statement", html.root))
-    return main_content !== nothing ? text_content(main_content) : nothing
-end
-
-# 保存文本到文件
-function save_text(path::String, content::String)
-    mkpath(dirname(path))
-    open(path, "w") do io
-        write(io, content)
-    end
-end
-
-# 处理单个 task
-function process_task(class::String, contest::String, task::String)
-    parts_task = split(task, "_", limit=3)
-    task_id = parts_task[1]
-    
-    parts_class = split(class, "_", limit=3)
-    contest_prefix = parts_class[2]
-
-    contest_id = contest_prefix * contest
-    task_dir = joinpath(DIR_SRC_ATCODER, class, contest, task)
-
-    en_path = joinpath(task_dir, "description_en.md")
-    ja_path = joinpath(task_dir, "description_ja.md")
-
-    if !isfile(en_path)
-        try
-            content_en = problem_fetch(contest_id, task_id, "en")
-            if content_en !== nothing
-                save_text(en_path, content_en)
-            else
-                println("[WARN] No English description for $task")
-            end
-        catch e
-            println("[ERROR] Failed to fetch English description: $e")
-        end
-    else
-        println("[SKIP] Already exists: $en_path")
-    end
-
-    if !isfile(ja_path)
-        try
-            content_ja = problem_fetch(contest_id, task_id, "ja")
-            if content_ja !== nothing
-                save_text(ja_path, content_ja)
-            else
-                println("[WARN] No Japanese description for $task")
-            end
-        catch e
-            println("[ERROR] Failed to fetch Japanese description: $e")
-        end
-    else
-        println("[SKIP] Already exists: $ja_path")
-    end
-end
-
-# 处理单个 contest
-function process_contest(class::String, contest::String)
-    parts_class = split(class, "_", limit=3)
-    contest_prefix = parts_class[2]
-
-    contest_id = contest_prefix * contest
-    contest_dir = joinpath(DIR_SRC_ATCODER, class, contest)
-
-    en_path = joinpath(contest_dir, "description_en.md")
-    ja_path = joinpath(contest_dir, "description_ja.md")
-
-    if !isfile(en_path)
-        try
-            content_en = contest_fetch(contest_id, "en")
-            if content_en !== nothing
-                save_text(en_path, content_en)
-            else
-                println("[WARN] No English contest description for $contest")
-            end
-        catch e
-            println("[ERROR] Failed to fetch English contest description: $e")
-        end
-    else
-        println("[SKIP] Already exists: $en_path")
-    end
-
-    if !isfile(ja_path)
-        try
-            content_ja = contest_fetch(contest_id, "ja")
-            if content_ja !== nothing
-                save_text(ja_path, content_ja)
-            else
-                println("[WARN] No Japanese contest description for $contest")
-            end
-        catch e
-            println("[ERROR] Failed to fetch Japanese contest description: $e")
-        end
-    else
-        println("[SKIP] Already exists: $ja_path")
-    end
-end
-
-# 遍历 src/atcoder，批量处理
 function fetch_all()
-    classes = readdir(DIR_SRC_ATCODER)
-    for class in classes
-        class_path = joinpath(DIR_SRC_ATCODER, class)
-        if isdir(class_path)
-            contests = readdir(class_path)
-            for contest in contests
-                contest_path = joinpath(class_path, contest)
-                if isdir(contest_path)
-                    println("[INFO] Fetching contest: $class $contest")
-                    process_contest(class, contest)
+    for class in readdir(DIR_SRC_ATCODER)
+        path_class = joinpath(DIR_SRC_ATCODER, class)
+        if !isdir(path_class)
+            continue
+        end
 
-                    tasks = readdir(contest_path)
-                    for task in tasks
-                        task_path = joinpath(contest_path, task)
-                        if isdir(task_path)
-                            process_task(class, contest, task)
+        for contest in readdir(path_class)
+            path_contest = joinpath(path_class, contest)
+            if !isdir(path_contest)
+                continue
+            end
+
+            contest_id = lowercase(class[1]) * contest
+
+            for task in readdir(path_contest)
+                path_task = joinpath(path_contest, task)
+                if !isdir(path_task)
+                    continue
+                end
+
+                parts = split(task, "_", limit=3)
+                if length(parts) < 3
+                    println("[WARN] Skipping invalid task dir: $path_task")
+                    continue
+                end
+                task_id = parts[1]
+
+                println("Fetching $contest_id / $task_id...")
+
+                for (lang, suffix) in [("en", "en"), ("ja", "ja")]
+                    path_desc = joinpath(path_task, "description.$suffix.md")
+                    if isfile(path_desc)
+                        println("  - $lang exists, skip")
+                        continue
+                    end
+                    try
+                        text = fetch_description(contest_id, task_id, lang)
+                        mkpath(path_task)
+                        open(path_desc, "w") do f
+                            write(f, text)
                         end
+                        println("  - $lang fetched")
+                    catch e
+                        println("[ERROR] $lang failed: ", e)
                     end
                 end
             end
@@ -153,5 +96,4 @@ function fetch_all()
     end
 end
 
-# 主程序
 fetch_all()
