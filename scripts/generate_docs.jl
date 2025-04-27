@@ -398,7 +398,7 @@ function atcoder_nested_nav_build(path::String)
                                     sol_name = name_clean(splitext(sol_base)[1])
                                     sol_ext = file_extension_get(sol_base)
 
-                                    push!(task_children, Dict("$sol_ext $sol_name" => [sol_index]))
+                                    push!(task_children, Dict(name_clean(sol_base) => [sol_index]))
                                 end
                             end
                             push!(contest_children, Dict("$task_info_label $task_info_name" => vcat([task_index], task_children)))
