@@ -1,130 +1,156 @@
 <div id="task-statement">
-			
 
+<div class="part">
 
-	
-	
+### 問題文
 
-			<div class="part">
-<h3>問題文</h3>
-<section>
-神からの財産と、母音を取り戻した高橋くんは、AtCoder国の腐敗した政治を正すため、国会議員となろうと決めました。<br />
-もともと人心掌握術とスピーチに定評があった高橋くんは、何の苦労をすることもなく当選しました。<br />
-しかし、議員になってからが本番です。国を正すためには、首相に任命される必要があります。<br />
-<br />
-AtCoder国には高橋くんを除いて <var>N</var> 人の国会議員と、<var>M</var> 個の人間関係 <var>(x,\ y)</var> が存在します。<br />
-人間関係 <var>(x,\ y)</var> とは、議員 <var>x</var> と議員 <var>y</var> が知り合いであることを意味します。<br />
-高橋くんは <var>N</var> 人の議員から何人かを選んで派閥を作ろうと企んでいます。<br />
-派閥に含まれるすべての議員は互いに知り合いでなければなりません。<br />
+<div class="section">
+
+神からの財産と、母音を取り戻した高橋くんは、AtCoder国の腐敗した政治を正すため、国会議員となろうと決めました。  
+もともと人心掌握術とスピーチに定評があった高橋くんは、何の苦労をすることもなく当選しました。  
+しかし、議員になってからが本番です。国を正すためには、首相に任命される必要があります。  
+  
+AtCoder国には高橋くんを除いて `N` 人の国会議員と、`M` 個の人間関係 `(x,\ y)` が存在します。  
+人間関係 `(x,\ y)` とは、議員 `x` と議員 `y` が知り合いであることを意味します。  
+高橋くんは `N` 人の議員から何人かを選んで派閥を作ろうと企んでいます。  
+派閥に含まれるすべての議員は互いに知り合いでなければなりません。  
 高橋くんが作成することができる最大の派閥に属する議員数を求めるプログラムを書いてください。
-</section>
+
 </div>
 
-<hr />
+</div>
+
+------------------------------------------------------------------------
 
 <div class="io-style part">
-<h3>入力</h3>
-<section>
+
+### 入力
+
+<div class="section">
+
 入力は以下の形式で標準入力から与えられる。
-<pre>
-<var>N</var> <var>M</var>
-<var>x_1</var> <var>y_1</var>
-<var>x_2</var> <var>y_2</var>
-:
-<var>x_M</var> <var>y_M</var>
-</pre>
-<ol>
-	<li><var>1</var> 行目には、高橋くん以外の国会議員の数 <var>N\ (1≦N≦12)</var> と、人間関係の数 <var>M</var> <var>(0≦M≦N(N-1)/2)</var> が半角空白区切りで与えられる。</li>	
-	<li><var>2</var> 行目から <var>M+1</var> 行目までの <var>M</var> 行で、人間関係が与えられる。</li>
-	<ul>
-		<li>各議員は <var>1</var> から <var>N</var> までの整数で番号がつけられている。</li>
-		<li><var>2</var> 行目を基準とした第 <var>i\ (1≦i≦M)</var> 行において、議員 <var>x_i</var> と議員 <var>y_i</var> は知り合いであることを意味する。</li>
-		<li><var>x_i</var> と <var>y_i</var> はともに整数で、 <var>1 ≦ x_i < y_i ≦ N</var> を満たす。</li>
-		<li><var>i≠j</var> のとき、<var>(x_i,\ y_i)≠(x_j,\ y_j)</var> であることが保証されている。</li>
-	</ul>
-</ol>
-</section>
+
+    N M
+    x_1 y_1
+    x_2 y_2
+    :
+    x_M y_M
+
+1.  `1` 行目には、高橋くん以外の国会議員の数 `N\ (1≦N≦12)` と、人間関係の数 `M` `(0≦M≦N(N-1)/2)` が半角空白区切りで与えられる。
+
+2.  `2` 行目から `M+1` 行目までの `M` 行で、人間関係が与えられる。
+
+3.  - 各議員は `1` から `N` までの整数で番号がつけられている。
+    - `2` 行目を基準とした第 `i\ (1≦i≦M)` 行において、議員 `x_i` と議員 `y_i` は知り合いであることを意味する。
+    - `x_i` と `y_i` はともに整数で、 `1 ≦ x_i < y_i ≦ N` を満たす。
+    - `i≠j` のとき、`(x_i,\ y_i)≠(x_j,\ y_j)` であることが保証されている。
+
+</div>
+
 </div>
 
 <div class="part">
-<h3>出力</h3>
-<section>
-高橋くんが作成することができる最大の派閥に属する議員数を <var>1</var> 行で出力してください。<br />
+
+### 出力
+
+<div class="section">
+
+高橋くんが作成することができる最大の派閥に属する議員数を `1` 行で出力してください。  
 また、出力の末尾には改行を入れること。
-</section>
+
 </div>
 
-<hr />
+</div>
+
+------------------------------------------------------------------------
 
 <div class="part">
-<h3>入力例 1</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 入力例 1
+
+<div class="section">
+
+``` prettyprint
 5 3
 1 2
 2 3
 1 3
-</pre>
-<ul>
-	<li><var>1</var> 行目：<var>5</var> 人の議員と <var>3</var> つの人間関係が存在する。</li>
-	<li><var>2</var> 行目：議員 <var>1</var> と議員 <var>2</var> は知り合いである。</li>
-	<li><var>3</var> 行目：議員 <var>2</var> と議員 <var>3</var> は知り合いである。</li>
-	<li><var>4</var> 行目：議員 <var>1</var> と議員 <var>3</var> は知り合いである。</li>
-</ul>
-</section>
+```
+
+- `1` 行目：`5` 人の議員と `3` つの人間関係が存在する。
+- `2` 行目：議員 `1` と議員 `2` は知り合いである。
+- `3` 行目：議員 `2` と議員 `3` は知り合いである。
+- `4` 行目：議員 `1` と議員 `3` は知り合いである。
+
+</div>
+
 </div>
 
 <div class="part">
-<h3>出力例 1</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 出力例 1
+
+<div class="section">
+
+``` prettyprint
 3
-</pre>
-<ul>
-	<li>議員 <var>1</var>、議員 <var>2</var>、議員 <var>3</var> は互いに知り合いなので、この <var>3</var> 人は派閥を構成することができる。</li>
-</ul>
-</section>
+```
+
+- 議員 `1`、議員 `2`、議員 `3` は互いに知り合いなので、この `3` 人は派閥を構成することができる。
+
 </div>
 
-<hr />
+</div>
+
+------------------------------------------------------------------------
 
 <div class="part">
-<h3>入力例 2</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 入力例 2
+
+<div class="section">
+
+``` prettyprint
 5 3
 1 2
 2 3
 3 4
-</pre>
-</section>
+```
+
+</div>
+
 </div>
 
 <div class="part">
-<h3>出力例 2</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 出力例 2
+
+<div class="section">
+
+``` prettyprint
 2
-</pre>
-<ul>
-	<li>議員数 <var>2</var> の派閥として
-		<ol>
-			<li>議員 <var>1</var> と議員 <var>2</var> の派閥</li>
-			<li>議員 <var>2</var> と議員 <var>3</var> の派閥</li>
-			<li>議員 <var>3</var> と議員 <var>4</var> の派閥</li>
-		</ol>
-		の <var>3</var> 通りが考えられます。
-	</li>
-</ul>
-</section>
+```
+
+- 議員数 `2` の派閥として
+  1.  議員 `1` と議員 `2` の派閥
+  2.  議員 `2` と議員 `3` の派閥
+  3.  議員 `3` と議員 `4` の派閥
+
+  の `3` 通りが考えられます。
+
 </div>
 
-<hr />
+</div>
+
+------------------------------------------------------------------------
 
 <div class="part">
-<h3>入力例 3</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 入力例 3
+
+<div class="section">
+
+``` prettyprint
 7 9
 1 2
 1 3
@@ -135,43 +161,56 @@ AtCoder国には高橋くんを除いて <var>N</var> 人の国会議員と、<v
 5 6
 5 7
 6 7
-</pre>
-</section>
+```
+
+</div>
+
 </div>
 
 <div class="part">
-<h3>出力例 3</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 出力例 3
+
+<div class="section">
+
+``` prettyprint
 4
-</pre>
-</section>
+```
+
 </div>
-<hr />
+
+</div>
+
+------------------------------------------------------------------------
 
 <div class="part">
-<h3>入力例 4</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 入力例 4
+
+<div class="section">
+
+``` prettyprint
 12 0
-</pre>
-</section>
+```
+
+</div>
+
 </div>
 
 <div class="part">
-<h3>出力例 4</h3>
-<section>
-<pre class="prettyprint linenums">
+
+### 出力例 4
+
+<div class="section">
+
+``` prettyprint
 1
-</pre>
-</section>
+```
+
 </div>
-<ul>
-	<li>たとえ <var>12</var>人の議員がいても、誰も知りあいでなければ <var>1</var> 人からなる派閥しか作成することはできません。</li>
-</ul>
-		</div>
 
-		
+</div>
 
-		
-	</div>
+- たとえ `12`人の議員がいても、誰も知りあいでなければ `1` 人からなる派閥しか作成することはできません。
+
+</div>
