@@ -298,7 +298,7 @@ function atcoder_class_generate(class::String)
 
         println(f, "## Basic Info\n")
         println(f, "- **ID:    **", class_info_id)
-        println(f, "- **Label: **", uppercase(class_info_label))
+        println(f, "- **Label: **", class_info_label)
         println(f, "- **[Origin]($class_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
@@ -346,7 +346,7 @@ function atcoder_generate()
 
             class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
 
-            println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $(uppercase(class_info_label)) | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
+            println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $class_info_label | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
         end
     end
 
@@ -404,10 +404,10 @@ function atcoder_nested_nav_build(path::String)
                             push!(contest_children, Dict("$task_info_label $task_info_name" => vcat([task_index], task_children)))
                         end
                     end
-                    push!(class_children, Dict(contest_name => vcat([contest_index], contest_children)))
+                    push!(class_children, Dict("$(uppercase(class_info_label)) $contest_name" => vcat([contest_index], contest_children)))
                 end
             end
-            push!(nav, Dict("$(uppercase(class_info_label)) $(name_clean(class_info_name))" => vcat([class_index], class_children)))
+            push!(nav, Dict("$(name_clean(class_info_name))" => vcat([class_index], class_children)))
         end
     end
 
