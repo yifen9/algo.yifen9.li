@@ -66,7 +66,7 @@ function write_md(dir::String, filename::String, content)
     mkpath(dir)
     path = joinpath(dir, filename)
     open(path, "w") do io
-        print(io, Markdown.write(content))
+        Markdown.write(io, content)
     end
 end
 
