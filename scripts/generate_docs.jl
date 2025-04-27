@@ -326,6 +326,7 @@ function nested_nav_build_atcoder(path::String)
         tasks = readdir(contest; join=true, sort=true)
         for task in tasks
             task_name = basename(task)
+            @show task_name
 
             task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
