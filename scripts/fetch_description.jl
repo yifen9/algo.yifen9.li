@@ -11,8 +11,14 @@ using HTTP
 
 const DIR_SRC_ATCODER = "src/atcoder"
 
+const BROWSER_HEADERS = Dict(
+  "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " *
+                  "AppleWebKit/537.36 (KHTML, like Gecko) " *
+                  "Chrome/90.0.4430.93 Safari/537.36"
+)
+
 function fetch_raw_html(url::String)
-    resp = HTTP.get(url)
+    resp = HTTP.get(url; headers=BROWSER_HEADERS)
     return String(resp.body)
 end
 
@@ -25,11 +31,15 @@ function extract_task_statement_html(html::String)
     return m.captures[1]
 end
 
-function fetch_statement_html(contest_id, task_id, lang)
+function fetch_description_html(contest_id, task_id, lang)
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
     println("[FETCH] $url")
-    page = fetch_raw_html(url)
-    return extract_task_statement_html(page)
+    html = fetch_raw_html(url)
+
+    re = r"(?s)(<div\s+id=\"task-statement\".*?</div>\s*</div>)"
+    m = match(re, html)
+    m === nothing && error("task-statement not found")
+    return m.captures[1]
 end
 
 function fetch_all()
@@ -62,7 +72,7 @@ function fetch_all()
                     #     continue
                     # end
                     try
-                        text = fetch_statement_html(contest_id, task_id, lang)
+                        text = fetch_description_html(contest_id, task_id, lang)
                         mkpath(path_task)
                         open(path_desc, "w") do f
                             write(f, text)
