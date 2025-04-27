@@ -411,6 +411,7 @@ function atcoder_nested_nav_build(path::String)
                             for sol in sols
                                 if isdir(sol)
                                     sol_base = basename(sol)
+                                    @show file_extension_get(sol_base)
                                     if file_extension_get(sol_base) != "md"
                                         sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
                                         sol_name = name_clean(splitext(sol_base)[1])
