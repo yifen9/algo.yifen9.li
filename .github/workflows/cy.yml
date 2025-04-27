@@ -30,7 +30,7 @@ jobs:
                 version: '1.10'
 
             - name: Generate docs
-              run: julia scripts/generate_docs.jl
+              run: julia scripts/fetch_and_generate_docs.jl
 
             - name: Set up Python
               uses: actions/setup-python@v4
@@ -39,12 +39,6 @@ jobs:
 
             - name: Install tools
               run: pip install mkdocs-material mkdocs-awesome-pages-plugin ghp-import
-
-            - name: Build site and copy src/
-              run: |
-                mkdir -p build
-                mkdocs build -d build
-                cp -r src build/src
 
             - name: Deploy manually via ghp-import
               run: ghp-import -n -f -p build
