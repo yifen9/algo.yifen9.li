@@ -361,7 +361,7 @@ function atcoder_nested_nav_build(path::String)
     for class in classes
         if isdir(class)
             class_base = basename(String(class))
-            contest_index = joinpath("atcoder", relpath(class, "docs/atcoder"), "index.md")
+            class_index = joinpath("atcoder", relpath(class, "docs/atcoder"), "index.md")
 
             class_info = atcoder_class_info_extract(class_base)
             class_info_id = class_info.id
