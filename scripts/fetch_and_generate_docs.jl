@@ -1,3 +1,10 @@
+import Pkg
+
+Pkg.activate(".")
+Pkg.instantiate()
+Pkg.add("HTTP")
+Pkg.add("JSON")
+
 using HTTP
 using JSON
 using Dates
