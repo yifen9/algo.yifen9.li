@@ -209,6 +209,21 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         println(f, "| File | Type | Size | Result | Strategy | Performance |")
         println(f, "|------|------|------|--------|----------|-------------|")
 
+        for sol in sort(readdir(dir_src))
+            ext = file_extension_get(sol)
+            if ext != "md"
+                size = size_human_readable(stat(joinpath(dir_src, sol)).size)
+
+                sol_info = atcoder_solution_info_extract(splitext(sol)[1])
+                sol_info_result = sol_info.result
+                sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
+                sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
+
+                println(f, "| [$(name_clean(sol))]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
+            end
+        end
+
+        println(f, "\n")
         println(f, "## Task Statement\n")
         println(f, "=== \"日本語\"\n")
         for line in eachline(joinpath(dir_src, "description_ja.md"))
@@ -217,18 +232,6 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         println(f, "\n=== \"English\"\n")
         for line in eachline(joinpath(dir_src, "description_en.md"))
             println(f, "    ", line)
-        end
-
-        for sol in sort(readdir(dir_src))
-            ext = file_extension_get(sol)
-            size = size_human_readable(stat(joinpath(dir_src, sol)).size)
-
-            sol_info = atcoder_solution_info_extract(splitext(sol)[1])
-            sol_info_result = sol_info.result
-            sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
-            sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
-
-            println(f, "| [$(name_clean(sol))]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
         end
     end
 
