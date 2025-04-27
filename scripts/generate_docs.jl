@@ -351,7 +351,7 @@ function atcoder_nested_nav_build(path::String)
                             push!(task_children, Dict("$sol_ext $sol_name" => [sol_index]))
                         end
                     end
-                    push!(contest_children, Dict("$task_info_label $task_info_name" => [task_index], task_children))
+                    push!(contest_children, Dict("$task_info_label $task_info_name" => vcat([task_index], task_children)))
                 end
             end
             push!(nav, Dict(contest_name => vcat([contest_index], contest_children)))
