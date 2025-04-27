@@ -5,16 +5,21 @@ Pkg.instantiate()
 Pkg.add("HTTP")
 Pkg.add("JSON")
 
+using Dates
 using HTTP
 using JSON
-using Dates
-using Printf
 using Markdown
+using Printf
 
 # Configuration
 const USER_ATCODER = "tourist"
 
 const DIR_DOCS    = "docs"
+
+function name_clean(text::AbstractString)::String
+    cleaned = replace(replace(String(text), "_" => " "), "-" => " ")
+    return occursin(r"^0\d+", cleaned) ? replace(cleaned, r"^0" => "0\u200B") : cleaned
+end
 
 # Fetch submissions from AtCoder Problems API
 function fetch_submissions_atcoder(user::String)
