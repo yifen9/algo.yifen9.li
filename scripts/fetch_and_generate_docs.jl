@@ -12,7 +12,7 @@ using Printf
 using Markdown
 
 # Configuration
-const ATCODER_USER = "antolee"
+const ATCODER_USER = "AntoLee"
 const CF_HANDLE   = "AntoLee"
 const DIR_DOCS    = "docs"
 
@@ -21,7 +21,7 @@ slugify(id::String) = lowercase(replace(id, r"[^A-Za-z0-9]+" => "-"))
 
 # Fetch submissions from AtCoder Problems API
 function fetch_atcoder_submissions(user::String)
-    url = "https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user=$(user)"
+    url = "https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user=$(user)&from_second=1560046356"
     resp = HTTP.get(url)
     return JSON.parse(String(resp.body))
 end
