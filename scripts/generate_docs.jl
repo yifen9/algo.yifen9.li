@@ -163,7 +163,7 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
 
         println(f, "## Basic Info", "\n")
         println(f, "- **Type: **", ext)
-        println(f, "- **Size: **", size)
+        println(f, "- **Task: **", task_info_name)
         println(f, "- **[Origin]($file_origin)**", "\n")
 
         link_download = joinpath(DIR_BASE, dir_src)
@@ -195,13 +195,13 @@ function atcoder_task_generate(task::String, contest::String, class::String)
     task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# $contest $(name_clean(task_info_name))\n")
+        println(f, "# $task_info_label $(name_clean(task_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
         println(f, "## Basic Info\n")
-        println(f, "- **ID:    **", task_info_id)
-        println(f, "- **Label: **", task_info_label)
+        println(f, "- **ID:      **", task_info_id)
+        println(f, "- **Contest: **", contest)
         println(f, "- **[Origin]($task_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
