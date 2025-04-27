@@ -32,7 +32,11 @@ jobs:
       - name: Fetch latest submission data
         run: julia scripts/fetch_data.jl
 
+      - name: Fetch latest descriptions (problems and contests)
+        run: julia scripts/fetch_description.jl
+
       - name: Commit and push updated data
         run: |
-          git commit -m "chore: update submission data" || echo "No changes to commit"
+          git add src/
+          git commit -m "chore: update fetched data (submission + description)" || echo "No changes to commit"
           git push
