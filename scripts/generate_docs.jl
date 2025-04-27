@@ -211,6 +211,8 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         for sol in sort(readdir(dir_src))
             ext = file_extension_get(sol)
+            @show sol
+            @show ext
             if ext != "md"
                 size = size_human_readable(stat(joinpath(dir_src, sol)).size)
 
@@ -238,6 +240,8 @@ function atcoder_task_generate(task::String, contest::String, class::String)
     # Also generate each solution preview
     for sol in readdir(dir_src)
         ext = file_extension_get(sol)
+        @show sol
+        @show ext
         if ext != "md"
             atcoder_solution_generate(sol, task, contest, class)
         end
@@ -401,8 +405,6 @@ function atcoder_nested_nav_build(path::String)
                             task_name = basename(String(task))
                             task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
-                            @show task_name
-
                             task_info = atcoder_task_info_extract(task_name)
                             task_info_id = task_info.id
                             task_info_label = task_info.label
@@ -429,6 +431,8 @@ function atcoder_nested_nav_build(path::String)
             push!(nav, Dict("$(name_clean(class_info_name))" => vcat([class_index], class_children)))
         end
     end
+
+    @show nav
 
     return nav
 end
