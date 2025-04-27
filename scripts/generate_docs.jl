@@ -239,6 +239,11 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         println(f, "\n    <div>{% include-markdown \"./description_ja.md\" %}</div>\n")
         println(f, "\n=== \"English\"\n")
         println(f, "\n    <div>{% include-markdown \"./description_en.md\" %}</div>\n")
+
+        println(f, "\n=== \"Italian\"\n")
+        println(f, "\n    Hallo\n")
+        println(f, "\n=== \"German\"\n")
+        println(f, "\n    Ciao\n")
     end
 
     # Also generate each solution preview
