@@ -401,6 +401,8 @@ function atcoder_nested_nav_build(path::String)
                             task_name = basename(String(task))
                             task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
+                            @show file_extension_get(task_name)
+
                             task_info = atcoder_task_info_extract(task_name)
                             task_info_id = task_info.id
                             task_info_label = task_info.label
@@ -411,14 +413,11 @@ function atcoder_nested_nav_build(path::String)
                             for sol in sols
                                 if isdir(sol)
                                     sol_base = basename(sol)
-                                    @show file_extension_get(sol_base)
-                                    if file_extension_get(sol_base) != "md"
-                                        sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
-                                        sol_name = name_clean(splitext(sol_base)[1])
-                                        sol_ext = file_extension_get(sol_base)
+                                    sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
+                                    sol_name = name_clean(splitext(sol_base)[1])
+                                    sol_ext = file_extension_get(sol_base)
 
-                                        push!(task_children, Dict(name_clean(sol_base) => [sol_index]))
-                                    end
+                                    push!(task_children, Dict(name_clean(sol_base) => [sol_index]))
                                 end
                             end
                             push!(contest_children, Dict("$task_info_label $task_info_name" => vcat([task_index], task_children)))
