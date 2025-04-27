@@ -35,7 +35,7 @@ end
 
 function text_content(node)
     if node isa Gumbo.HTMLText
-        return node.data
+        return node.text
     elseif node isa Gumbo.HTMLElement
         return join(text_content.(node.children))
     else
