@@ -32,11 +32,14 @@ function extract_task_statement_html(html::String)::String
 end
 
 function html_to_markdown(html_snip::String)::String
-    html_snip = replace(html_snip, r"<var>(.*?)</var>"m => s"\$$1\$")
+    html_snip = replace(html_snip, r"<var>(.*?)</var>"m) do m
+      "\$" * m.captures[1] * "\$"
+    end
+  
     buf = IOBuffer(html_snip)
-    pr = pipeline(`pandoc -f html -t gfm --wrap=none`, stdin=buf)
+    pr  = pipeline(`pandoc -f html -t gfm --wrap=none`, stdin=buf)
     return read(pr, String)
-  end
+end
 
 function fetch_description_md(contest_id, task_id, lang)::String
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
