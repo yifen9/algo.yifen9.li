@@ -306,7 +306,7 @@ function atcoder_generate()
 
             contest_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id"
 
-            println(f, "| [$(name_clean(contest))](./$contest/index.md) | $(atcoder_contest_class_converter(String(contest_info_class))) | $contest_info_id | $iten_count | $size | [$contest_info_class$(contest_info_id)]($contest_link) |")
+            println(f, "| [$(name_clean(contest))](./$contest/index.md) | $(atcoder_contest_class_converter(String(contest_info_class))) | $contest_info_id | $item_count | $size | [$contest_info_class$(contest_info_id)]($contest_link) |")
         end
     end
 
