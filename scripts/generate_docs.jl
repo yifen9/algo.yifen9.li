@@ -84,8 +84,8 @@ function file_preview_generate(file_src::String)::String
             return ""
         end
 
-        escaped = replace(content, r"&" => "&amp;", r"<" => "&lt;", r">" => "&gt;")
-        return "```$(ext)\n" * escaped * "\n```"
+        # escaped = replace(content, r"&" => "&amp;", r"<" => "&lt;", r">" => "&gt;")
+        return "```$(ext)\n" * content * "\n```"
     catch
         return ""
     end
@@ -259,14 +259,23 @@ function atcoder_contest_generate(contest::String)
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "\n")
-        println(f, "| Task | Title | Link |")
-        println(f, "|------|-------|------|")
+        println(f, "| Label | Name | Item | Size | ID |")
+        println(f, "|-------|------|------|------|----|")
 
         for task in sort(readdir(dir_src))
-            parts = split(task, "_", limit=3)
-            code = parts[2]
-            title = parts[3]
-            println(f, "| $code | [$title](./$task/index.md) | [Task](https://atcoder.jp/contests/$contest/tasks/$(lowercase(task))) |")
+            task_info = atcoder_task_info_extract(task)
+            task_info_id = task_info.id
+            task_info_label = task_info.label
+            task_info_name = task_info.name
+
+            path_src_full = joinpath(dir_src, task)
+
+            item_count = dir_item_count(path_src_full)
+            size = size_human_readable(size_directory_get(path_src_full))
+
+            task_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id/tasks/$contest_info_class$contest_info_class$(contest_info_id)_$task_info_id"
+
+            println(f, "| [$task_info_label](./$task/index.md) | $task_info_name | $item_count | $size | [$(contest_info_id)_$task_info_id]($task_link) |")
         end
     end
 end

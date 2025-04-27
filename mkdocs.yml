@@ -9,14 +9,12 @@ theme:
   custom_dir: docs/overrides
   palette:
     - scheme: default
-      primary: custom
-      accent: white
+      primary: white
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: custom
-      accent: black
+      primary: black
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
