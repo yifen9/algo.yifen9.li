@@ -10,6 +10,8 @@ on:
       - 'mkdocs.yml'
       - 'scripts/generate_docs.jl'
       - 'src/**'
+  schedule:
+    - cron: '0 * * * *'
 
 permissions:
   contents: write
