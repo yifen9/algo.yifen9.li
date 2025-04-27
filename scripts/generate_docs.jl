@@ -325,7 +325,7 @@ function nested_nav_build_atcoder(path::String)
         contest_children = Vector{Any}()
         tasks = readdir(contest; join=true, sort=true)
         for task in tasks
-            task_name = name_clean(basename(task))
+            task_name = basename(task)
 
             task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
@@ -337,7 +337,7 @@ function nested_nav_build_atcoder(path::String)
             task_children = Vector{Any}()
             sols = readdir(task; join=true, sort=true)
             for sol in sols
-                sol_base = name_clean(basename(sol))
+                sol_base = basename(sol)
 
                 sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
 
