@@ -1,0 +1,39 @@
+name: fetch
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-updates:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git identity
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.10'
+
+      - name: Fetch latest submission data
+        run: julia scripts/fetch_data.jl
+
+      - name: Commit and push updated data
+        run: |
+          git add data/
+          git commit -m "chore: update submission data" || echo "No changes to commit"
+          git push

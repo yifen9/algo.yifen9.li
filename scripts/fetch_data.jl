@@ -30,60 +30,6 @@ function fetch_submissions_atcoder(user::String)
     return JSON.parse(String(resp.body))
 end
 
-function nested_nav_build(path::String)
-    entries = readdir(path; join=true, sort=true)
-    nav = Vector{Any}()
-
-    for entry in entries
-        if isdir(entry)
-            name = name_clean(basename(String(entry)))
-            rel = joinpath("atcoder", relpath(entry, DIR_DOCS))
-            index_path = joinpath(rel, "index.md")
-            children = nested_nav_build(entry)
-            push!(nav, Dict("$name" => vcat([index_path], children)))
-        end
-    end
-
-    return nav
-end
-
-function update_mkdocs_nav()
-    mkdocs_path = "mkdocs.yml"
-    backup_path = mkdocs_path * ".bak"
-    cp(mkdocs_path, backup_path; force=true)
-
-    original_lines = readlines(backup_path)
-    new_lines = String[]
-
-    in_nav = false
-    skipping_atcoder = false
-
-    for line in original_lines
-        stripped = strip(line)
-
-        if stripped == "nav:"
-            in_nav = true
-            push!(new_lines, "nav:")
-            continue
-        end
-    end
-
-    nested_atcoder = Any["atcoder/index.md"]
-    append!(nested_atcoder, nested_nav_build(DIR_DOCS))
-    atcoder_entry = Dict("AtCoder" => nested_atcoder)
-
-    nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
-    for line in nav_yaml_lines
-        if !isempty(strip(line))
-            push!(new_lines, "  " * line)
-        end
-    end
-
-    open(mkdocs_path, "w") do f
-        write(f, join(new_lines, "\n"))
-    end
-end
-
 function main()
     # Main: process AtCoder
     subs = fetch_submissions_atcoder(USER_ATCODER)
@@ -109,4 +55,4 @@ function main()
     update_mkdocs_nav()
 end
 
-main()
+# main()

@@ -1,0 +1,48 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - '.github/workflows/deploy.yml'
+      - 'mkdocs.yml'
+      - 'scripts/generate_docs.jl'
+      - 'src/**'
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.10'
+
+      - name: Generate docs
+        run: julia scripts/generate_docs.jl
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install MkDocs and plugins
+        run: pip install mkdocs-material mkdocs-awesome-pages-plugin ghp-import
+
+      - name: Build site and copy src/
+        run: |
+          mkdir -p build
+          mkdocs build -d build
+          cp -r src build/src
+
+      - name: Deploy manually via ghp-import
+        run: ghp-import -n -f -p build
