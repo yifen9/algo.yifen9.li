@@ -4,6 +4,8 @@ Pkg.activate(".")
 Pkg.instantiate()
 Pkg.add("HTTP")
 Pkg.add("JSON")
+Pkg.add("YAML")
+using YAML
 
 using Dates
 using HTTP
