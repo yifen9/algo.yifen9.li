@@ -17,7 +17,7 @@ const CF_HANDLE   = "AntoLee"
 const DIR_DOCS    = "docs"
 
 # Utility: slugify problem id for filenames
-def slugify(id::String) = lowercase(replace(id, r"[^A-Za-z0-9]+" => "-"))
+slugify(id::String) = lowercase(replace(id, r"[^A-Za-z0-9]+" => "-"))
 
 # Fetch submissions from AtCoder Problems API
 function fetch_atcoder_submissions(user::String)
