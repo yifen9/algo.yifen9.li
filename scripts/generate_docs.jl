@@ -191,6 +191,8 @@ function atcoder_task_generate(task::String, contest::String)
         for sol in sort(readdir(dir_src))
             if isfile(joinpath(dir_src, sol))
                 sol_info = atcoder_solution_info_extract(sol)
+                @show sol
+                @show sol_info
                 sol_info_name = name_clean(splitext(sol)[1])
                 sol_info_result = sol_info.result
                 sol_info_strategy = sol_info.strategy
