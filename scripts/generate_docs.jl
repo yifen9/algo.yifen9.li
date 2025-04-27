@@ -157,7 +157,7 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
     open(file_docs, "w") do f
-        println(f, "# [ $task_info_label ] $(name_clean(file))\n")
+        println(f, "# < $task_info_label > `$(name_clean(file))`\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -206,7 +206,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
     task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# [ $task_info_label ] $(name_clean(task_info_name))\n")
+        println(f, "# < $task_info_label > $(name_clean(task_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -230,14 +230,14 @@ function atcoder_task_generate(task::String, contest::String, class::String)
                 sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
                 sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
 
-                println(f, "| [$(name_clean(sol))]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
+                println(f, "| [`$sol`]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
             end
         end
 
         println(f, "\n## Task Statement\n")
-        println(f, "\n=== \"日本語\"\n")
+        println(f, "\n=== \"[日本語]($(joinpath("description_ja.md", "index.md")))/index.md)\"\n")
         println(f, "    {% include-markdown \"./description_ja.md\" %}\n")
-        println(f, "\n=== \"English\"\n")
+        println(f, "\n=== \"[English]($(joinpath("description_en.md", "index.md")))\"\n")
         println(f, "    {% include-markdown \"./description_en.md\" %}\n")
     end
 
@@ -266,7 +266,7 @@ function atcoder_contest_generate(contest::String, class::String)
     contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
 
     open(file_docs, "w") do f
-        println(f, "# [ $(uppercase(class_info_label)) ] $contest\n")
+        println(f, "# < $(uppercase(class_info_label)) > $contest\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
