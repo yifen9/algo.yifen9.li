@@ -34,9 +34,9 @@ function extract_text_by_id(doc, id::String)
 end
 
 function text_content(node)
-    if node isa Gumbo.GumboText
+    if node isa Gumbo.HTMLText
         return node.data
-    elseif node isa Gumbo.GumboNode
+    elseif node isa Gumbo.HTMLElement
         return join(text_content.(node.children))
     else
         return ""
