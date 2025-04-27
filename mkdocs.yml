@@ -81,9 +81,6 @@ markdown_extensions:
 # Plugins
 plugins:
   - awesome-pages
-  - mkdocs-breadcrumbs-plugin:
-      delimiter: " > "
-      generate_home_index: false
   - include-markdown:
       preserve_includer_indent: true
   - search
