@@ -162,7 +162,7 @@ function atcoder_solution_generate(file::String, task::String, contest::String)
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
     open(file_docs, "w") do f
-        println(f, "# $name\n")
+        println(f, "# $ext $name\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -199,7 +199,7 @@ function atcoder_task_generate(task::String, contest::String)
     task_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id/tasks/$contest_info_class$(contest_info_id)_$task_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# $(name_clean(task_info_name))\n")
+        println(f, "# $task_info_label $(name_clean(task_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -210,8 +210,8 @@ function atcoder_task_generate(task::String, contest::String)
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "\n")
-        println(f, "| File | Language | Size | Result | Strategy | Performance |")
-        println(f, "|------|----------|------|--------|----------|-------------|")
+        println(f, "| File | Type | Size | Result | Strategy | Performance |")
+        println(f, "|------|------|------|--------|----------|-------------|")
 
         for sol in sort(readdir(dir_src))
             sol_name = splitext(sol)[1]
@@ -248,7 +248,7 @@ function atcoder_contest_generate(contest::String)
     contest_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# $(name_clean(atcoder_contest_class_converter(String(contest_info_class)))) $contest_info_id\n")
+        println(f, "# $(atcoder_contest_class_converter(String(contest_info_class))) $contest_info_id\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -259,8 +259,8 @@ function atcoder_contest_generate(contest::String)
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "\n")
-        println(f, "| Label | Name | Item | Size | ID |")
-        println(f, "|-------|------|------|------|----|")
+        println(f, "| Label | Name | ID | Item | Size | Link |")
+        println(f, "|-------|------|----|------|------|------|")
 
         for task in sort(readdir(dir_src))
             task_info = atcoder_task_info_extract(task)
@@ -273,10 +273,45 @@ function atcoder_contest_generate(contest::String)
             item_count = dir_item_count(path_src_full)
             size = size_human_readable(size_directory_get(path_src_full))
 
-            task_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id/tasks/$contest_info_class$contest_info_class$(contest_info_id)_$task_info_id"
+            task_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id/tasks/$contest_info_class$(contest_info_id)_$task_info_id"
 
-            println(f, "| [$task_info_label](./$task/index.md) | $task_info_name | $item_count | $size | [$(contest_info_id)_$task_info_id]($task_link) |")
+            println(f, "| [$task_info_label](./$task/index.md) | $task_info_name | $contest_info_id | $item_count | $size | [$contest_info_class$(contest_info_id)_$task_info_id]($task_link) |")
         end
+    end
+
+    for task in readdir(dir_src)
+        atcoder_task_generate(task, contest)
+    end
+end
+
+function atcoder_generate()
+    mkpath(DIR_DOCS_ATCODER)
+
+    file = joinpath(DIR_DOCS_ATCODER, "index.md")
+    open(file, "w") do f
+        println(f, "# AtCoder\n")
+
+        println(f, "## Contests\n")
+        println(f, "| Contest | Class | ID | Item | Size | Link |")
+        println(f, "|---------|-------|----|------|------|------|")
+        for contest in sort(readdir(DIR_SRC_ATCODER))
+            contest_info = atcoder_contest_info_extract(contest)
+            contest_info_class = contest_info.class
+            contest_info_id = contest_info.id
+
+            path_src_full = joinpath(DIR_DOCS_ATCODER, contest)
+
+            item_count = dir_item_count(path_src_full)
+            size = size_human_readable(size_directory_get(path_src_full))
+
+            contest_link = "https://atcoder.jp/contests/$contest_info_class$contest_info_id"
+
+            println(f, "| [$(name_clean(contest))](./$contest/index.md) | $(atcoder_contest_class_converter(String(contest_info_class))) | $contest_info_id | $iten_count | $size | [$contest_info_class$(contest_info_id)]($contest_link) |")
+        end
+    end
+
+    for contest in sort(readdir(DIR_SRC_ATCODER))
+        atcoder_contest_generate(contest)
     end
 end
 
@@ -353,32 +388,10 @@ function update_mkdocs_nav_atcoder()
     end
 end
 
-function home_generate()
-    mkpath(DIR_DOCS_ATCODER)
-    file = joinpath(DIR_DOCS_ATCODER, "index.md")
-    open(file, "w") do f
-        println(f, "# AtCoder Contests\n")
-        println(f, "| Contest | Link |")
-        println(f, "|---------|------|")
-        for contest in sort(readdir(DIR_SRC_ATCODER))
-            println(f, "| [$contest](./$contest/index.md) | [View](https://atcoder.jp/contests/$contest) |")
-        end
-    end
-end
-
 function main()
-    for contest in sort(readdir(DIR_SRC_ATCODER))
-        atcoder_contest_generate(contest)
-        for task in readdir(joinpath(DIR_SRC_ATCODER, contest))
-            if isdir(joinpath(DIR_SRC_ATCODER, contest, task))
-                atcoder_task_generate(task, contest)
-            end
-        end
-    end
+    atcoder_generate()
 
     update_mkdocs_nav_atcoder()
-
-    home_generate()
 end
 
 main()
