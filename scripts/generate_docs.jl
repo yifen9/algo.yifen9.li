@@ -409,6 +409,7 @@ function atcoder_nested_nav_build(path::String)
             end
             push!(nav, Dict("$(uppercase(class_info_label)) $(name_clean(class_info_name))" => vcat([class_index], class_children)))
         end
+    end
 
     return nav
 end
