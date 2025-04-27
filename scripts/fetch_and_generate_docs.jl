@@ -36,28 +36,20 @@ end
 
 # Generate markdown for a single submission
 function generate_md(sub, source::String)
-    cid = sub["contest_id"]
-    pid = source == "AtCoder" ? sub["problem_id"] : sub["problem_index"]
+    cid = source == "AtCoder" ? sub["contest_id"] : sub["contestId"]
+    pid = source == "AtCoder" ? sub["problem_id"] : sub["problem"]["index"]
     title = source == "AtCoder" ? string(pid) : string(pid)
     time = Dates.format(Dates.unix2datetime(sub["epoch_second"]), "yyyy-mm-dd HH:MM")
     link = source == "AtCoder" ?
         "https://atcoder.jp/contests/$(cid)/tasks/$(sub["problem_id"])" :
         "https://codeforces.com/problemset/problem/$(cid)/$(pid)"
 
-    md = Markdown.parse(raw"""
-# $(cid) $(pid)
+    md = Markdown.parse(raw"
+# $(pid)
 
-- **Source:** $(source)
+- **Source:** [$(source)]($(link))
 - **Time:** $(time)
-- **Link:** [Problem]($(link))
-
----
-
-## Solution
-```rust
-# paste or reference your solution here
-```
-""")
+")
     return md
 end
 
@@ -75,13 +67,25 @@ subs_at = fetch_atcoder_submissions(ATCODER_USER)
 for s in subs_at
     if s["result"] == "AC"
         dir = joinpath(DIR_DOCS, "atcoder", s["contest_id"])
-        fname = "$(s["problem_id"])" * "-" * slugify(s["problem_id"]) * ".md"
-        md = generate_md(s, "AtCoder")
-        write_md(dir, fname, md)
+        fname = joinpath(dir, slugify(s["problem_id"]) * ".md")
+        mkpath(dir)
+        open(file_docs, "w") do f
+            cid = s["contest_id"]
+            pid = s["problem_id"]
+            title = string(pid)
+            time = Dates.format(Dates.unix2datetime(sub["epoch_second"]), "yyyy-mm-dd HH:MM")
+            link = "https://atcoder.jp/contests/$(cid)/tasks/$(sub["problem_id"])"
+            println(f, "# ", pid, "\n")
+            println(f, "## Basic Info", "\n")
+            println(f, "- **Source:** [$(source)]($(link))", "\n")
+            println(f, "- **Time:** $(time)", "\n")
+        end
+        # write_md(dir, fname, md)
     end
 end
 
 # Main: process Codeforces
+"""
 subs_cf = fetch_codeforces_submissions(CF_HANDLE)
 for s in subs_cf
     if s["verdict"] == "OK"
@@ -92,3 +96,4 @@ for s in subs_cf
         write_md(dir, fname, md)
     end
 end
+"""
