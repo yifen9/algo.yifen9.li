@@ -11,29 +11,25 @@ using HTTP
 
 const DIR_SRC_ATCODER = "src/atcoder"
 
-function fetch_html(url::String)
+function fetch_raw_html(url::String)
     resp = HTTP.get(url)
-    return parsehtml(String(resp.body))
+    return String(resp.body)
 end
 
-function extract_by_selector(doc, selector::Selector)
-    nodes = eachmatch(selector, doc.root)
-    isempty(nodes) && error("No node for selector $(selector)")
-    return text(nodes[1])
+function extract_task_statement_html(html::String)
+    re = r"(?s)(<div\s+id=\"task-statement\".*?</div>\s*</div>)"
+    m = match(re, html)
+    if m === nothing
+        error("task-statement section not found")
+    end
+    return m.captures[1]
 end
 
-function fetch_description(contest_id, task_id, lang)
+function fetch_statement_html(contest_id, task_id, lang)
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
     println("[FETCH] $url")
-    doc = fetch_html(url)
-
-    try
-        return extract_by_selector(doc, Selector("div#task-statement"))
-    catch
-        println("  [WARN] #task-statement not found, try .problem-statement")
-    end
-
-    return text(doc.root)
+    page = fetch_raw_html(url)
+    return extract_task_statement_html(page)
 end
 
 function fetch_all()
@@ -66,7 +62,7 @@ function fetch_all()
                     #     continue
                     # end
                     try
-                        text = fetch_description(contest_id, task_id, lang)
+                        text = fetch_statement_html(contest_id, task_id, lang)
                         mkpath(path_task)
                         open(path_desc, "w") do f
                             write(f, text)
