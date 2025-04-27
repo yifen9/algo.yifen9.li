@@ -80,7 +80,6 @@ markdown_extensions:
 plugins:
   - awesome-pages
   - include-markdown:
-      base_path: docs
       preserve_includer_indent: false
   - search
 
