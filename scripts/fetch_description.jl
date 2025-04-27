@@ -18,8 +18,8 @@ function extract_text_by_id(doc, id::String)
     queue = [doc.root]
     while !isempty(queue)
         node = popfirst!(queue)
-        @show node
         if node isa Gumbo.Element
+            @show node
             if any(attr -> attr.name == "id" && attr.value == id, node.attributes)
                 return join(text_content.(node.children))
             end
@@ -43,7 +43,8 @@ function fetch_description(contest_id, task_id, lang)
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
     @show url
     doc = fetch_html(url)
-    return extract_text_by_id(doc, "task-statement")
+    text = extract_text_by_id(doc, "task-statement")
+    return text
 end
 
 function fetch_all()
@@ -60,7 +61,6 @@ function fetch_all()
             end
 
             contest_id = split(basename(String(class)), "_", limit=3)[2] * contest
-            @show contest_id
 
             for task in readdir(path_contest)
                 path_task = joinpath(path_contest, task)
@@ -69,7 +69,6 @@ function fetch_all()
                 end
 
                 task_id = split(basename(String(task)), "_", limit=3)[1]
-                @show task_id
 
                 for (lang, suffix) in [("en", "en"), ("ja", "ja")]
                     path_desc = joinpath(path_task, "description.$suffix.md")
