@@ -340,7 +340,7 @@ function nested_nav_build_atcoder(path::String)
                     task_children = Vector{Any}()
                     sols = readdir(task; join=true, sort=true)
                     for sol in sols
-                        if isdir(task)
+                        if isdir(sol)
                             sol_base = basename(sol)
 
                             sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
