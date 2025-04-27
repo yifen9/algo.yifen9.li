@@ -18,7 +18,7 @@ function extract_text_by_id(doc, id::String)
     queue = [doc.root]
     while !isempty(queue)
         node = popfirst!(queue)
-        if node isa Gumbo.GumboElement
+        if node isa Gumbo.Element
             if any(attr -> attr.name == "id" && attr.value == id, node.attributes)
                 return join(text_content.(node.children))
             end
