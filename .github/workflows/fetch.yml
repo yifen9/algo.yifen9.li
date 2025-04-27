@@ -1,6 +1,13 @@
 name: fetch
 
 on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - '.github/workflows/fetch.yml'
+      - 'scripts/fetch_description.jl'
   schedule:
     - cron: '0 * * * *'
 
@@ -25,8 +32,10 @@ jobs:
         with:
           version: '1.10'
 
-#       - name: Fetch latest submission data
-#         run: julia scripts/fetch_data.jl
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
 
       - name: Fetch latest descriptions (problems and contests)
         run: julia scripts/fetch_description.jl
