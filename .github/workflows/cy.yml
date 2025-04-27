@@ -6,7 +6,7 @@ on:
             - main
             - master
     schedule:
-        - cron: '*/16 * * * *'
+        - cron: '0 * * * *'
 
 permissions:
     contents: write
@@ -46,6 +46,9 @@ jobs:
 
             - name: Install MkDocs and plugins
               run: pip install mkdocs-material mkdocs-awesome-pages-plugin
+            
+            - name: Build static site
+              run: mkdocs build -d build
 
             - name: Deploy to GitHub Pages
               uses: peaceiris/actions-gh-pages@v3
