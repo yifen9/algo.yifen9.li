@@ -64,10 +64,10 @@ function fetch_all()
 
                 for (lang, suffix) in [("ja", "ja"), ("en", "en")]
                     out = joinpath(path_task, "description_$suffix.md")
-                    # if isfile(out)
-                    #     println("  - $lang exists, skip")
-                    #     continue
-                    # end
+                    if isfile(out)
+                        println("  - $lang exists, skip")
+                        continue
+                    end
                     try
                         md = fetch_description_md(contest_id, task_id, lang)
                         mkpath(path_task)
