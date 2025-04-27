@@ -57,7 +57,7 @@ function fetch_all()
                 continue
             end
 
-            contest_id = split(contest, "_", limit=3)[2] * contest
+            contest_id = split(basename(String(class)), "_", limit=3)[2] * contest
             @show contest_id
 
             for task in readdir(path_contest)
@@ -66,10 +66,8 @@ function fetch_all()
                     continue
                 end
 
-                task_id = split(task, "_", limit=3)[1]
+                task_id = split(basename(String(task)), "_", limit=3)[1]
                 @show task_id
-
-                println("Fetching $contest_id / $task_id...")
 
                 for (lang, suffix) in [("en", "en"), ("ja", "ja")]
                     path_desc = joinpath(path_task, "description.$suffix.md")
