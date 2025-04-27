@@ -66,18 +66,6 @@ function update_mkdocs_nav()
             push!(new_lines, "nav:")
             continue
         end
-
-        if in_nav && startswith(stripped, "- AtCoder:")
-            skipping_atcoder = true
-            continue
-        elseif in_nav && startswith(stripped, "- ")
-            in_nav = false
-            skipping_atcoder = false
-        end
-
-        if !skipping_atcoder
-            push!(new_lines, line)
-        end
     end
 
     nested_atcoder = Any["atcoder/index.md"]
@@ -96,25 +84,29 @@ function update_mkdocs_nav()
     end
 end
 
-# Main: process AtCoder
-subs = fetch_submissions_atcoder(USER_ATCODER)
-for sub in subs
-    if sub["result"] == "AC"
-        dir = joinpath(DIR_DOCS, "atcoder", sub["contest_id"], sub["problem_id"])
-        file = joinpath(dir, "index.md")
-        mkpath(dir)
-        open(file, "w") do f
-            cid = sub["contest_id"]
-            pid = sub["problem_id"]
-            title = string(pid)
-            time = Dates.format(Dates.unix2datetime(sub["epoch_second"]), "yyyy-mm-dd HH:MM")
-            link = "https://atcoder.jp/contests/$(cid)/tasks/$(sub["problem_id"])"
+function main()
+    # Main: process AtCoder
+    subs = fetch_submissions_atcoder(USER_ATCODER)
+    for sub in subs
+        if sub["result"] == "AC"
+            dir = joinpath(DIR_DOCS, "atcoder", sub["contest_id"], sub["problem_id"])
+            file = joinpath(dir, "index.md")
+            mkpath(dir)
+            open(file, "w") do f
+                cid = sub["contest_id"]
+                pid = sub["problem_id"]
+                title = string(pid)
+                time = Dates.format(Dates.unix2datetime(sub["epoch_second"]), "yyyy-mm-dd HH:MM")
+                link = "https://atcoder.jp/contests/$(cid)/tasks/$(sub["problem_id"])"
 
-            println(f, "# ", pid, "\n")
-            println(f, "## Basic Info", "\n")
-            println(f, "- **Time:** $(time)", "\n")
-            println(f, "- **[Source]($(link))** ", "\n")
+                println(f, "# ", pid, "\n")
+                println(f, "## Basic Info", "\n")
+                println(f, "- **Time:** $(time)", "\n")
+                println(f, "- **[Source]($(link))** ", "\n")
+            end
         end
     end
+    update_mkdocs_nav()
 end
-update_mkdocs_nav()
+
+main()

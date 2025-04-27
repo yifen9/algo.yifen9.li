@@ -85,7 +85,3 @@ plugins:
 nav:
   - Home:
       - index.md
-  - AtCoder:
-      - Overview: atcoder/index.md
-  - Codeforces:
-      - Overview: codeforces/index.md
