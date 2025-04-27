@@ -14,7 +14,6 @@ using Markdown
 # Configuration
 const USER_ATCODER = "tourist"
 
-
 const DIR_DOCS    = "docs"
 
 # Fetch submissions from AtCoder Problems API
@@ -25,18 +24,19 @@ function fetch_submissions_atcoder(user::String)
 end
 
 # Main: process AtCoder
-subs_at = fetch_submissions_atcoder(USER_ATCODER)
-for s in subs_at
-    if s["result"] == "AC"
-        dir = joinpath(DIR_DOCS, "atcoder", s["contest_id"], s["problem_id"])
+subs = fetch_submissions_atcoder(USER_ATCODER)
+for sub in subs
+    if sub["result"] == "AC"
+        dir = joinpath(DIR_DOCS, "atcoder", sub["contest_id"], sub["problem_id"])
         file = joinpath(dir, "index.md")
         mkpath(dir)
         open(file, "w") do f
-            cid = s["contest_id"]
-            pid = s["problem_id"]
+            cid = sub["contest_id"]
+            pid = sub["problem_id"]
             title = string(pid)
             time = Dates.format(Dates.unix2datetime(sub["epoch_second"]), "yyyy-mm-dd HH:MM")
             link = "https://atcoder.jp/contests/$(cid)/tasks/$(sub["problem_id"])"
+
             println(f, "# ", pid, "\n")
             println(f, "## Basic Info", "\n")
             println(f, "- **Source:** [$(source)]($(link))", "\n")
