@@ -319,8 +319,8 @@ function nested_nav_build_atcoder(path::String)
     nav = Vector{Any}()
     contests = readdir(path; join=true, sort=true)
     for contest in contests
-        contest_name = uppercase(name_clean(basename(String(contest))))
-        contest_index = joinpath("atcoder", relpath(entry, "docs/atcoder"), "index.md")
+        contest_name = name_clean(basename(String(contest)))
+        contest_index = joinpath("atcoder", relpath(contest, "docs/atcoder"), "index.md")
 
         contest_children = Vector{Any}()
         tasks = readdir(contest; join=true, sort=true)
