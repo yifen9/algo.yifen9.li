@@ -34,6 +34,5 @@ jobs:
 
       - name: Commit and push updated data
         run: |
-          git add data/
           git commit -m "chore: update submission data" || echo "No changes to commit"
           git push
