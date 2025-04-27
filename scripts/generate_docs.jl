@@ -401,7 +401,7 @@ function atcoder_nested_nav_build(path::String)
                             task_name = basename(String(task))
                             task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
-                            @show file_extension_get(task_name)
+                            @show task_name
 
                             task_info = atcoder_task_info_extract(task_name)
                             task_info_id = task_info.id
