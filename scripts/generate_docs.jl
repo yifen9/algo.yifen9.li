@@ -299,7 +299,7 @@ function atcoder_generate()
             contest_info_class = contest_info.class
             contest_info_id = contest_info.id
 
-            path_src_full = joinpath(DIR_DOCS_ATCODER, contest)
+            path_src_full = joinpath(DIR_SRC_ATCODER, contest)
 
             item_count = dir_item_count(path_src_full)
             size = size_human_readable(size_directory_get(path_src_full))
