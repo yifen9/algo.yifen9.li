@@ -66,11 +66,11 @@ function fetch_all()
                 task_id = split(basename(String(task)), "_", limit=3)[1]
 
                 for (lang, suffix) in [("en", "en"), ("ja", "ja")]
-                    path_desc = joinpath(path_task, "description.$suffix.md")
-                    # if isfile(path_desc)
-                    #     println("  - $lang exists, skip")
-                    #     continue
-                    # end
+                    path_desc = joinpath(path_task, "description_$suffix.md")
+                    if isfile(path_desc)
+                        println("  - $lang exists, skip")
+                        continue
+                    end
                     try
                         text = fetch_description_html(contest_id, task_id, lang)
                         mkpath(path_task)

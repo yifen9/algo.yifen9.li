@@ -209,6 +209,16 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         println(f, "| File | Type | Size | Result | Strategy | Performance |")
         println(f, "|------|------|------|--------|----------|-------------|")
 
+        println(f, "## Task Statement\n")
+        println(f, "=== \"日本語\"\n")
+        for line in eachline(joinpath(dir_src, "description_ja.md"))
+            println(f, "    ", line)
+        end
+        println(f, "\n=== \"English\"\n")
+        for line in eachline(joinpath(dir_src, "description_en.md"))
+            println(f, "    ", line)
+        end
+
         for sol in sort(readdir(dir_src))
             ext = file_extension_get(sol)
             size = size_human_readable(stat(joinpath(dir_src, sol)).size)
