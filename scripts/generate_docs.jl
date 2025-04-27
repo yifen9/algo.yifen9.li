@@ -315,7 +315,7 @@ function atcoder_generate()
     end
 end
 
-function nested_nav_build_atcoder(path::String)
+function atcoder_nested_nav_build(path::String)
     nav = Vector{Any}()
     contests = readdir(path; join=true, sort=true)
     for contest in contests
@@ -361,7 +361,7 @@ function nested_nav_build_atcoder(path::String)
     return nav
 end
 
-function update_mkdocs_nav_atcoder()
+function atcoder_update_mkdocs_nav()
     mkdocs_path = "mkdocs.yml"
     backup_path = mkdocs_path * ".bak"
     cp(mkdocs_path, backup_path; force=true)
@@ -395,7 +395,7 @@ function update_mkdocs_nav_atcoder()
     end
 
     nested_atcoder = Any["atcoder/index.md"]
-    append!(nested_atcoder, nested_nav_build_atcoder("docs/atcoder"))
+    append!(nested_atcoder, atcoder_nested_nav_build("docs/atcoder"))
     atcoder_entry = Dict("AtCoder" => nested_atcoder)
 
     nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
@@ -412,6 +412,8 @@ end
 
 function main()
     atcoder_generate()
+
+    atcoder_update_mkdocs_nav()
 end
 
 main()
