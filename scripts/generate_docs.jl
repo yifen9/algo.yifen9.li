@@ -99,20 +99,21 @@ function atcoder_solution_info_extract(sol::String)
         return (
         size = 1,
         result = parts[1]
-    )
+        )
     elseif parts_len == 2
         return (
         size = 2,
         result = parts[1],
         strategy = parts[2]
-    )
+        )
     else
         return (
         size = parts_len,
         result = parts[1],
         strategy = parts[2],
         performance = parts[3]
-    )
+        )
+    end
 end
 
 function atcoder_task_info_extract(task::String)
