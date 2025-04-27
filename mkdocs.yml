@@ -79,6 +79,9 @@ markdown_extensions:
 # Plugins
 plugins:
   - awesome-pages
+  - include-markdown:
+      base_path: docs
+      preserve_includer_indent: false
   - search
 
 nav:
