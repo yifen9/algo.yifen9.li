@@ -29,8 +29,8 @@ jobs:
         with:
           version: '1.10'
 
-      - name: Fetch latest submission data
-        run: julia scripts/fetch_data.jl
+#       - name: Fetch latest submission data
+#         run: julia scripts/fetch_data.jl
 
       - name: Fetch latest descriptions (problems and contests)
         run: julia scripts/fetch_description.jl
