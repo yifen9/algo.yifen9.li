@@ -42,6 +42,7 @@ function fetch_description(contest_id, task_id, lang)
     url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
     @show url
     doc = fetch_html(url)
+    @show doc
     return extract_text_by_id(doc, "task-statement")
 end
 
