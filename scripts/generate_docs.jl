@@ -255,8 +255,8 @@ function atcoder_contest_generate(contest::String, class::String)
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "\n")
-        println(f, "| Label | Name | ID | Item | Size | Link |")
-        println(f, "|-------|------|----|------|------|------|")
+        println(f, "| Name | Label | ID | Item | Size | Link |")
+        println(f, "|------|-------|----|------|------|------|")
 
         for task in sort(readdir(dir_src))
             task_info = atcoder_task_info_extract(task)
@@ -271,7 +271,7 @@ function atcoder_contest_generate(contest::String, class::String)
 
             task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
-            println(f, "| [$task_info_label](./$task/index.md) | $task_info_name | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
+            println(f, "| [$task_info_name](./$task/index.md) | $task_info_label | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
         end
     end
 
