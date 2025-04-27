@@ -66,7 +66,7 @@ function fetch_all()
                     out = joinpath(path_task, "description_$suffix.md")
                     if isfile(out)
                         println("  - $lang exists, skip")
-                        continue
+                        # continue
                     end
                     try
                         md = fetch_description_md(contest_id, task_id, lang)
