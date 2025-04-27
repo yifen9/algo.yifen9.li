@@ -369,7 +369,7 @@ function atcoder_nested_nav_build(path::String)
             class_info_name = class_info.name
 
             class_children = Vector{Any}()
-            contests = readdir(path; join=true, sort=true)
+            contests = readdir(class; join=true, sort=true)
             for contest in contests
                 if isdir(contest)
                     contest_name = name_clean(basename(String(contest)))
@@ -379,7 +379,7 @@ function atcoder_nested_nav_build(path::String)
                     tasks = readdir(contest; join=true, sort=true)
                     for task in tasks
                         if isdir(task)
-                            task_name = basename(task)
+                            task_name = basename(String(task))
                             task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
                             task_info = atcoder_task_info_extract(task_name)
