@@ -81,6 +81,9 @@ markdown_extensions:
 # Plugins
 plugins:
   - awesome-pages
+  - breadcrumbs:
+      separator: " > "
+      show_home: false
   - include-markdown:
       preserve_includer_indent: true
   - search
