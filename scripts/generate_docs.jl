@@ -144,13 +144,10 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     dir_src = joinpath(DIR_SRC_ATCODER, class, contest, task, file)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task, file)
     @show dir_docs
+    mkpath(dir_docs)
 
     ext = file_extension_get(file)
     size = size_human_readable(stat(dir_src).size)
-
-    if ext != "md"
-        mkpath(dir_docs)
-    end
 
     task_info = atcoder_task_info_extract(task)
     task_info_id = task_info.id
