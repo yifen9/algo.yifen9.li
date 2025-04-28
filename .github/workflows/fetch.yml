@@ -8,6 +8,7 @@ on:
     paths:
       - '.github/workflows/fetch.yml'
       - 'scripts/fetch_description.jl'
+      - 'src/**'
   schedule:
     - cron: '0 * * * *'
 
