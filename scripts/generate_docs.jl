@@ -143,6 +143,7 @@ end
 function atcoder_solution_generate(file::String, task::String, contest::String, class::String)
     dir_src = joinpath(DIR_SRC_ATCODER, class, contest, task, file)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task, file)
+    @show dir_docs
     mkpath(dir_docs)
 
     ext = file_extension_get(file)
