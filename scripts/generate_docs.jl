@@ -222,7 +222,6 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         for sol in sort(readdir(dir_src))
             ext = file_extension_get(sol)
-            @show ext
             if ext != "md"
                 size = size_human_readable(stat(joinpath(dir_src, sol)).size)
 
@@ -245,6 +244,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
     # Also generate each solution preview
     for sol in readdir(dir_src)
         ext = file_extension_get(sol)
+        @show ext
         if ext != "md"
             atcoder_solution_generate(sol, task, contest, class)
         end
