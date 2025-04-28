@@ -148,6 +148,10 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     ext = file_extension_get(file)
     size = size_human_readable(stat(dir_src).size)
 
+    if ext != "md"
+        mkpath(dir_docs)
+    end
+
     task_info = atcoder_task_info_extract(task)
     task_info_id = task_info.id
     task_info_label = task_info.label
