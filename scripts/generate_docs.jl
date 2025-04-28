@@ -216,7 +216,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         println(f, "- **[Origin]($task_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
-        println(f, "\n")
+        println(f, "\n## Solutions\n")
         println(f, "| File | Type | Size | Result | Strategy | Performance |")
         println(f, "|------|------|------|--------|----------|-------------|")
 
@@ -276,7 +276,7 @@ function atcoder_contest_generate(contest::String, class::String)
         println(f, "- **[Origin]($contest_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
-        println(f, "\n")
+        println(f, "\n## Tasks\n")
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
 
@@ -327,7 +327,7 @@ function atcoder_class_generate(class::String)
         println(f, "- **[Origin]($class_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
-        println(f, "\n")
+        println(f, "\n## Contests\n")
         println(f, "| Contest | Item | Size | Link |")
         println(f, "|---------|------|------|------|")
         for contest in sort(readdir(dir_src))
