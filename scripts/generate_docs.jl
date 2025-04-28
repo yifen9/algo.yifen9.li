@@ -143,7 +143,6 @@ end
 function atcoder_solution_generate(file::String, task::String, contest::String, class::String)
     dir_src = joinpath(DIR_SRC_ATCODER, class, contest, task, file)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task, file)
-    @show dir_docs
     mkpath(dir_docs)
 
     ext = file_extension_get(file)
@@ -240,7 +239,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
         end
 
         println(f, "\n## Task Statement")
-        println(f, "\n\n=== \"[日本語](description_ja.md/index.md)\"\n\n")
+        println(f, "\n\n=== \"日本語\"\n\n")
         println(f, """    {%include-markdown "./description_ja.md"%}""")
         println(f, "\n\n=== \"English\"\n\n")
         println(f, """    {%include-markdown "./description_en.md"%}""")
@@ -248,7 +247,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
     # Also generate each solution preview
     for sol in readdir(dir_src)
-        atcoder_solution_generate(sol, task, contest, class)
+        file_extension_get(sol) != "md" && atcoder_solution_generate(sol, task, contest, class)
     end
 end
 
