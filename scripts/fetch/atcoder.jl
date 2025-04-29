@@ -45,7 +45,7 @@ function node_to_md(node)::Vector{String}
     elseif node isa Gumbo.HTMLElement
         @show "element"
         @show node
-        tag = lowercase(node.tagname)
+        tag = lowercase(tag(node))
         @show "tag"
         @show tag
         cls = get(node.attributes, "class", "")
