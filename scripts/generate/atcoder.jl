@@ -176,6 +176,8 @@ function solution_generate(file::String, task::String, contest::String, class::S
             println(f, file_preview_generate(dir_src))
         end
     end
+
+    println("[INFO] Generated $file")
 end
 
 function task_generate(task::String, contest::String, class::String)
@@ -238,6 +240,8 @@ function task_generate(task::String, contest::String, class::String)
     for sol in readdir(dir_src)
         file_extension_get(sol) != "md" && solution_generate(sol, task, contest, class)
     end
+
+    println("[INFO] Generated $task")
 end
 
 function contest_generate(contest::String, class::String)
@@ -290,6 +294,8 @@ function contest_generate(contest::String, class::String)
     for task in readdir(dir_src)
         task_generate(task, contest, class)
     end
+
+    println("[INFO] Generated $contest")
 end
 
 function class_generate(class::String)
@@ -336,6 +342,8 @@ function class_generate(class::String)
     for contest in sort(readdir(dir_src))
         contest_generate(contest, class)
     end
+
+    println("[INFO] Generated $class")
 end
 
 function generate()
@@ -368,6 +376,8 @@ function generate()
     for class in sort(readdir(DIR_SRC_ATCODER))
         class_generate(class)
     end
+
+    println("[INFO] Generated AtCoder pages")
 end
 
 function nav_nested_build(path::String)
@@ -466,12 +476,16 @@ function mkdocs_nav()
     open(mkdocs_path, "w") do f
         write(f, join(lines_final, "\n"))
     end
+
+    println("[INFO] Generated AtCoder nav")
 end
 
 function main()
     generate()
 
     mkdocs_nav()
+
+    println("[INFO] Generated AtCoder")
 end
 
 main()
