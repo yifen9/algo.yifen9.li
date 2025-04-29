@@ -27,6 +27,7 @@ end
 function task_statement_extract(doc)
     sel = selector("#task-statement")
     elems = eachmatch(sel, doc.root)
+    @show elems
     isempty(elems) && error("find failed #task-statement")
     return first(elems)
 end
@@ -84,9 +85,9 @@ end
 
 function md_task_fetch(lang, task, contest)
     url = "https://atcoder.jp/contests/$contest/tasks/$(contest)_$task?lang=$lang"
-    @show url
+    # @show url
     doc = html_raw_fetch(url)
-    @show doc
+    # @show doc
     stmt = task_statement_extract(doc)
     @show stmt
     lines = node_to_md(stmt)
