@@ -91,7 +91,7 @@ function file_preview_generate(file_src::String)::String
     end
 end
 
-function atcoder_solution_info_extract(sol::String)
+function solution_info_extract(sol::String)
     parts = split(sol, "_", limit=3)
     parts_len = length(parts)
 
@@ -116,7 +116,7 @@ function atcoder_solution_info_extract(sol::String)
     end
 end
 
-function atcoder_task_info_extract(task::String)
+function task_info_extract(task::String)
     parts = split(task, "_", limit=3)
     if length(parts) < 3
         return nothing
@@ -128,7 +128,7 @@ function atcoder_task_info_extract(task::String)
     )
 end
 
-function atcoder_class_info_extract(class::String)
+function class_info_extract(class::String)
     parts = split(class, "_", limit=3)
     if length(parts) < 3
         return nothing
@@ -140,7 +140,7 @@ function atcoder_class_info_extract(class::String)
     )
 end
 
-function atcoder_solution_generate(file::String, task::String, contest::String, class::String)
+function solution_generate(file::String, task::String, contest::String, class::String)
     dir_src = joinpath(DIR_SRC_ATCODER, class, contest, task, file)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task, file)
     mkpath(dir_docs)
@@ -148,7 +148,7 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     file_ext = file_extension_get(file)
     file_size = size_human_readable(stat(dir_src).size)
 
-    task_info = atcoder_task_info_extract(task)
+    task_info = task_info_extract(task)
     task_info_id = task_info.id
     task_info_label = task_info.label
     task_info_name = task_info.name
@@ -178,17 +178,17 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     end
 end
 
-function atcoder_task_generate(task::String, contest::String, class::String)
+function task_generate(task::String, contest::String, class::String)
     dir_src = joinpath(DIR_SRC_ATCODER, class, contest, task)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task)
     mkpath(dir_docs)
 
-    task_info = atcoder_task_info_extract(task)
+    task_info = task_info_extract(task)
     task_info_id = task_info.id
     task_info_label = task_info.label
     task_info_name = task_info.name
 
-    class_info = atcoder_class_info_extract(class)
+    class_info = class_info_extract(class)
     class_info_id = class_info.id
     class_info_label = class_info.label
     class_info_name = class_info.name
@@ -218,7 +218,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
             if ext != "md"
                 size = size_human_readable(stat(joinpath(dir_src, sol)).size)
 
-                sol_info = atcoder_solution_info_extract(splitext(sol)[1])
+                sol_info = solution_info_extract(splitext(sol)[1])
                 sol_info_result = sol_info.result
                 sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
                 sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
@@ -236,16 +236,16 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
     # Also generate each solution preview
     for sol in readdir(dir_src)
-        file_extension_get(sol) != "md" && atcoder_solution_generate(sol, task, contest, class)
+        file_extension_get(sol) != "md" && solution_generate(sol, task, contest, class)
     end
 end
 
-function atcoder_contest_generate(contest::String, class::String)
+function contest_generate(contest::String, class::String)
     dir_src = joinpath(DIR_SRC_ATCODER, class, contest)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest)
     mkpath(dir_docs)
 
-    class_info = atcoder_class_info_extract(class)
+    class_info = class_info_extract(class)
     class_info_id = class_info.id
     class_info_label = class_info.label
     class_info_name = class_info.name
@@ -271,7 +271,7 @@ function atcoder_contest_generate(contest::String, class::String)
         println(f, "|------|-------|----|------|------|------|")
 
         for task in sort(readdir(dir_src))
-            task_info = atcoder_task_info_extract(task)
+            task_info = task_info_extract(task)
             task_info_id = task_info.id
             task_info_label = task_info.label
             task_info_name = task_info.name
@@ -288,16 +288,16 @@ function atcoder_contest_generate(contest::String, class::String)
     end
 
     for task in readdir(dir_src)
-        atcoder_task_generate(task, contest, class)
+        task_generate(task, contest, class)
     end
 end
 
-function atcoder_class_generate(class::String)
+function class_generate(class::String)
     dir_src = joinpath(DIR_SRC_ATCODER, class)
     dir_docs = joinpath(DIR_DOCS_ATCODER, class)
     mkpath(dir_docs)
 
-    class_info = atcoder_class_info_extract(class)
+    class_info = class_info_extract(class)
     class_info_id = class_info.id
     class_info_label = class_info.label
     class_info_name = class_info.name
@@ -334,11 +334,11 @@ function atcoder_class_generate(class::String)
     end
 
     for contest in sort(readdir(dir_src))
-        atcoder_contest_generate(contest, class)
+        contest_generate(contest, class)
     end
 end
 
-function atcoder_generate()
+function generate()
     mkpath(DIR_DOCS_ATCODER)
 
     file = joinpath(DIR_DOCS_ATCODER, "index.md")
@@ -349,7 +349,7 @@ function atcoder_generate()
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
         for class in sort(readdir(DIR_SRC_ATCODER))
-            class_info = atcoder_class_info_extract(class)
+            class_info = class_info_extract(class)
             class_info_id = class_info.id
             class_info_label = class_info.label
             class_info_name = class_info.name
@@ -366,11 +366,11 @@ function atcoder_generate()
     end
 
     for class in sort(readdir(DIR_SRC_ATCODER))
-        atcoder_class_generate(class)
+        class_generate(class)
     end
 end
 
-function atcoder_nested_nav_build(path::String)
+function nav_nested_build(path::String)
     nav = Vector{Any}()
     classes = readdir(path; join=true, sort=true)
     for class in classes
@@ -378,7 +378,7 @@ function atcoder_nested_nav_build(path::String)
             class_base = basename(String(class))
             class_index = joinpath("atcoder", relpath(class, "docs/atcoder"), "index.md")
 
-            class_info = atcoder_class_info_extract(class_base)
+            class_info = class_info_extract(class_base)
             class_info_id = class_info.id
             class_info_label = class_info.label
             class_info_name = class_info.name
@@ -397,7 +397,7 @@ function atcoder_nested_nav_build(path::String)
                             task_name = basename(String(task))
                             task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
 
-                            task_info = atcoder_task_info_extract(task_name)
+                            task_info = task_info_extract(task_name)
                             task_info_id = task_info.id
                             task_info_label = task_info.label
                             task_info_name = task_info.name
@@ -427,7 +427,7 @@ function atcoder_nested_nav_build(path::String)
     return nav
 end
 
-function atcoder_update_mkdocs_nav()
+function mkdocs_nav()
     mkdocs_path = "mkdocs.yml"
     backup_path = mkdocs_path * ".bak"
     cp(mkdocs_path, backup_path; force=true)
@@ -450,7 +450,7 @@ function atcoder_update_mkdocs_nav()
     end
 
     atcoder_nested = Any["atcoder/index.md"]
-    append!(atcoder_nested, atcoder_nested_nav_build("docs/atcoder"))
+    append!(atcoder_nested, nav_nested_build("docs/atcoder"))
     atcoder_entry = Dict("AtCoder" => atcoder_nested)
 
     nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
@@ -469,9 +469,9 @@ function atcoder_update_mkdocs_nav()
 end
 
 function main()
-    atcoder_generate()
+    generate()
 
-    atcoder_update_mkdocs_nav()
+    mkdocs_nav()
 end
 
 main()
