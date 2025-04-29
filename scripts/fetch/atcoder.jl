@@ -24,11 +24,11 @@ function html_raw_fetch(url::String)
     return parsehtml(String(resp.body))
 end
 
-function html_task_statement_extract(html::String)::String
-    re = r"(?s)(<div\s+id=\"task-statement\".*?</div>\s*</div>)"
-    m = match(re, html)
-    m === nothing && error("find failed #task-statement")
-    return m.captures[1]
+function task_statement_extract(doc)
+    sel = selector("#task-statement")
+    elems = eachmatch(sel, doc.root)
+    isempty(elems) && error("find failed #task-statement")
+    return first(elems)
 end
 
 function text_render(s)
@@ -87,7 +87,7 @@ function md_task_fetch(lang, task, contest)
     @show url
     doc = html_raw_fetch(url)
     @show doc
-    stmt = html_task_statement_extract(doc)
+    stmt = task_statement_extract(doc)
     @show stmt
     lines = node_to_md(stmt)
     @show lines
