@@ -39,7 +39,7 @@ jobs:
           sudo apt-get install -y pandoc
 
       - name: Fetch latest descriptions (problems and contests)
-        run: julia scripts/fetch_description.jl
+        run: julia scripts/fetch/atcoder.jl
 
       - name: Commit and push updated data
         run: |
