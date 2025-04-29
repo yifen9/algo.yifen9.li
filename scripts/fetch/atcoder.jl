@@ -37,34 +37,31 @@ end
 
 function md_task_fetch(contest, task, lang)::String
     url = "https://atcoder.jp/contests/$(contest)/tasks/$(contest)_$(task)?lang=$(lang)"
-    println("[FETCH] $url")
+    @show url
     page = html_raw_fetch(url)
     snippet = html_task_statement_extract(page)
     return replace(html_to_markdown(snippet), "\`" => "\$")
 end
 
 function main()
-    for cls in readdir(DIR_SRC_ATCODER)
-        path_cls = joinpath(DIR_SRC_ATCODER, cls)
-        isdir(path_cls) || continue
+    for class in readdir(DIR_SRC_ATCODER)
+        path_class = joinpath(DIR_SRC_ATCODER, class)
 
-        for contest in readdir(path_cls)
-            path_contest = joinpath(path_cls, contest)
-            isdir(path_contest) || continue
+        for contest in readdir(path_class)
+            path_contest = joinpath(path_class, contest)
 
-            contest = split(cls, "_", limit=3)[2] * contest
+            contest = split(class, "_", limit=3)[2] * contest
 
             for task in readdir(path_contest)
                 path_task = joinpath(path_contest, task)
-                isdir(path_task) || continue
 
                 task = split(task, "_", limit=3)[1]
 
-                for (lang, suffix) in [("ja", "ja"), ("en", "en")]
-                    out = joinpath(path_task, "description_$suffix.md")
+                for lang in ["ja", "en"]
+                    out = joinpath(path_task, "description_$lang.md")
                     if isfile(out)
-                        println("  - $lang exists, skip")
-                        continue
+                        println("[INFO] Skipped existing $lang")
+                        # continue
                     end
                     try
                         md = md_task_fetch(contest, task, lang)
