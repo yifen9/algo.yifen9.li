@@ -1,4 +1,4 @@
-name: deploy
+name: deploy_atcoder
 
 on:
   push:
@@ -6,10 +6,10 @@ on:
       - main
       - master
     paths:
-      - '.github/workflows/deploy.yml'
+      - '.github/workflows/deploy_atcoder.yml'
       - 'mkdocs.yml'
       - 'scripts/generate_docs.jl'
-      - 'src/**'
+      - 'src/atcoder/**'
   schedule:
     - cron: '0 * * * *'
 
@@ -30,7 +30,7 @@ jobs:
           version: '1.10'
 
       - name: Generate docs
-        run: julia scripts/generate_docs.jl
+        run: julia scripts/generate_docs_atcoder.jl
 
       - name: Set up Python
         uses: actions/setup-python@v4
