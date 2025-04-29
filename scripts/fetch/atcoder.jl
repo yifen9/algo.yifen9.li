@@ -85,7 +85,7 @@ function html_task_statement_extract(doc)
 end
 
 function md_task_fetch(lang, task, contest)
-    url = "https://atcoder.jp/contests/$contest/tasks/${contest}_$task?lang=$lang"
+    url = "https://atcoder.jp/contests/$contest/tasks/$(contest)_$task?lang=$lang"
     doc = html_raw_fetch(url)
     stmt = html_task_statement_extract(doc)
     lines = node_to_md(stmt)
