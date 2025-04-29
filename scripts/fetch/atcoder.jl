@@ -20,7 +20,7 @@ const BROWSER_HEADERS = Dict(
 )
 
 function html_raw_fetch(url::String)
-    resp = HTTP.get(url; headers=USER_AGENT)
+    resp = HTTP.get(url; headers=BROWSER_HEADERS)
     return parsehtml(String(resp.body))
 end
 
