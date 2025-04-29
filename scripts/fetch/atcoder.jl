@@ -39,18 +39,11 @@ end
 function node_to_md(node)::Vector{String}
     out = String[]
     if node isa Gumbo.HTMLText
-        @show "text"
         @show node
-        push!(out, text_render(node.text))
+        push!(out, node.text)
     elseif node isa Gumbo.HTMLElement
-        @show "element"
-        @show node
         tag = Gumbo.tag(node)
-        @show "tag"
-        @show tag
         cls = get(Gumbo.attrs(node), "class", "")
-        @show "cls"
-        @show cls
         if tag == "div" && occursin("part", cls)
             push!(out, "::: part")
             for c in node.children
@@ -82,6 +75,8 @@ function node_to_md(node)::Vector{String}
         elseif tag == "hr"
             push!(out, "----\n")
         else
+            @show tag
+            @show cls
             for c in node.children
                 append!(out, node_to_md(c))
             end
@@ -92,13 +87,9 @@ end
 
 function md_task_fetch(lang, task, contest)
     url = "https://atcoder.jp/contests/$contest/tasks/$(contest)_$task?lang=$lang"
-    # @show url
     doc = html_raw_fetch(url)
-    # @show doc
     stmt = task_statement_extract(doc)
-    @show stmt
     lines = node_to_md(stmt)
-    @show lines
     return join(lines, "\n")
 end
 
