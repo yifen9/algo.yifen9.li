@@ -86,9 +86,13 @@ end
 
 function md_task_fetch(lang, task, contest)
     url = "https://atcoder.jp/contests/$contest/tasks/$(contest)_$task?lang=$lang"
+    @show url
     doc = html_raw_fetch(url)
+    @show doc
     stmt = html_task_statement_extract(doc)
+    @show stmt
     lines = node_to_md(stmt)
+    @show lines
     return join(lines, "\n")
 end
 
