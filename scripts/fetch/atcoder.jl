@@ -35,7 +35,7 @@ function html_to_markdown(html_snippet::String)::String
     return read(pr, String)
 end
 
-function md_task_fetch(contest, task, lang)::String
+function md_task_fetch(lang, task, contest)::String
     url = "https://atcoder.jp/contests/$(contest)/tasks/$(contest)_$(task)?lang=$(lang)"
     page = html_raw_fetch(url)
     @show page
@@ -43,7 +43,8 @@ function md_task_fetch(contest, task, lang)::String
     @show snippet
     markdown = html_to_markdown(snippet)
     @show markdown
-    return replace(markdown, "\`" => "\$")
+    markdown_replaced = replace(markdown, "\`" => "\$")
+    return snippet
 end
 
 function main()
@@ -65,7 +66,7 @@ function main()
                         # continue
                     end
                     try
-                        md = md_task_fetch(contest_extracted, task_extracted, lang)
+                        md = md_task_fetch(lang, task_extracted, contest_extracted)
                         mkpath(task_path)
                         open(file, "w") do io
                             write(io, md)
