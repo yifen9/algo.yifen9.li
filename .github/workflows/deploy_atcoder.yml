@@ -10,9 +10,11 @@ on:
       - 'mkdocs.yml'
       - 'scripts/generate/atcoder.jl'
       - 'src/atcoder/**'
-    workflow_run:
-      workflows: ["fetch_atcoder"]
-        types: [completed]
+  workflow_run:
+    workflows:
+      - fetch_atcoder
+    types:
+      - completed
 
 permissions:
   contents: write

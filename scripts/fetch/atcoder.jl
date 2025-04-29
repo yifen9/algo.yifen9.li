@@ -38,11 +38,8 @@ end
 function md_task_fetch(lang, task, contest)::String
     url = "https://atcoder.jp/contests/$(contest)/tasks/$(contest)_$(task)?lang=$(lang)"
     page = html_raw_fetch(url)
-    @show page
     snippet = html_task_statement_extract(page)
-    @show snippet
     markdown = html_to_markdown(snippet)
-    @show markdown
     markdown_replaced = replace(markdown, "\`" => "\$")
     return markdown
 end
