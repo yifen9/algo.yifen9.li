@@ -453,10 +453,13 @@ function atcoder_update_mkdocs_nav()
     for line in original_lines
         stripped = strip(line)
 
+        @show stripped
+
         if in_atcoder
             push!(lines_post, stripped)
         elseif startswith(stripped, "  - AtCoder:")
             in_atcoder = true
+            @show "Hello AC"
         else
             push!(lines_final, stripped)
         end
