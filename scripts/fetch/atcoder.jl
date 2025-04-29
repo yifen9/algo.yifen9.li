@@ -31,7 +31,7 @@ end
 
 function html_to_markdown(html_snippet::String)::String
     buf = IOBuffer(html_snippet)
-    pr = pipeline(`pandoc -f html -t gfm --wrap=none`, stdin=buf)
+    pr = pipeline(`pandoc -f html -t markdown`, stdin=buf)
     return read(pr, String)
 end
 
