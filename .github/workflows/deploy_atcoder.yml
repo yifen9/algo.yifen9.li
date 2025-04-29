@@ -10,8 +10,9 @@ on:
       - 'mkdocs.yml'
       - 'scripts/generate/atcoder.jl'
       - 'src/atcoder/**'
-  schedule:
-    - cron: '0 * * * *'
+    workflow_run:
+      workflows: ["fetch_atcoder"]
+        types: [completed]
 
 permissions:
   contents: write
@@ -29,7 +30,7 @@ jobs:
         with:
           version: '1.10'
 
-      - name: Generate docs
+      - name: Generate AtCoder
         run: julia scripts/generate/atcoder.jl
 
       - name: Set up Python
@@ -37,14 +38,14 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install MkDocs and plugins
+      - name: Install MkDocs and Plugins
         run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin ghp-import
 
-      - name: Build site and copy src/
+      - name: Build site and Copy src/
         run: |
           mkdir -p build
           mkdocs build -d build
           cp -r src build/src
 
-      - name: Deploy manually via ghp-import
+      - name: Deploy
         run: ghp-import -n -f -p build

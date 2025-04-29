@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Git identity
@@ -38,10 +38,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc
 
-      - name: Fetch latest descriptions (problems and contests)
+      - name: Fetch AtCoder
         run: julia scripts/fetch/atcoder.jl
 
-      - name: Commit and push updated data
+      - name: Commit and Push
         run: |
           git add src/
           git commit -m "chore: update fetched data (submission + description)" || echo "No changes to commit"
