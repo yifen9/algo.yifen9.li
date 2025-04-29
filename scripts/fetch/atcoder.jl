@@ -45,10 +45,10 @@ function node_to_md(node)::Vector{String}
     elseif node isa Gumbo.HTMLElement
         @show "element"
         @show node
-        tag = tag(node)
+        tag = Gumbo.tag(node)
         @show "tag"
         @show tag
-        cls = get(node.attributes, "class", "")
+        cls = get(Gumbo.attrs(node), "class", "")
         @show "cls"
         @show cls
         if tag == "div" && occursin("part", cls)
