@@ -241,7 +241,7 @@ function task_generate(task::String, contest::String, class::String)
         file_extension_get(sol) != "md" && solution_generate(sol, task, contest, class)
     end
 
-    println("[INFO] Generated $task")
+    println("[INFO] Generated $file_docs")
 end
 
 function contest_generate(contest::String, class::String)
@@ -295,7 +295,7 @@ function contest_generate(contest::String, class::String)
         task_generate(task, contest, class)
     end
 
-    println("[INFO] Generated $contest")
+    println("[INFO] Generated $file_docs")
 end
 
 function class_generate(class::String)
@@ -343,7 +343,7 @@ function class_generate(class::String)
         contest_generate(contest, class)
     end
 
-    println("[INFO] Generated $class")
+    println("[INFO] Generated $file_docs")
 end
 
 function generate()
@@ -438,11 +438,11 @@ function nav_nested_build(path::String)
 end
 
 function mkdocs_nav()
-    mkdocs_path = "mkdocs.yml"
-    backup_path = mkdocs_path * ".bak"
-    cp(mkdocs_path, backup_path; force=true)
+    path_mkdocs = "mkdocs.yml"
+    path_backup = path_mkdocs * ".bak"
+    cp(path_mkdocs, path_backup; force=true)
 
-    lines_original = readlines(backup_path)
+    lines_original = readlines(path_backup)
     lines_post     = String[]
     lines_final    = String[]
 
@@ -463,9 +463,9 @@ function mkdocs_nav()
     append!(atcoder_nested, nav_nested_build("docs/atcoder"))
     atcoder_entry = Dict("AtCoder" => atcoder_nested)
 
-    nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
+    lines_nav_yaml = split(YAML.write([atcoder_entry]), "\n")
 
-    for line in nav_yaml_lines
+    for line in lines_nav_yaml
         push!(lines_final, "  " * line)
     end
 
@@ -473,7 +473,7 @@ function mkdocs_nav()
         push!(lines_final, line)
     end
 
-    open(mkdocs_path, "w") do f
+    open(path_mkdocs, "w") do f
         write(f, join(lines_final, "\n"))
     end
 
