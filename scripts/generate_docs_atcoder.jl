@@ -459,7 +459,6 @@ function atcoder_update_mkdocs_nav()
 
         if in_nav && startswith(stripped, "- AtCoder:")
             skipping_atcoder = true
-            push!(new_lines, "  - Atcoder:")
             continue
         end
 
