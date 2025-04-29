@@ -24,6 +24,13 @@ function html_raw_fetch(url::String)::String
     return String(resp.body)
 end
 
+function html_task_statement_extract(html::String)::String
+    re = r"(?s)(<div\s+id=\"task-statement\".*?</div>\s*</div>)"
+    m = match(re, html)
+    m === nothing && error("find failed #task-statement")
+    return m.captures[1]
+end
+
 function text_render(s)
     s = replace(s, "\\"=>"\\\\")
     return replace(s, r"<var>(.*?)</var>"m => s"\$\\1\$")
@@ -73,15 +80,6 @@ function node_to_md(node)::Vector{String}
         end
     end
     return out
-end
-
-function html_task_statement_extract(doc)
-    sel = selector("#task-statement")
-    elems = eachmatch(sel, doc.root)
-    if isempty(elems)
-        error("find failed #task-statement")
-    end
-    return first(elems)
 end
 
 function md_task_fetch(lang, task, contest)
