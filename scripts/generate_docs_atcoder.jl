@@ -457,7 +457,7 @@ function atcoder_update_mkdocs_nav()
 
         if in_atcoder
             push!(lines_post, stripped)
-        elseif startswith(stripped, "  - AtCoder:")
+        elseif startswith(stripped, "- AtCoder:")
             in_atcoder = true
             @show "Hello AC"
         else
