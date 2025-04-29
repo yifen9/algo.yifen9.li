@@ -19,9 +19,9 @@ const BROWSER_HEADERS = Dict(
     ], " ")
 )
 
-function html_raw_fetch(url::String)::String
+function html_raw_fetch(url::String)
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
-    return String(resp.body)
+    return parsehtml(String(resp.body))
 end
 
 function html_task_statement_extract(html::String)::String
