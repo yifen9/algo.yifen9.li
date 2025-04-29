@@ -1,4 +1,4 @@
-name: fetch
+name: fetch_atcoder
 
 on:
   push:
@@ -6,9 +6,9 @@ on:
       - main
       - master
     paths:
-      - '.github/workflows/fetch.yml'
-      - 'scripts/fetch_description.jl'
-      - 'src/**'
+      - '.github/workflows/fetch_atcoder.yml'
+      - 'scripts/fetch/atcoder.jl'
+      - 'src/atcoder/**'
   schedule:
     - cron: '0 * * * *'
 

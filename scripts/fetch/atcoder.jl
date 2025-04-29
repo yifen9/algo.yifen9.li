@@ -17,14 +17,12 @@ const BROWSER_HEADERS = Dict(
     ], " ")
 )
 
-const DIR_SRC_ATCODER = "src/atcoder"
-
-function fetch_raw_html(url::String)::String
+function html_raw_fetch(url::String)::String
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
     return String(resp.body)
 end
 
-function extract_task_statement_html(html::String)::String
+function html_task_statement_extract(html::String)::String
     re = r"(?s)(<div\s+id=\"task-statement\".*?</div>\s*</div>)"
     m = match(re, html)
     m === nothing && error("task-statement section not found")
@@ -37,15 +35,15 @@ function html_to_markdown(html_snippet::String)::String
     return read(pr, String)
 end
 
-function fetch_description_md(contest_id, task_id, lang)::String
-    url = "https://atcoder.jp/contests/$(contest_id)/tasks/$(contest_id)_$(task_id)?lang=$(lang)"
+function md_task_fetch(contest, task, lang)::String
+    url = "https://atcoder.jp/contests/$(contest)/tasks/$(contest)_$(task)?lang=$(lang)"
     println("[FETCH] $url")
-    page = fetch_raw_html(url)
-    snippet = extract_task_statement_html(page)
+    page = html_raw_fetch(url)
+    snippet = html_task_statement_extract(page)
     return replace(html_to_markdown(snippet), "\`" => "\$")
 end
 
-function fetch_all()
+function main()
     for cls in readdir(DIR_SRC_ATCODER)
         path_cls = joinpath(DIR_SRC_ATCODER, cls)
         isdir(path_cls) || continue
@@ -54,13 +52,13 @@ function fetch_all()
             path_contest = joinpath(path_cls, contest)
             isdir(path_contest) || continue
 
-            contest_id = split(cls, "_", limit=3)[2] * contest
+            contest = split(cls, "_", limit=3)[2] * contest
 
             for task in readdir(path_contest)
                 path_task = joinpath(path_contest, task)
                 isdir(path_task) || continue
 
-                task_id = split(task, "_", limit=3)[1]
+                task = split(task, "_", limit=3)[1]
 
                 for (lang, suffix) in [("ja", "ja"), ("en", "en")]
                     out = joinpath(path_task, "description_$suffix.md")
@@ -69,15 +67,15 @@ function fetch_all()
                         continue
                     end
                     try
-                        md = fetch_description_md(contest_id, task_id, lang)
+                        md = md_task_fetch(contest, task, lang)
                         mkpath(path_task)
                         open(out, "w") do io
                             write(io, md)
                         end
                         println("  - $lang fetched → $out")
                     catch err
-                        @warn("fetch failed", contest_id=contest_id,
-                              task_id=task_id, lang=lang, error=err)
+                        @warn("fetch failed", contest=contest,
+                              task=task, lang=lang, error=err)
                     end
                 end
             end
@@ -85,4 +83,4 @@ function fetch_all()
     end
 end
 
-fetch_all()
+main()
