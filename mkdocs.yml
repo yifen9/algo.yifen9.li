@@ -89,4 +89,4 @@ plugins:
 nav:
   - Home:
     - index.md
-  - Atcoder:
+  - AtCoder:
