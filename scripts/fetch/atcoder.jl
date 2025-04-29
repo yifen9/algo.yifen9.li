@@ -44,7 +44,7 @@ function md_task_fetch(lang, task, contest)::String
     markdown = html_to_markdown(snippet)
     @show markdown
     markdown_replaced = replace(markdown, "\`" => "\$")
-    return snippet
+    return markdown
 end
 
 function main()
