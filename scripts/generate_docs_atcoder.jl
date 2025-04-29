@@ -444,30 +444,26 @@ function atcoder_update_mkdocs_nav()
     cp(mkdocs_path, backup_path; force=true)
 
     original_lines = readlines(backup_path)
-    new_lines = String[]
 
-    in_nav = false
-    skipping_atcoder = false
+    lines_final  = String[]
+    lines_post = String[]
+
+    in_atcoder = false
 
     for line in original_lines
         stripped = strip(line)
 
-        if stripped == "nav:"
-            in_nav = true
-            push!(new_lines, "nav:")
-        end
-
-        if in_nav && startswith(stripped, "- AtCoder:")
-            skipping_atcoder = true
-            continue
-        end
-
-        if !skipping_atcoder
-            push!(new_lines, line)
+        if in_atcoder
+            push!(lines_post, stripped)
+        elseif startswith(stripped, "  - AtCoder:")
+            in_atcoder = true
+        else
+            push!(lines_final, stripped)
         end
     end
 
-    @show new_lines
+    @show lines_final
+    @show lines_post
 
     nested_atcoder = Any["atcoder/index.md"]
     append!(nested_atcoder, atcoder_nested_nav_build("docs/atcoder"))
@@ -482,14 +478,20 @@ function atcoder_update_mkdocs_nav()
     @show nav_yaml_lines
     for line in nav_yaml_lines
         if !isempty(strip(line))
-            push!(new_lines, "  " * line)
+            push!(lines_final, "  " * line)
         end
     end
 
-    @show new_lines
+    @show lines_final
+
+    for line in lines_post
+        push!(lines_final, line)
+    end
+
+    @show lines_final
 
     open(mkdocs_path, "w") do f
-        write(f, join(new_lines, "\n"))
+        write(f, join(lines_final, "\n"))
     end
 end
 
