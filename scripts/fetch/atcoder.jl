@@ -26,7 +26,7 @@ end
 
 function task_statement_extract(doc)
     @show "Hello"
-    sel = selector("#task-statement")
+    sel = Selector("#task-statement")
     @show "World"
     elems = eachmatch(sel, doc.root)
     @show elems
@@ -126,11 +126,11 @@ function main()
                         println("[WARN] Fetch failed $file")
                     end
                 end
-                println("[INFO] Fetched $task")
+                println("[INFO] Fetched $task_path")
             end
-            println("[INFO] Fetched $contest")
+            println("[INFO] Fetched $contest_path")
         end
-        println("[INFO] Fetched $class")
+        println("[INFO] Fetched $class_path")
     end
     println("[INFO] Fetched pages")
 end
