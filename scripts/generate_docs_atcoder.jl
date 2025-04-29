@@ -467,8 +467,13 @@ function atcoder_update_mkdocs_nav()
         end
     end
 
+    @show new_lines
+
     nested_atcoder = Any["atcoder/index.md"]
     append!(nested_atcoder, atcoder_nested_nav_build("docs/atcoder"))
+
+    @show nested_atcoder
+
     atcoder_entry = Dict("AtCoder" => nested_atcoder)
 
     @show atcoder_entry
