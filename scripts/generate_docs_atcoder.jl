@@ -145,8 +145,8 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
     dir_docs = joinpath(DIR_DOCS_ATCODER, class, contest, task, file)
     mkpath(dir_docs)
 
-    ext = file_extension_get(file)
-    size = size_human_readable(stat(dir_src).size)
+    file_ext = file_extension_get(file)
+    file_size = size_human_readable(stat(dir_src).size)
 
     task_info = atcoder_task_info_extract(task)
     task_info_id = task_info.id
@@ -161,11 +161,11 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
-        if ext == "md"
+        if file_ext == "md"
             println(f, "{%include-markdown \"./../$(file)\"%}")
         else
             println(f, "## Basic Info", "\n")
-            println(f, "- **Type: **", ext)
+            println(f, "- **Type: **", file_ext)
             println(f, "- **Task: **", task_info_name)
             println(f, "- **[Origin]($file_origin)**", "\n")
 
@@ -240,7 +240,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         println(f, "\n## Task Statement")
         println(f, "\n\n=== \"日本語\"\n\n")
-        println(f, """    {%include-markdown "./description_ja.md"%}""")
+        println(f, """    {%include-markdown "./../../../../../src/$(class)/$(contest)/$(task)/description_ja.md"%}""")
         println(f, "\n\n=== \"English\"\n\n")
         println(f, """    {%include-markdown "./description_en.md"%}""")
     end
@@ -443,14 +443,12 @@ function atcoder_update_mkdocs_nav()
     backup_path = mkdocs_path * ".bak"
     cp(mkdocs_path, backup_path; force=true)
 
-    original_lines = readlines(backup_path)
-
-    lines_final  = String[]
-    lines_post = String[]
+    lines_original = readlines(backup_path)
+    lines_post     = String[]
+    lines_final    = String[]
 
     in_atcoder = false
-
-    for line in original_lines
+    for line in lines_original
         stripped = strip(line)
 
         if in_atcoder
@@ -462,33 +460,19 @@ function atcoder_update_mkdocs_nav()
         end
     end
 
-    @show lines_final
-    @show lines_post
-
-    nested_atcoder = Any["atcoder/index.md"]
-    append!(nested_atcoder, atcoder_nested_nav_build("docs/atcoder"))
-
-    @show nested_atcoder
-
-    atcoder_entry = Dict("AtCoder" => nested_atcoder)
-
-    @show atcoder_entry
+    atcoder_nested = Any["atcoder/index.md"]
+    append!(atcoder_nested, atcoder_nested_nav_build("docs/atcoder"))
+    atcoder_entry = Dict("AtCoder" => atcoder_nested)
 
     nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
 
-    @show nav_yaml_lines
-    
     for line in nav_yaml_lines
         push!(lines_final, "  " * line)
     end
 
-    @show lines_final
-
     for line in lines_post
         push!(lines_final, line)
     end
-
-    @show lines_final
 
     open(mkdocs_path, "w") do f
         write(f, join(lines_final, "\n"))
