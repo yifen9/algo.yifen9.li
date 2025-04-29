@@ -25,7 +25,9 @@ function html_raw_fetch(url::String)
 end
 
 function task_statement_extract(doc)
+    @show "Hello"
     sel = selector("#task-statement")
+    @show "World"
     elems = eachmatch(sel, doc.root)
     @show elems
     isempty(elems) && error("find failed #task-statement")
