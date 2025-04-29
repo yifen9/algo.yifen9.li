@@ -478,11 +478,14 @@ function atcoder_update_mkdocs_nav()
     @show atcoder_entry
 
     nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
+    @show nav_yaml_lines
     for line in nav_yaml_lines
         if !isempty(strip(line))
             push!(new_lines, "  " * line)
         end
     end
+
+    @show new_lines
 
     open(mkdocs_path, "w") do f
         write(f, join(new_lines, "\n"))
