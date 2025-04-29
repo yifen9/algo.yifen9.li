@@ -240,7 +240,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
         println(f, "\n## Task Statement")
         println(f, "\n\n=== \"日本語\"\n\n")
-        println(f, """    {%include-markdown "./../../../../../src/AtCoder/$(class)/$(contest)/$(task)/description_ja.md"%}""")
+        println(f, """    {%include-markdown "./../../../../../src/atcoder/$(class)/$(contest)/$(task)/description_ja.md"%}""")
         println(f, "\n\n=== \"English\"\n\n")
         println(f, """    {%include-markdown "./description_en.md"%}""")
     end
