@@ -37,47 +37,51 @@ end
 
 function md_task_fetch(contest, task, lang)::String
     url = "https://atcoder.jp/contests/$(contest)/tasks/$(contest)_$(task)?lang=$(lang)"
-    @show url
     page = html_raw_fetch(url)
+    @show page
     snippet = html_task_statement_extract(page)
-    return replace(html_to_markdown(snippet), "\`" => "\$")
+    @show snippet
+    markdown = html_to_markdown(snippet)
+    @show markdown
+    return replace(markdown, "\`" => "\$")
 end
 
 function main()
     for class in readdir(DIR_SRC_ATCODER)
-        path_class = joinpath(DIR_SRC_ATCODER, class)
+        class_path = joinpath(DIR_SRC_ATCODER, class)
 
-        for contest in readdir(path_class)
-            path_contest = joinpath(path_class, contest)
+        for contest in readdir(class_path)
+            contest_path = joinpath(class_path, contest)
+            contest_extracted = split(class, "_", limit=3)[2] * contest
 
-            contest = split(class, "_", limit=3)[2] * contest
-
-            for task in readdir(path_contest)
-                path_task = joinpath(path_contest, task)
-
-                task = split(task, "_", limit=3)[1]
+            for task in readdir(contest_path)
+                task_path = joinpath(contest_path, task)
+                task_extracted = split(task, "_", limit=3)[1]
 
                 for lang in ["ja", "en"]
-                    out = joinpath(path_task, "description_$lang.md")
-                    if isfile(out)
+                    file = joinpath(task_path, "description_$lang.md")
+                    if isfile(file)
                         println("[INFO] Skipped existing $lang")
                         # continue
                     end
                     try
-                        md = md_task_fetch(contest, task, lang)
-                        mkpath(path_task)
-                        open(out, "w") do io
+                        md = md_task_fetch(contest_extracted, task_extracted, lang)
+                        mkpath(task_path)
+                        open(file, "w") do io
                             write(io, md)
                         end
-                        println("  - $lang fetched → $out")
+                        println("[INFO] Fetched $file")
                     catch err
-                        @warn("fetch failed", contest=contest,
-                              task=task, lang=lang, error=err)
+                        println("[WARN] Fetch failed $file")
                     end
                 end
+                println("[INFO] Fetched $task")
             end
+            println("[INFO] Fetched $contest")
         end
+        println("[INFO] Fetched $class")
     end
+    println("[INFO] Fetched pages")
 end
 
 main()
