@@ -475,6 +475,8 @@ function atcoder_update_mkdocs_nav()
     append!(nested_atcoder, atcoder_nested_nav_build("docs/atcoder"))
     atcoder_entry = Dict("AtCoder" => nested_atcoder)
 
+    @show atcoder_entry
+
     nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
     for line in nav_yaml_lines
         if !isempty(strip(line))
