@@ -177,7 +177,7 @@ function solution_generate(file::String, task::String, contest::String, class::S
         end
     end
 
-    println("[INFO] Generated $file")
+    println("[INFO] Generated $file_docs")
 end
 
 function task_generate(task::String, contest::String, class::String)
