@@ -120,16 +120,22 @@ function main()
                         println("[INFO] Skipped existing $lang")
                         # continue
                     end
-                    try
-                        md = md_task_fetch(lang, task_extracted, contest_extracted)
-                        mkpath(task_path)
-                        open(file, "w") do io
-                            write(io, md)
-                        end
-                        println("[INFO] Fetched $file")
-                    catch err
-                        println("[WARN] Fetch failed $file")
+                    md = md_task_fetch(lang, task_extracted, contest_extracted)
+                    mkpath(task_path)
+                    open(file, "w") do io
+                        write(io, md)
                     end
+                    println("[INFO] Fetched $file")
+                    # try
+                    #     md = md_task_fetch(lang, task_extracted, contest_extracted)
+                    #     mkpath(task_path)
+                    #     open(file, "w") do io
+                    #         write(io, md)
+                    #     end
+                    #     println("[INFO] Fetched $file")
+                    # catch err
+                    #     println("[WARN] Fetch failed $file")
+                    # end
                 end
                 println("[INFO] Fetched $task_path")
             end
