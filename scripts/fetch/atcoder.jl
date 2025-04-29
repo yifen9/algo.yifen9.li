@@ -1,9 +1,11 @@
 import Pkg
 Pkg.activate(".")
 Pkg.instantiate()
+Pkg.add("Cascadia")
 Pkg.add("Gumbo")
 Pkg.add("HTTP")
 
+using Cascadia
 using Gumbo
 using HTTP
 
@@ -17,31 +19,77 @@ const BROWSER_HEADERS = Dict(
     ], " ")
 )
 
-function html_raw_fetch(url::String)::String
-    resp = HTTP.get(url; headers=BROWSER_HEADERS)
-    return String(resp.body)
+function html_raw_fetch(url::String)
+    resp = HTTP.get(url; headers=USER_AGENT)
+    return parsehtml(String(resp.body))
 end
 
-function html_task_statement_extract(html::String)::String
-    re = r"(?s)(<div\s+id=\"task-statement\".*?</div>\s*</div>)"
-    m = match(re, html)
-    m === nothing && error("task-statement section not found")
-    return m.captures[1]
+function text_render(s)
+    s = replace(s, "\\"=>"\\\\")
+    return replace(s, r"<var>(.*?)</var>"m => s"\$\\1\$")
 end
 
-function html_to_markdown(html_snippet::String)::String
-    buf = IOBuffer(html_snippet)
-    pr = pipeline(`pandoc -f html -t markdown`, stdin=buf)
-    return read(pr, String)
+function node_to_md(node)::Vector{String}
+    out = String[]
+    if node isa Gumbo.GumboText
+        push!(out, text_render(node.data))
+    elseif node isa Gumbo.GumboElement
+        tag = lowercase(node.tagname)
+        cls = get(node.attributes, "class", "")
+        if tag == "div" && occursin("part", cls)
+            push!(out, "::: part")
+            for c in node.children
+                append!(out, node_to_md(c))
+            end
+            push!(out, ":::")
+        elseif tag == "div" && occursin("io-style", cls)
+            push!(out, "::: io-style")
+            for c in node.children
+                append!(out, node_to_md(c))
+            end
+            push!(out, ":::")
+        elseif tag == "section"
+            push!(out, "::: section")
+            for c in node.children
+                append!(out, node_to_md(c))
+            end
+            push!(out, ":::")
+        elseif tag == "h4"
+            text = join(node_to_md.(node.children), "")
+            push!(out, "#### $text\n")
+        elseif tag == "h3"
+            text = join(node_to_md.(node.children), "")
+            push!(out, "### $text\n")
+        elseif tag == "pre"
+            push!(out, "```")
+            push!(out, join(node_to_md.(node.children), ""))
+            push!(out, "```\n")
+        elseif tag == "hr"
+            push!(out, "----\n")
+        else
+            for c in node.children
+                append!(out, node_to_md(c))
+            end
+        end
+    end
+    return out
 end
 
-function md_task_fetch(lang, task, contest)::String
-    url = "https://atcoder.jp/contests/$(contest)/tasks/$(contest)_$(task)?lang=$(lang)"
-    page = html_raw_fetch(url)
-    snippet = html_task_statement_extract(page)
-    markdown = html_to_markdown(snippet)
-    markdown_replaced = replace(markdown, "\`" => "\$")
-    return markdown
+function html_task_statement_extract(doc)
+    sel = selector("#task-statement")
+    elems = eachmatch(sel, doc.root)
+    if isempty(elems)
+        error("find failed #task-statement")
+    end
+    return first(elems)
+end
+
+function md_task_fetch(lang, task, contest)
+    url = "https://atcoder.jp/contests/$contest/tasks/${contest}_$task?lang=$lang"
+    doc = html_raw_fetch(url)
+    stmt = html_task_statement_extract(doc)
+    lines = node_to_md(stmt)
+    return join(lines, "\n")
 end
 
 function main()
