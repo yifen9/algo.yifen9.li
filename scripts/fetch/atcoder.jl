@@ -25,11 +25,8 @@ function html_raw_fetch(url::String)
 end
 
 function task_statement_extract(doc)
-    @show "Hello"
     sel = Selector("#task-statement")
-    @show "World"
     elems = eachmatch(sel, doc.root)
-    @show elems
     isempty(elems) && error("find failed #task-statement")
     return first(elems)
 end
@@ -41,11 +38,19 @@ end
 
 function node_to_md(node)::Vector{String}
     out = String[]
-    if node isa Gumbo.GumboText
-        push!(out, text_render(node.data))
-    elseif node isa Gumbo.GumboElement
+    if node isa Gumbo.HTMLText
+        @show "text"
+        @show node
+        push!(out, text_render(node.text))
+    elseif node isa Gumbo.HTMLElement
+        @show "element"
+        @show node
         tag = lowercase(node.tagname)
+        @show "tag"
+        @show tag
         cls = get(node.attributes, "class", "")
+        @show "cls"
+        @show cls
         if tag == "div" && occursin("part", cls)
             push!(out, "::: part")
             for c in node.children
