@@ -161,16 +161,20 @@ function atcoder_solution_generate(file::String, task::String, contest::String, 
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
-        println(f, "## Basic Info", "\n")
-        println(f, "- **Type: **", ext)
-        println(f, "- **Task: **", task_info_name)
-        println(f, "- **[Origin]($file_origin)**", "\n")
+        if ext == "md"
+            println(f, "{%include-markdown \"./../$(file)\"%}")
+        else
+            println(f, "## Basic Info", "\n")
+            println(f, "- **Type: **", ext)
+            println(f, "- **Task: **", task_info_name)
+            println(f, "- **[Origin]($file_origin)**", "\n")
 
-        link_download = joinpath(DIR_BASE, dir_src)
-        println(f, "- **<a href=\"$link_download\" download>Download</a>**")
+            link_download = joinpath(DIR_BASE, dir_src)
+            println(f, "- **<a href=\"$link_download\" download>Download</a>**")
 
-        println(f, "## Preview\n")
-        println(f, file_preview_generate(dir_src))
+            println(f, "## Preview\n")
+            println(f, file_preview_generate(dir_src))
+        end
     end
 end
 
@@ -243,10 +247,7 @@ function atcoder_task_generate(task::String, contest::String, class::String)
 
     # Also generate each solution preview
     for sol in readdir(dir_src)
-        ext = file_extension_get(sol)
-        if ext != "md"
-            atcoder_solution_generate(sol, task, contest, class)
-        end
+        file_extension_get(sol) != "md" && atcoder_solution_generate(sol, task, contest, class)
     end
 end
 
