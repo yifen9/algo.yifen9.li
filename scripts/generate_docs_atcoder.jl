@@ -453,15 +453,12 @@ function atcoder_update_mkdocs_nav()
     for line in original_lines
         stripped = strip(line)
 
-        @show stripped
-
         if in_atcoder
-            push!(lines_post, stripped)
+            push!(lines_post, line)
         elseif startswith(stripped, "- AtCoder:")
             in_atcoder = true
-            @show "Hello AC"
         else
-            push!(lines_final, stripped)
+            push!(lines_final, line)
         end
     end
 
@@ -478,11 +475,11 @@ function atcoder_update_mkdocs_nav()
     @show atcoder_entry
 
     nav_yaml_lines = split(YAML.write([atcoder_entry]), "\n")
+
     @show nav_yaml_lines
+    
     for line in nav_yaml_lines
-        if !isempty(strip(line))
-            push!(lines_final, "  " * line)
-        end
+        push!(lines_final, "  " * line)
     end
 
     @show lines_final
