@@ -46,8 +46,8 @@ function node_to_md(node, url)::Vector{String}
                 @show href
                 push!(out, "<a href=\"$(href)\">", text, "</a>")
             else
-                @show joinpath(url, href)
-                push!(out, "<a href=\"$(joinpath(url, href))\">", text, "</a>")
+                @show url * href
+                push!(out, "<a href=\"$(url * href)\">", text, "</a>")
             end
         elseif tag == :code
             push!(out, "`", text, "`")
