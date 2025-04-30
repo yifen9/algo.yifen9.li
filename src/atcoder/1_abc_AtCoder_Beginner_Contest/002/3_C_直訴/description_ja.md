@@ -83,7 +83,7 @@ $3$ 点 $(0,0),\ (a,b),\ (c,d)$ で構成される三角形の面積は、$|ad-b
 5.0
 ```
 <ul>
-<div>
+<div style="text-align: center;">
 <img src="https://atcoder.jp/img/abc/002/3_1.png">
 </img>
 <div>
