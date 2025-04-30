@@ -83,7 +83,7 @@ function node_to_md(node)::Vector{String}
             has_var = any(c -> c isa Gumbo.HTMLElement && Gumbo.tag(c) == :var, node.children)
             if has_var
                 # display-math
-                push!(out, "\n\\[\n", text, "\\]\n\n")
+                push!(out, "\n<div>\n\n", text, "\n</div>\n\n")
             else
                 # code block
                 push!(out, "\n```\n", text, "```\n\n")
