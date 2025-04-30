@@ -29,7 +29,7 @@ end
 function node_to_md(node, url, lang)::Vector{String}
     out = String[]
     if node isa Gumbo.HTMLText
-        push!(out, node.text)
+        push!(out, lstrip(node.text))
     elseif node isa Gumbo.HTMLElement
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
