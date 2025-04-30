@@ -51,23 +51,23 @@ function node_to_md(node)::Vector{String}
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :h1
-            push!(out, "# ", text, "\n")
+            push!(out, "# **", text, "**\n")
         elseif tag == :h2
-            push!(out, "## ", text, "\n")
+            push!(out, "## **", text, "**\n")
         elseif tag == :h3
-            push!(out, "### ", text, "\n")
+            push!(out, "### **", text, "**\n")
         elseif tag == :h4
-            push!(out, "#### ", text, "\n")
+            push!(out, "#### **", text, "**\n")
         elseif tag == :h5
-            push!(out, "##### ", text, "\n")
+            push!(out, "##### **", text, "**\n")
         elseif tag == :h6
-            push!(out, "###### ", text, "\n")
+            push!(out, "###### **", text, "**\n")
         elseif tag == :hr
-            push!(out, "----\n")
+            push!(out, "---\n")
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "<div>\n", text, "</div>\n")
+            push!(out, "$$\n", text, "$$\n")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
