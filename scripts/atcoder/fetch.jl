@@ -138,10 +138,10 @@ function main()
 
                             for lang in ("ja","en")
                                 file = joinpath(task_path, "description_$lang.md")
-                                if isfile(file)
-                                    println("[INFO] Skipped existing $file")
-                                    # continue
-                                end
+                                # if isfile(file)
+                                #     println("[INFO] Skipped existing $file")
+                                #     # continue
+                                # end
                                 try
                                     md = md_task_fetch(lang, task_extracted, contest_extracted)
                                     mkpath(task_path)
@@ -158,10 +158,10 @@ function main()
 
                     for lang in ("ja","en")
                         file = joinpath(contest_path, "description_$lang.md")
-                        if isfile(file)
-                            println("[INFO] Skipped existing $file")
-                            # continue
-                        end
+                        # if isfile(file)
+                        #     println("[INFO] Skipped existing $file")
+                        #     # continue
+                        # end
                         try
                             md = md_contest_fetch(lang, contest_extracted)
                             mkpath(contest_path)
