@@ -45,28 +45,26 @@ function node_to_md(node)::Vector{String}
         cls = get(Gumbo.attrs(node), "class", "")
         if tag == :div && occursin("prettyprint linenums", cls)
             push!(out, "```")
-            node_to_md.(node.children)
+            append!(out, node_to_md(c)) for c in node.children
             push!(out, "```\n")
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :h3
             push!(out, "### ")
-            node_to_md.(node.children)
+            append!(out, node_to_md(c)) for c in node.children
             push!(out, "\n")
         elseif tag == :h4
             push!(out, "#### ")
-            node_to_md.(node.children)
+            append!(out, node_to_md(c)) for c in node.children
             push!(out, "\n")
         elseif tag == :hr
             push!(out, "----\n")
         elseif tag == :pre
             push!(out, "```")
-            node_to_md.(node.children)
+            append!(out, node_to_md(c)) for c in node.children
             push!(out, "```\n")
         else
-            for c in node.children
-                append!(out, node_to_md(c))
-            end
+            append!(out, node_to_md(c)) for c in node.children
         end
     end
     return out
