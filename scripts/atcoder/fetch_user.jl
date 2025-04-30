@@ -21,7 +21,6 @@ end
 
 function fetch_info_basic()
     ac_rank_url   = joinpath(DIR_BASE_ACP, "ac_rank?user=") * USERNAME
-    @show ac_rank_url
     ac_rank       = fetch(ac_rank_url)
     ac_rank_count = ac_rank["count"]
     ac_rank_rank  = ac_rank["rank"]
@@ -58,6 +57,7 @@ function fetch_language()
 
         i = 0
         for content in list
+            @show content
             language = content["language"]
             count    = content["count"]
             rank     = content["rank"]
