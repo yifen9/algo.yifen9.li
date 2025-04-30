@@ -1,42 +1,53 @@
-name: deploy_atcoder
+name: atcoder
 
 on:
   push:
     branches:
       - main
-      - master
     paths:
-      - '.github/workflows/deploy_atcoder.yml'
+      - '.github/workflows/atcoder.yml'
       - 'mkdocs.yml'
-      - 'scripts/generate/atcoder.jl'
+      - 'scripts/atcoder/**'
       - 'src/atcoder/**'
-  workflow_run:
-    workflows:
-      - fetch_atcoder
-    types:
-      - completed
+  schedule:
+    - cron: '0 * * * *'
 
 permissions:
   contents: write
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Git identity
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
 
       - name: Set up Julia
         uses: julia-actions/setup-julia@v1
         with:
           version: '1.10'
-      
-      - name: Fetch AtCoder
-        run: julia scripts/fetch/atcoder.jl
 
-      - name: Generate AtCoder
-        run: julia scripts/generate/atcoder.jl
+      # - name: Install Pandoc
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y pandoc
+
+      - name: Fetch
+        run: julia scripts/atcoder/fetch.jl
+
+      - name: Commit fetch
+        run: |
+          git add src/
+          git commit -m "chore: update fetched data (submission + description)" || echo "No changes to commit"
+          git push
+      
+      - name: Generate
+        run: julia scripts/atcoder/generate.jl
 
       - name: Set up Python
         uses: actions/setup-python@v4
