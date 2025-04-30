@@ -39,7 +39,6 @@ end
 function node_to_md(node)::Vector{String}
     out = String[]
     if node isa Gumbo.HTMLText
-        @show node
         push!(out, node.text)
     elseif node isa Gumbo.HTMLElement
         tag = Gumbo.tag(node)
@@ -63,8 +62,6 @@ function node_to_md(node)::Vector{String}
             push!(out, join(node_to_md.(node.children), ""))
             push!(out, "```\n")
         else
-            @show tag
-            @show cls
             for c in node.children
                 append!(out, node_to_md(c))
             end
