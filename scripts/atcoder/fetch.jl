@@ -123,50 +123,56 @@ end
 
 function main()
     for class in readdir(DIR_SRC_ATCODER)
-        class_path = joinpath(DIR_SRC_ATCODER, class)
+        if isdir(class)
+            class_path = joinpath(DIR_SRC_ATCODER, class)
 
-        for contest in readdir(class_path)
-            contest_path = joinpath(class_path, contest)
-            contest_extracted = split(class, "_", limit=3)[2] * contest
+            for contest in readdir(class_path)
+                if isdir(contest)
+                    contest_path = joinpath(class_path, contest)
+                    contest_extracted = split(class, "_", limit=3)[2] * contest
 
-            for task in readdir(contest_path)
-                task_path = joinpath(contest_path, task)
-                task_extracted = split(task, "_", limit=3)[1]
+                    for task in readdir(contest_path)
+                        if isdir(task)
+                            task_path = joinpath(contest_path, task)
+                            task_extracted = split(task, "_", limit=3)[1]
 
-                for lang in ["ja", "en"]
-                    file = joinpath(task_path, "description_$lang.md")
-                    if isfile(file)
-                        println("[INFO] Skipped existing $file")
-                        # continue
-                    end
-                    try
-                        md = md_task_fetch(lang, task_extracted, contest_extracted)
-                        mkpath(task_path)
-                        open(file, "w") do io
-                            write(io, md)
+                            for lang in ["ja", "en"]
+                                file = joinpath(task_path, "description_$lang.md")
+                                if isfile(file)
+                                    println("[INFO] Skipped existing $file")
+                                    # continue
+                                end
+                                try
+                                    md = md_task_fetch(lang, task_extracted, contest_extracted)
+                                    mkpath(task_path)
+                                    open(file, "w") do io
+                                        write(io, md)
+                                    end
+                                    println("[INFO] Fetched $file")
+                                catch err
+                                    println("[WARN] Fetch failed $file")
+                                end
+                            end
                         end
-                        println("[INFO] Fetched $file")
-                    catch err
-                        println("[WARN] Fetch failed $file")
                     end
-                end
-            end
 
-            for lang in ["ja", "en"]
-                file = joinpath(contest_path, "description_$lang.md")
-                if isfile(file)
-                    println("[INFO] Skipped existing $file")
-                    # continue
-                end
-                try
-                    md = md_contest_fetch(lang, contest_extracted)
-                    mkpath(contest_path)
-                    open(file, "w") do io
-                        write(io, md)
+                    for lang in ["ja", "en"]
+                        file = joinpath(contest_path, "description_$lang.md")
+                        if isfile(file)
+                            println("[INFO] Skipped existing $file")
+                            # continue
+                        end
+                        try
+                            md = md_contest_fetch(lang, contest_extracted)
+                            mkpath(contest_path)
+                            open(file, "w") do io
+                                write(io, md)
+                            end
+                            println("[INFO] Fetched $file")
+                        catch err
+                            println("[WARN] Fetch failed $file")
+                        end
                     end
-                    println("[INFO] Fetched $file")
-                catch err
-                    println("[WARN] Fetch failed $file")
                 end
             end
         end
