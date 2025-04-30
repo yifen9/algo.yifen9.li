@@ -26,7 +26,7 @@ function html_fetch(url::String)
     return parsehtml(String(resp.body))
 end
 
-function node_to_md(node)::Vector{String}
+function node_to_md(node, url)::Vector{String}
     out = String[]
     if node isa Gumbo.HTMLText
         push!(out, node.text)
@@ -34,14 +34,18 @@ function node_to_md(node)::Vector{String}
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
 
-        text = join([x for child in node.children for x in node_to_md(child)], "")
+        text = join([x for child in node.children for x in node_to_md(child, url)], "")
 
         if tag == :a
-            if occursin("http", cls)
+            @show cls
+            @show occursin("http", cls)
+            if cls == "#"
+                push!(out, "<a href=\"#\">", text, "</a>")
+            elseif occursin("http", cls)
                 href = get(Gumbo.attrs(node), "href", "")
                 push!(out, "<a href=\"$(href)\">", text, "</a>")
             else
-                href = DIR_BASE_ATCODER * get(Gumbo.attrs(node), "href", "")
+                href = joinpath(url, get(Gumbo.attrs(node), "href", ""))
                 push!(out, "<a href=\"$(href)\">", text, "</a>")
             end
         elseif tag == :code
@@ -99,10 +103,10 @@ function task_statement_extract(doc)
 end
 
 function md_task_fetch(lang, task, contest)
-    url = joinpath(DIR_BASE_ATCODER, "contests/$contest/tasks/$(contest)_$task?lang=$lang")
-    doc = html_fetch(url)
+    url = joinpath(DIR_BASE_ATCODER, "contests/$contest/tasks/$(contest)_$task")
+    doc = html_fetch(join(url, "?lang=$lang"))
     stmt = task_statement_extract(doc)
-    lines = node_to_md(stmt)
+    lines = node_to_md(stmt, url)
     return join(lines, "")
 end
 
@@ -114,10 +118,10 @@ function contest_statement_extract(doc)
 end
 
 function md_contest_fetch(lang, contest)
-    url = joinpath(DIR_BASE_ATCODER, "contests/$contest?lang=$lang")
-    doc = html_fetch(url)
+    url = joinpath(DIR_BASE_ATCODER, "contests/$contest")
+    doc = html_fetch(join(url, "?lang=$lang"))
     stmt = contest_statement_extract(doc)
-    lines = node_to_md(stmt)
+    lines = node_to_md(stmt, url)
     return join(lines, "")
 end
 
