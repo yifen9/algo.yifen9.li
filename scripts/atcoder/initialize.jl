@@ -46,6 +46,7 @@ function task_fetch()
 end
 
 function contest_split(contest::String)
+    @show contest
     parts = match(r"^([a-z]+)(\d+)$", contest)
     @show parts
     return parts === nothing ? nothing : (parts.captures[1], parts.captures[2])
@@ -117,7 +118,7 @@ function task_mkpath(tasks, map_contest)
                     end
                     @show "Hello2"
 
-                    class_label, contest = contest_split(contest_raw_id)
+                    _, contest = contest_split(contest_raw_id)
                     @show "Hello3"
                     
                     dir_contest = joinpath(dir_class, contest)
