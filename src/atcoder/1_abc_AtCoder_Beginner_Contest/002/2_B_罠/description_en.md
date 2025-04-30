@@ -32,11 +32,9 @@ B問題のテストケースにミスがあったので、提出されたコー�
 
 入力は以下の形式で標準入力から与えられる。
 
-<div>
-
+\[
 \(W\)
-
-</div>
+\]
 
 <ol>
 <li>
@@ -72,9 +70,7 @@ B問題のテストケースにミスがあったので、提出されたコー�
 <section>
 
 ```
-
 chokudai
-
 ```
 
 </section>
@@ -86,9 +82,7 @@ chokudai
 <section>
 
 ```
-
 chkd
-
 ```
 
 <ul>
@@ -104,9 +98,7 @@ chkd
 <section>
 
 ```
-
 okanemochi
-
 ```
 
 </section>
@@ -118,9 +110,7 @@ okanemochi
 <section>
 
 ```
-
 knmch
-
 ```
 
 <ul>
@@ -139,9 +129,7 @@ knmch
 <section>
 
 ```
-
 aoki
-
 ```
 
 </section>
@@ -153,9 +141,7 @@ aoki
 <section>
 
 ```
-
 k
-
 ```
 
 <ul>
@@ -176,9 +162,7 @@ k
 <section>
 
 ```
-
 mazushii
-
 ```
 
 </section>
@@ -190,9 +174,7 @@ mazushii
 <section>
 
 ```
-
 mzsh
-
 ```
 
 </section>
