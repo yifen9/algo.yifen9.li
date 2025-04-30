@@ -28,7 +28,8 @@ B問題のテストケースにミスがあったので、提出されたコー�
 <pre>
 $W$
 </pre>
-```<li>
+<ol>
+<li>
 $1$ 行目には、高橋くんの発した言葉を表す文字列 $W$ が与えられる。</li>
 <ul>
 <li>
@@ -38,7 +39,7 @@ $W$ は半角英小文字（`a` から `z`まで）のみで構成される。</
 <li>
 $W$ には母音以外の文字が少なくとも $1$ 文字含まれることが保証されている。</li>
 </ul>
-```
+</ol>
 </section>
 </div>
 <div>
@@ -53,17 +54,15 @@ $W$ から母音を全て除いた文字列を $1$ 行で出力してくださ�
 <div>
 ### 入力例 1
 <section>
-<pre>
-chokudai
-</pre>
+```chokudai
+```
 </section>
 </div>
 <div>
 ### 出力例 1
 <section>
-<pre>
-chkd
-</pre>
+```chkd
+```
 <ul>
 <li>
 `chokudai` から `a`、`i`、`u`、`e`、`o` を除くと `chkd` になります</li>
@@ -73,17 +72,15 @@ chkd
 <div>
 ### 入力例 2
 <section>
-<pre>
-okanemochi
-</pre>
+```okanemochi
+```
 </section>
 </div>
 <div>
 ### 出力例 2
 <section>
-<pre>
-knmch
-</pre>
+```knmch
+```
 <ul>
 <li>
 `okanemochi` から `a`、`i`、`u`、`e`、`o` を除くと `knmch` になります</li>
@@ -94,17 +91,15 @@ knmch
 <div>
 ### 入力例 3
 <section>
-<pre>
-aoki
-</pre>
+```aoki
+```
 </section>
 </div>
 <div>
 ### 出力例 3
 <section>
-<pre>
-k
-</pre>
+```k
+```
 <ul>
 <li>
 `aoki` から `a`、`i`、`u`、`e`、`o` を除くと `k` になります</li>
@@ -117,17 +112,15 @@ k
 <div>
 ### 入力例 4
 <section>
-<pre>
-mazushii
-</pre>
+```mazushii
+```
 </section>
 </div>
 <div>
 ### 出力例 4
 <section>
-<pre>
-mzsh
-</pre>
+```mzsh
+```
 </section>
 </div>
 
