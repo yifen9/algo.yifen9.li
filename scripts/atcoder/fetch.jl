@@ -80,7 +80,7 @@ function node_to_md(node, url, lang)::Vector{String}
             push!(out, "\n```\n", text, "```\n")
         elseif tag == :pre
             push!(out, "\n<div>\n\n", text, "\n</div>\n")
-        elseif tag == :span && (cls != "lang-$(lang)")
+        elseif tag == :span && (cls != "lang") && (cls != "lang-$(lang)")
             push!(out, "")
         elseif tag == :var
             push!(out, "\$", text, "\$")
