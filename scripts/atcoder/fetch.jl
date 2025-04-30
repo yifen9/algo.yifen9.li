@@ -46,7 +46,7 @@ function node_to_md(node, url, lang)::Vector{String}
         elseif tag == :code
             push!(out, "`", text, "`")
         elseif tag == :br
-            push!(out, "\n")
+            push!(out, "\n\n")
         elseif tag == :div && occursin("img-caption", cls)
             push!(out, "\n<div style=\"text-align: center;\">\n", text, "\n</div>\n")
         elseif tag == :font
