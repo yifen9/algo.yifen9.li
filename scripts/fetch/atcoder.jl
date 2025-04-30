@@ -46,10 +46,22 @@ function node_to_md(node)::Vector{String}
 
         children_flatted = [x for child in node.children for x in node_to_md(child)]
 
-        if tag == :div && occursin("prettyprint linenums", cls)
+        if tag == :code
+            push!(out, "`")
+            push!(out, join(children_flatted, ""))
+            push!(out, "`")
+        elseif tag == :div && occursin("part", cls)
+            push!(out, "::: part\n")
+            push!(out, join(children_flatted, ""))
+            push!(out, "\n:::\n\n")
+        elseif tag == :div && occursin("prettyprint linenums", cls)
             push!(out, "```")
             push!(out, join(children_flatted, ""))
             push!(out, "```\n")
+        elseif tag == :div
+            push!(out, "::: div\n")
+            push!(out, join(children_flatted, ""))
+            push!(out, "\n:::\n\n")
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :h1
@@ -78,6 +90,18 @@ function node_to_md(node)::Vector{String}
             push!(out, "\n")
         elseif tag == :hr
             push!(out, "----\n")
+        elseif tag == :ol
+            push!(out, "```")
+            push!(out, join(children_flatted, ""))
+            push!(out, "```\n")
+        elseif tag == :pre
+            push!(out, "::: pre\n")
+            push!(out, join(children_flatted, ""))
+            push!(out, "\n:::\n\n")
+        elseif tag == :section
+            push!(out, "::: section\n")
+            push!(out, join(children_flatted, ""))
+            push!(out, "\n:::\n\n")
         elseif tag == :var
             push!(out, "\$")
             push!(out, join(children_flatted, ""))
