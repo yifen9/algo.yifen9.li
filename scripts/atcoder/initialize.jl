@@ -52,7 +52,7 @@ end
 
 function task_split(task::String)
     parts = split(task, "_")
-    return (length(parts[1]) == 6 && length(parts[2]) == 1) ? (parts[1], parts[2]) : nothing
+    return (length(parts) >= 2) ? (parts[1], parts[2]) : nothing
 end
 
 function contest_mkpath(contests)
@@ -117,7 +117,7 @@ function task_mkpath(tasks, map_contest)
                     dir_task = joinpath(dir_contest, task_info_whole(task_id, task_label, task_name_clean(task_name)))
                     isdir(dir_task) || begin
                         mkpath(dir_task)
-                        println("[INFO] Task path created $dir_contest")
+                        println("[INFO] Task path created $dir_task")
                     end
                 else
                     println("[WARN] Task match failed $task_raw_id")
