@@ -104,8 +104,7 @@ end
 
 function md_task_fetch(lang, task, contest)
     url = joinpath(DIR_BASE_ATCODER, "contests/$contest/tasks/$(contest)_$task")
-    @show join(url, "?lang=$lang")
-    doc = html_fetch(join(url, "?lang=$lang"))
+    doc = html_fetch(url * "?lang=$lang")
     stmt = task_statement_extract(doc)
     lines = node_to_md(stmt, url)
     return join(lines, "")
@@ -120,8 +119,7 @@ end
 
 function md_contest_fetch(lang, contest)
     url = joinpath(DIR_BASE_ATCODER, "contests/$contest")
-    @show join(url, "?lang=$lang")
-    doc = html_fetch(join(url, "?lang=$lang"))
+    doc = html_fetch(url * "?lang=$lang")
     stmt = contest_statement_extract(doc)
     lines = node_to_md(stmt, url)
     return join(lines, "")
