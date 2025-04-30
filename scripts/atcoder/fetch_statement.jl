@@ -24,6 +24,7 @@ const BROWSER_HEADERS = Dict(
 function html_fetch(url::String)
     sleep(rand() / 16)
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
+    resp.status == 200 || error()
     return parsehtml(String(resp.body))
 end
 
@@ -33,7 +34,7 @@ function html_fetch_with_retry(url::String; max=16)
         try
             return html_fetch(url)
         catch
-            println("[WARN] Fetch failed, [Attempt]: $attempt, [File]: $file")
+            println("[WARN] Fetch failed, [Attempt]: $attempt, [Url]: $url")
             sleep(delay)
             delay *= 2
         end
@@ -164,7 +165,7 @@ function statement_fetch()
                                         write(io, md)
                                     end
                                     println("[INFO] Fetched $file")
-                                catch err
+                                catch
                                     println("[WARN] Fetch failed $file")
                                 end
                             end
@@ -184,7 +185,7 @@ function statement_fetch()
                                 write(io, md)
                             end
                             println("[INFO] Fetched $file")
-                        catch err
+                        catch
                             println("[WARN] Fetch failed $file")
                         end
                     end

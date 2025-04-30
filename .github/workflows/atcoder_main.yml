@@ -1,11 +1,11 @@
-name: atcoder
+name: atcoder_main
 
 on:
   push:
     branches:
       - main
     paths:
-      - '.github/workflows/atcoder.yml'
+      - '.github/workflows/atcoder_main.yml'
       - 'mkdocs.yml'
       - 'scripts/atcoder/**'
       - 'src/atcoder/**'

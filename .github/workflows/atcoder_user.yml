@@ -1,0 +1,56 @@
+name: atcoder_user
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/atcoder_user.yml'
+      - 'mkdocs.yml'
+      - 'scripts/atcoder/**'
+      - 'src/atcoder/**'
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Git identity
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.10'
+
+      - name: Fetch User
+        run: julia scripts/atcoder/fetch_user.jl
+      
+      - name: Generate
+        run: julia scripts/atcoder/generate.jl
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install MkDocs and Plugins
+        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin ghp-import
+
+      - name: Build site and Copy src/
+        run: |
+          mkdir -p build
+          mkdocs build -d build
+          cp -r src build/src
+
+      - name: Deploy
+        run: ghp-import -n -f -p build
