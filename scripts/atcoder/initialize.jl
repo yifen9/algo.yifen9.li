@@ -117,7 +117,7 @@ function task_mkpath(tasks, map_contest)
                         println("[INFO] Class path created $dir_class")
                     end
                     @show "Hello2"
-
+                    @show typeof(contest_raw_id)
                     _, contest = contest_split(contest_raw_id)
                     @show "Hello3"
                     
