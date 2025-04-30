@@ -26,6 +26,7 @@ $a_n = \begin{cases} 1 & (0 \leq n \lt K) \\ \displaystyle{\sum_{i=1}^K} a_{n-i}
 <p>
 
 
+
 </p>
 
 <p>
@@ -38,6 +39,7 @@ Given an integer $N$, find the sum, modulo $998244353$, of $a_m$over all non-neg
 What is bitwise AND?
 </summary>
 The bitwise AND of non-negative integers $A$and $B$, $A\text{ AND }B$, is defined as follows.
+
 ・When $A\text{ AND }B$is written in binary, its $2^k$s place ($k \geq 0$) is $1$if $2^k$s places of $A$and $B$are both $1$, and $0$otherwise.
 
 

@@ -17,7 +17,9 @@ Score : $100$points
 
 <p>
 Given integers $A$and $B$, find $A+B$.
+
 This is a $N$-choice problem; the $i$-th choice is $C_i$.
+
 Print the 
 <strong>
 index
@@ -139,7 +141,9 @@ Print the answer as an integer.
 
 <p>
 We have $125+175 = 300$.
+
 The first, second, and third choices are $200$, $300$, and $400$, respectively.
+
 Thus, the $2$-nd choice is correct, so $2$should be printed.
 </p>
 
