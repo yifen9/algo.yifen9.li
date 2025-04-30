@@ -24,7 +24,7 @@ B問題のテストケースにミスがあったので、提出されたコー�
 
 コンテストを通じて、プログラミングやアルゴリズムを学習するサービスです。
 
-運営会社は<a href="https://atcoder.jp/contests/abc002/http://atcoder.co.jp">AtCoder株式会社</a>
+運営会社は<a href="http://atcoder.co.jp">AtCoder株式会社</a>
 </section>
 
 ### **使い方は？**
@@ -39,7 +39,7 @@ B問題のテストケースにミスがあったので、提出されたコー�
 
     プログラミングコンテストとは、「与えられた問題をいかに素早く、正確に」解くことができるかを競うものです。
 
-初めて参加される方は、<a href="https://atcoder.jp/contests/abc002/http://practice.contest.atcoder.jp/#">練習ページ</a>で練習してみましょう！
+初めて参加される方は、<a href="http://practice.contest.atcoder.jp/#">練習ページ</a>で練習してみましょう！
 
 </section>
 
@@ -65,7 +65,7 @@ B問題のテストケースにミスがあったので、提出されたコー�
 ### **過去問＆その他コンテスト**
 
 <section>
-<a href="https://atcoder.jp/contests/abc002/http://www.atcoder.jp">AtCoder</a> のページから参照できます。
+<a href="http://www.atcoder.jp">AtCoder</a> のページから参照できます。
 
     形式に慣れるためにも、一度解いてみることをおすすめします。
 
@@ -80,7 +80,7 @@ B問題のテストケースにミスがあったので、提出されたコー�
 <ul>
 
 <li>
-<a href="https://atcoder.jp/contests/abc002/#">トップ</a> : 現在閲覧中のページです。
+<a href="#">トップ</a> : 現在閲覧中のページです。
 </li>
 
 <li>
