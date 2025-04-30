@@ -378,7 +378,7 @@ function generate()
     end
 
     for class in sort(readdir(DIR_SRC_ATCODER))
-        isdir(joinpath(dir_src, class)) && class_generate(class)
+        isdir(joinpath(DIR_SRC_ATCODER, class)) && class_generate(class)
     end
 
     println("[INFO] Generated AtCoder pages")
