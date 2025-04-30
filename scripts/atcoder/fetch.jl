@@ -80,11 +80,9 @@ function node_to_md(node)::Vector{String}
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "\n\n", text, "\n\n")
-        elseif tag == :var && occursin("data-immersive-translate-walked", cls)
-            push!(out, "\$", text, "\$\n")
+            push!(out, "\n\\[\n\n", text, "\n\\]\n\n")
         elseif tag == :var
-            push!(out, "\$", text, "\$")
+            push!(out, "\(", text, "\)")
         else
             push!(out, "<$tag>\n", text, "</$tag>\n")
         end
