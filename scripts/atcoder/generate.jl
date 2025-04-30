@@ -226,7 +226,6 @@ function task_generate(task::String, contest::String, class::String)
         end
 
         if isfile(joinpath(dir_src, "statement_ja.md")) && isfile(joinpath(dir_src, "statement_en.md"))
-            @show "hello"
             println(f, "\n## Task Statement")
             println(f, "\n\n=== \"日本語\"\n\n")
             println(f, """    {%include-markdown "./../../../../../$(dir_src)/statement_ja.md"%}""")
@@ -290,11 +289,13 @@ function contest_generate(contest::String, class::String)
             end
         end
 
-        println(f, "\n## Contest Statement")
-        println(f, "\n\n=== \"日本語\"\n\n")
-        println(f, """    {%include-markdown "./../../../../$(dir_src)/statement_ja.md"%}""")
-        println(f, "\n\n=== \"English\"\n\n")
-        println(f, """    {%include-markdown "./../../../../$(dir_src)/statement_en.md"%}""")
+        if isfile(joinpath(dir_src, "statement_ja.md")) && isfile(joinpath(dir_src, "statement_en.md"))
+            println(f, "\n## Contest Statement")
+            println(f, "\n\n=== \"日本語\"\n\n")
+            println(f, """    {%include-markdown "./../../../../$(dir_src)/statement_ja.md"%}""")
+            println(f, "\n\n=== \"English\"\n\n")
+            println(f, """    {%include-markdown "./../../../../$(dir_src)/statement_en.md"%}""")
+        end
     end
 
     for task in readdir(dir_src)
