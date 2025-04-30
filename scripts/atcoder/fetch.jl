@@ -45,7 +45,6 @@ function node_to_md(node)::Vector{String}
     elseif node isa Gumbo.HTMLElement
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
-        @show Gumbo.attrs(node)
 
         text = join([x for child in node.children for x in node_to_md(child)], "")
 
@@ -62,19 +61,19 @@ function node_to_md(node)::Vector{String}
             color = get(Gumbo.attrs(node), "color", "")
             push!(out, "<font color=\"$(color)\">\n", text, "</font>\n")
         elseif tag == :h1
-            push!(out, "# **", text, "**\n")
+            push!(out, "\n# **", text, "**\n\n")
         elseif tag == :h2
-            push!(out, "## **", text, "**\n")
+            push!(out, "\n## **", text, "**\n\n")
         elseif tag == :h3
-            push!(out, "### **", text, "**\n")
+            push!(out, "\n### **", text, "**\n\n")
         elseif tag == :h4
-            push!(out, "#### **", text, "**\n")
+            push!(out, "\n#### **", text, "**\n\n")
         elseif tag == :h5
-            push!(out, "##### **", text, "**\n")
+            push!(out, "\n##### **", text, "**\n\n")
         elseif tag == :h6
-            push!(out, "###### **", text, "**\n")
+            push!(out, "\n###### **", text, "**\n\n")
         elseif tag == :hr
-            push!(out, "---\n")
+            push!(out, "\n---\n\n")
         elseif tag == :img
             src = DIR_BASE_ATCODER * get(Gumbo.attrs(node), "src", "")
             push!(out, "<img src=\"$(src)\">\n", text, "</img>\n")
@@ -83,7 +82,6 @@ function node_to_md(node)::Vector{String}
         elseif tag == :pre
             push!(out, "\n<div>\n\n", text, "\n</div>\n\n")
         elseif tag == :var
-            @show text
             push!(out, "\\(", text, "\\)")
         else
             push!(out, "<$tag>\n", text, "</$tag>\n")
