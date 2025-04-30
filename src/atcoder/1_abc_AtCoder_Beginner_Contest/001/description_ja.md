@@ -48,7 +48,7 @@
 
 <section>
 
-    コンテストのルールは <a href="/rules">ルール</a> を参照してください。
+    コンテストのルールは <a href="https://atcoder.jp/contests/abc001/rules">ルール</a> を参照してください。
 このコンテストのペナルティは
 <font color="red">5分</font>
 です。
@@ -77,23 +77,23 @@
 </li>
 
 <li>
-<a href="/assignments">問題</a> : コンテストの問題の閲覧ができます。
+<a href="https://atcoder.jp/contests/abc001/assignments">問題</a> : コンテストの問題の閲覧ができます。
 </li>
 
 <li>
-<a href="/submit">提出</a> : コンテストの問題に対する、解答ソースコードを提出することが出来ます。
+<a href="https://atcoder.jp/contests/abc001/submit">提出</a> : コンテストの問題に対する、解答ソースコードを提出することが出来ます。
 </li>
 
 <li>
-<a href="/clarifications">質問</a> : コンテスト全体、および各問題に対して、コンテスト中に質問し、その回答を閲覧することが出来ます。
+<a href="https://atcoder.jp/contests/abc001/clarifications">質問</a> : コンテスト全体、および各問題に対して、コンテスト中に質問し、その回答を閲覧することが出来ます。
 </li>
 
 <li>
-<a href="/submissions/me">結果</a> : 今までに自分が提出した解答を閲覧することができます。また、コンテスト終了後には他の参加者の解答状況を閲覧することが出来ます。
+<a href="https://atcoder.jp/contests/abc001/submissions/me">結果</a> : 今までに自分が提出した解答を閲覧することができます。また、コンテスト終了後には他の参加者の解答状況を閲覧することが出来ます。
 </li>
 
 <li>
-<a href="/standings">順位表</a> : 現在のコンテストの順位表が閲覧できます。
+<a href="https://atcoder.jp/contests/abc001/standings">順位表</a> : 現在のコンテストの順位表が閲覧できます。
 </li>
 
 </ul>
@@ -103,7 +103,7 @@
 ### **その他**
 
 <section>
-<a href="/tos">利用規約</a> 、<a href="/rules">ルール</a> 、<a href="/glossary">用語集</a> 、<a href="/faq">よくある質問</a> をご一読下さいませ。
+<a href="https://atcoder.jp/contests/abc001/tos">利用規約</a> 、<a href="https://atcoder.jp/contests/abc001/rules">ルール</a> 、<a href="https://atcoder.jp/contests/abc001/glossary">用語集</a> 、<a href="https://atcoder.jp/contests/abc001/faq">よくある質問</a> をご一読下さいませ。
 
 </section>
 
