@@ -73,7 +73,7 @@
 <ul>
 
 <li>
-<a href="#">トップ</a> : 現在閲覧中のページです。
+<a href="https://atcoder.jp/contests/abc001#">トップ</a> : 現在閲覧中のページです。
 </li>
 
 <li>
