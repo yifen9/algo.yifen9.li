@@ -58,6 +58,7 @@ end
 function contest_mkpath(contests)
     map_contest = Dict()
     for contest in contests
+        contest_raw_id = contest["id"]
         try
             class, contest = contest_split(contest["id"])
             if haskey(MAP_CLASS, class)
@@ -76,10 +77,10 @@ function contest_mkpath(contests)
                     println("[INFO] Contest path created $dir_contest")
                 end
             else
-                println("[WARN] Contest match failed $(contest["id"])")
+                println("[WARN] Contest match failed $(contest_raw_id)")
             end
         catch
-            println("[WARN] Contest path create failed $(contest["id"])")
+            println("[WARN] Contest path create failed $(contest_raw_id)")
         end
     end
     println("[INFO] Contest path created")
@@ -88,6 +89,7 @@ end
 
 function task_mkpath(tasks, map_contest)
     for task in tasks
+        task_raw_id = task["id"]
         try
             contest_fullname, task_id = task_split(task["id"])
             task_label = task["problem_index"]
@@ -118,13 +120,13 @@ function task_mkpath(tasks, map_contest)
                         println("[INFO] Task path created $dir_contest")
                     end
                 else
-                    println("[WARN] Task match failed $(task["id"])")
+                    println("[WARN] Task match failed $(task_raw_id)")
                 end
             else
-                println("[WARN] Task match failed $(task["id"])")
+                println("[WARN] Task match failed $(task_raw_id)")
             end
         catch
-            println("[WARN] Task path create failed $(task["id"])")
+            println("[WARN] Task path create failed $(task_raw_id)")
         end
     end
     println("[INFO] Task path created")
@@ -136,6 +138,8 @@ function main()
 
     tasks = task_fetch()
     task_mkpath(tasks, contest_type)
+
+    println("[INFO] Path created")
 end
 
 main()
