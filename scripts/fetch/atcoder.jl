@@ -43,29 +43,48 @@ function node_to_md(node)::Vector{String}
     elseif node isa Gumbo.HTMLElement
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
+
+        children_flatted = [x for child in node.children for x in node_to_md(child)]
+
         if tag == :div && occursin("prettyprint linenums", cls)
             push!(out, "```")
-            append!(out, node_to_md.(node.children) |> reduce(vcat))
+            append!(out, children_flatted)
             push!(out, "```\n")
         elseif tag == :br
             push!(out, "\n")
+        elseif tag == :h1
+            push!(out, "# ")
+            append!(out, children_flatted)
+            push!(out, "\n")
+        elseif tag == :h2
+            push!(out, "## ")
+            append!(out, children_flatted)
+            push!(out, "\n")
         elseif tag == :h3
             push!(out, "### ")
-            append!(out, node_to_md.(node.children) |> reduce(vcat))
+            append!(out, children_flatted)
             push!(out, "\n")
         elseif tag == :h4
             push!(out, "#### ")
-            append!(out, node_to_md.(node.children) |> reduce(vcat))
+            append!(out, children_flatted)
+            push!(out, "\n")
+        elseif tag == :h5
+            push!(out, "##### ")
+            append!(out, children_flatted)
+            push!(out, "\n")
+        elseif tag == :h6
+            push!(out, "###### ")
+            append!(out, children_flatted)
             push!(out, "\n")
         elseif tag == :hr
             push!(out, "----\n")
         elseif tag == :var
             push!(out, "\$")
-            append!(out, node_to_md.(node.children) |> reduce(vcat))
+            append!(out, children_flatted)
             push!(out, "\$")
         else
             push!(out, "<$tag>")
-            append!(out, node_to_md.(node.children) |> reduce(vcat))
+            append!(out, children_flatted)
             push!(out, "</$tag>")
         end
     end
