@@ -75,10 +75,7 @@ function node_to_md(node)::Vector{String}
         elseif tag == :hr
             push!(out, "---\n")
         elseif tag == :img
-            @show get(Gumbo.attrs(node), "src", "")
-            @show DIR_BASE_ATCODER
             src = DIR_BASE_ATCODER * get(Gumbo.attrs(node), "src", "")
-            @show src
             push!(out, "<img src=\"$(src)\">\n", text, "</img>\n")
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "```\n", text, "```\n")
@@ -117,24 +114,18 @@ function main()
                     file = joinpath(task_path, "description_$lang.md")
                     if isfile(file)
                         println("[INFO] Skipped existing $file")
-                        # continue
+                        continue
                     end
-                    md = md_task_fetch(lang, task_extracted, contest_extracted)
-                    mkpath(task_path)
-                    open(file, "w") do io
-                        write(io, md)
+                    try
+                        md = md_task_fetch(lang, task_extracted, contest_extracted)
+                        mkpath(task_path)
+                        open(file, "w") do io
+                            write(io, md)
+                        end
+                        println("[INFO] Fetched $file")
+                    catch err
+                        println("[WARN] Fetch failed $file")
                     end
-                    println("[INFO] Fetched $file")
-                    # try
-                    #     md = md_task_fetch(lang, task_extracted, contest_extracted)
-                    #     mkpath(task_path)
-                    #     open(file, "w") do io
-                    #         write(io, md)
-                    #     end
-                    #     println("[INFO] Fetched $file")
-                    # catch err
-                    #     println("[WARN] Fetch failed $file")
-                    # end
                 end
                 println("[INFO] Fetched $task_path")
             end
