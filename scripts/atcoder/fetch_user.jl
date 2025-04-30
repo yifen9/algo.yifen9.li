@@ -54,6 +54,7 @@ function fetch_language()
     open(file, "w") do f
         println(f, "| Language | Count | Rank | Source |")
         println(f, "|----------|-------|------|--------|")
+        @show list
 
         i = 0
         for content in list
