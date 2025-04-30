@@ -1,7 +1,9 @@
 <div>
 
 <div>
+
 ### **問題文**
+
 <section>
 <font color="red">
 
@@ -19,9 +21,13 @@ B問題のテストケースにミスがあったので、提出されたコー�
 高橋くんが発した言葉を表す文字列 \(W\) が与えられるので、周囲の人が聞く言葉を表す文字列を出力するプログラムを書いてください。
 </section>
 </div>
+
 ---
+
 <div>
+
 ### **入力**
+
 <section>
 
 入力は以下の形式で標準入力から与えられる。
@@ -47,16 +53,22 @@ B問題のテストケースにミスがあったので、提出されたコー�
 </section>
 </div>
 <div>
+
 ### **出力**
+
 <section>
 \(W\) から母音を全て除いた文字列を \(1\) 行で出力してください。
 
 また、出力の末尾には改行を入れること。
 </section>
 </div>
+
 ---
+
 <div>
+
 ### **入力例 1**
+
 <section>
 ```
 chokudai
@@ -64,7 +76,9 @@ chokudai
 </section>
 </div>
 <div>
+
 ### **出力例 1**
+
 <section>
 ```
 chkd
@@ -76,7 +90,9 @@ chkd
 </section>
 </div>
 <div>
+
 ### **入力例 2**
+
 <section>
 ```
 okanemochi
@@ -84,7 +100,9 @@ okanemochi
 </section>
 </div>
 <div>
+
 ### **出力例 2**
+
 <section>
 ```
 knmch
@@ -95,9 +113,13 @@ knmch
 </ul>
 </section>
 </div>
+
 ---
+
 <div>
+
 ### **入力例 3**
+
 <section>
 ```
 aoki
@@ -105,7 +127,9 @@ aoki
 </section>
 </div>
 <div>
+
 ### **出力例 3**
+
 <section>
 ```
 k
@@ -118,9 +142,13 @@ k
 </ul>
 </section>
 </div>
+
 ---
+
 <div>
+
 ### **入力例 4**
+
 <section>
 ```
 mazushii
@@ -128,7 +156,9 @@ mazushii
 </section>
 </div>
 <div>
+
 ### **出力例 4**
+
 <section>
 ```
 mzsh
