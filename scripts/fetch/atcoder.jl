@@ -75,13 +75,13 @@ function node_to_md(node)::Vector{String}
         elseif tag == :img
             @show get(Gumbo.attrs(node), "src", "")
             @show DIR_BASE_ATCODER
-            src = joinpath(DIR_BASE_ATCODER, get(Gumbo.attrs(node), "src", ""))
+            src = DIR_BASE_ATCODER * get(Gumbo.attrs(node), "src", "")
             @show src
             push!(out, "<img src=\"$(src)\">\n", text, "</img>\n")
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "\n\$\$\n\n", text, "\n\$\$\n\n")
+            push!(out, "\n\\[\n\n", text, "\n\\]\n\n")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
