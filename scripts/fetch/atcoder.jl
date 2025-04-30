@@ -9,6 +9,8 @@ using Cascadia
 using Gumbo
 using HTTP
 
+const DIR_BASE_ATCODER = "https://atcoder.jp"
+
 const DIR_SRC_ATCODER = "src/atcoder"
 
 const BROWSER_HEADERS = Dict(
@@ -70,10 +72,13 @@ function node_to_md(node)::Vector{String}
             push!(out, "###### **", text, "**\n")
         elseif tag == :hr
             push!(out, "---\n")
+        elseif tag == :img
+            src = joinpath(DIR_BASE_ATCODER, get(Gumbo.attrs(node), "src", ""))
+            push!(out, "<img src=\"$(src)\">\n", text, "</img>\n")
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "<div>\n", text, "</div>\n")
+            push!(out, "\\[\n", text, "\\]\n")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
@@ -84,7 +89,7 @@ function node_to_md(node)::Vector{String}
 end
 
 function md_task_fetch(lang, task, contest)
-    url = "https://atcoder.jp/contests/$contest/tasks/$(contest)_$task?lang=$lang"
+    url = joinpath(DIR_BASE_ATCODER, "contests/$contest/tasks/$(contest)_$task?lang=$lang")
     doc = html_fetch(url)
     stmt = task_statement_extract(doc)
     lines = node_to_md(stmt)
