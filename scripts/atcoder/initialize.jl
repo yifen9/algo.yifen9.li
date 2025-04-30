@@ -31,7 +31,9 @@ function task_fetch()
 end
 
 function contest_split(contest::String)
+    @show contest
     parts = match(r"^([a-z]+)(\d+)$", contest)
+    m === nothing && return nothing
     return (parts.captures[1], parts.captures[2])
 end
 
