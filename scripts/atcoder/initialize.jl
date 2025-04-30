@@ -65,6 +65,7 @@ function contest_mkpath(contests)
             @show class
             @show contest
             if haskey(MAP_CLASS, class)
+                @show "Hello"
                 (id, label, name) = MAP_CLASS[class]
                 push!(map_contest, "$(contest["id"])" => "class")
 
