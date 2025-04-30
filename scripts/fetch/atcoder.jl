@@ -46,10 +46,16 @@ function node_to_md(node)::Vector{String}
 
         text = join([x for child in node.children for x in node_to_md(child)], "")
 
-        if tag == :code
+        if tag == :a
+            href = get(Gumbo.attrs(node), "href", "")
+            push!(out, "<a href="$(href)">\n", text, "</a>\n")
+        elseif tag == :code
             push!(out, "`", text, "`")
         elseif tag == :br
             push!(out, "\n")
+        elseif tag == :font
+            color = get(Gumbo.attrs(node), "color", "")
+            push!(out, "<font color="$(color)">\n", text, "</font>\n")
         elseif tag == :h1
             push!(out, "# **", text, "**\n")
         elseif tag == :h2
@@ -67,7 +73,7 @@ function node_to_md(node)::Vector{String}
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "\$\$\n", text, "\$\$\n")
+            push!(out, "<div>\n", text, "</div>\n")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
