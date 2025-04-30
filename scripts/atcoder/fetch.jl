@@ -26,7 +26,7 @@ function html_fetch(url::String)
     return parsehtml(String(resp.body))
 end
 
-function node_to_md(node, url)::Vector{String}
+function node_to_md(node, url, lang)::Vector{String}
     out = String[]
     if node isa Gumbo.HTMLText
         push!(out, node.text)
@@ -34,7 +34,7 @@ function node_to_md(node, url)::Vector{String}
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
 
-        text = join([x for child in node.children for x in node_to_md(child, url)], "")
+        text = join([x for child in node.children for x in node_to_md(child, url, lang)], "")
 
         if tag == :a
             href = get(Gumbo.attrs(node), "href", "")
@@ -80,6 +80,8 @@ function node_to_md(node, url)::Vector{String}
             push!(out, "\n```\n", text, "```\n")
         elseif tag == :pre
             push!(out, "\n<div>\n\n", text, "\n</div>\n")
+        elseif tag == :span && (cls != "lang-$(lang)")
+            push!(out, "")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
@@ -100,7 +102,7 @@ function md_task_fetch(lang, task, contest)
     url = joinpath(DIR_BASE_ATCODER, "contests/$contest/tasks/$(contest)_$task")
     doc = html_fetch(url * "?lang=$lang")
     stmt = task_statement_extract(doc)
-    lines = node_to_md(stmt, url)
+    lines = node_to_md(stmt, url, lang)
     return join(lines, "")
 end
 
@@ -115,7 +117,7 @@ function md_contest_fetch(lang, contest)
     url = joinpath(DIR_BASE_ATCODER, "contests/$contest")
     doc = html_fetch(url * "?lang=$lang")
     stmt = contest_statement_extract(doc)
-    lines = node_to_md(stmt, url)
+    lines = node_to_md(stmt, url, lang)
     return join(lines, "")
 end
 
@@ -134,7 +136,7 @@ function main()
                         if isdir(task_path)
                             task_extracted = split(task, "_", limit=3)[1]
 
-                            for lang in ["ja", "en"]
+                            for lang in ("ja","en")
                                 file = joinpath(task_path, "description_$lang.md")
                                 if isfile(file)
                                     println("[INFO] Skipped existing $file")
@@ -154,7 +156,7 @@ function main()
                         end
                     end
 
-                    for lang in ["ja", "en"]
+                    for lang in ("ja","en")
                         file = joinpath(contest_path, "description_$lang.md")
                         if isfile(file)
                             println("[INFO] Skipped existing $file")
