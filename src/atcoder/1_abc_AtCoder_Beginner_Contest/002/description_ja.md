@@ -29,7 +29,7 @@ B問題のテストケースにミスがあったので、提出されたコー�
 
 ### **使い方は？**
 
-<iframe src="//www.youtube.com/embed/jaQu388rHJA?feature=player_detailpage" width="100%" sandbox="allow-same-origin" onload="this.style.height=(this.contentWindow.document.body.scrollHeight+20)+'px'; frameborder="0" allowfullscreen>
+<iframe src="//www.youtube.com/embed/jaQu388rHJA?feature=player_detailpage" width="100%" height="512" frameborder="0" allowfullscreen>
 
 </iframe>
 
