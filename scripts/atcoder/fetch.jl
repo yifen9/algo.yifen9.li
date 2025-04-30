@@ -59,7 +59,7 @@ function node_to_md(node)::Vector{String}
             push!(out, "<div style=\"text-align: center;\">\n", text, "</div>\n")
         elseif tag == :font
             color = get(Gumbo.attrs(node), "color", "")
-            push!(out, "<font color=\"$(color)\">\n", text, "</font>\n")
+            push!(out, "<font color=\"$(color)\">", text, "</font>")
         elseif tag == :h1
             push!(out, "\n# **", text, "**\n\n")
         elseif tag == :h2
