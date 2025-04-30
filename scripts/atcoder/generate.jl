@@ -270,12 +270,6 @@ function contest_generate(contest::String, class::String)
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
 
-        println(f, "\n## Contest Statement")
-        println(f, "\n\n=== \"日本語\"\n\n")
-        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_ja.md"%}""")
-        println(f, "\n\n=== \"English\"\n\n")
-        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_en.md"%}""")
-
         for task in sort(readdir(dir_src))
             path_src_full = joinpath(dir_src, task)
             if isdir(path_src_full)
@@ -292,6 +286,12 @@ function contest_generate(contest::String, class::String)
                 println(f, "| [$task_info_name](./$task/index.md) | $task_info_label | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
             end
         end
+
+        println(f, "\n## Contest Statement")
+        println(f, "\n\n=== \"日本語\"\n\n")
+        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_ja.md"%}""")
+        println(f, "\n\n=== \"English\"\n\n")
+        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_en.md"%}""")
     end
 
     for task in readdir(dir_src)

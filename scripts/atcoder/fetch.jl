@@ -69,7 +69,7 @@ function node_to_md(node)::Vector{String}
             push!(out, "\n---\n")
         elseif tag == :iframe
             src = get(Gumbo.attrs(node), "src", "")
-            push!(out, "\n<iframe src=\"$(src)\">\n", text, "\n</iframe>\n")
+            push!(out, "\n<iframe src=\"$(src)\">\n width=\"100%\" frameborder=\"0\" allowfullscreen", text, "\n</iframe>\n")
         elseif tag == :img
             if occursin("http", cls)
                 src = get(Gumbo.attrs(node), "src", "")
