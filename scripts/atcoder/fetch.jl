@@ -38,15 +38,9 @@ function node_to_md(node, url)::Vector{String}
 
         if tag == :a
             href = get(Gumbo.attrs(node), "href", "")
-            @show href
-            if href == "#"
-                @show "#"
-                push!(out, "<a href=\"#\">", text, "</a>")
-            elseif occursin("http", href)
-                @show href
+            if occursin("http", href)
                 push!(out, "<a href=\"$(href)\">", text, "</a>")
             else
-                @show url * href
                 push!(out, "<a href=\"$(url * href)\">", text, "</a>")
             end
         elseif tag == :code
