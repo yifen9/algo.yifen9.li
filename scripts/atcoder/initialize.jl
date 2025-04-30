@@ -91,34 +91,49 @@ function task_mkpath(tasks, map_contest)
     for task in tasks
         task_raw_id = task["id"]
         try
+            @show task_raw_id
             contest_fullname, task_id = task_split(task_raw_id)
+            @show contest_fullname
+            @show task_id
             task_label = task["problem_index"]
             task_name = task["title"]
+            @show task_label
+            @show task_name
             
             if haskey(map_contest, contest_fullname)
                 class_label = map_contest[contest_fullname]
+                @show class_label
                 if haskey(MAP_CLASS, class_label)
                     (class_id, _, class_name) = MAP_CLASS[class_label]
+                    @show class_id
+                    @show class_name
 
                     dir_class = joinpath(DIR_SRC_ATCODER, class_info_whole(class_id, class_label, class_name))
+                    @show "Hello1"
                     isdir(dir_class) || begin
                         mkpath(dir_class)
                         println("[INFO] Class path created $dir_class")
                     end
+                    @show "Hello2"
 
                     _, contest = contest_split(contest_fullname)
+                    @show "Hello3"
                     
                     dir_contest = joinpath(dir_class, contest)
+                    @show "Hello4"
                     isdir(dir_contest) || begin
                         mkpath(dir_contest)
                         println("[INFO] Contest path created $dir_contest")
                     end
+                    @show "Hello5"
 
                     dir_task = joinpath(dir_contest, task_info_whole(task_id, task_label, task_name_clean(task_name)))
+                    @show "Hello6"
                     isdir(dir_task) || begin
                         mkpath(dir_task)
                         println("[INFO] Task path created $dir_contest")
                     end
+                    @show "Hello7"
                 else
                     println("[WARN] Task match failed $task_raw_id")
                 end
