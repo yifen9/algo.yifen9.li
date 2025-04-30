@@ -73,10 +73,12 @@ function fetch_submission()
 
 end
 
-function fetch()
+function main()
     fetch_info_basic()
 
     fetch_language()
 
     println("[INFO] Fetched user")
 end
+
+main()
