@@ -44,68 +44,34 @@ function node_to_md(node)::Vector{String}
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
 
-        children_flatted = [x for child in node.children for x in node_to_md(child)]
+        text = join([x for child in node.children for x in node_to_md(child)], "")
 
         if tag == :code
-            push!(out, "`")
-            push!(out, join(children_flatted, ""))
-            push!(out, "`")
+            push!(out, "`", text, "`")
         elseif tag == :div && occursin("prettyprint linenums", cls)
-            push!(out, "```")
-            push!(out, join(children_flatted, ""))
-            push!(out, "```\n")
-        elseif tag == :div
-            push!(out, "::: div\n")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n:::\n\n")
+            push!(out, "```", text, "```\n")
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :h1
-            push!(out, "# ")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n")
+            push!(out, "# ", text, "\n")
         elseif tag == :h2
-            push!(out, "## ")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n")
+            push!(out, "## ", text, "\n")
         elseif tag == :h3
-            push!(out, "### ")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n")
+            push!(out, "### ", text, "\n")
         elseif tag == :h4
-            push!(out, "#### ")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n")
+            push!(out, "#### ", text, "\n")
         elseif tag == :h5
-            push!(out, "##### ")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n")
+            push!(out, "##### ", text, "\n")
         elseif tag == :h6
-            push!(out, "###### ")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n")
+            push!(out, "###### ", text, "\n")
         elseif tag == :hr
             push!(out, "----\n")
         elseif tag == :ol
-            push!(out, "```")
-            push!(out, join(children_flatted, ""))
-            push!(out, "```\n")
-        elseif tag == :pre
-            push!(out, "::: pre\n")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n:::\n\n")
-        elseif tag == :section
-            push!(out, "::: section\n")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\n:::\n\n")
+            push!(out, "```", text, "```\n")
         elseif tag == :var
-            push!(out, "\$")
-            push!(out, join(children_flatted, ""))
-            push!(out, "\$")
+            push!(out, "\$", text, "\$")
         else
-            push!(out, "<$tag>\n")
-            push!(out, join(children_flatted, ""))
-            push!(out, "</$tag>\n")
+            push!(out, "<$tag>\n", text, "</$tag>\n\n")
         end
     end
     return out
