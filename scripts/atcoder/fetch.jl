@@ -28,7 +28,7 @@ function html_fetch(url::String)
     return parsehtml(String(resp.body))
 end
 
-function html_fetch_with_retry(url::String; max=4)
+function html_fetch_with_retry(url::String; max=16)
     delay = 1
     for attempt in 1:max
         try
@@ -116,7 +116,7 @@ end
 
 function md_task_fetch(lang, task, contest)
     url = joinpath(DIR_BASE_ATCODER, "contests/$contest/tasks/$(contest)_$task")
-    doc = html_fetch(url * "?lang=$lang")
+    doc = html_fetch_with_retry(url * "?lang=$lang")
     stmt = task_statement_extract(doc)
     lines = node_to_md(stmt, url, lang)
     return join(lines, "")
@@ -131,7 +131,7 @@ end
 
 function md_contest_fetch(lang, contest)
     url = joinpath(DIR_BASE_ATCODER, "contests/$contest")
-    doc = html_fetch(url * "?lang=$lang")
+    doc = html_fetch_with_retry(url * "?lang=$lang")
     stmt = contest_statement_extract(doc)
     lines = node_to_md(stmt, url, lang)
     return join(lines, "")
