@@ -48,14 +48,14 @@ function node_to_md(node)::Vector{String}
 
         if tag == :a
             href = get(Gumbo.attrs(node), "href", "")
-            push!(out, "<a href="$(href)">\n", text, "</a>\n")
+            push!(out, "<a href=\"$(href)\">\n", text, "</a>\n")
         elseif tag == :code
             push!(out, "`", text, "`")
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :font
             color = get(Gumbo.attrs(node), "color", "")
-            push!(out, "<font color="$(color)">\n", text, "</font>\n")
+            push!(out, "<font color=\"$(color)\">\n", text, "</font>\n")
         elseif tag == :h1
             push!(out, "# **", text, "**\n")
         elseif tag == :h2
