@@ -171,7 +171,6 @@ function solution_generate(file::String, task::String, contest::String, class::S
 
         println(f, "## Preview\n")
         println(f, file_preview_generate(dir_src))
-        end
     end
 
     println("[INFO] Generated $file_docs")
