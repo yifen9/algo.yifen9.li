@@ -6,8 +6,8 @@ on:
       - main
     paths:
       - 'mkdocs.yml'
-      - 'scripts/atcoder/initialize'
-      - 'scripts/atcoder/fetch_statement'
+      - 'scripts/atcoder/initialize.jl'
+      - 'scripts/atcoder/fetch_statement.jl'
   schedule:
     - cron: '0 0,6,12,18 * * *'
 
