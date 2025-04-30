@@ -274,6 +274,12 @@ function contest_generate(contest::String, class::String)
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
 
+        println(f, "\n## Contest Statement")
+        println(f, "\n\n=== \"日本語\"\n\n")
+        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_ja.md"%}""")
+        println(f, "\n\n=== \"English\"\n\n")
+        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_en.md"%}""")
+
         for task in sort(readdir(dir_src))
             task_info = task_info_extract(task)
             task_info_id = task_info.id
