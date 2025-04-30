@@ -39,26 +39,3 @@ jobs:
 
       - name: Initialize
         run: julia scripts/atcoder/initialize.jl
-
-      - name: Fetch
-        run: julia scripts/atcoder/fetch.jl
-      
-      - name: Generate
-        run: julia scripts/atcoder/generate.jl
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
-
-      - name: Install MkDocs and Plugins
-        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin ghp-import
-
-      - name: Build site and Copy src/
-        run: |
-          mkdir -p build
-          mkdocs build -d build
-          cp -r src build/src
-
-      - name: Deploy
-        run: ghp-import -n -f -p build
