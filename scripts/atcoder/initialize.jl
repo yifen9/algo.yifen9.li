@@ -31,10 +31,8 @@ function task_fetch()
 end
 
 function contest_split(contest::String)
-    @show contest
     parts = match(r"^([a-z]+)(\d+)$", contest)
-    parts === nothing && return nothing
-    return (parts.captures[1], parts.captures[2])
+    return parts === nothing ? nothing : (parts.captures[1], parts.captures[2])
 end
 
 function task_split(task::String)
@@ -47,9 +45,9 @@ function main()
     tasks = task_fetch()
 
     # 先根据 contests.json 建 class/contest 目录
-    for c in contests
+    for contest in contests
         try
-            prefix, num = contest_split(c["id"])
+            prefix, num = contest_split(contest["id"])
             if haskey(MAP_CLASS, prefix)
                 (ord, lab, name_) = MAP_CLASS[prefix]
                 class_dir = joinpath(DIR_SRC_ATCODER, @sprintf("%d_%s_%s", ord, lab, name_))
