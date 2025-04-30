@@ -31,6 +31,9 @@ jobs:
         uses: julia-actions/setup-julia@v1
         with:
           version: '1.10'
+      
+      - name: Fetch AtCoder
+        run: julia scripts/fetch/atcoder.jl
 
       - name: Generate AtCoder
         run: julia scripts/generate/atcoder.jl
