@@ -22,6 +22,7 @@ const BROWSER_HEADERS = Dict(
 )
 
 function html_fetch(url::String)
+    @show rand()
     sleep(rand())
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
     resp.status == 200 || error()

@@ -63,7 +63,7 @@ function contest_mkpath(contests)
             class, contest = contest_split(contest_raw_id)
             if haskey(MAP_CLASS, class)
                 (id, label, name) = MAP_CLASS[class]
-                push!(map_contest, contest_raw_id => "class")
+                push!(map_contest, contest_raw_id => class)
 
                 dir_class = joinpath(DIR_SRC_ATCODER, class_info_whole(id, label, name))
                 isdir(dir_class) || begin
