@@ -297,9 +297,7 @@ function contest_generate(contest::String, class::String)
     end
 
     for task in readdir(dir_src)
-        if isdir(task)
-            task_generate(task, contest, class)
-        end
+        isdir(task) && task_generate(task, contest, class)
     end
 
     println("[INFO] Generated $file_docs")
@@ -348,9 +346,7 @@ function class_generate(class::String)
     end
 
     for contest in sort(readdir(dir_src))
-        if isdir(contest)
-            contest_generate(contest, class)
-        end
+        isdir(contest) && contest_generate(contest, class)
     end
 
     println("[INFO] Generated $file_docs")
@@ -386,9 +382,9 @@ function generate()
     end
 
     for class in sort(readdir(DIR_SRC_ATCODER))
-        if isdir(class)
-            class_generate(class)
-        end
+        @show class
+        @show isdir(class)
+        isdir(class) && class_generate(class)
     end
 
     println("[INFO] Generated AtCoder pages")

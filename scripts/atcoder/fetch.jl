@@ -123,17 +123,17 @@ end
 
 function main()
     for class in readdir(DIR_SRC_ATCODER)
-        if isdir(class)
-            class_path = joinpath(DIR_SRC_ATCODER, class)
+        class_path = joinpath(DIR_SRC_ATCODER, class)
+        if isdir(class_path)
 
             for contest in readdir(class_path)
-                if isdir(contest)
-                    contest_path = joinpath(class_path, contest)
+                contest_path = joinpath(class_path, contest)
+                if isdir(contest_path)
                     contest_extracted = split(class, "_", limit=3)[2] * contest
 
                     for task in readdir(contest_path)
-                        if isdir(task)
-                            task_path = joinpath(contest_path, task)
+                        task_path = joinpath(contest_path, task)
+                        if isdir(task_path)
                             task_extracted = split(task, "_", limit=3)[1]
 
                             for lang in ["ja", "en"]
