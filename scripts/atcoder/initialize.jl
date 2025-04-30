@@ -47,6 +47,7 @@ end
 
 function contest_split(contest::String)
     parts = match(r"^([a-z]+)(\d+)$", contest)
+    @show parts
     return parts === nothing ? nothing : (parts.captures[1], parts.captures[2])
 end
 
