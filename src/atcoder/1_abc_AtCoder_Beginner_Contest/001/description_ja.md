@@ -22,7 +22,7 @@
 
 ### **使い方は？**
 
-<iframe src="//www.youtube.com/embed/jaQu388rHJA?feature=player_detailpage" width="100%" height="512" frameborder="0" allowfullscreen>
+<iframe src="//www.youtube.com/embed/jaQu388rHJA?feature=player_detailpage" width="100%" height="360" frameborder="0" allowfullscreen>
 
 </iframe>
 
