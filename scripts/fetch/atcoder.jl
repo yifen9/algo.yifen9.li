@@ -19,7 +19,7 @@ const BROWSER_HEADERS = Dict(
     ], " ")
 )
 
-function html_raw_fetch(url::String)
+function html_fetch(url::String)
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
     return parsehtml(String(resp.body))
 end
@@ -44,36 +44,24 @@ function node_to_md(node)::Vector{String}
     elseif node isa Gumbo.HTMLElement
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
-        if tag == "div" && occursin("part", cls)
-            push!(out, "::: part")
-            for c in node.children
-                append!(out, node_to_md(c))
-            end
-            push!(out, ":::")
-        elseif tag == "div" && occursin("io-style", cls)
-            push!(out, "::: io-style")
-            for c in node.children
-                append!(out, node_to_md(c))
-            end
-            push!(out, ":::")
-        elseif tag == "section"
-            push!(out, "::: section")
-            for c in node.children
-                append!(out, node_to_md(c))
-            end
-            push!(out, ":::")
-        elseif tag == "h4"
-            text = join(node_to_md.(node.children), "")
-            push!(out, "#### $text\n")
-        elseif tag == "h3"
-            text = join(node_to_md.(node.children), "")
-            push!(out, "### $text\n")
-        elseif tag == "pre"
+        if tag == :div && occursin("prettyprint linenums", cls)
             push!(out, "```")
             push!(out, join(node_to_md.(node.children), ""))
             push!(out, "```\n")
-        elseif tag == "hr"
+        elseif tag == :br
+            push!(out, "\n")
+        elseif tag == :h3
+            text = join(node_to_md.(node.children), "")
+            push!(out, "### $text\n")
+        elseif tag == :h4
+            text = join(node_to_md.(node.children), "")
+            push!(out, "#### $text\n")
+        elseif tag == :hr
             push!(out, "----\n")
+        elseif tag == :pre
+            push!(out, "```")
+            push!(out, join(node_to_md.(node.children), ""))
+            push!(out, "```\n")
         else
             @show tag
             @show cls
@@ -87,7 +75,7 @@ end
 
 function md_task_fetch(lang, task, contest)
     url = "https://atcoder.jp/contests/$contest/tasks/$(contest)_$task?lang=$lang"
-    doc = html_raw_fetch(url)
+    doc = html_fetch(url)
     stmt = task_statement_extract(doc)
     lines = node_to_md(stmt)
     return join(lines, "\n")
