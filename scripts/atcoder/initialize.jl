@@ -18,6 +18,21 @@ const MAP_CLASS = Dict(
   "ahc" => (4, "ahc", "AtCoder_Heuristic_Contest"),
 )
 
+function task_name_clean(raw::AbstractString)::String
+    s = replace(raw, r"\s+" => "_")
+    s = replace(s, r"[^\w\-]" => "")
+    s = replace(s, r"_+" => "_")
+    return strip(s, '_')
+end
+
+function class_info_whole(class_id, class_label, class_name)
+    return @sprintf("%s_%s_%s", class_id, class_label, class_name)
+end
+
+function task_info_whole(task_id, task_label, task_name)
+    return @sprintf("%s_%s_%s", task_id, task_label, task_name)
+end
+
 function contest_fetch()
     url = "https://kenkoooo.com/atcoder/resources/contests.json"
     resp = HTTP.get(url)
@@ -37,65 +52,90 @@ end
 
 function task_split(task::String)
     parts = split(task, "_")
-    return (parts[1], parts[2])
+    return (length(parts[1]) == 6 && length(parts[2]) == 1) ? (parts[1], parts[2]) : nothing
+end
+
+function contest_mkpath(contests)
+    map_contest = Dict()
+    for contest in contests
+        try
+            class, contest = contest_split(contest["id"])
+            if haskey(MAP_CLASS, class)
+                (id, label, name) = MAP_CLASS[class]
+                push!(map_contest, "$(contest["id"])" => "class")
+
+                dir_class = joinpath(DIR_SRC_ATCODER, class_info_whole(id, label, name))
+                isdir(dir_class) || begin
+                    mkpath(dir_class)
+                    println("[INFO] Class path created $dir_class")
+                end
+
+                dir_contest = joinpath(dir_class, contest)
+                isdir(dir_contest) || begin
+                    mkpath(dir_contest)
+                    println("[INFO] Contest path created $dir_contest")
+                end
+            else
+                println("[WARN] Contest match failed $(contest["id"])")
+            end
+        catch
+            println("[WARN] Contest path create failed $(contest["id"])")
+        end
+    end
+    println("[INFO] Contest path created")
+    return map_contest
+end
+
+function task_mkpath(tasks, map_contest)
+    for task in tasks
+        try
+            contest_fullname, task_id = task_split(task["id"])
+            task_label = task["problem_index"]
+            task_name = task["title"]
+            
+            if haskey(map_contest, contest_fullname)
+                class_label = map_contest[contest_fullname]
+                if haskey(MAP_CLASS, class_label)
+                    (class_id, _, class_name) = MAP_CLASS[class_label]
+
+                    dir_class = joinpath(DIR_SRC_ATCODER, class_info_whole(class_id, class_label, class_name))
+                    isdir(dir_class) || begin
+                        mkpath(dir_class)
+                        println("[INFO] Class path created $dir_class")
+                    end
+
+                    _, contest = contest_split(contest_fullname)
+                    
+                    dir_contest = joinpath(dir_class, contest)
+                    isdir(dir_contest) || begin
+                        mkpath(dir_contest)
+                        println("[INFO] Contest path created $dir_contest")
+                    end
+
+                    dir_task = joinpath(dir_contest, task_info_whole(task_id, task_label, task_name_clean(task_name)))
+                    isdir(dir_task) || begin
+                        mkpath(dir_task)
+                        println("[INFO] Task path created $dir_contest")
+                    end
+                else
+                    println("[WARN] Task match failed $(task["id"])")
+                end
+            else
+                println("[WARN] Task match failed $(task["id"])")
+            end
+        catch
+            println("[WARN] Task path create failed $(task["id"])")
+        end
+    end
+    println("[INFO] Task path created")
 end
 
 function main()
     contests = contest_fetch()
+    contest_type = contest_mkpath(contests)
+
     tasks = task_fetch()
-
-    # 先根据 contests.json 建 class/contest 目录
-    for contest in contests
-        try
-            prefix, num = contest_split(contest["id"])
-            if haskey(MAP_CLASS, prefix)
-                (ord, lab, name_) = MAP_CLASS[prefix]
-                class_dir = joinpath(DIR_SRC_ATCODER, @sprintf("%d_%s_%s", ord, lab, name_))
-                contest_dir = joinpath(class_dir, num)
-                isdir(contest_dir) || begin
-                    @printf(" ⋅ mkdir %s\n", contest_dir)
-                    mkpath(contest_dir)
-                end
-            end
-        catch
-            println("[WARN] match failed $contest")
-        end
-    end
-
-    # 再根据 problems.json 为每个题目建目录
-    # 并且把 problems.json 里的 title_ja 拿来当目录名最后一部分
-    # 先把 contest id -> ratedType 建个查表
-    contest_type = Dict(c["id"] => c["ratedType"] for c in contests)
-
-    for p in tasks
-        pid = p["id"]   # e.g. "abc001_1"
-        title = p["title"]  # 日文标题
-        # 拆出
-        cid, idx = task_split(pid)
-        if haskey(contest_type, cid)
-            prefix = contest_type[cid]
-            if haskey(MAP_CLASS, prefix)
-                (_, lab, name_) = MAP_CLASS[prefix]
-                # contest number
-                _, cnum = contest_split(cid)
-                class_dir = joinpath(DIR_SRC_ATCODER, @sprintf("%d_%s_%s", MAP_CLASS[prefix][1], lab, name_))
-                contest_dir = joinpath(class_dir, cnum)
-
-                # 构造 task 目录名： "{index}_{label}_{title}"
-                # label = number->A,B,C…
-                label = Char('A' + parse(Int, idx) - 1)
-                task_name = @sprintf("%s_%c_%s", idx, label, replace(title, '/' => "／"))
-                task_dir = joinpath(contest_dir, task_name)
-
-                isdir(task_dir) || begin
-                    @printf(" ⋅ mkdir %s\n", task_dir)
-                    mkpath(task_dir)
-                end
-            end
-        end
-    end
-
-    println("✅ done.")
+    task_mkpath(tasks, contest_type)
 end
 
 main()
