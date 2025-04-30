@@ -48,44 +48,44 @@ function node_to_md(node)::Vector{String}
 
         if tag == :div && occursin("prettyprint linenums", cls)
             push!(out, "```")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "```\n")
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :h1
             push!(out, "# ")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "\n")
         elseif tag == :h2
             push!(out, "## ")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "\n")
         elseif tag == :h3
             push!(out, "### ")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "\n")
         elseif tag == :h4
             push!(out, "#### ")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "\n")
         elseif tag == :h5
             push!(out, "##### ")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "\n")
         elseif tag == :h6
             push!(out, "###### ")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "\n")
         elseif tag == :hr
             push!(out, "----\n")
         elseif tag == :var
             push!(out, "\$")
-            append!(out, children_flatted)
+            push!(out, join(children_flatted, ""))
             push!(out, "\$")
         else
-            push!(out, "<$tag>")
-            append!(out, children_flatted)
-            push!(out, "</$tag>")
+            push!(out, "<$tag>\n")
+            push!(out, join(children_flatted, ""))
+            push!(out, "</$tag>\n")
         end
     end
     return out
