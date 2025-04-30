@@ -25,12 +25,12 @@ function fetch_info_basic()
     ac_rank_count = ac_rank["count"]
     ac_rank_rank  = ac_rank["rank"]
 
-    rated_point_sum_rank_url   = joinpath(DIR_BASE_ACP, "ac_rank?user=") * USERNAME
+    rated_point_sum_rank_url   = joinpath(DIR_BASE_ACP, "rated_point_sum_rank?user=") * USERNAME
     rated_point_sum_rank       = fetch(rated_point_sum_rank_url)
     rated_point_sum_rank_count = rated_point_sum_rank["count"]
     rated_point_sum_rank_rank  = rated_point_sum_rank["rank"]
 
-    streak_rank_url   = joinpath(DIR_BASE_ACP, "ac_rank?user=") * USERNAME
+    streak_rank_url   = joinpath(DIR_BASE_ACP, "streak_rank?user=") * USERNAME
     streak_rank       = fetch(streak_rank_url)
     streak_rank_count = streak_rank["count"]
     streak_rank_rank  = streak_rank["rank"]
@@ -47,7 +47,7 @@ function fetch_info_basic()
 end
 
 function fetch_language()
-    url  = joinpath(DIR_BASE_ACP, "ac_rank?user=") * USERNAME
+    url  = joinpath(DIR_BASE_ACP, "language_rank?user=") * USERNAME
     list = fetch(url)
 
     file = joinpath(DIR_SRC_ATCODER, "user_language.md")
