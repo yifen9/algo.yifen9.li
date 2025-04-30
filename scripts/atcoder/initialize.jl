@@ -93,7 +93,7 @@ function task_mkpath(tasks, map_contest)
         try
             contest_raw_id, task_id = task_split(task_raw_id)
             task_label = task["problem_index"]
-            task_name = task["title"]
+            task_name = task["name"]
             
             if haskey(map_contest, contest_raw_id)
                 class_label = map_contest[contest_raw_id]
