@@ -1,112 +1,165 @@
-<div>
+::: div
 
-<div>
+::: div
 #### 注意
 <p>
 <b>
 この問題は古い問題です。過去問練習をする場合は、新しいAtCoder Beginner Contestから取り組むことをお勧めしています。</b>
 </p>
 ### 問題文
-<section>
+::: section
 
 ある時刻の積雪深 $H_1$ と その $1$ 時間前の積雪深 $H_2$ が与えられます。この時、この $1$ 時間の積雪深差 $H_1$$-$$H_2$ の値を計算して出力してください。
 
-</section>
-</div>
+
+:::
+
+
+:::
+
 ----
-<div>
-<div>
+::: div
+::: div
 ### 入力
-<section>
+::: section
 
 入力は以下の形式で標準入力から与えられる。
-<pre>
+::: pre
 $H_1$
 $H_2$
-</pre>
-<ol>
-<li>
+
+:::
+
+```<li>
 $1$ 行目には、整数で、ある時刻の積雪深 $H_1\ (0≦H_1≦2,000)$ が与えられる。</li>
 <li>
 $2$ 行目には、整数で、$1$ 時間前の積雪深 $H_2\ (0≦H_2≦2,000)$ が与えられる。</li>
-</ol>
-</section>
-</div>
-<div>
+```
+
+:::
+
+
+:::
+
+::: div
 ### 出力
-<section>
+::: section
 
 積雪深差 $H_1$$-$$H_2$ の値を $1$ 行で出力せよ。
 
 また、出力の末尾には改行を入れること。
-</section>
-</div>
-</div>
+
+:::
+
+
+:::
+
+
+:::
+
 ----
-<div>
+::: div
 ### 入力例 1
-<section>
-<pre>
+::: section
+::: pre
 15
 10
-</pre>
-</section>
-</div>
-<div>
+
+:::
+
+
+:::
+
+
+:::
+
+::: div
 ### 出力例 1
-<section>
-<pre>
+::: section
+::: pre
 5
-</pre>
+
+:::
+
 <ul>
 <li>
 $15-10$$=5$</li>
 </ul>
-</section>
-</div>
+
+:::
+
+
+:::
+
 ----
-<div>
+::: div
 ### 入力例 2
-<section>
-<pre>
+::: section
+::: pre
 0
 0
-</pre>
-</section>
-</div>
-<div>
+
+:::
+
+
+:::
+
+
+:::
+
+::: div
 ### 出力例 2
-<section>
-<pre>
+::: section
+::: pre
 0
-</pre>
+
+:::
+
 <ul>
 <li>
 $0-0$$=0$</li>
 </ul>
-</section>
-</div>
+
+:::
+
+
+:::
+
 ----
-<div>
+::: div
 ### 入力例 3
-<section>
-<pre>
+::: section
+::: pre
 5
 20
-</pre>
-</section>
-</div>
-<div>
+
+:::
+
+
+:::
+
+
+:::
+
+::: div
 ### 出力例 3
-<section>
-<pre>
+::: section
+::: pre
 -15
-</pre>
+
+:::
+
 <ul>
 <li>
 $5-20$$=-15$</li>
 </ul>
-</section>
-</div>
 
-</div>
+:::
+
+
+:::
+
+
+
+:::
+
