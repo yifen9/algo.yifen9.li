@@ -50,43 +50,41 @@ function node_to_md(node)::Vector{String}
 
         if tag == :a
             href = get(Gumbo.attrs(node), "href", "")
-            push!(out, "<a href=\"$(href)\">\n", text, "</a>\n")
+            push!(out, "<a href=\"$(href)\">", text, "</a>")
         elseif tag == :code
             push!(out, "`", text, "`")
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :div && occursin("img-caption", cls)
-            push!(out, "<div style=\"text-align: center;\">\n", text, "</div>\n")
+            push!(out, "\n<div style=\"text-align: center;\">\n", text, "\n</div>\n")
         elseif tag == :font
             color = get(Gumbo.attrs(node), "color", "")
-            push!(out, "<font color=\"$(color)\">", text, "</font>")
+            push!(out, "\n<font color=\"$(color)\">", text, "</font>\n")
         elseif tag == :h1
-            push!(out, "\n# **", text, "**\n\n")
+            push!(out, "\n# **", text, "**\n")
         elseif tag == :h2
-            push!(out, "\n## **", text, "**\n\n")
+            push!(out, "\n## **", text, "**\n")
         elseif tag == :h3
-            push!(out, "\n### **", text, "**\n\n")
+            push!(out, "\n### **", text, "**\n")
         elseif tag == :h4
-            push!(out, "\n#### **", text, "**\n\n")
+            push!(out, "\n#### **", text, "**\n")
         elseif tag == :h5
-            push!(out, "\n##### **", text, "**\n\n")
+            push!(out, "\n##### **", text, "**\n")
         elseif tag == :h6
-            push!(out, "\n###### **", text, "**\n\n")
+            push!(out, "\n###### **", text, "**\n")
         elseif tag == :hr
-            push!(out, "\n---\n\n")
+            push!(out, "\n---\n")
         elseif tag == :img
             src = DIR_BASE_ATCODER * get(Gumbo.attrs(node), "src", "")
-            push!(out, "<img src=\"$(src)\">\n", text, "</img>\n")
-        elseif tag == :ol
-            push!(out, "\n<div>\n\n", text, "\n</div>\n\n")
+            push!(out, "\n<img src=\"$(src)\">\n", text, "\n</img>\n")
         elseif tag == :pre && occursin("prettyprint linenums", cls)
-            push!(out, "\n```\n", text, "```\n\n")
+            push!(out, "\n```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "\n<div>\n\n", text, "\n</div>\n\n")
+            push!(out, "\n<div>\n", text, "\n</div>\n")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
-            push!(out, "<$tag>\n", text, "\n</$tag>\n")
+            push!(out, "\n<$tag>\n", text, "\n</$tag>\n")
         end
     end
     return out
