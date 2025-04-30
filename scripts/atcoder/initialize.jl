@@ -65,21 +65,27 @@ function contest_mkpath(contests)
             @show class
             @show contest
             if haskey(MAP_CLASS, class)
-                @show "Hello"
+                @show "Hello1"
                 (id, label, name) = MAP_CLASS[class]
+                @show "Hello2"
                 push!(map_contest, "$(contest["id"])" => "class")
+                @show "Hello3"
 
                 dir_class = joinpath(DIR_SRC_ATCODER, class_info_whole(id, label, name))
+                @show "Hello4"
                 isdir(dir_class) || begin
                     mkpath(dir_class)
                     println("[INFO] Class path created $dir_class")
                 end
+                @show "Hello5"
 
                 dir_contest = joinpath(dir_class, contest)
+                @show "Hello6"
                 isdir(dir_contest) || begin
                     mkpath(dir_contest)
                     println("[INFO] Contest path created $dir_contest")
                 end
+                @show "Hello7"
             else
                 println("[WARN] Contest match failed $(contest_raw_id)")
             end
