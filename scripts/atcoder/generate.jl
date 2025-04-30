@@ -161,19 +161,16 @@ function solution_generate(file::String, task::String, contest::String, class::S
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
-        if file_ext == "md"
-            println(f, "{%include-markdown \"./../$(file)\"%}")
-        else
-            println(f, "## Basic Info", "\n")
-            println(f, "- **Type: **", file_ext)
-            println(f, "- **Task: **", task_info_name)
-            println(f, "- **[Origin]($file_origin)**", "\n")
+        println(f, "## Basic Info", "\n")
+        println(f, "- **Type: **", file_ext)
+        println(f, "- **Task: **", task_info_name)
+        println(f, "- **[Origin]($file_origin)**", "\n")
 
-            link_download = joinpath(DIR_BASE, dir_src)
-            println(f, "- **<a href=\"$link_download\" download>Download</a>**")
+        link_download = joinpath(DIR_BASE, dir_src)
+        println(f, "- **<a href=\"$link_download\" download>Download</a>**")
 
-            println(f, "## Preview\n")
-            println(f, file_preview_generate(dir_src))
+        println(f, "## Preview\n")
+        println(f, file_preview_generate(dir_src))
         end
     end
 
@@ -281,19 +278,21 @@ function contest_generate(contest::String, class::String)
         println(f, """    {%include-markdown "./../../../../$(dir_src)/description_en.md"%}""")
 
         for task in sort(readdir(dir_src))
-            task_info = task_info_extract(task)
-            task_info_id = task_info.id
-            task_info_label = task_info.label
-            task_info_name = task_info.name
+            if isdir(task)
+                task_info = task_info_extract(task)
+                task_info_id = task_info.id
+                task_info_label = task_info.label
+                task_info_name = task_info.name
 
-            path_src_full = joinpath(dir_src, task)
+                path_src_full = joinpath(dir_src, task)
 
-            item_count = dir_item_count(path_src_full)
-            size = size_human_readable(size_directory_get(path_src_full))
+                item_count = dir_item_count(path_src_full)
+                size = size_human_readable(size_directory_get(path_src_full))
 
-            task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
+                task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
-            println(f, "| [$task_info_name](./$task/index.md) | $task_info_label | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
+                println(f, "| [$task_info_name](./$task/index.md) | $task_info_label | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
+            end
         end
     end
 
@@ -335,15 +334,16 @@ function class_generate(class::String)
         println(f, "| Contest | Item | Size | Link |")
         println(f, "|---------|------|------|------|")
         for contest in sort(readdir(dir_src))
+            if isdir(contest)
+                path_src_full = joinpath(dir_src, contest)
 
-            path_src_full = joinpath(dir_src, contest)
+                item_count = dir_item_count(path_src_full)
+                size = size_human_readable(size_directory_get(path_src_full))
 
-            item_count = dir_item_count(path_src_full)
-            size = size_human_readable(size_directory_get(path_src_full))
+                contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
 
-            contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
-
-            println(f, "| [$contest](./$contest/index.md) | $item_count | $size | [$class_info_label$(contest)]($contest_link) |")
+                println(f, "| [$contest](./$contest/index.md) | $item_count | $size | [$class_info_label$(contest)]($contest_link) |")
+            end
         end
     end
 
@@ -367,19 +367,21 @@ function generate()
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
         for class in sort(readdir(DIR_SRC_ATCODER))
-            class_info = class_info_extract(class)
-            class_info_id = class_info.id
-            class_info_label = class_info.label
-            class_info_name = class_info.name
+            if isdir(class)
+                class_info = class_info_extract(class)
+                class_info_id = class_info.id
+                class_info_label = class_info.label
+                class_info_name = class_info.name
 
-            path_src_full = joinpath(DIR_SRC_ATCODER, class)
+                path_src_full = joinpath(DIR_SRC_ATCODER, class)
 
-            item_count = dir_item_count(path_src_full)
-            size = size_human_readable(size_directory_get(path_src_full))
+                item_count = dir_item_count(path_src_full)
+                size = size_human_readable(size_directory_get(path_src_full))
 
-            class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
+                class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
 
-            println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $(uppercase(class_info_label)) | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
+                println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $(uppercase(class_info_label)) | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
+            end
         end
     end
 
