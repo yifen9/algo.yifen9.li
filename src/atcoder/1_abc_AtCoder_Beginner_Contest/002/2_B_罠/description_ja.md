@@ -25,9 +25,9 @@ B問題のテストケースにミスがあったので、提出されたコー�
 <section>
 
 入力は以下の形式で標準入力から与えられる。
-<pre>
+<div>
 $W$
-</pre>
+</div>
 <ol>
 <li>
 $1$ 行目には、高橋くんの発した言葉を表す文字列 $W$ が与えられる。</li>
@@ -54,14 +54,16 @@ $W$ から母音を全て除いた文字列を $1$ 行で出力してくださ�
 <div>
 ### 入力例 1
 <section>
-```chokudai
+```
+chokudai
 ```
 </section>
 </div>
 <div>
 ### 出力例 1
 <section>
-```chkd
+```
+chkd
 ```
 <ul>
 <li>
@@ -72,14 +74,16 @@ $W$ から母音を全て除いた文字列を $1$ 行で出力してくださ�
 <div>
 ### 入力例 2
 <section>
-```okanemochi
+```
+okanemochi
 ```
 </section>
 </div>
 <div>
 ### 出力例 2
 <section>
-```knmch
+```
+knmch
 ```
 <ul>
 <li>
@@ -91,14 +95,16 @@ $W$ から母音を全て除いた文字列を $1$ 行で出力してくださ�
 <div>
 ### 入力例 3
 <section>
-```aoki
+```
+aoki
 ```
 </section>
 </div>
 <div>
 ### 出力例 3
 <section>
-```k
+```
+k
 ```
 <ul>
 <li>
@@ -112,14 +118,16 @@ $W$ から母音を全て除いた文字列を $1$ 行で出力してくださ�
 <div>
 ### 入力例 4
 <section>
-```mazushii
+```
+mazushii
 ```
 </section>
 </div>
 <div>
 ### 出力例 4
 <section>
-```mzsh
+```
+mzsh
 ```
 </section>
 </div>
