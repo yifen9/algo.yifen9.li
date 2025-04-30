@@ -5,10 +5,8 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/atcoder_user.yml'
       - 'mkdocs.yml'
-      - 'scripts/atcoder/**'
-      - 'src/atcoder/**'
+      - 'scripts/atcoder/fetch_user'
   schedule:
     - cron: '0 * * * *'
 

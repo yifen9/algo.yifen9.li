@@ -5,10 +5,9 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/atcoder_main.yml'
       - 'mkdocs.yml'
-      - 'scripts/atcoder/**'
-      - 'src/atcoder/**'
+      - 'scripts/atcoder/initialize'
+      - 'scripts/atcoder/fetch_statement'
   schedule:
     - cron: '0 0,6,12,18 * * *'
 

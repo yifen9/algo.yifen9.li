@@ -35,7 +35,7 @@ function html_fetch_with_retry(url::String; max=16)
             return html_fetch(url)
         catch
             println("[WARN] Fetch failed, [Attempt]: $attempt, [Url]: $url")
-            sleep(delay)
+            sleep(delay * (rand() + 0.5))
             delay *= 2
         end
     end
