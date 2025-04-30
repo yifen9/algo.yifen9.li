@@ -22,8 +22,8 @@
 
 ### **使い方は？**
 
-<iframe src="//www.youtube.com/embed/jaQu388rHJA?feature=player_detailpage">
- width="100%" frameborder="0" allowfullscreen
+<iframe src="//www.youtube.com/embed/jaQu388rHJA?feature=player_detailpage" width="100%" frameborder="0" allowfullscreen>
+
 </iframe>
 
 ### **プログラミングコンテストとは？**
