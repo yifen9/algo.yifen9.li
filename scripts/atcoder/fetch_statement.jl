@@ -24,7 +24,6 @@ const BROWSER_HEADERS = Dict(
 function html_fetch(url::String)
     sleep(rand() / 16)
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
-    resp.status == 200 || error()
     return parsehtml(String(resp.body))
 end
 
@@ -33,7 +32,7 @@ function html_fetch_with_retry(url::String; max=16)
     for attempt in 1:max
         try
             return html_fetch(url)
-        catch err
+        catch
             println("[WARN] Fetch failed, [Attempt]: $attempt, [File]: $file")
             sleep(delay)
             delay *= 2
@@ -137,7 +136,7 @@ function md_contest_fetch(lang, contest)
     return join(lines, "")
 end
 
-function main()
+function statement_fetch()
     for class in readdir(DIR_SRC_ATCODER)
         class_path = joinpath(DIR_SRC_ATCODER, class)
         if isdir(class_path)
@@ -154,10 +153,10 @@ function main()
 
                             for lang in ("ja","en")
                                 file = joinpath(task_path, "statement_$lang.md")
-                                if isfile(file)
-                                    println("[INFO] Skipped existing $file")
-                                    continue
-                                end
+                                # if isfile(file)
+                                #     println("[INFO] Skipped existing $file")
+                                #     continue
+                                # end
                                 try
                                     md = md_task_fetch(lang, task_extracted, contest_extracted)
                                     mkpath(task_path)
@@ -174,10 +173,10 @@ function main()
 
                     for lang in ("ja","en")
                         file = joinpath(contest_path, "statement_$lang.md")
-                        if isfile(file)
-                            println("[INFO] Skipped existing $file")
-                            continue
-                        end
+                        # if isfile(file)
+                        #     println("[INFO] Skipped existing $file")
+                        #     continue
+                        # end
                         try
                             md = md_contest_fetch(lang, contest_extracted)
                             mkpath(contest_path)
@@ -193,7 +192,11 @@ function main()
             end
         end
     end
-    println("[INFO] Fetched pages")
+    println("[INFO] Fetched statements")
+end
+
+function main()
+    statement_fetch()
 end
 
 main()
