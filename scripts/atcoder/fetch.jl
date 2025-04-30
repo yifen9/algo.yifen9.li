@@ -22,8 +22,24 @@ const BROWSER_HEADERS = Dict(
 )
 
 function html_fetch(url::String)
+    sleep(rand())
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
+    resp.status == 200 || error()
     return parsehtml(String(resp.body))
+end
+
+function html_fetch_with_retry(url::String; max=4)
+    delay = 1
+    for attempt in 1:max
+        try
+            return html_fetch(url)
+        catch err
+            println("[WARN] Fetch failed, [Attempt]: $attempt, [File]: $file")
+            sleep(delay)
+            delay *= 2
+        end
+    end
+    error()
 end
 
 function node_to_md(node, url, lang)::Vector{String}
@@ -137,11 +153,11 @@ function main()
                             task_extracted = split(task, "_", limit=3)[1]
 
                             for lang in ("ja","en")
-                                file = joinpath(task_path, "description_$lang.md")
-                                # if isfile(file)
-                                #     println("[INFO] Skipped existing $file")
-                                #     # continue
-                                # end
+                                file = joinpath(task_path, "statement_$lang.md")
+                                if isfile(file)
+                                    println("[INFO] Skipped existing $file")
+                                    continue
+                                end
                                 try
                                     md = md_task_fetch(lang, task_extracted, contest_extracted)
                                     mkpath(task_path)
@@ -157,11 +173,11 @@ function main()
                     end
 
                     for lang in ("ja","en")
-                        file = joinpath(contest_path, "description_$lang.md")
-                        # if isfile(file)
-                        #     println("[INFO] Skipped existing $file")
-                        #     # continue
-                        # end
+                        file = joinpath(contest_path, "statement_$lang.md")
+                        if isfile(file)
+                            println("[INFO] Skipped existing $file")
+                            continue
+                        end
                         try
                             md = md_contest_fetch(lang, contest_extracted)
                             mkpath(contest_path)

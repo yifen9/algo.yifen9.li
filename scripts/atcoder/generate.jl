@@ -227,9 +227,9 @@ function task_generate(task::String, contest::String, class::String)
 
         println(f, "\n## Task Statement")
         println(f, "\n\n=== \"日本語\"\n\n")
-        println(f, """    {%include-markdown "./../../../../../$(dir_src)/description_ja.md"%}""")
+        println(f, """    {%include-markdown "./../../../../../$(dir_src)/statement_ja.md"%}""")
         println(f, "\n\n=== \"English\"\n\n")
-        println(f, """    {%include-markdown "./../../../../../$(dir_src)/description_en.md"%}""")
+        println(f, """    {%include-markdown "./../../../../../$(dir_src)/statement_en.md"%}""")
     end
 
     # Also generate each solution preview
@@ -289,9 +289,9 @@ function contest_generate(contest::String, class::String)
 
         println(f, "\n## Contest Statement")
         println(f, "\n\n=== \"日本語\"\n\n")
-        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_ja.md"%}""")
+        println(f, """    {%include-markdown "./../../../../$(dir_src)/statement_ja.md"%}""")
         println(f, "\n\n=== \"English\"\n\n")
-        println(f, """    {%include-markdown "./../../../../$(dir_src)/description_en.md"%}""")
+        println(f, """    {%include-markdown "./../../../../$(dir_src)/statement_en.md"%}""")
     end
 
     for task in readdir(dir_src)
