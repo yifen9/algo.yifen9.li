@@ -66,6 +66,10 @@ function fetch_language()
     println("[INFO] Fetched language")
 end
 
+function fetch_submission()
+
+end
+
 function fetch()
     fetch_info_basic()
 
