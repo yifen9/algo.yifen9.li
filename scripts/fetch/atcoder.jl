@@ -55,6 +55,8 @@ function node_to_md(node)::Vector{String}
             push!(out, "`", text, "`")
         elseif tag == :br
             push!(out, "\n")
+        elseif tag == :div && occursin("img-caption", cls)
+            push!(out, "<div style=\"text-align: center;\">\n", text, "</div>\n")
         elseif tag == :font
             color = get(Gumbo.attrs(node), "color", "")
             push!(out, "<font color=\"$(color)\">\n", text, "</font>\n")
