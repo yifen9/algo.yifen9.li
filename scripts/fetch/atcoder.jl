@@ -36,14 +36,6 @@ function text_render(s)
     return replace(s, r"<var>(.*?)</var>"m => s"\$\\1\$")
 end
 
-function node_children_combined(node)
-    out = String[]
-    for c in node.children
-        push!(out, node_to_md(c))
-    end
-    return out
-end
-
 function node_to_md(node)::Vector{String}
     out = String[]
     if node isa Gumbo.HTMLText
@@ -53,31 +45,27 @@ function node_to_md(node)::Vector{String}
         cls = get(Gumbo.attrs(node), "class", "")
         if tag == :div && occursin("prettyprint linenums", cls)
             push!(out, "```")
-            push!(out, node_children_combined(node))
+            append!(out, node_to_md.(node.children) |> reduce(vcat))
             push!(out, "```\n")
         elseif tag == :br
             push!(out, "\n")
         elseif tag == :h3
             push!(out, "### ")
-            push!(out, node_children_combined(node))
+            append!(out, node_to_md.(node.children) |> reduce(vcat))
             push!(out, "\n")
         elseif tag == :h4
             push!(out, "#### ")
-            push!(out, node_children_combined(node))
+            append!(out, node_to_md.(node.children) |> reduce(vcat))
             push!(out, "\n")
         elseif tag == :hr
             push!(out, "----\n")
-        elseif tag == :pre
-            push!(out, "```")
-            push!(out, node_children_combined(node))
-            push!(out, "```\n")
         elseif tag == :var
             push!(out, "\$")
-            push!(out, node_children_combined(node))
+            append!(out, node_to_md.(node.children) |> reduce(vcat))
             push!(out, "\$")
         else
             push!(out, "<$tag>")
-            push!(out, node_children_combined(node))
+            append!(out, node_to_md.(node.children) |> reduce(vcat))
             push!(out, "</$tag>")
         end
     end
