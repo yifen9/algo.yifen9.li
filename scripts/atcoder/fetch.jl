@@ -116,7 +116,7 @@ function main()
                     file = joinpath(task_path, "description_$lang.md")
                     if isfile(file)
                         println("[INFO] Skipped existing $file")
-                        continue
+                        # continue
                     end
                     try
                         md = md_task_fetch(lang, task_extracted, contest_extracted)
