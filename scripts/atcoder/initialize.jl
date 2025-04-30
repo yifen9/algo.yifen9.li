@@ -68,7 +68,7 @@ function contest_mkpath(contests)
                 @show "Hello1"
                 (id, label, name) = MAP_CLASS[class]
                 @show "Hello2"
-                push!(map_contest, "$(contest["id"])" => "class")
+                push!(map_contest, contest_raw_id => "class")
                 @show "Hello3"
 
                 dir_class = joinpath(DIR_SRC_ATCODER, class_info_whole(id, label, name))
@@ -87,10 +87,10 @@ function contest_mkpath(contests)
                 end
                 @show "Hello7"
             else
-                println("[WARN] Contest match failed $(contest_raw_id)")
+                println("[WARN] Contest match failed $contest_raw_id")
             end
         catch
-            println("[WARN] Contest path create failed $(contest_raw_id)")
+            println("[WARN] Contest path create failed $contest_raw_id")
         end
     end
     println("[INFO] Contest path created")
@@ -130,13 +130,13 @@ function task_mkpath(tasks, map_contest)
                         println("[INFO] Task path created $dir_contest")
                     end
                 else
-                    println("[WARN] Task match failed $(task_raw_id)")
+                    println("[WARN] Task match failed $task_raw_id")
                 end
             else
-                println("[WARN] Task match failed $(task_raw_id)")
+                println("[WARN] Task match failed $task_raw_id")
             end
         catch
-            println("[WARN] Task path create failed $(task_raw_id)")
+            println("[WARN] Task path create failed $task_raw_id")
         end
     end
     println("[INFO] Task path created")
