@@ -71,7 +71,7 @@ function node_to_md(node)::Vector{String}
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
-            push!(out, "<$tag>\n", text, "\n</$tag>\n")
+            push!(out, "\n<$tag>\n\n", text, "\n</$tag>\n\n")
         end
     end
     return out
@@ -100,7 +100,7 @@ function main()
                 for lang in ["ja", "en"]
                     file = joinpath(task_path, "description_$lang.md")
                     if isfile(file)
-                        println("[INFO] Skipped existing $lang")
+                        println("[INFO] Skipped existing $file")
                         # continue
                     end
                     md = md_task_fetch(lang, task_extracted, contest_extracted)
