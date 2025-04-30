@@ -55,15 +55,12 @@ function fetch_language()
         println(f, "| Language | Count | Rank | Source |")
         println(f, "|----------|-------|------|--------|")
 
-        i = 0
-        for content in list
+        for index, content in list
             language = content["language"]
             count    = content["count"]
             rank     = content["rank"]
 
-            println(f, "| $language | $count | $rank | [$i]($url) |")
-
-            i += 1
+            println(f, "| $language | $count | $rank | [$index]($url) |")
         end
     end
     println("[INFO] Fetched language")
