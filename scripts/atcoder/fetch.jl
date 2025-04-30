@@ -92,7 +92,7 @@ function node_to_md(node)::Vector{String}
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
-            push!(out, "<$tag>\n", text, "</$tag>\n")
+            push!(out, "<$tag>\n", text, "\n</$tag>\n")
         end
     end
     return out
