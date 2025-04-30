@@ -17,7 +17,7 @@
 
 コンテストを通じて、プログラミングやアルゴリズムを学習するサービスです。
 
-運営会社は<a href="https://atcoder.jphttp://atcoder.co.jp">AtCoder株式会社</a>
+運営会社は<a href="https://atcoder.jp/contests/abc001/http://atcoder.co.jp">AtCoder株式会社</a>
 </section>
 
 ### **使い方は？**
@@ -32,7 +32,7 @@
 
     プログラミングコンテストとは、「与えられた問題をいかに素早く、正確に」解くことができるかを競うものです。
 
-初めて参加される方は、<a href="https://atcoder.jphttp://practice.contest.atcoder.jp/#">練習ページ</a>で練習してみましょう！
+初めて参加される方は、<a href="https://atcoder.jp/contests/abc001/http://practice.contest.atcoder.jp/#">練習ページ</a>で練習してみましょう！
 
 </section>
 
@@ -48,7 +48,7 @@
 
 <section>
 
-    コンテストのルールは <a href="https://atcoder.jp/rules">ルール</a> を参照してください。
+    コンテストのルールは <a href="/rules">ルール</a> を参照してください。
 このコンテストのペナルティは
 <font color="red">5分</font>
 です。
@@ -58,7 +58,7 @@
 ### **過去問＆その他コンテスト**
 
 <section>
-<a href="https://atcoder.jphttp://www.atcoder.jp">AtCoder</a> のページから参照できます。
+<a href="https://atcoder.jp/contests/abc001/http://www.atcoder.jp">AtCoder</a> のページから参照できます。
 
     形式に慣れるためにも、一度解いてみることをおすすめします。
 
@@ -73,27 +73,27 @@
 <ul>
 
 <li>
-<a href="https://atcoder.jp#">トップ</a> : 現在閲覧中のページです。
+<a href="https://atcoder.jp/contests/abc001/#">トップ</a> : 現在閲覧中のページです。
 </li>
 
 <li>
-<a href="https://atcoder.jp/assignments">問題</a> : コンテストの問題の閲覧ができます。
+<a href="/assignments">問題</a> : コンテストの問題の閲覧ができます。
 </li>
 
 <li>
-<a href="https://atcoder.jp/submit">提出</a> : コンテストの問題に対する、解答ソースコードを提出することが出来ます。
+<a href="/submit">提出</a> : コンテストの問題に対する、解答ソースコードを提出することが出来ます。
 </li>
 
 <li>
-<a href="https://atcoder.jp/clarifications">質問</a> : コンテスト全体、および各問題に対して、コンテスト中に質問し、その回答を閲覧することが出来ます。
+<a href="/clarifications">質問</a> : コンテスト全体、および各問題に対して、コンテスト中に質問し、その回答を閲覧することが出来ます。
 </li>
 
 <li>
-<a href="https://atcoder.jp/submissions/me">結果</a> : 今までに自分が提出した解答を閲覧することができます。また、コンテスト終了後には他の参加者の解答状況を閲覧することが出来ます。
+<a href="/submissions/me">結果</a> : 今までに自分が提出した解答を閲覧することができます。また、コンテスト終了後には他の参加者の解答状況を閲覧することが出来ます。
 </li>
 
 <li>
-<a href="https://atcoder.jp/standings">順位表</a> : 現在のコンテストの順位表が閲覧できます。
+<a href="/standings">順位表</a> : 現在のコンテストの順位表が閲覧できます。
 </li>
 
 </ul>
@@ -103,7 +103,7 @@
 ### **その他**
 
 <section>
-<a href="https://atcoder.jp/tos">利用規約</a> 、<a href="https://atcoder.jp/rules">ルール</a> 、<a href="https://atcoder.jp/glossary">用語集</a> 、<a href="https://atcoder.jp/faq">よくある質問</a> をご一読下さいませ。
+<a href="/tos">利用規約</a> 、<a href="/rules">ルール</a> 、<a href="/glossary">用語集</a> 、<a href="/faq">よくある質問</a> をご一読下さいませ。
 
 </section>
 

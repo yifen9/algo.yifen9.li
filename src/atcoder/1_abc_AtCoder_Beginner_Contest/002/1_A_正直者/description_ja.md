@@ -18,7 +18,7 @@
 <font color="red">A問題では、提出した結果、全てのテストに対する判定がWAまたはREになってしまった場合のみ、質問タブにて可能な限りのトラブルシューティングを受け付けます。
 
 提出結果のURLを添えて、お気軽にご質問ください。
-<a href="https://atcoder.jphttp://abc002.contest.atcoder.jp/faq">よくある質問</a>も、併せてご活用ください。</font>
+<a href="https://atcoder.jp/contests/abc002/tasks/abc002_1/http://abc002.contest.atcoder.jp/faq">よくある質問</a>も、併せてご活用ください。</font>
 
 </section>
 
