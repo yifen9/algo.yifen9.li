@@ -67,14 +67,13 @@ $
 
 入力は以下の形式で標準入力から与えられる。
 
-```
+<pre>
 $
 W
 $
 
 
-```
-
+</pre>
 <ol>
 <li>
 $
@@ -158,11 +157,10 @@ $
 
 
 <section>
-```
+<pre>
 chokudai
 
-```
-
+</pre>
 </section>
 </div>
 <div>
@@ -171,11 +169,10 @@ chokudai
 
 
 <section>
-```
+<pre>
 chkd
 
-```
-
+</pre>
 <ul>
 <li>
 <code>
@@ -216,11 +213,10 @@ chkd
 
 
 <section>
-```
+<pre>
 okanemochi
 
-```
-
+</pre>
 </section>
 </div>
 <div>
@@ -229,11 +225,10 @@ okanemochi
 
 
 <section>
-```
+<pre>
 knmch
 
-```
-
+</pre>
 <ul>
 <li>
 <code>
@@ -276,11 +271,10 @@ knmch
 
 
 <section>
-```
+<pre>
 aoki
 
-```
-
+</pre>
 </section>
 </div>
 <div>
@@ -289,11 +283,10 @@ aoki
 
 
 <section>
-```
+<pre>
 k
 
-```
-
+</pre>
 <ul>
 <li>
 <code>
@@ -347,11 +340,10 @@ $
 
 
 <section>
-```
+<pre>
 mazushii
 
-```
-
+</pre>
 </section>
 </div>
 <div>
@@ -360,11 +352,10 @@ mazushii
 
 
 <section>
-```
+<pre>
 mzsh
 
-```
-
+</pre>
 </section>
 </div>
 </div>
