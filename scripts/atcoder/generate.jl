@@ -278,13 +278,12 @@ function contest_generate(contest::String, class::String)
         println(f, """    {%include-markdown "./../../../../$(dir_src)/description_en.md"%}""")
 
         for task in sort(readdir(dir_src))
-            if isdir(task)
+            path_src_full = joinpath(dir_src, task)
+            if isdir(path_src_full)
                 task_info = task_info_extract(task)
                 task_info_id = task_info.id
                 task_info_label = task_info.label
                 task_info_name = task_info.name
-
-                path_src_full = joinpath(dir_src, task)
 
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
@@ -297,7 +296,7 @@ function contest_generate(contest::String, class::String)
     end
 
     for task in readdir(dir_src)
-        isdir(task) && task_generate(task, contest, class)
+        isdir(joinpath(dir_src, task)) && task_generate(task, contest, class)
     end
 
     println("[INFO] Generated $file_docs")
@@ -332,9 +331,8 @@ function class_generate(class::String)
         println(f, "| Contest | Item | Size | Link |")
         println(f, "|---------|------|------|------|")
         for contest in sort(readdir(dir_src))
-            if isdir(contest)
-                path_src_full = joinpath(dir_src, contest)
-
+            path_src_full = joinpath(dir_src, contest)
+            if isdir(path_src_full)
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
 
@@ -346,7 +344,7 @@ function class_generate(class::String)
     end
 
     for contest in sort(readdir(dir_src))
-        isdir(contest) && contest_generate(contest, class)
+        isdir(joinpath(dir_src, contest)) && contest_generate(contest, class)
     end
 
     println("[INFO] Generated $file_docs")
@@ -363,13 +361,12 @@ function generate()
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
         for class in sort(readdir(DIR_SRC_ATCODER))
-            if isdir(class)
+            path_src_full = joinpath(DIR_SRC_ATCODER, class)
+            if isdir(path_src_full)
                 class_info = class_info_extract(class)
                 class_info_id = class_info.id
                 class_info_label = class_info.label
                 class_info_name = class_info.name
-
-                path_src_full = joinpath(DIR_SRC_ATCODER, class)
 
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
@@ -382,9 +379,7 @@ function generate()
     end
 
     for class in sort(readdir(DIR_SRC_ATCODER))
-        @show class
-        @show isdir(class)
-        isdir(class) && class_generate(class)
+        isdir(joinpath(dir_src, class)) && class_generate(class)
     end
 
     println("[INFO] Generated AtCoder pages")
