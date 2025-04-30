@@ -26,18 +26,6 @@ function html_fetch(url::String)
     return parsehtml(String(resp.body))
 end
 
-function task_statement_extract(doc)
-    sel = Selector("#task-statement")
-    elems = eachmatch(sel, doc.root)
-    isempty(elems) && error("find failed #task-statement")
-    return first(elems)
-end
-
-function text_render(s)
-    s = replace(s, "\\"=>"\\\\")
-    return replace(s, r"<var>(.*?)</var>"m => s"\$\\1\$")
-end
-
 function node_to_md(node)::Vector{String}
     out = String[]
     if node isa Gumbo.HTMLText
@@ -80,7 +68,7 @@ function node_to_md(node)::Vector{String}
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "\n```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "\n<div>\n", text, "\n</div>\n")
+            push!(out, "\n<div>\n\n", text, "\n</div>\n")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
@@ -90,10 +78,32 @@ function node_to_md(node)::Vector{String}
     return out
 end
 
+function task_statement_extract(doc)
+    sel = Selector("#task-statement")
+    elems = eachmatch(sel, doc.root)
+    isempty(elems) && error("find failed #task-statement")
+    return first(elems)
+end
+
 function md_task_fetch(lang, task, contest)
     url = joinpath(DIR_BASE_ATCODER, "contests/$contest/tasks/$(contest)_$task?lang=$lang")
     doc = html_fetch(url)
     stmt = task_statement_extract(doc)
+    lines = node_to_md(stmt)
+    return join(lines, "")
+end
+
+function contest_statement_extract(doc)
+    sel = Selector("#contest-statement")
+    elems = eachmatch(sel, doc.root)
+    isempty(elems) && error("find failed #contest-statement")
+    return first(elems)
+end
+
+function md_contest_fetch(lang, contest)
+    url = joinpath(DIR_BASE_ATCODER, "contests/$contest?lang=$lang")
+    doc = html_fetch(url)
+    stmt = contest_statement_extract(doc)
     lines = node_to_md(stmt)
     return join(lines, "")
 end
@@ -126,6 +136,24 @@ function main()
                     catch err
                         println("[WARN] Fetch failed $file")
                     end
+                end
+            end
+
+            for lang in ["ja", "en"]
+                file = joinpath(contest_path, "description_$lang.md")
+                if isfile(file)
+                    println("[INFO] Skipped existing $file")
+                    # continue
+                end
+                try
+                    md = md_contest_fetch(lang, contest_extracted)
+                    mkpath(contest_path)
+                    open(file, "w") do io
+                        write(io, md)
+                    end
+                    println("[INFO] Fetched $file")
+                catch err
+                    println("[WARN] Fetch failed $file")
                 end
             end
         end
