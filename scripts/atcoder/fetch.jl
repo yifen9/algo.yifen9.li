@@ -45,6 +45,7 @@ function node_to_md(node)::Vector{String}
     elseif node isa Gumbo.HTMLElement
         tag = Gumbo.tag(node)
         cls = get(Gumbo.attrs(node), "class", "")
+        @show Gumbo.attrs(node)
 
         text = join([x for child in node.children for x in node_to_md(child)], "")
 
@@ -80,8 +81,9 @@ function node_to_md(node)::Vector{String}
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "```\n", text, "```\n")
         elseif tag == :pre
-            push!(out, "\n\\[\n\n", text, "\n\\]\n\n")
+            push!(out, "\n<div>\n\n", text, "\n</div>\n\n")
         elseif tag == :var
+            @show text
             push!(out, "\\(", text, "\\)")
         else
             push!(out, "<$tag>\n", text, "</$tag>\n")
