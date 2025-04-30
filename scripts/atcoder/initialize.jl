@@ -117,8 +117,8 @@ function task_mkpath(tasks, map_contest)
                         println("[INFO] Class path created $dir_class")
                     end
                     @show "Hello2"
-                    @show typeof(contest_raw_id)
-                    _, contest = contest_split(contest_raw_id)
+                    @show typeof(String(contest_raw_id))
+                    _, contest = contest_split(String(contest_raw_id))
                     @show "Hello3"
                     
                     dir_contest = joinpath(dir_class, contest)
