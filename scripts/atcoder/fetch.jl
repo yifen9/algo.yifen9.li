@@ -38,11 +38,15 @@ function node_to_md(node, url)::Vector{String}
 
         if tag == :a
             href = get(Gumbo.attrs(node), "href", "")
+            @show href
             if href == "#"
+                @show "#"
                 push!(out, "<a href=\"#\">", text, "</a>")
             elseif occursin("http", href)
-                push!(out, "<a href=\"$(get(Gumbo.attrs(node), "href", ""))\">", text, "</a>")
+                @show href
+                push!(out, "<a href=\"$(href)\">", text, "</a>")
             else
+                @show joinpath(url, href)
                 push!(out, "<a href=\"$(joinpath(url, href))\">", text, "</a>")
             end
         elseif tag == :code
@@ -72,12 +76,11 @@ function node_to_md(node, url)::Vector{String}
             src = get(Gumbo.attrs(node), "src", "")
             push!(out, "\n<iframe src=\"$(src)\" width=\"100%\" height=\"360\" frameborder=\"0\" allowfullscreen>\n", text, "\n</iframe>\n")
         elseif tag == :img
-            if occursin("http", cls)
-                src = get(Gumbo.attrs(node), "src", "")
+            src = get(Gumbo.attrs(node), "src", "")
+            if occursin("http", src)
                 push!(out, "\n<img src=\"$(src)\">\n", text, "\n</img>\n")
             else
-                src = DIR_BASE_ATCODER * get(Gumbo.attrs(node), "src", "")
-                push!(out, "\n<img src=\"$(src)\">\n", text, "\n</img>\n")
+                push!(out, "\n<img src=\"$(DIR_BASE_ATCODER * src)\">\n", text, "\n</img>\n")
             end
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "\n```\n", text, "```\n")
