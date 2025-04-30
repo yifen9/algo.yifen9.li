@@ -48,15 +48,19 @@ function main()
 
     # 先根据 contests.json 建 class/contest 目录
     for c in contests
-        prefix, num = contest_split(c["id"])
-        if haskey(MAP_CLASS, prefix)
-            (ord, lab, name_) = MAP_CLASS[prefix]
-            class_dir = joinpath(DIR_SRC_ATCODER, @sprintf("%d_%s_%s", ord, lab, name_))
-            contest_dir = joinpath(class_dir, num)
-            isdir(contest_dir) || begin
-                @printf(" ⋅ mkdir %s\n", contest_dir)
-                mkpath(contest_dir)
+        try
+            prefix, num = contest_split(c["id"])
+            if haskey(MAP_CLASS, prefix)
+                (ord, lab, name_) = MAP_CLASS[prefix]
+                class_dir = joinpath(DIR_SRC_ATCODER, @sprintf("%d_%s_%s", ord, lab, name_))
+                contest_dir = joinpath(class_dir, num)
+                isdir(contest_dir) || begin
+                    @printf(" ⋅ mkdir %s\n", contest_dir)
+                    mkpath(contest_dir)
+                end
             end
+        catch
+            println("[WARN] match failed $contest")
         end
     end
 
