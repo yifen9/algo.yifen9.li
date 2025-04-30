@@ -93,16 +93,16 @@ function task_mkpath(tasks, map_contest)
         task_raw_id = task["id"]
         try
             @show task_raw_id
-            contest_fullname, task_id = task_split(task_raw_id)
-            @show contest_fullname
+            contest_raw_id, task_id = task_split(task_raw_id)
+            @show contest_raw_id
             @show task_id
             task_label = task["problem_index"]
             task_name = task["title"]
             @show task_label
             @show task_name
             
-            if haskey(map_contest, contest_fullname)
-                class_label = map_contest[contest_fullname]
+            if haskey(map_contest, contest_raw_id)
+                class_label = map_contest[contest_raw_id]
                 @show class_label
                 if haskey(MAP_CLASS, class_label)
                     (class_id, _, class_name) = MAP_CLASS[class_label]
@@ -117,7 +117,7 @@ function task_mkpath(tasks, map_contest)
                     end
                     @show "Hello2"
 
-                    _, contest = contest_split(contest_fullname)
+                    class_label, contest = contest_split(contest_raw_id)
                     @show "Hello3"
                     
                     dir_contest = joinpath(dir_class, contest)
