@@ -103,7 +103,7 @@ function md_task_fetch(lang, task, contest)
     doc = html_fetch(url)
     stmt = task_statement_extract(doc)
     lines = node_to_md(stmt)
-    return join(lines, "\n")
+    return join(lines, "")
 end
 
 function main()
