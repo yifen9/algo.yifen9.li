@@ -60,7 +60,10 @@ function contest_mkpath(contests)
     for contest in contests
         contest_raw_id = contest["id"]
         try
-            class, contest = contest_split(contest["id"])
+            @show contest_raw_id
+            class, contest = contest_split(contest_raw_id)
+            @show class
+            @show contest
             if haskey(MAP_CLASS, class)
                 (id, label, name) = MAP_CLASS[class]
                 push!(map_contest, "$(contest["id"])" => "class")
@@ -91,7 +94,7 @@ function task_mkpath(tasks, map_contest)
     for task in tasks
         task_raw_id = task["id"]
         try
-            contest_fullname, task_id = task_split(task["id"])
+            contest_fullname, task_id = task_split(task_raw_id)
             task_label = task["problem_index"]
             task_name = task["title"]
             
