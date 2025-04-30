@@ -37,16 +37,13 @@ function node_to_md(node, url)::Vector{String}
         text = join([x for child in node.children for x in node_to_md(child, url)], "")
 
         if tag == :a
-            @show cls
-            @show occursin("http", cls)
-            if cls == "#"
+            href = get(Gumbo.attrs(node), "href", "")
+            if href == "#"
                 push!(out, "<a href=\"#\">", text, "</a>")
-            elseif occursin("http", cls)
-                href = get(Gumbo.attrs(node), "href", "")
-                push!(out, "<a href=\"$(href)\">", text, "</a>")
+            elseif occursin("http", href)
+                push!(out, "<a href=\"$(get(Gumbo.attrs(node), "href", ""))\">", text, "</a>")
             else
-                href = joinpath(url, get(Gumbo.attrs(node), "href", ""))
-                push!(out, "<a href=\"$(href)\">", text, "</a>")
+                push!(out, "<a href=\"$(joinpath(url, href))\">", text, "</a>")
             end
         elseif tag == :code
             push!(out, "`", text, "`")
