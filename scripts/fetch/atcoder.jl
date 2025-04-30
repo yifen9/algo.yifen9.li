@@ -65,7 +65,9 @@ function node_to_md(node)::Vector{String}
         elseif tag == :hr
             push!(out, "----\n")
         elseif tag == :pre && occursin("prettyprint linenums", cls)
-            push!(out, "```", text, "```\n")
+            push!(out, "```\n", text, "```\n")
+        elseif tag == :pre
+            push!(out, "<div>\n", text, "</div>\n")
         elseif tag == :var
             push!(out, "\$", text, "\$")
         else
