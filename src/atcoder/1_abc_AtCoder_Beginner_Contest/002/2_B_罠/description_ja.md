@@ -70,9 +70,13 @@ B問題のテストケースにミスがあったので、提出されたコー�
 ### **入力例 1**
 
 <section>
+
 ```
+
 chokudai
+
 ```
+
 </section>
 </div>
 <div>
@@ -80,9 +84,13 @@ chokudai
 ### **出力例 1**
 
 <section>
+
 ```
+
 chkd
+
 ```
+
 <ul>
 <li>
 `chokudai` から `a`、`i`、`u`、`e`、`o` を除くと `chkd` になります</li>
@@ -94,9 +102,13 @@ chkd
 ### **入力例 2**
 
 <section>
+
 ```
+
 okanemochi
+
 ```
+
 </section>
 </div>
 <div>
@@ -104,9 +116,13 @@ okanemochi
 ### **出力例 2**
 
 <section>
+
 ```
+
 knmch
+
 ```
+
 <ul>
 <li>
 `okanemochi` から `a`、`i`、`u`、`e`、`o` を除くと `knmch` になります</li>
@@ -121,9 +137,13 @@ knmch
 ### **入力例 3**
 
 <section>
+
 ```
+
 aoki
+
 ```
+
 </section>
 </div>
 <div>
@@ -131,9 +151,13 @@ aoki
 ### **出力例 3**
 
 <section>
+
 ```
+
 k
+
 ```
+
 <ul>
 <li>
 `aoki` から `a`、`i`、`u`、`e`、`o` を除くと `k` になります</li>
@@ -150,9 +174,13 @@ k
 ### **入力例 4**
 
 <section>
+
 ```
+
 mazushii
+
 ```
+
 </section>
 </div>
 <div>
@@ -160,9 +188,13 @@ mazushii
 ### **出力例 4**
 
 <section>
+
 ```
+
 mzsh
+
 ```
+
 </section>
 </div>
 

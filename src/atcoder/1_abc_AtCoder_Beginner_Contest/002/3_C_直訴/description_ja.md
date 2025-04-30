@@ -87,9 +87,13 @@
 ### **入力例 1**
 
 <section>
+
 ```
+
 1 0 3 0 2 5
+
 ```
+
 </section>
 </div>
 <div>
@@ -97,9 +101,13 @@
 ### **出力例 1**
 
 <section>
+
 ```
+
 5.0
+
 ```
+
 <ul>
 <div style="text-align: center;">
 <img src="https://atcoder.jp/img/abc/002/3_1.png">
@@ -118,9 +126,13 @@
 ### **入力例 2**
 
 <section>
+
 ```
+
 -1 -2 3 4 5 6
+
 ```
+
 </section>
 </div>
 <div>
@@ -128,9 +140,13 @@
 ### **出力例 2**
 
 <section>
+
 ```
+
 2.0
+
 ```
+
 </section>
 </div>
 
@@ -141,9 +157,13 @@
 ### **入力例 3**
 
 <section>
+
 ```
+
 298 520 903 520 4 663
+
 ```
+
 </section>
 </div>
 <div>
@@ -151,9 +171,13 @@
 ### **出力例 3**
 
 <section>
+
 ```
+
 43257.5
+
 ```
+
 </section>
 </div>
 
