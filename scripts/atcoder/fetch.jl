@@ -80,7 +80,15 @@ function node_to_md(node)::Vector{String}
         elseif tag == :pre && occursin("prettyprint linenums", cls)
             push!(out, "\n```\n", text, "```\n\n")
         elseif tag == :pre
-            push!(out, "\n<div>\n\n", text, "\n</div>\n\n")
+            has_var = any(c -> c isa Gumbo.HTMLElement && Gumbo.tag(c) == :var, node.children)
+            if has_var
+                # display-math
+                push!(out, "\n$$\n", text, "$$\n\n")
+            else
+                # code block
+                push!(out, "\n```\n", text, "```\n\n")
+            end
+            # push!(out, "\n<div>\n\n", text, "\n</div>\n\n")
         elseif tag == :var
             push!(out, "\\(", text, "\\)")
         else
