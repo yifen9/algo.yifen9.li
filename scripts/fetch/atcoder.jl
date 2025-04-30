@@ -76,7 +76,9 @@ function node_to_md(node)::Vector{String}
             append!(out, node_children_combined(node))
             push!(out, "$")
         else
+            push!(out, "<$tag>")
             append!(out, node_children_combined(node))
+            push!(out, "</$tag>")
         end
     end
     return out
