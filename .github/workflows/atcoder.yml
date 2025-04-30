@@ -37,14 +37,11 @@ jobs:
       #     sudo apt-get update
       #     sudo apt-get install -y pandoc
 
+      - name: Initialize
+        run: julia scripts/atcoder/initialize.jl
+
       - name: Fetch
         run: julia scripts/atcoder/fetch.jl
-
-      - name: Commit fetch
-        run: |
-          git add src/
-          git commit -m "chore: update fetched data (submission + description)" || echo "No changes to commit"
-          git push
       
       - name: Generate
         run: julia scripts/atcoder/generate.jl
