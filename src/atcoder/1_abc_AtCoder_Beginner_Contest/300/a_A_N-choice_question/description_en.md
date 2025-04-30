@@ -6,7 +6,7 @@
 <span>
 
 <p>
-Score : $100$ points
+Score : $100$points
 </p>
 
 <div>
@@ -16,15 +16,13 @@ Score : $100$ points
 ### **Problem Statement**
 
 <p>
-Given integers $A$ and $B$, find $A+B$.
-
+Given integers $A$and $B$, find $A+B$.
 This is a $N$-choice problem; the $i$-th choice is $C_i$.
-
 Print the 
 <strong>
 index
 </strong>
- of the correct choice.
+of the correct choice.
 </p>
 
 </section>
@@ -56,11 +54,11 @@ $1 \le C_i \le 2000$
 </li>
 
 <li>
-$C_i$ are pairwise distinct.  In other words, no two choices have the same value.
+$C_i$are pairwise distinct.  In other words, no two choices have the same value.
 </li>
 
 <li>
-There is exactly one $i$ such that $A+B=C_i$.  In other words, there is always a unique correct choice.
+There is exactly one $i$such that $A+B=C_i$.  In other words, there is always a unique correct choice.
 </li>
 
 </ul>
@@ -85,9 +83,7 @@ The input is given from Standard Input in the following format:
 
 <div>
 
-$N$ $A$ $B$
-$C_1$ $C_2$ $\dots$ $C_N$
-
+$N$$A$$B$$C_1$$C_2$$\dots$$C_N$
 </div>
 
 </section>
@@ -143,10 +139,8 @@ Print the answer as an integer.
 
 <p>
 We have $125+175 = 300$.
-
 The first, second, and third choices are $200$, $300$, and $400$, respectively.
-
-Thus, the $2$-nd choice is correct, so $2$ should be printed.
+Thus, the $2$-nd choice is correct, so $2$should be printed.
 </p>
 
 </section>
