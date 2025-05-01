@@ -57,7 +57,7 @@ jobs:
           python-version: 3.x
 
       - name: Install MkDocs
-        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin
+        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-exclude mkdocs-include-markdown-plugin
       
       - name: Link /src
         run: ln -s ../src docs/src
