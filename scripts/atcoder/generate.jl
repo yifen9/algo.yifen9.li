@@ -384,12 +384,6 @@ function generate()
     file_user_basic      = joinpath(DIR_SRC_ATCODER, "user_basic.md")
     file_user_language   = joinpath(DIR_SRC_ATCODER, "user_language.md")
     file_user_submission = joinpath(DIR_SRC_ATCODER, "user_submission.md")
-    @show file_user_basic
-    @show file_user_language
-    @show file_user_submission
-    @show isfile(file_user_basic)
-    @show isfile(file_user_language)
-    @show isfile(file_user_submission)
     if isfile(file_user_basic) && isfile(file_user_language) && isfile(file_user_submission)
         open(file, "a") do f
             println(f, "\n## User Info\n")
@@ -442,7 +436,7 @@ function nav_nested_build(path::String)
                             task_info = task_info_extract(task_name)
                             task_info_id = task_info.id
                             task_info_label = task_info.label
-                            task_info_name = task_info.name
+                            task_info_name = name_clean(task_info.name)
 
                             task_children = Vector{Any}()
                             sols = readdir(task; join=true, sort=true)

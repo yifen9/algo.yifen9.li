@@ -9,7 +9,7 @@ using HTTP
 using JSON
 using Printf
 
-const USERNAME = "kenkoooo"
+const USERNAME = "AntoLee"
 
 const DIR_BASE_ACP = "https://kenkoooo.com/atcoder/atcoder-api/v3/user"
 
@@ -158,10 +158,14 @@ function fetch_submission()
 end
 
 function main()
-    fetch_info_basic()
-    fetch_language()
-    fetch_submission()
-    println("[INFO] Fetched user")
+    try
+        fetch_info_basic()
+        fetch_language()
+        fetch_submission()
+        println("[INFO] Fetched user")
+    catch
+        println("[WARN] Fetch failed user: $USERNAME")
+    end
 end
 
 main()
