@@ -98,14 +98,11 @@ jobs:
     steps:
       - name: Download Artifact for Backup
         uses: actions/download-artifact@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: build
           path: build
-      
-      - name: Setup Git
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -118,3 +115,16 @@ jobs:
       - name: Backup to gh-pages
         run: |
           ghp-import -n -f -p -b gh-pages build
+    
+  delete:
+    needs:
+      - generate
+      - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete Artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: |
+            build
+            github-pages
