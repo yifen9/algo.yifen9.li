@@ -70,11 +70,11 @@ function fetch_submission()
 
     file = joinpath(DIR_SRC_ATCODER, "user_submission.md")
     open(file, "w") do f
-        println(f, "| [ID]($url) | Time | Contest | Task | Language | Result | Point | Length | Execution Time |")
-        println(f, "|------------|------|---------|------|----------|--------|-------|--------|----------------|")
+        println(f, "| [ID]($url) | Date | Time | Contest | Task | Language | Result | Point | Length | Execution Time |")
+        println(f, "|------------|------|------|---------|------|----------|--------|-------|--------|----------------|")
         for content in list
             id             = content["id"]
-            time           = content["epoch_second"]
+            epoch_second   = content["epoch_second"]
             contest        = content["contest_id"]
             task           = content["problem_id"]
             language       = content["language"]
@@ -82,7 +82,12 @@ function fetch_submission()
             point          = content["point"]
             length         = content["length"]
             execution_time = content["execution_time"]
-            println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $(Dates.epochms2datetime(time * 1000)) | $contest | $task | $language | $result | $point | $length Byte | $execution_time ms |")
+
+            date_time = DateTime(1970,1,1) + Millisecond(epoch_second * 1000)
+            date = Dates.format(date_time, "yyyy-mm-dd")
+            time = Dates.format(date_time, "HH:MM:SS")
+
+            println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $date | $time | $contest | $task | $language | $result | $point | $length Byte | $execution_time ms |")
         end
     end
     println("[INFO] Fetched submission")
