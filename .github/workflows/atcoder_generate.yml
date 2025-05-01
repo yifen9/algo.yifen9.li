@@ -116,15 +116,24 @@ jobs:
         run: |
           ghp-import -n -f -p -b gh-pages build
     
-  delete:
+  delete-deploy:
     needs:
-      - generate
       - deploy
     runs-on: ubuntu-latest
     steps:
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v5
         with:
-          name: |
+          name:
             build
+  
+  delete-backup:
+    needs:
+      - backup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete Artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name:
             github-pages
