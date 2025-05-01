@@ -364,7 +364,7 @@ function generate()
         file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.txt")
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
             sdt = Dates.DateTime(split(read(file_fetch_statement, String), '\n', keepempty=false)[1])
-            udt = Dates.DateTime(split(read(file_fetch_user, String), '\n', keepempty=false)[1])
+            udt = Dates.DateTime(split(read(file_fetch_user,      String), '\n', keepempty=false)[1])
 
             st = Dates.Time(Dates.Hour(sdt), Dates.Minute(sdt), Dates.Second(sdt))
             ut = Dates.Time(Dates.Hour(udt), Dates.Minute(udt), Dates.Second(udt))
