@@ -384,6 +384,12 @@ function generate()
     file_user_basic      = joinpath(DIR_DOCS_ATCODER, "user_basic.md")
     file_user_language   = joinpath(DIR_DOCS_ATCODER, "user_language.md")
     file_user_submission = joinpath(DIR_DOCS_ATCODER, "user_submission.md")
+    @show file_user_basic
+    @show file_user_language
+    @show file_user_submission
+    @show isfile(file_user_basic)
+    @show isfile(file_user_language)
+    @show isfile(file_user_submission)
     if isfile(file_user_basic) && isfile(file_user_language) && isfile(file_user_submission)
         open(file, "a") do f
             println(f, "\n## User Info\n")

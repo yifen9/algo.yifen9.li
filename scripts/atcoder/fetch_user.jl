@@ -127,8 +127,6 @@ function fetch_submission()
     list = submission_url_fetched(second)
     list_sorted = sort(list; by = c -> c["id"], rev = true)
 
-    @show length(list)
-
     file = joinpath(DIR_SRC_ATCODER, "user_submission.md")
     open(file, "w") do f
         println(f, "| [ID]($url) | Date | Time | Contest | Task | Language | Result | Point | Length | Execution Time |")
