@@ -65,9 +65,6 @@ jobs:
       - name: Build
         run: |
           mkdocs build -d build
-
-      # - name: Deploy
-      #   run: ghp-import -n -f -p build
       
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
@@ -109,3 +106,14 @@ jobs:
       - name: Backup to gh-pages
         run: |
           ghp-import -n -f -p -b gh-pages build
+  
+  delete:
+    needs:
+      - deploy
+      - backup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete Artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: artifact
