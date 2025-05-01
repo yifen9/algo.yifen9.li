@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - '.github/workflows/atcoder_fetch_user.yml'
-      - 'mkdocs.yml'
       - 'scripts/atcoder/fetch_user.jl'
   schedule:
     - cron: '0 * * * *'

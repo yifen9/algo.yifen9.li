@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - '.github/workflows/atcoder_fetch_statement.yml'
-      - 'mkdocs.yml'
       - 'scripts/atcoder/fetch_statement_initialize.jl'
       - 'scripts/atcoder/fetch_statement.jl'
   schedule:
