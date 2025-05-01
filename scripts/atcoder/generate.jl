@@ -363,9 +363,14 @@ function generate()
         file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.md")
         file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.md")
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
+            s = read(file_fetch_statement, String)
+            u = read(file_fetch_user, String)
+
             println(f, "\n## Latest Fetch\n")
-            println(f, "- **Statement: **", read(file_fetch_statement, String))
-            println(f, "- **User:      **", read(file_fetch_user, String))
+            println(f, "| UTC           | Date             | Time             |")
+            println(f, "|---------------|------------------|------------------|")
+            println(f, "| **Statement** | $(Dates.Date(s)) | $(Dates.Time(s)) |")
+            println(f, "| **User**      | $(Dates.Date(u)) | $(Dates.Time(u)) |")
         end
 
         println(f, "\n## Classes\n")
