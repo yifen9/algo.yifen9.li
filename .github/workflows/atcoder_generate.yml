@@ -42,7 +42,7 @@ jobs:
           git config user.email github-actions[bot]@users.noreply.github.com
 
       - name: Set up Julia
-        uses: julia-actions/setup-julia@v1
+        uses: julia-actions/setup-julia@v2
         with:
           version: '1.10'
       
@@ -50,7 +50,7 @@ jobs:
         run: julia scripts/atcoder/generate.jl
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.x
 
@@ -67,9 +67,19 @@ jobs:
       #   run: ghp-import -n -f -p build
       
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: build
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Pages Branch
+        uses: actions/configure-pages@v5
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
