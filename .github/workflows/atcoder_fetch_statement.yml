@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/atcoder_fetch_statement.yml'
       - 'mkdocs.yml'
       - 'scripts/atcoder/initialize.jl'
       - 'scripts/atcoder/fetch_statement.jl'
@@ -41,23 +42,9 @@ jobs:
 
       - name: Fetch Statement
         run: julia scripts/atcoder/fetch_statement.jl
-      
-      # - name: Generate
-      #   run: julia scripts/atcoder/generate.jl
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
-
-      - name: Install MkDocs and Plugins
-        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin ghp-import
-
-      - name: Build site and Copy src/
+      - name: Commit & Push changes
         run: |
-          mkdir -p build
-          mkdocs build -d build
-          cp -r src build/src
-
-      - name: Deploy
-        run: ghp-import -n -f -p build
+          git add src/atcoder
+          git diff --cached --quiet || git commit -m "chore: update fetched statement"
+          git push

@@ -1,10 +1,11 @@
-name: atcoder_user
+name: atcoder_fetch_user
 
 on:
   push:
     branches:
       - main
     paths:
+      - '.github/workflows/atcoder_fetch_user.yml'
       - 'mkdocs.yml'
       - 'scripts/atcoder/fetch_user.jl'
   schedule:
@@ -33,22 +34,8 @@ jobs:
       - name: Fetch User
         run: julia scripts/atcoder/fetch_user.jl
       
-      - name: Generate
-        run: julia scripts/atcoder/generate.jl
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
-
-      - name: Install MkDocs and Plugins
-        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin ghp-import
-
-      - name: Build site and Copy src/
+      - name: Commit & Push changes
         run: |
-          mkdir -p build
-          mkdocs build -d build
-          cp -r src build/src
-
-      - name: Deploy
-        run: ghp-import -n -f -p build
+          git add src/atcoder
+          git diff --cached --quiet || git commit -m "chore: update fetched user"
+          git push
