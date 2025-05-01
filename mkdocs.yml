@@ -92,5 +92,7 @@ plugins:
 
 nav:
   - Home:
+    - index.md
   - Template:
+    - template/index.md
   - AtCoder:
