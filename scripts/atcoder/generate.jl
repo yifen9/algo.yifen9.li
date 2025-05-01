@@ -285,7 +285,7 @@ function contest_generate(contest::String, class::String)
 
                 task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
-                println(f, "| [$task_info_name](./$task/index.md) | $task_info_label | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
+                println(f, "| [$(name_clean(task_info_name))](./$task/index.md) | $task_info_label | $task_info_id | $item_count | $size | [$class_info_label$(contest)_$task_info_id]($task_link) |")
             end
         end
 
@@ -436,7 +436,7 @@ function nav_nested_build(path::String)
                             task_info = task_info_extract(task_name)
                             task_info_id = task_info.id
                             task_info_label = task_info.label
-                            task_info_name = name_clean(task_info.name)
+                            task_info_name = task_info.name
 
                             task_children = Vector{Any}()
                             sols = readdir(task; join=true, sort=true)
@@ -450,7 +450,7 @@ function nav_nested_build(path::String)
                                     push!(task_children, Dict(name_clean(sol_base) => [sol_index]))
                                 end
                             end
-                            push!(contest_children, Dict("$task_info_label $task_info_name" => vcat([task_index], task_children)))
+                            push!(contest_children, Dict("$task_info_label $(name_clean(task_info_name))" => vcat([task_index], task_children)))
                         end
                     end
                     push!(class_children, Dict("$(uppercase(class_info_label)) $contest_name" => vcat([contest_index], contest_children)))
