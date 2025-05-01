@@ -90,7 +90,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Extract Pages artifact
-        uses: yifen9/extract-artifact@v1
+        uses: yifen9/extract-artifact@main
         with:
           name: github-pages
           path: build
@@ -111,6 +111,7 @@ jobs:
     needs:
       - deploy
       - backup
+    if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
       - name: Delete Artifact
