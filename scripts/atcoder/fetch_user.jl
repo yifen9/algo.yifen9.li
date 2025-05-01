@@ -7,6 +7,7 @@ Pkg.add("JSON")
 using Dates
 using HTTP
 using JSON
+using Printf
 
 const USERNAME = "kenkoooo"
 
