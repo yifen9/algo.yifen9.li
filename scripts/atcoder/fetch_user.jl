@@ -79,7 +79,6 @@ function fetch_language()
 end
 
 function submission_url_fetched(second::Int)
-    second_int = @sprintf("%.0f", second)
     return fetch_with_retry(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second")
 end
 
