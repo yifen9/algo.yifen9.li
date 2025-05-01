@@ -12,6 +12,10 @@ on:
   schedule:
     - cron: '0 0,6,12,18 * * *'
 
+concurrency:
+  group: atcoder_fetch
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -24,6 +28,11 @@ jobs:
         with:
           persist-credentials: true
           fetch-depth: 0
+      
+      - name: Sync to origin/main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
 
       - name: Set up Git identity
         run: |
@@ -42,28 +51,18 @@ jobs:
 
       - name: Initialize
         run: julia scripts/atcoder/initialize.jl
-      
-      - name: Sync
-        run: |
-          git fetch origin main
-          git rebase origin/main
-      
-      - name: Commit & Push changes
-        run: |
-          git add src/atcoder
-          git diff --cached --quiet || git commit -m "chore: update fetched statement initialize"
-          git push
 
       - name: Fetch Statement
         run: julia scripts/atcoder/fetch_statement.jl
       
-      - name: Sync
-        run: |
-          git fetch origin main
-          git rebase origin/main
-
-      - name: Commit & Push changes
+      - name: Commit fetched files
         run: |
           git add src/atcoder
-          git diff --cached --quiet || git commit -m "chore: update fetched statement"
-          git push
+          git diff --staged --quiet || git commit -m "chore: update fetched statement"
+        
+      - name: Rebase onto origin/main
+        run: |
+          git pull --rebase --autostash origin main
+        
+      - name: Push back
+        run: git push origin main
