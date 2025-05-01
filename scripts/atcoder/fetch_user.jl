@@ -119,19 +119,21 @@ function submission_list()
                 list_start = submission_url_fetched(step_start)
                 list_end   = submission_url_fetched(step_end)
                 if length(list_start) < 500
-                    return list_end
+                    return step_end
                 else
-                    return list_start
+                    return step_start
                 end
             end
         end
     else
-        return submission_url_fetched(0)
+        return 0
     end
 end
 
 function fetch_submission()
-    list = submission_list()
+    second = submission_list()
+    url = joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second"
+    list = submission_url_fetched(second)
     list_sorted = sort(list; by = c -> c["id"], rev = true)
 
     @show length(list)
