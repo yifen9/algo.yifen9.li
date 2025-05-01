@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.julia
-          key: ${{ runner.os }}-julia-${{ hashFiles('scripts/atcoder/Project.toml') }}
+          key: ${{ runner.os }}-julia-${{ hashFiles('Project.toml') }}
           restore-keys: |
             ${{ runner.os }}-julia-
 
