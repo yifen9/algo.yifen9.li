@@ -360,7 +360,15 @@ function generate()
     open(file, "w") do f
         println(f, "# AtCoder\n")
 
-        println(f, "## Classes\n")
+        file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.md")
+        file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.md")
+        if isfile(file_fetch_statement) && isfile(file_fetch_user)
+            println(f, "\n## Latest Fetch\n")
+            println(f, "- **Statement: **", read(file_fetch_statement, Datatime))
+            println(f, "- **User:      **", read(file_fetch_user, Datatime))
+        end
+
+        println(f, "\n## Classes\n")
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
         for class in sort(readdir(DIR_SRC_ATCODER))
@@ -381,21 +389,21 @@ function generate()
         end
     end
 
-    file_user_basic      = joinpath(DIR_SRC_ATCODER, "fetch_user_basic.md")
-    file_user_language   = joinpath(DIR_SRC_ATCODER, "fetch_user_language.md")
-    file_user_submission = joinpath(DIR_SRC_ATCODER, "fetch_user_submission.md")
-    if isfile(file_user_basic) && isfile(file_user_language) && isfile(file_user_submission)
+    file_fetch_user_basic      = joinpath(DIR_SRC_ATCODER, "fetch_user_basic.md")
+    file_fetch_user_language   = joinpath(DIR_SRC_ATCODER, "fetch_user_language.md")
+    file_fetch_user_submission = joinpath(DIR_SRC_ATCODER, "fetch_user_submission.md")
+    if isfile(file_fetch_user_basic) && isfile(file_fetch_user_language) && isfile(file_fetch_user_submission)
         open(file, "a") do f
             println(f, "\n## User Info\n")
 
             println(f, "\n### Basic\n")
-            println(f, read(file_user_basic, String))
+            println(f, read(file_fetch_user_basic, String))
 
             println(f, "\n### Language\n")
-            println(f, read(file_user_language, String))
+            println(f, read(file_fetch_user_language, String))
 
             println(f, "\n### Submission\n")
-            println(f, read(file_user_submission, String))
+            println(f, read(file_fetch_user_submission, String))
         end
     end
 
