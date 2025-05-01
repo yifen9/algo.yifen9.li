@@ -365,12 +365,12 @@ function generate()
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
             sdt = Dates.DateTime(split(read(file_fetch_statement, String), '\n', keepempty=false)[1])
             udt = Dates.DateTime(split(read(file_fetch_user, String), '\n', keepempty=false)[1])
-            
+
             println(f, "\n## Latest Fetch\n")
             println(f, "| UTC           | Date               | Time               |")
             println(f, "|---------------|--------------------|--------------------|")
-            println(f, "| **Statement** | $(Dates.Date(sdt)) | $(Dates.Time(sdt)) |")
-            println(f, "| **User**      | $(Dates.Date(udt)) | $(Dates.Time(udt)) |")
+            println(f, "| **Statement** | $(Dates.Date(sdt)) | $(floor(Dates.Time(sdt), Dates.Second())) |")
+            println(f, "| **User**      | $(Dates.Date(udt)) | $(floor(Dates.Time(udt), Dates.Second())) |")
         end
 
         println(f, "\n## Classes\n")
