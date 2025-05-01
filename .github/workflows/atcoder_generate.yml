@@ -22,6 +22,8 @@ concurrency:
 
 permissions:
   contents: write
+  id-token: write
+  pages: write
 
 jobs:
   build:
@@ -36,7 +38,7 @@ jobs:
           git fetch origin main
           git reset --hard origin/main
 
-      - name: Set up Git identity
+      - name: Set up Git
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
@@ -54,13 +56,13 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install MkDocs and Plugins
+      - name: Install MkDocs
         run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin
       
-      - name: Link src for Markdown includes
+      - name: Link /src
         run: ln -s ../src docs/src
 
-      - name: Build site
+      - name: Build
         run: |
           mkdocs build -d build
 
@@ -76,7 +78,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Configure Pages Branch
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Download Artifact
@@ -84,3 +86,24 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+  
+  backup:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+
+      - name: Setup Git
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+
+      - name: Install ghp-import
+        run: pip install ghp-import
+
+      - name: Push to gh-pages
+        run: |
+          ghp-import -n -f -b gh-pages build
+          git push origin gh-pages
