@@ -197,6 +197,8 @@ function statement_fetch()
 end
 
 function main()
+    statement_fetch()
+
     file = joinpath(DIR_SRC_ATCODER, "fetch_statement.md")
     open(file, "w") do f
         println(f, "$(Dates.now())")
