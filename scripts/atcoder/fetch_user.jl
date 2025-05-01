@@ -64,9 +64,27 @@ function fetch_language()
     println("[INFO] Fetched language")
 end
 
+function submission_url_fetched(second)
+    return fetch(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second")
+end
+
 function submission_list()
-    start = round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 0)), Dates.Second)
-    @show start
+    step_start = round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 0)), Dates.Second)
+    step_end = step_start
+    
+    step_iteration = Date.Second(1)
+    list = submission_url_fetched(step_start)
+    while length(list) < 500 && step_end > 0
+        step_end = step_end - step_iteration
+        list = submission_url_fetched(step_end)
+        if length(list) < 500 && step_end > 0
+            step_start = step_end
+            step_iteration = step_iteration * 2
+        end
+        @show step_start
+        @show step_iteration
+        @show length(list)
+    end
 end
 
 function fetch_submission()
