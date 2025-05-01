@@ -381,9 +381,9 @@ function generate()
         end
     end
 
-    file_user_basic      = joinpath(DIR_DOCS_ATCODER, "user_basic.md")
-    file_user_language   = joinpath(DIR_DOCS_ATCODER, "user_language.md")
-    file_user_submission = joinpath(DIR_DOCS_ATCODER, "user_submission.md")
+    file_user_basic      = joinpath(DIR_SRC_ATCODER, "user_basic.md")
+    file_user_language   = joinpath(DIR_SRC_ATCODER, "user_language.md")
+    file_user_submission = joinpath(DIR_SRC_ATCODER, "user_submission.md")
     @show file_user_basic
     @show file_user_language
     @show file_user_submission
