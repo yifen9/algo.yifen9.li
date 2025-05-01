@@ -43,11 +43,10 @@ jobs:
       - name: Initialize
         run: julia scripts/atcoder/initialize.jl
       
-      - name: Sync with origin/main
+      - name: Sync
         run: |
-          git checkout main
           git fetch origin main
-          git reset --hard origin/main
+          git rebase origin/main
       
       - name: Commit & Push changes
         run: |
@@ -58,11 +57,10 @@ jobs:
       - name: Fetch Statement
         run: julia scripts/atcoder/fetch_statement.jl
       
-      - name: Sync with origin/main
+      - name: Sync
         run: |
-          git checkout main
           git fetch origin main
-          git reset --hard origin/main
+          git rebase origin/main
 
       - name: Commit & Push changes
         run: |
