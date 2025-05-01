@@ -105,5 +105,4 @@ jobs:
 
       - name: Push to gh-pages
         run: |
-          ghp-import -n -f -b gh-pages github-pages
-          git push origin gh-pages
+          ghp-import -n -f -p -b gh-pages github-pages
