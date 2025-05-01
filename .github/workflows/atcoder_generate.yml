@@ -16,6 +16,10 @@ on:
     types:
       - completed
 
+concurrency:
+  group: atcoder_generate
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -51,7 +55,7 @@ jobs:
           python-version: 3.x
 
       - name: Install MkDocs and Plugins
-        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin ghp-import
+        run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin
 
       - name: Build site and Copy src/
         run: |
@@ -59,5 +63,13 @@ jobs:
           mkdocs build -d build
           cp -r src build/src
 
-      - name: Deploy
-        run: ghp-import -n -f -p build
+      # - name: Deploy
+      #   run: ghp-import -n -f -p build
+      
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: build
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
