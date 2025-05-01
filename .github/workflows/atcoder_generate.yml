@@ -69,14 +69,8 @@ jobs:
       # - name: Deploy
       #   run: ghp-import -n -f -p build
       
-      - name: Upload Artifact for Deploy
+      - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          path: build
-          retention-days: 1
-      
-      - name: Upload Artifact for Backup
-        uses: actions/upload-artifact@v4
         with:
           path: build
           retention-days: 1
@@ -90,12 +84,6 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
-      
-      - name: Delete Artifact
-        if: ${{ always() }}
-        uses: geekyeggo/delete-artifact@v5
-        with:
-          name: github-pages
 
   backup:
     needs: generate
@@ -121,9 +109,3 @@ jobs:
       - name: Backup to gh-pages
         run: |
           ghp-import -n -f -p -b gh-pages build
-      
-      - name: Delete Artifact
-        if: ${{ always() }}
-        uses: geekyeggo/delete-artifact@v5
-        with:
-          name: artifact
