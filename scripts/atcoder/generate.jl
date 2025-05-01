@@ -360,14 +360,12 @@ function generate()
     open(file, "w") do f
         println(f, "# AtCoder\n")
 
-        file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.md")
-        file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.md")
+        file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.txt")
+        file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.txt")
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
-            @show read(file_fetch_statement, String)
-            @show read(file_fetch_user, String)
-            sdt = Dates.DateTime(read(file_fetch_statement, String))
-            udt = Dates.DateTime(read(file_fetch_user, String))
-
+            sdt = Dates.DateTime(split(read(file_fetch_statement, String), '\n', keepempty=false)[1])
+            udt = Dates.DateTime(split(read(file_fetch_user, String), '\n', keepempty=false)[1])
+            
             println(f, "\n## Latest Fetch\n")
             println(f, "| UTC           | Date               | Time               |")
             println(f, "|---------------|--------------------|--------------------|")

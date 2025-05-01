@@ -167,7 +167,7 @@ function main()
         println("[WARN] Fetch failed user: $USERNAME")
     end
 
-    file = joinpath(DIR_SRC_ATCODER, "fetch_user.md")
+    file = joinpath(DIR_SRC_ATCODER, "fetch_user.txt")
     open(file, "w") do f
         println(f, "$(Dates.now())")
     end
