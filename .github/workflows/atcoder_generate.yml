@@ -89,7 +89,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-mkdocs-build
       
-      - name: Prune removed pages
+      - name: Prune
         run: rsync -ac --delete docs/ build/
 
       - name: Build
