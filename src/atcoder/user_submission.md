@@ -1,0 +1,502 @@
+| [ID](https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user=kenkoooo&from_second=1560046356) | Date | Time | Contest | Task | Language | Result | Point | Length | Execution Time |
+|------------|------|------|---------|------|----------|--------|-------|--------|----------------|
+| [5829277](https://atcoder.jp/contests/nikkei2019-qual/submissions/5829277) | 2019-06-09 | 02:12:36 | nikkei2019-qual | nikkei2019_qual_e | Rust (1.15.1) | AC | 800.0 | 3931 Byte | 159 ms |
+| [5830936](https://atcoder.jp/contests/arc091/submissions/5830936) | 2019-06-09 | 06:10:00 | arc091 | arc091_c | Rust (1.15.1) | AC | 700.0 | 1782 Byte | 55 ms |
+| [5873036](https://atcoder.jp/contests/exawizards2019/submissions/5873036) | 2019-06-10 | 17:07:05 | exawizards2019 | exawizards2019_e | Rust (1.15.1) | AC | 700.0 | 6011 Byte | 339 ms |
+| [5910791](https://atcoder.jp/contests/agc030/submissions/5910791) | 2019-06-14 | 21:52:15 | agc030 | agc030_b | Rust (1.15.1) | AC | 800.0 | 2057 Byte | 81 ms |
+| [5911040](https://atcoder.jp/contests/arc102/submissions/5911040) | 2019-06-14 | 23:32:16 | arc102 | arc102_b | Rust (1.15.1) | AC | 700.0 | 1889 Byte | 2 ms |
+| [5911160](https://atcoder.jp/contests/aising2019/submissions/5911160) | 2019-06-15 | 00:15:05 | aising2019 | aising2019_e | Rust (1.15.1) | AC | 600.0 | 3376 Byte | 251 ms |
+| [5913812](https://atcoder.jp/contests/code-festival-2018-qualb/submissions/5913812) | 2019-06-15 | 06:28:59 | code-festival-2018-qualb | code_festival_2018_qualb_e | Bash (GNU bash v4.3.11) | AC | 800.0 | 314618 Byte | 11 ms |
+| [5915664](https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/5915664) | 2019-06-15 | 09:14:56 | yahoo-procon2019-qual | yahoo_procon2019_qual_e | Rust (1.15.1) | AC | 800.0 | 3676 Byte | 18 ms |
+| [5916024](https://atcoder.jp/contests/keyence2019/submissions/5916024) | 2019-06-15 | 09:49:19 | keyence2019 | keyence2019_e | Rust (1.15.1) | AC | 600.0 | 4864 Byte | 417 ms |
+| [5950024](https://atcoder.jp/contests/abc093/submissions/5950024) | 2019-06-16 | 11:47:50 | abc093 | arc094_b | Rust (1.15.1) | WA | 0.0 | 1786 Byte | 2 ms |
+| [5951679](https://atcoder.jp/contests/abc130/submissions/5951679) | 2019-06-16 | 12:01:23 | abc130 | abc130_a | Rust (1.15.1) | AC | 100.0 | 1044 Byte | 2 ms |
+| [5954347](https://atcoder.jp/contests/abc130/submissions/5954347) | 2019-06-16 | 12:03:39 | abc130 | abc130_b | Rust (1.15.1) | AC | 200.0 | 1174 Byte | 2 ms |
+| [5958215](https://atcoder.jp/contests/abc130/submissions/5958215) | 2019-06-16 | 12:09:10 | abc130 | abc130_c | Rust (1.15.1) | WA | 0.0 | 1153 Byte | 2 ms |
+| [5960401](https://atcoder.jp/contests/abc130/submissions/5960401) | 2019-06-16 | 12:13:10 | abc130 | abc130_c | Rust (1.15.1) | AC | 300.0 | 1153 Byte | 2 ms |
+| [5965986](https://atcoder.jp/contests/abc130/submissions/5965986) | 2019-06-16 | 12:26:39 | abc130 | abc130_d | Rust (1.15.1) | WA | 0.0 | 1652 Byte | 26 ms |
+| [5966258](https://atcoder.jp/contests/abc130/submissions/5966258) | 2019-06-16 | 12:27:23 | abc130 | abc130_d | Rust (1.15.1) | AC | 400.0 | 1653 Byte | 28 ms |
+| [5972963](https://atcoder.jp/contests/abc130/submissions/5972963) | 2019-06-16 | 12:50:06 | abc130 | abc130_e | Rust (1.15.1) | AC | 500.0 | 1698 Byte | 18 ms |
+| [5999992](https://atcoder.jp/contests/abc130/submissions/5999992) | 2019-06-17 | 11:46:17 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 3500 Byte | 101 ms |
+| [6000007](https://atcoder.jp/contests/abc130/submissions/6000007) | 2019-06-17 | 11:47:18 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 3500 Byte | 100 ms |
+| [6001338](https://atcoder.jp/contests/abc130/submissions/6001338) | 2019-06-17 | 13:39:24 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 3525 Byte | 209 ms |
+| [6002159](https://atcoder.jp/contests/abc130/submissions/6002159) | 2019-06-17 | 14:34:18 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 3846 Byte | 92 ms |
+| [6002273](https://atcoder.jp/contests/abc130/submissions/6002273) | 2019-06-17 | 14:42:32 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 3926 Byte | 92 ms |
+| [6002475](https://atcoder.jp/contests/abc130/submissions/6002475) | 2019-06-17 | 14:56:39 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 4160 Byte | 93 ms |
+| [6002499](https://atcoder.jp/contests/abc130/submissions/6002499) | 2019-06-17 | 14:58:28 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 4226 Byte | 91 ms |
+| [6002561](https://atcoder.jp/contests/abc130/submissions/6002561) | 2019-06-17 | 15:02:02 | abc130 | abc130_f | Rust (1.15.1) | AC | 600.0 | 4102 Byte | 90 ms |
+| [6002622](https://atcoder.jp/contests/abc130/submissions/6002622) | 2019-06-17 | 15:07:22 | abc130 | abc130_f | Rust (1.15.1) | AC | 600.0 | 4413 Byte | 92 ms |
+| [6002641](https://atcoder.jp/contests/abc130/submissions/6002641) | 2019-06-17 | 15:08:41 | abc130 | abc130_f | Rust (1.15.1) | AC | 600.0 | 4226 Byte | 93 ms |
+| [6022521](https://atcoder.jp/contests/abc093/submissions/6022521) | 2019-06-19 | 13:12:33 | abc093 | arc094_b | Rust (1.15.1) | AC | 700.0 | 2016 Byte | 2 ms |
+| [6022960](https://atcoder.jp/contests/agc010/submissions/6022960) | 2019-06-19 | 13:52:25 | agc010 | agc010_c | Rust (1.15.1) | WA | 0.0 | 1985 Byte | 97 ms |
+| [6022982](https://atcoder.jp/contests/agc010/submissions/6022982) | 2019-06-19 | 13:54:14 | agc010 | agc010_c | Rust (1.15.1) | WA | 0.0 | 1981 Byte | 97 ms |
+| [6023016](https://atcoder.jp/contests/agc010/submissions/6023016) | 2019-06-19 | 13:56:33 | agc010 | agc010_c | Rust (1.15.1) | WA | 0.0 | 2137 Byte | 96 ms |
+| [6023045](https://atcoder.jp/contests/agc010/submissions/6023045) | 2019-06-19 | 13:59:24 | agc010 | agc010_c | Rust (1.15.1) | WA | 0.0 | 2118 Byte | 96 ms |
+| [6024668](https://atcoder.jp/contests/agc010/submissions/6024668) | 2019-06-19 | 17:11:52 | agc010 | agc010_c | Rust (1.15.1) | CE | 0.0 | 2332 Byte | nothing ms |
+| [6024669](https://atcoder.jp/contests/agc010/submissions/6024669) | 2019-06-19 | 17:12:29 | agc010 | agc010_c | Rust (1.15.1) | AC | 700.0 | 2355 Byte | 95 ms |
+| [6030758](https://atcoder.jp/contests/agc031/submissions/6030758) | 2019-06-20 | 09:54:33 | agc031 | agc031_c | Rust (1.15.1) | AC | 800.0 | 2770 Byte | 54 ms |
+| [6034845](https://atcoder.jp/contests/arc066/submissions/6034845) | 2019-06-20 | 17:31:47 | arc066 | arc066_b | Rust (1.15.1) | AC | 600.0 | 1643 Byte | 2 ms |
+| [6129675](https://atcoder.jp/contests/agc025/submissions/6129675) | 2019-06-26 | 13:14:41 | agc025 | agc025_c | Rust (1.15.1) | WA | 0.0 | 2547 Byte | 100 ms |
+| [6129774](https://atcoder.jp/contests/agc025/submissions/6129774) | 2019-06-26 | 13:21:09 | agc025 | agc025_c | Rust (1.15.1) | WA | 0.0 | 2547 Byte | 102 ms |
+| [6129819](https://atcoder.jp/contests/agc025/submissions/6129819) | 2019-06-26 | 13:24:18 | agc025 | agc025_c | Rust (1.15.1) | AC | 700.0 | 2547 Byte | 101 ms |
+| [6149829](https://atcoder.jp/contests/arc094/submissions/6149829) | 2019-06-28 | 14:09:21 | arc094 | arc094_c | Rust (1.15.1) | AC | 700.0 | 1297 Byte | 17 ms |
+| [6150179](https://atcoder.jp/contests/arc084/submissions/6150179) | 2019-06-28 | 14:42:30 | arc084 | arc084_c | Rust (1.15.1) | WA | 0.0 | 2151 Byte | 77 ms |
+| [6150195](https://atcoder.jp/contests/arc084/submissions/6150195) | 2019-06-28 | 14:44:12 | arc084 | arc084_c | Rust (1.15.1) | AC | 800.0 | 2220 Byte | 76 ms |
+| [6150582](https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/6150582) | 2019-06-28 | 15:29:05 | yahoo-procon2019-qual | yahoo_procon2019_qual_f | Rust (1.15.1) | AC | 900.0 | 4816 Byte | 28 ms |
+| [6158886](https://atcoder.jp/contests/abc132/submissions/6158886) | 2019-06-29 | 12:02:12 | abc132 | abc132_a | Rust (1.15.1) | WA | 0.0 | 1072 Byte | 2 ms |
+| [6159119](https://atcoder.jp/contests/abc132/submissions/6159119) | 2019-06-29 | 12:02:41 | abc132 | abc132_a | Rust (1.15.1) | AC | 100.0 | 1071 Byte | 2 ms |
+| [6160627](https://atcoder.jp/contests/abc132/submissions/6160627) | 2019-06-29 | 12:04:43 | abc132 | abc132_b | Rust (1.15.1) | AC | 200.0 | 1182 Byte | 2 ms |
+| [6162769](https://atcoder.jp/contests/abc132/submissions/6162769) | 2019-06-29 | 12:07:22 | abc132 | abc132_c | Rust (1.15.1) | AC | 300.0 | 1046 Byte | 30 ms |
+| [6174926](https://atcoder.jp/contests/abc132/submissions/6174926) | 2019-06-29 | 12:42:09 | abc132 | abc132_d | Rust (1.15.1) | AC | 400.0 | 2573 Byte | 5 ms |
+| [6176858](https://atcoder.jp/contests/abc132/submissions/6176858) | 2019-06-29 | 12:53:33 | abc132 | abc132_e | Rust (1.15.1) | AC | 500.0 | 1880 Byte | 64 ms |
+| [6182853](https://atcoder.jp/contests/abc132/submissions/6182853) | 2019-06-29 | 13:34:45 | abc132 | abc132_f | Rust (1.15.1) | AC | 600.0 | 5492 Byte | 75 ms |
+| [6185181](https://atcoder.jp/contests/abc132/submissions/6185181) | 2019-06-29 | 13:54:13 | abc132 | abc132_f | Rust (1.15.1) | AC | 600.0 | 5114 Byte | 65 ms |
+| [6192373](https://atcoder.jp/contests/agc012/submissions/6192373) | 2019-06-30 | 03:12:27 | agc012 | agc012_b | Rust (1.15.1) | AC | 700.0 | 2148 Byte | 310 ms |
+| [6193421](https://atcoder.jp/contests/agc005/submissions/6193421) | 2019-06-30 | 05:18:58 | agc005 | agc005_c | Rust (1.15.1) | AC | 700.0 | 1763 Byte | 2 ms |
+| [6193813](https://atcoder.jp/contests/agc016/submissions/6193813) | 2019-06-30 | 06:02:15 | agc016 | agc016_b | Rust (1.15.1) | AC | 700.0 | 1937 Byte | 25 ms |
+| [6193956](https://atcoder.jp/contests/agc014/submissions/6193956) | 2019-06-30 | 06:17:41 | agc014 | agc014_c | Rust (1.15.1) | AC | 700.0 | 2984 Byte | 26 ms |
+| [6194299](https://atcoder.jp/contests/agc013/submissions/6194299) | 2019-06-30 | 06:51:08 | agc013 | agc013_c | Rust (1.15.1) | AC | 700.0 | 2192 Byte | 220 ms |
+| [6194306](https://atcoder.jp/contests/agc013/submissions/6194306) | 2019-06-30 | 06:51:53 | agc013 | agc013_c | Rust (1.15.1) | AC | 700.0 | 1889 Byte | 216 ms |
+| [6196284](https://atcoder.jp/contests/arc100/submissions/6196284) | 2019-06-30 | 09:54:42 | arc100 | arc100_c | Rust (1.15.1) | AC | 700.0 | 1756 Byte | 878 ms |
+| [6196494](https://atcoder.jp/contests/agc015/submissions/6196494) | 2019-06-30 | 10:22:08 | agc015 | agc015_c | Rust (1.15.1) | RE | 0.0 | 3389 Byte | 799 ms |
+| [6196575](https://atcoder.jp/contests/agc015/submissions/6196575) | 2019-06-30 | 10:31:57 | agc015 | agc015_c | Rust (1.15.1) | RE | 0.0 | 3447 Byte | 731 ms |
+| [6196602](https://atcoder.jp/contests/agc015/submissions/6196602) | 2019-06-30 | 10:34:21 | agc015 | agc015_c | Rust (1.15.1) | RE | 0.0 | 3591 Byte | 679 ms |
+| [6196630](https://atcoder.jp/contests/agc015/submissions/6196630) | 2019-06-30 | 10:36:33 | agc015 | agc015_c | Rust (1.15.1) | RE | 0.0 | 3593 Byte | 730 ms |
+| [6197553](https://atcoder.jp/contests/agc015/submissions/6197553) | 2019-06-30 | 12:08:07 | agc015 | agc015_c | Rust (1.15.1) | AC | 700.0 | 3873 Byte | 748 ms |
+| [6197773](https://atcoder.jp/contests/agc018/submissions/6197773) | 2019-06-30 | 12:31:12 | agc018 | agc018_b | Rust (1.15.1) | AC | 700.0 | 1736 Byte | 16 ms |
+| [6198071](https://atcoder.jp/contests/agc016/submissions/6198071) | 2019-06-30 | 13:00:26 | agc016 | agc016_c | Rust (1.15.1) | WA | 0.0 | 1629 Byte | 44 ms |
+| [6198397](https://atcoder.jp/contests/agc016/submissions/6198397) | 2019-06-30 | 13:25:10 | agc016 | agc016_c | Rust (1.15.1) | AC | 700.0 | 2029 Byte | 48 ms |
+| [6199892](https://atcoder.jp/contests/arc087/submissions/6199892) | 2019-06-30 | 15:46:37 | arc087 | arc087_c | Rust (1.15.1) | CE | 0.0 | 3100 Byte | nothing ms |
+| [6199896](https://atcoder.jp/contests/arc087/submissions/6199896) | 2019-06-30 | 15:47:07 | arc087 | arc087_c | Rust (1.15.1) | AC | 700.0 | 3063 Byte | 16 ms |
+| [6226926](https://atcoder.jp/contests/agc020/submissions/6226926) | 2019-07-03 | 12:18:18 | agc020 | agc020_c | Rust (1.15.1) | AC | 700.0 | 4520 Byte | 1744 ms |
+| [6227205](https://atcoder.jp/contests/agc022/submissions/6227205) | 2019-07-03 | 12:41:32 | agc022 | agc022_c | Rust (1.15.1) | WA | 0.0 | 2087 Byte | 17 ms |
+| [6227249](https://atcoder.jp/contests/agc022/submissions/6227249) | 2019-07-03 | 12:45:38 | agc022 | agc022_c | Rust (1.15.1) | AC | 700.0 | 2163 Byte | 14 ms |
+| [6227462](https://atcoder.jp/contests/agc025/submissions/6227462) | 2019-07-03 | 13:04:33 | agc025 | agc025_b | Rust (1.15.1) | AC | 700.0 | 5618 Byte | 29 ms |
+| [6244744](https://atcoder.jp/contests/agc024/submissions/6244744) | 2019-07-05 | 11:26:57 | agc024 | agc024_c | Rust (1.15.1) | AC | 700.0 | 1403 Byte | 69 ms |
+| [6244897](https://atcoder.jp/contests/agc027/submissions/6244897) | 2019-07-05 | 11:45:21 | agc027 | agc027_b | Rust (1.15.1) | AC | 700.0 | 1653 Byte | 80 ms |
+| [6245360](https://atcoder.jp/contests/agc033/submissions/6245360) | 2019-07-05 | 12:40:22 | agc033 | agc033_b | Rust (1.15.1) | WA | 0.0 | 2501 Byte | 19 ms |
+| [6245646](https://atcoder.jp/contests/agc033/submissions/6245646) | 2019-07-05 | 13:07:45 | agc033 | agc033_b | Rust (1.15.1) | WA | 0.0 | 2723 Byte | 14 ms |
+| [6250551](https://atcoder.jp/contests/agc033/submissions/6250551) | 2019-07-06 | 05:34:27 | agc033 | agc033_b | Rust (1.15.1) | AC | 600.0 | 2658 Byte | 16 ms |
+| [6250758](https://atcoder.jp/contests/agc033/submissions/6250758) | 2019-07-06 | 05:54:03 | agc033 | agc033_c | Rust (1.15.1) | RE | 0.0 | 2110 Byte | 143 ms |
+| [6250770](https://atcoder.jp/contests/agc033/submissions/6250770) | 2019-07-06 | 05:55:36 | agc033 | agc033_c | Rust (1.15.1) | AC | 800.0 | 2182 Byte | 136 ms |
+| [6270044](https://atcoder.jp/contests/abc133/submissions/6270044) | 2019-07-07 | 12:05:47 | abc133 | abc133_a | Rust (1.15.1) | AC | 100.0 | 1051 Byte | 2 ms |
+| [6271605](https://atcoder.jp/contests/abc133/submissions/6271605) | 2019-07-07 | 12:09:14 | abc133 | abc133_b | Rust (1.15.1) | AC | 200.0 | 1430 Byte | 2 ms |
+| [6273130](https://atcoder.jp/contests/abc133/submissions/6273130) | 2019-07-07 | 12:13:00 | abc133 | abc133_c | Rust (1.15.1) | WA | 0.0 | 1257 Byte | 4 ms |
+| [6276859](https://atcoder.jp/contests/abc133/submissions/6276859) | 2019-07-07 | 12:22:31 | abc133 | abc133_d | Rust (1.15.1) | AC | 400.0 | 1358 Byte | 56 ms |
+| [6278545](https://atcoder.jp/contests/abc133/submissions/6278545) | 2019-07-07 | 12:27:21 | abc133 | abc133_c | Rust (1.15.1) | WA | 0.0 | 1257 Byte | 4 ms |
+| [6282745](https://atcoder.jp/contests/abc133/submissions/6282745) | 2019-07-07 | 12:40:30 | abc133 | abc133_c | Rust (1.15.1) | AC | 300.0 | 1322 Byte | 5 ms |
+| [6289565](https://atcoder.jp/contests/abc133/submissions/6289565) | 2019-07-07 | 13:06:10 | abc133 | abc133_e | Rust (1.15.1) | AC | 500.0 | 5976 Byte | 69 ms |
+| [6303813](https://atcoder.jp/contests/abc133/submissions/6303813) | 2019-07-07 | 17:31:10 | abc133 | abc133_f | Rust (1.15.1) | CE | 0.0 | 6952 Byte | nothing ms |
+| [6303821](https://atcoder.jp/contests/abc133/submissions/6303821) | 2019-07-07 | 17:32:40 | abc133 | abc133_f | Rust (1.15.1) | AC | 600.0 | 6942 Byte | 832 ms |
+| [6365314](https://atcoder.jp/contests/m-solutions2019/submissions/6365314) | 2019-07-14 | 02:21:20 | m-solutions2019 | m_solutions2019_e | Rust (1.15.1) | RE | 0.0 | 4690 Byte | 407 ms |
+| [6365376](https://atcoder.jp/contests/m-solutions2019/submissions/6365376) | 2019-07-14 | 02:31:09 | m-solutions2019 | m_solutions2019_e | Rust (1.15.1) | WA | 0.0 | 4859 Byte | 415 ms |
+| [6365384](https://atcoder.jp/contests/m-solutions2019/submissions/6365384) | 2019-07-14 | 02:32:16 | m-solutions2019 | m_solutions2019_e | Rust (1.15.1) | WA | 0.0 | 4992 Byte | 400 ms |
+| [6365404](https://atcoder.jp/contests/m-solutions2019/submissions/6365404) | 2019-07-14 | 02:35:45 | m-solutions2019 | m_solutions2019_e | Rust (1.15.1) | AC | 600.0 | 4901 Byte | 380 ms |
+| [6365408](https://atcoder.jp/contests/m-solutions2019/submissions/6365408) | 2019-07-14 | 02:36:19 | m-solutions2019 | m_solutions2019_e | Rust (1.15.1) | WA | 0.0 | 4929 Byte | 407 ms |
+| [6366411](https://atcoder.jp/contests/exawizards2019/submissions/6366411) | 2019-07-14 | 05:02:00 | exawizards2019 | exawizards2019_d | Rust (1.15.1) | AC | 600.0 | 5245 Byte | 304 ms |
+| [6366420](https://atcoder.jp/contests/exawizards2019/submissions/6366420) | 2019-07-14 | 05:03:07 | exawizards2019 | exawizards2019_d | Rust (1.15.1) | AC | 600.0 | 5256 Byte | 316 ms |
+| [6372026](https://atcoder.jp/contests/agc035/submissions/6372026) | 2019-07-14 | 12:40:07 | agc035 | agc035_a | Rust (1.15.1) | WA | 0.0 | 1742 Byte | 39 ms |
+| [6372447](https://atcoder.jp/contests/agc035/submissions/6372447) | 2019-07-14 | 12:43:11 | agc035 | agc035_a | Rust (1.15.1) | WA | 0.0 | 1637 Byte | 39 ms |
+| [6373571](https://atcoder.jp/contests/agc035/submissions/6373571) | 2019-07-14 | 12:51:17 | agc035 | agc035_a | Rust (1.15.1) | WA | 0.0 | 1850 Byte | 40 ms |
+| [6373825](https://atcoder.jp/contests/agc035/submissions/6373825) | 2019-07-14 | 12:53:09 | agc035 | agc035_a | Rust (1.15.1) | WA | 0.0 | 1850 Byte | 40 ms |
+| [6378869](https://atcoder.jp/contests/agc035/submissions/6378869) | 2019-07-14 | 13:33:57 | agc035 | agc035_a | Rust (1.15.1) | WA | 0.0 | 1778 Byte | 41 ms |
+| [6378992](https://atcoder.jp/contests/agc035/submissions/6378992) | 2019-07-14 | 13:34:58 | agc035 | agc035_a | Rust (1.15.1) | RE | 0.0 | 1789 Byte | 41 ms |
+| [6379254](https://atcoder.jp/contests/agc035/submissions/6379254) | 2019-07-14 | 13:37:18 | agc035 | agc035_a | Rust (1.15.1) | AC | 300.0 | 1808 Byte | 42 ms |
+| [6385186](https://atcoder.jp/contests/agc035/submissions/6385186) | 2019-07-14 | 14:34:00 | agc035 | agc035_c | Rust (1.15.1) | WA | 0.0 | 2019 Byte | 343 ms |
+| [6385437](https://atcoder.jp/contests/agc035/submissions/6385437) | 2019-07-14 | 14:35:59 | agc035 | agc035_c | Rust (1.15.1) | RE | 0.0 | 2044 Byte | 385 ms |
+| [6385566](https://atcoder.jp/contests/agc035/submissions/6385566) | 2019-07-14 | 14:37:06 | agc035 | agc035_c | Rust (1.15.1) | RE | 0.0 | 2045 Byte | 349 ms |
+| [6385750](https://atcoder.jp/contests/agc035/submissions/6385750) | 2019-07-14 | 14:38:32 | agc035 | agc035_c | Rust (1.15.1) | RE | 0.0 | 2045 Byte | 350 ms |
+| [6386652](https://atcoder.jp/contests/agc035/submissions/6386652) | 2019-07-14 | 14:50:32 | agc035 | agc035_c | Rust (1.15.1) | AC | 700.0 | 2562 Byte | 344 ms |
+| [6443065](https://atcoder.jp/contests/code-festival-2017-qualc/submissions/6443065) | 2019-07-20 | 08:37:41 | code-festival-2017-qualc | code_festival_2017_qualc_d | Rust (1.15.1) | MLE | 0.0 | 1615 Byte | 223 ms |
+| [6443076](https://atcoder.jp/contests/code-festival-2017-qualc/submissions/6443076) | 2019-07-20 | 08:38:24 | code-festival-2017-qualc | code_festival_2017_qualc_d | Rust (1.15.1) | AC | 700.0 | 1622 Byte | 184 ms |
+| [6443532](https://atcoder.jp/contests/agc029/submissions/6443532) | 2019-07-20 | 09:22:15 | agc029 | agc029_c | Rust (1.15.1) | WA | 0.0 | 2746 Byte | 266 ms |
+| [6443571](https://atcoder.jp/contests/agc029/submissions/6443571) | 2019-07-20 | 09:26:36 | agc029 | agc029_c | Rust (1.15.1) | AC | 700.0 | 2750 Byte | 264 ms |
+| [6443721](https://atcoder.jp/contests/agc029/submissions/6443721) | 2019-07-20 | 09:40:41 | agc029 | agc029_c | Rust (1.15.1) | AC | 700.0 | 2740 Byte | 261 ms |
+| [6443977](https://atcoder.jp/contests/agc031/submissions/6443977) | 2019-07-20 | 10:04:07 | agc031 | agc031_b | Rust (1.15.1) | AC | 700.0 | 1559 Byte | 105 ms |
+| [6447265](https://atcoder.jp/contests/abc134/submissions/6447265) | 2019-07-20 | 12:01:20 | abc134 | abc134_a | Rust (1.15.1) | AC | 100.0 | 961 Byte | 2 ms |
+| [6449132](https://atcoder.jp/contests/abc134/submissions/6449132) | 2019-07-20 | 12:02:54 | abc134 | abc134_b | Rust (1.15.1) | AC | 200.0 | 1044 Byte | 2 ms |
+| [6453125](https://atcoder.jp/contests/abc134/submissions/6453125) | 2019-07-20 | 12:08:05 | abc134 | abc134_c | Rust (1.15.1) | AC | 300.0 | 1536 Byte | 411 ms |
+| [6458036](https://atcoder.jp/contests/abc134/submissions/6458036) | 2019-07-20 | 12:19:32 | abc134 | abc134_d | Rust (1.15.1) | AC | 400.0 | 1735 Byte | 52 ms |
+| [6464577](https://atcoder.jp/contests/abc134/submissions/6464577) | 2019-07-20 | 12:43:31 | abc134 | abc134_e | Bash (GNU bash v4.3.11) | AC | 500.0 | 123984 Byte | 386 ms |
+| [6470305](https://atcoder.jp/contests/abc134/submissions/6470305) | 2019-07-20 | 13:11:33 | abc134 | abc134_f | Rust (1.15.1) | TLE | 0.0 | 6089 Byte | 2107 ms |
+| [6481807](https://atcoder.jp/contests/abc134/submissions/6481807) | 2019-07-20 | 18:05:22 | abc134 | abc134_f | Rust (1.15.1) | RE | 0.0 | 5560 Byte | 38 ms |
+| [6481844](https://atcoder.jp/contests/abc134/submissions/6481844) | 2019-07-20 | 18:13:54 | abc134 | abc134_f | Rust (1.15.1) | AC | 600.0 | 5551 Byte | 38 ms |
+| [6481886](https://atcoder.jp/contests/abc134/submissions/6481886) | 2019-07-20 | 18:22:17 | abc134 | abc134_e | Rust (1.15.1) | AC | 500.0 | 1342 Byte | 45 ms |
+| [6483317](https://atcoder.jp/contests/agc032/submissions/6483317) | 2019-07-21 | 01:35:09 | agc032 | agc032_b | Rust (1.15.1) | AC | 700.0 | 1689 Byte | 10 ms |
+| [6487055](https://atcoder.jp/contests/arc058/submissions/6487055) | 2019-07-21 | 08:04:32 | arc058 | arc058_c | Rust (1.15.1) | TLE | 0.0 | 6549 Byte | 4204 ms |
+| [6487134](https://atcoder.jp/contests/arc058/submissions/6487134) | 2019-07-21 | 08:12:40 | arc058 | arc058_c | Rust (1.15.1) | AC | 700.0 | 6757 Byte | 2390 ms |
+| [6487432](https://atcoder.jp/contests/arc058/submissions/6487432) | 2019-07-21 | 08:38:16 | arc058 | arc058_c | Rust (1.15.1) | RE | 0.0 | 6926 Byte | 1179 ms |
+| [6487663](https://atcoder.jp/contests/arc058/submissions/6487663) | 2019-07-21 | 09:03:09 | arc058 | arc058_c | Rust (1.15.1) | AC | 700.0 | 6954 Byte | 1157 ms |
+| [6498420](https://atcoder.jp/contests/arc060/submissions/6498420) | 2019-07-21 | 14:49:14 | arc060 | arc060_c | Rust (1.15.1) | TLE | 0.0 | 2625 Byte | 3155 ms |
+| [6498437](https://atcoder.jp/contests/arc060/submissions/6498437) | 2019-07-21 | 14:49:54 | arc060 | arc060_c | Rust (1.15.1) | TLE | 0.0 | 2626 Byte | 3159 ms |
+| [6499973](https://atcoder.jp/contests/arc060/submissions/6499973) | 2019-07-21 | 16:34:08 | arc060 | arc060_c | Rust (1.15.1) | WA | 0.0 | 1817 Byte | 351 ms |
+| [6499991](https://atcoder.jp/contests/arc060/submissions/6499991) | 2019-07-21 | 16:36:37 | arc060 | arc060_c | Rust (1.15.1) | AC | 700.0 | 1817 Byte | 441 ms |
+| [6556536](https://atcoder.jp/contests/tkppc4-1/submissions/6556536) | 2019-07-27 | 07:53:57 | tkppc4-1 | tkppc4_1_a | Rust (1.15.1) | AC | 100.0 | 990 Byte | 2 ms |
+| [6556650](https://atcoder.jp/contests/tkppc4-1/submissions/6556650) | 2019-07-27 | 07:59:10 | tkppc4-1 | tkppc4_1_b | Rust (1.15.1) | AC | 200.0 | 1277 Byte | 72 ms |
+| [6556810](https://atcoder.jp/contests/tkppc4-1/submissions/6556810) | 2019-07-27 | 08:07:11 | tkppc4-1 | tkppc4_1_c | Rust (1.15.1) | AC | 200.0 | 1287 Byte | 2 ms |
+| [6557037](https://atcoder.jp/contests/tkppc4-1/submissions/6557037) | 2019-07-27 | 08:19:22 | tkppc4-1 | tkppc4_1_d | Rust (1.15.1) | RE | 0.0 | 1640 Byte | 39 ms |
+| [6557064](https://atcoder.jp/contests/tkppc4-1/submissions/6557064) | 2019-07-27 | 08:20:47 | tkppc4-1 | tkppc4_1_d | Rust (1.15.1) | AC | 300.0 | 1640 Byte | 40 ms |
+| [6557275](https://atcoder.jp/contests/tkppc4-1/submissions/6557275) | 2019-07-27 | 08:30:53 | tkppc4-1 | tkppc4_1_e | Rust (1.15.1) | AC | 300.0 | 1845 Byte | 134 ms |
+| [6557479](https://atcoder.jp/contests/tkppc4-1/submissions/6557479) | 2019-07-27 | 08:40:48 | tkppc4-1 | tkppc4_1_f | Rust (1.15.1) | AC | 300.0 | 1583 Byte | 117 ms |
+| [6558117](https://atcoder.jp/contests/tkppc4-1/submissions/6558117) | 2019-07-27 | 09:15:36 | tkppc4-1 | tkppc4_1_g | Rust (1.15.1) | RE | 0.0 | 2652 Byte | 1108 ms |
+| [6558418](https://atcoder.jp/contests/tkppc4-1/submissions/6558418) | 2019-07-27 | 09:37:50 | tkppc4-1 | tkppc4_1_g | Rust (1.15.1) | WA | 0.0 | 2751 Byte | 1123 ms |
+| [6558916](https://atcoder.jp/contests/tkppc4-1/submissions/6558916) | 2019-07-27 | 10:20:37 | tkppc4-1 | tkppc4_1_g | Rust (1.15.1) | WA | 0.0 | 1867 Byte | 277 ms |
+| [6558936](https://atcoder.jp/contests/tkppc4-1/submissions/6558936) | 2019-07-27 | 10:22:08 | tkppc4-1 | tkppc4_1_g | Rust (1.15.1) | AC | 300.0 | 1867 Byte | 282 ms |
+| [6562093](https://atcoder.jp/contests/abc135/submissions/6562093) | 2019-07-27 | 12:03:41 | abc135 | abc135_a | Rust (1.15.1) | AC | 100.0 | 1107 Byte | 2 ms |
+| [6563766](https://atcoder.jp/contests/abc135/submissions/6563766) | 2019-07-27 | 12:06:01 | abc135 | abc135_b | Rust (1.15.1) | AC | 200.0 | 1176 Byte | 2 ms |
+| [6566314](https://atcoder.jp/contests/abc135/submissions/6566314) | 2019-07-27 | 12:10:36 | abc135 | abc135_c | Rust (1.15.1) | AC | 300.0 | 1298 Byte | 74 ms |
+| [6569279](https://atcoder.jp/contests/abc135/submissions/6569279) | 2019-07-27 | 12:18:13 | abc135 | abc135_d | Rust (1.15.1) | AC | 400.0 | 1638 Byte | 36 ms |
+| [6586916](https://atcoder.jp/contests/abc135/submissions/6586916) | 2019-07-27 | 17:04:30 | abc135 | abc135_e | Rust (1.15.1) | WA | 0.0 | 2585 Byte | 346 ms |
+| [6586922](https://atcoder.jp/contests/abc135/submissions/6586922) | 2019-07-27 | 17:05:44 | abc135 | abc135_e | Rust (1.15.1) | WA | 0.0 | 2626 Byte | 341 ms |
+| [6586954](https://atcoder.jp/contests/abc135/submissions/6586954) | 2019-07-27 | 17:09:14 | abc135 | abc135_e | Rust (1.15.1) | WA | 0.0 | 2941 Byte | 338 ms |
+| [6587017](https://atcoder.jp/contests/abc135/submissions/6587017) | 2019-07-27 | 17:15:38 | abc135 | abc135_e | Rust (1.15.1) | RE | 0.0 | 3077 Byte | 340 ms |
+| [6587523](https://atcoder.jp/contests/abc135/submissions/6587523) | 2019-07-27 | 18:17:58 | abc135 | abc135_e | Rust (1.15.1) | RE | 0.0 | 3213 Byte | 343 ms |
+| [6587577](https://atcoder.jp/contests/abc135/submissions/6587577) | 2019-07-27 | 18:28:37 | abc135 | abc135_e | Rust (1.15.1) | WA | 0.0 | 3323 Byte | 352 ms |
+| [6587724](https://atcoder.jp/contests/abc135/submissions/6587724) | 2019-07-27 | 18:55:59 | abc135 | abc135_e | Rust (1.15.1) | RE | 0.0 | 3363 Byte | 344 ms |
+| [6587785](https://atcoder.jp/contests/abc135/submissions/6587785) | 2019-07-27 | 19:15:53 | abc135 | abc135_e | Rust (1.15.1) | RE | 0.0 | 3739 Byte | 341 ms |
+| [6587799](https://atcoder.jp/contests/abc135/submissions/6587799) | 2019-07-27 | 19:19:42 | abc135 | abc135_e | Rust (1.15.1) | RE | 0.0 | 3812 Byte | 347 ms |
+| [6587812](https://atcoder.jp/contests/abc135/submissions/6587812) | 2019-07-27 | 19:24:49 | abc135 | abc135_e | Rust (1.15.1) | AC | 500.0 | 3934 Byte | 357 ms |
+| [6588078](https://atcoder.jp/contests/abc135/submissions/6588078) | 2019-07-27 | 20:57:14 | abc135 | abc135_f | Rust (1.15.1) | WA | 0.0 | 3741 Byte | 422 ms |
+| [6588086](https://atcoder.jp/contests/abc135/submissions/6588086) | 2019-07-27 | 20:59:40 | abc135 | abc135_f | Rust (1.15.1) | WA | 0.0 | 3741 Byte | 423 ms |
+| [6588098](https://atcoder.jp/contests/abc135/submissions/6588098) | 2019-07-27 | 21:08:05 | abc135 | abc135_f | Rust (1.15.1) | WA | 0.0 | 3560 Byte | 403 ms |
+| [6588110](https://atcoder.jp/contests/abc135/submissions/6588110) | 2019-07-27 | 21:12:57 | abc135 | abc135_f | Rust (1.15.1) | AC | 600.0 | 3577 Byte | 409 ms |
+| [6597269](https://atcoder.jp/contests/tkppc4-1/submissions/6597269) | 2019-07-28 | 12:03:05 | tkppc4-1 | tkppc4_1_h | Rust (1.15.1) | WA | 0.0 | 2556 Byte | 366 ms |
+| [6597279](https://atcoder.jp/contests/tkppc4-1/submissions/6597279) | 2019-07-28 | 12:04:25 | tkppc4-1 | tkppc4_1_h | Rust (1.15.1) | AC | 400.0 | 2556 Byte | 361 ms |
+| [6597481](https://atcoder.jp/contests/tkppc4-1/submissions/6597481) | 2019-07-28 | 12:22:14 | tkppc4-1 | tkppc4_1_i | Rust (1.15.1) | WA | 0.0 | 1890 Byte | 172 ms |
+| [6597555](https://atcoder.jp/contests/tkppc4-2/submissions/6597555) | 2019-07-28 | 12:29:29 | tkppc4-2 | tkppc4_2_a | Rust (1.15.1) | AC | 200.0 | 1218 Byte | 2 ms |
+| [6597664](https://atcoder.jp/contests/tkppc4-2/submissions/6597664) | 2019-07-28 | 12:38:50 | tkppc4-2 | tkppc4_2_b | Rust (1.15.1) | WA | 0.0 | 2700 Byte | 96 ms |
+| [6597732](https://atcoder.jp/contests/tkppc4-2/submissions/6597732) | 2019-07-28 | 12:45:38 | tkppc4-2 | tkppc4_2_b | Rust (1.15.1) | AC | 400.0 | 2721 Byte | 88 ms |
+| [6598064](https://atcoder.jp/contests/tkppc4-2/submissions/6598064) | 2019-07-28 | 13:13:41 | tkppc4-2 | tkppc4_2_c | Rust (1.15.1) | RE | 0.0 | 1796 Byte | 2 ms |
+| [6598565](https://atcoder.jp/contests/tkppc4-2/submissions/6598565) | 2019-07-28 | 13:56:16 | tkppc4-2 | tkppc4_2_c | Rust (1.15.1) | WA | 0.0 | 2671 Byte | 2 ms |
+| [6598703](https://atcoder.jp/contests/tkppc4-2/submissions/6598703) | 2019-07-28 | 14:06:26 | tkppc4-2 | tkppc4_2_c | Rust (1.15.1) | AC | 400.0 | 2725 Byte | 2 ms |
+| [6598906](https://atcoder.jp/contests/tkppc4-2/submissions/6598906) | 2019-07-28 | 14:22:31 | tkppc4-2 | tkppc4_2_d | Rust (1.15.1) | AC | 400.0 | 1971 Byte | 55 ms |
+| [6599085](https://atcoder.jp/contests/tkppc4-2/submissions/6599085) | 2019-07-28 | 14:38:28 | tkppc4-2 | tkppc4_2_e | Rust (1.15.1) | AC | 400.0 | 3683 Byte | 298 ms |
+| [6599223](https://atcoder.jp/contests/tkppc4-2/submissions/6599223) | 2019-07-28 | 14:54:53 | tkppc4-2 | tkppc4_2_h | Rust (1.15.1) | AC | 700.0 | 1317 Byte | 43 ms |
+| [6599473](https://atcoder.jp/contests/tkppc4-2/submissions/6599473) | 2019-07-28 | 15:29:43 | tkppc4-2 | tkppc4_2_g | Rust (1.15.1) | CE | 0.0 | 2300 Byte | nothing ms |
+| [6599479](https://atcoder.jp/contests/tkppc4-2/submissions/6599479) | 2019-07-28 | 15:30:18 | tkppc4-2 | tkppc4_2_g | Rust (1.15.1) | TLE | 300.0 | 2334 Byte | 3155 ms |
+| [6610115](https://atcoder.jp/contests/tkppc4-1/submissions/6610115) | 2019-07-29 | 19:06:59 | tkppc4-1 | tkppc4_1_i | Rust (1.15.1) | CE | 0.0 | 1989 Byte | nothing ms |
+| [6610119](https://atcoder.jp/contests/tkppc4-1/submissions/6610119) | 2019-07-29 | 19:07:17 | tkppc4-1 | tkppc4_1_i | Rust (1.15.1) | AC | 400.0 | 1911 Byte | 172 ms |
+| [6683273](https://atcoder.jp/contests/abc136/submissions/6683273) | 2019-08-04 | 12:02:14 | abc136 | abc136_a | Rust (1.15.1) | AC | 100.0 | 1109 Byte | 2 ms |
+| [6686382](https://atcoder.jp/contests/abc136/submissions/6686382) | 2019-08-04 | 12:05:03 | abc136 | abc136_b | Rust (1.15.1) | AC | 200.0 | 1128 Byte | 2 ms |
+| [6688074](https://atcoder.jp/contests/abc136/submissions/6688074) | 2019-08-04 | 12:07:42 | abc136 | abc136_c | Rust (1.15.1) | AC | 300.0 | 1182 Byte | 38 ms |
+| [6694295](https://atcoder.jp/contests/abc136/submissions/6694295) | 2019-08-04 | 12:22:20 | abc136 | abc136_d | Rust (1.15.1) | AC | 400.0 | 2064 Byte | 29 ms |
+| [6704977](https://atcoder.jp/contests/abc136/submissions/6704977) | 2019-08-04 | 13:05:13 | abc136 | abc136_e | Rust (1.15.1) | AC | 500.0 | 2084 Byte | 26 ms |
+| [6716769](https://atcoder.jp/contests/abc136/submissions/6716769) | 2019-08-04 | 15:59:45 | abc136 | abc136_f | Rust (1.15.1) | AC | 600.0 | 8923 Byte | 406 ms |
+| [6716856](https://atcoder.jp/contests/abc136/submissions/6716856) | 2019-08-04 | 16:05:19 | abc136 | abc136_f | Rust (1.15.1) | AC | 600.0 | 8280 Byte | 399 ms |
+| [6800526](https://atcoder.jp/contests/abc072/submissions/6800526) | 2019-08-10 | 11:49:57 | abc072 | arc082_b | Rust (1.15.1) | WA | 0.0 | 1139 Byte | 24 ms |
+| [6800601](https://atcoder.jp/contests/abc072/submissions/6800601) | 2019-08-10 | 11:52:39 | abc072 | arc082_b | Rust (1.15.1) | AC | 400.0 | 1191 Byte | 25 ms |
+| [6802718](https://atcoder.jp/contests/abc137/submissions/6802718) | 2019-08-10 | 12:02:28 | abc137 | abc137_a | Rust (1.15.1) | AC | 100.0 | 1037 Byte | 2 ms |
+| [6804572](https://atcoder.jp/contests/abc137/submissions/6804572) | 2019-08-10 | 12:04:16 | abc137 | abc137_b | Rust (1.15.1) | AC | 200.0 | 1156 Byte | 2 ms |
+| [6808136](https://atcoder.jp/contests/abc137/submissions/6808136) | 2019-08-10 | 12:09:01 | abc137 | abc137_c | Rust (1.15.1) | WA | 0.0 | 1341 Byte | 102 ms |
+| [6813754](https://atcoder.jp/contests/abc137/submissions/6813754) | 2019-08-10 | 12:24:07 | abc137 | abc137_d | Bash (GNU bash v4.3.11) | AC | 400.0 | 125783 Byte | 88 ms |
+| [6814352](https://atcoder.jp/contests/abc137/submissions/6814352) | 2019-08-10 | 12:26:12 | abc137 | abc137_c | Rust (1.15.1) | AC | 300.0 | 1341 Byte | 104 ms |
+| [6822685](https://atcoder.jp/contests/abc137/submissions/6822685) | 2019-08-10 | 13:00:59 | abc137 | abc137_e | Rust (1.15.1) | AC | 500.0 | 3351 Byte | 176 ms |
+| [6838887](https://atcoder.jp/contests/abc137/submissions/6838887) | 2019-08-10 | 18:44:56 | abc137 | abc137_f | Rust (1.15.1) | AC | 600.0 | 3070 Byte | 1532 ms |
+| [6852245](https://atcoder.jp/contests/arc102/submissions/6852245) | 2019-08-11 | 12:08:11 | arc102 | arc102_c | Rust (1.15.1) | AC | 700.0 | 6725 Byte | 102 ms |
+| [6853964](https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/6853964) | 2019-08-11 | 13:42:17 | yahoo-procon2019-qual | yahoo_procon2019_qual_e | Rust (1.15.1) | AC | 800.0 | 2279 Byte | 18 ms |
+| [6859206](https://atcoder.jp/contests/abc137/submissions/6859206) | 2019-08-12 | 01:29:52 | abc137 | abc137_e | Rust (1.15.1) | AC | 500.0 | 3351 Byte | 175 ms |
+| [6909158](https://atcoder.jp/contests/abc107/submissions/6909158) | 2019-08-14 | 17:46:20 | abc107 | arc101_b | Rust (1.15.1) | WA | 0.0 | 3696 Byte | 1217 ms |
+| [6909174](https://atcoder.jp/contests/abc107/submissions/6909174) | 2019-08-14 | 17:49:52 | abc107 | arc101_b | Rust (1.15.1) | AC | 700.0 | 3696 Byte | 1028 ms |
+| [6933057](https://atcoder.jp/contests/abc084/submissions/6933057) | 2019-08-16 | 06:47:10 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1186 Byte | 237 ms |
+| [6940400](https://atcoder.jp/contests/abc130/submissions/6940400) | 2019-08-16 | 14:38:42 | abc130 | abc130_f | Rust (1.15.1) | WA | 0.0 | 3961 Byte | 91 ms |
+| [6940415](https://atcoder.jp/contests/abc130/submissions/6940415) | 2019-08-16 | 14:39:40 | abc130 | abc130_f | Rust (1.15.1) | AC | 600.0 | 4017 Byte | 91 ms |
+| [6942084](https://atcoder.jp/contests/abc093/submissions/6942084) | 2019-08-16 | 16:36:04 | abc093 | arc094_b | Rust (1.15.1) | AC | 700.0 | 2078 Byte | 2 ms |
+| [6942390](https://atcoder.jp/contests/arc068/submissions/6942390) | 2019-08-16 | 17:03:53 | arc068 | arc068_c | Rust (1.15.1) | AC | 700.0 | 5363 Byte | 1507 ms |
+| [6942698](https://atcoder.jp/contests/arc068/submissions/6942698) | 2019-08-16 | 17:44:58 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4508 Byte | nothing ms |
+| [6942704](https://atcoder.jp/contests/arc068/submissions/6942704) | 2019-08-16 | 17:45:56 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4518 Byte | nothing ms |
+| [6942709](https://atcoder.jp/contests/arc068/submissions/6942709) | 2019-08-16 | 17:47:10 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4537 Byte | nothing ms |
+| [6942725](https://atcoder.jp/contests/arc068/submissions/6942725) | 2019-08-16 | 17:49:10 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4584 Byte | nothing ms |
+| [6942732](https://atcoder.jp/contests/arc068/submissions/6942732) | 2019-08-16 | 17:50:09 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4556 Byte | nothing ms |
+| [6942741](https://atcoder.jp/contests/arc068/submissions/6942741) | 2019-08-16 | 17:52:42 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4561 Byte | nothing ms |
+| [6942766](https://atcoder.jp/contests/arc068/submissions/6942766) | 2019-08-16 | 17:57:07 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4541 Byte | nothing ms |
+| [6942771](https://atcoder.jp/contests/arc068/submissions/6942771) | 2019-08-16 | 17:58:10 | arc068 | arc068_c | Rust (1.15.1) | CE | 0.0 | 4566 Byte | nothing ms |
+| [6981774](https://atcoder.jp/contests/abc138/submissions/6981774) | 2019-08-18 | 12:01:48 | abc138 | abc138_a | Rust (1.15.1) | AC | 100.0 | 1059 Byte | 2 ms |
+| [6985741](https://atcoder.jp/contests/abc138/submissions/6985741) | 2019-08-18 | 12:05:08 | abc138 | abc138_b | Rust (1.15.1) | AC | 200.0 | 1127 Byte | 2 ms |
+| [6988318](https://atcoder.jp/contests/abc138/submissions/6988318) | 2019-08-18 | 12:08:34 | abc138 | abc138_c | Rust (1.15.1) | AC | 300.0 | 1122 Byte | 2 ms |
+| [6991685](https://atcoder.jp/contests/abc138/submissions/6991685) | 2019-08-18 | 12:14:48 | abc138 | abc138_d | Rust (1.15.1) | AC | 400.0 | 1856 Byte | 291 ms |
+| [6997572](https://atcoder.jp/contests/abc138/submissions/6997572) | 2019-08-18 | 12:33:55 | abc138 | abc138_e | Rust (1.15.1) | AC | 500.0 | 4908 Byte | 16 ms |
+| [7050932](https://atcoder.jp/contests/abc138/submissions/7050932) | 2019-08-20 | 15:56:42 | abc138 | abc138_f | Rust (1.15.1) | AC | 600.0 | 2676 Byte | 3 ms |
+| [7080796](https://atcoder.jp/contests/arc069/submissions/7080796) | 2019-08-22 | 15:12:26 | arc069 | arc069_c | Rust (1.15.1) | AC | 700.0 | 1772 Byte | 201 ms |
+| [7081245](https://atcoder.jp/contests/abc123/submissions/7081245) | 2019-08-22 | 15:47:11 | abc123 | abc123_d | Rust (1.15.1) | AC | 400.0 | 1562 Byte | 325 ms |
+| [7081547](https://atcoder.jp/contests/abc118/submissions/7081547) | 2019-08-22 | 16:17:33 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2317 Byte | 3 ms |
+| [7081852](https://atcoder.jp/contests/abc118/submissions/7081852) | 2019-08-22 | 16:53:05 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2337 Byte | 2 ms |
+| [7081985](https://atcoder.jp/contests/abc118/submissions/7081985) | 2019-08-22 | 17:13:20 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2493 Byte | 4 ms |
+| [7082031](https://atcoder.jp/contests/abc118/submissions/7082031) | 2019-08-22 | 17:19:57 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2547 Byte | 5 ms |
+| [7082210](https://atcoder.jp/contests/abc118/submissions/7082210) | 2019-08-22 | 17:50:11 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2276 Byte | 4 ms |
+| [7082226](https://atcoder.jp/contests/abc118/submissions/7082226) | 2019-08-22 | 17:52:36 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2276 Byte | 5 ms |
+| [7082229](https://atcoder.jp/contests/abc118/submissions/7082229) | 2019-08-22 | 17:53:05 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2256 Byte | 7 ms |
+| [7082246](https://atcoder.jp/contests/abc118/submissions/7082246) | 2019-08-22 | 17:56:22 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2516 Byte | 9 ms |
+| [7082251](https://atcoder.jp/contests/abc118/submissions/7082251) | 2019-08-22 | 17:57:02 | abc118 | abc118_d | Rust (1.15.1) | WA | 0.0 | 2519 Byte | 9 ms |
+| [7082311](https://atcoder.jp/contests/abc118/submissions/7082311) | 2019-08-22 | 18:07:54 | abc118 | abc118_d | Rust (1.15.1) | AC | 400.0 | 1792 Byte | 3 ms |
+| [7086382](https://atcoder.jp/contests/abc138/submissions/7086382) | 2019-08-23 | 05:09:11 | abc138 | abc138_d | Go (1.6) | AC | 400.0 | 985 Byte | 1066 ms |
+| [7103684](https://atcoder.jp/contests/arc073/submissions/7103684) | 2019-08-24 | 08:44:42 | arc073 | arc073_c | Rust (1.15.1) | AC | 700.0 | 1936 Byte | 173 ms |
+| [7106283](https://atcoder.jp/contests/mujin-pc-2017/submissions/7106283) | 2019-08-24 | 11:23:52 | mujin-pc-2017 | mujin_pc_2017_a | Rust (1.15.1) | AC | 900.0 | 1315 Byte | 36 ms |
+| [7107373](https://atcoder.jp/contests/jsc2019-qual/submissions/7107373) | 2019-08-24 | 12:03:18 | jsc2019-qual | jsc2019_qual_a | Rust (1.15.1) | AC | 200.0 | 1301 Byte | 2 ms |
+| [7109987](https://atcoder.jp/contests/jsc2019-qual/submissions/7109987) | 2019-08-24 | 12:11:56 | jsc2019-qual | jsc2019_qual_b | Rust (1.15.1) | AC | 300.0 | 1612 Byte | 18 ms |
+| [7116522](https://atcoder.jp/contests/jsc2019-qual/submissions/7116522) | 2019-08-24 | 13:05:10 | jsc2019-qual | jsc2019_qual_c | Rust (1.15.1) | WA | 0.0 | 5468 Byte | 8 ms |
+| [7116895](https://atcoder.jp/contests/jsc2019-qual/submissions/7116895) | 2019-08-24 | 13:09:00 | jsc2019-qual | jsc2019_qual_c | Rust (1.15.1) | AC | 500.0 | 5415 Byte | 8 ms |
+| [7118482](https://atcoder.jp/contests/jsc2019-qual/submissions/7118482) | 2019-08-24 | 13:24:55 | jsc2019-qual | jsc2019_qual_d | Rust (1.15.1) | WA | 0.0 | 1770 Byte | 24 ms |
+| [7118919](https://atcoder.jp/contests/jsc2019-qual/submissions/7118919) | 2019-08-24 | 13:29:15 | jsc2019-qual | jsc2019_qual_d | Rust (1.15.1) | AC | 600.0 | 1734 Byte | 24 ms |
+| [7120334](https://atcoder.jp/contests/jsc2019-qual/submissions/7120334) | 2019-08-24 | 13:39:33 | jsc2019-qual | jsc2019_qual_e | Rust (1.15.1) | WA | 0.0 | 2411 Byte | 251 ms |
+| [7127219](https://atcoder.jp/contests/jsc2019-qual/submissions/7127219) | 2019-08-24 | 21:09:58 | jsc2019-qual | jsc2019_qual_e | Rust (1.15.1) | AC | 800.0 | 3213 Byte | 91 ms |
+| [7127365](https://atcoder.jp/contests/tkppc4-2/submissions/7127365) | 2019-08-24 | 21:57:42 | tkppc4-2 | tkppc4_2_f | Rust (1.15.1) | RE | 0.0 | 1816 Byte | 63 ms |
+| [7127373](https://atcoder.jp/contests/tkppc4-2/submissions/7127373) | 2019-08-24 | 21:59:28 | tkppc4-2 | tkppc4_2_f | Rust (1.15.1) | AC | 700.0 | 1834 Byte | 152 ms |
+| [7127686](https://atcoder.jp/contests/tkppc4-2/submissions/7127686) | 2019-08-24 | 23:33:28 | tkppc4-2 | tkppc4_2_f | Rust (1.15.1) | AC | 700.0 | 2223 Byte | 58 ms |
+| [7153811](https://atcoder.jp/contests/diverta2019-2/submissions/7153811) | 2019-08-26 | 13:46:57 | diverta2019-2 | diverta2019_2_d | Rust (1.15.1) | AC | 600.0 | 1894 Byte | 256 ms |
+| [7169012](https://atcoder.jp/contests/abc104/submissions/7169012) | 2019-08-27 | 13:49:09 | abc104 | abc104_c | Rust (1.15.1) | AC | 300.0 | 1877 Byte | 4 ms |
+| [7184724](https://atcoder.jp/contests/arc029/submissions/7184724) | 2019-08-28 | 14:52:00 | arc029 | arc029_2 | Rust (1.15.1) | AC | 100.0 | 2084 Byte | 20 ms |
+| [7197834](https://atcoder.jp/contests/abc113/submissions/7197834) | 2019-08-29 | 13:30:48 | abc113 | abc113_d | Rust (1.15.1) | AC | 400.0 | 1943 Byte | 2 ms |
+| [7209481](https://atcoder.jp/contests/agc027/submissions/7209481) | 2019-08-30 | 11:03:33 | agc027 | agc027_b | Rust (1.15.1) | AC | 700.0 | 1586 Byte | 81 ms |
+| [7209675](https://atcoder.jp/contests/abc131/submissions/7209675) | 2019-08-30 | 11:22:25 | abc131 | abc131_d | Rust (1.15.1) | AC | 400.0 | 1302 Byte | 130 ms |
+| [7210203](https://atcoder.jp/contests/diverta2019-2/submissions/7210203) | 2019-08-30 | 12:09:35 | diverta2019-2 | diverta2019_2_c | Rust (1.15.1) | WA | 0.0 | 1271 Byte | 213 ms |
+| [7229675](https://atcoder.jp/contests/diverta2019-2/submissions/7229675) | 2019-08-31 | 12:56:51 | diverta2019-2 | diverta2019_2_c | Rust (1.15.1) | WA | 0.0 | 1827 Byte | 388 ms |
+| [7229717](https://atcoder.jp/contests/diverta2019-2/submissions/7229717) | 2019-08-31 | 12:57:33 | diverta2019-2 | diverta2019_2_c | Rust (1.15.1) | AC | 500.0 | 1819 Byte | 208 ms |
+| [7247824](https://atcoder.jp/contests/abc139/submissions/7247824) | 2019-09-01 | 12:02:50 | abc139 | abc139_a | Rust (1.15.1) | AC | 100.0 | 1087 Byte | 2 ms |
+| [7250454](https://atcoder.jp/contests/abc139/submissions/7250454) | 2019-09-01 | 12:04:51 | abc139 | abc139_b | Rust (1.15.1) | AC | 200.0 | 1060 Byte | 2 ms |
+| [7254223](https://atcoder.jp/contests/abc139/submissions/7254223) | 2019-09-01 | 12:08:30 | abc139 | abc139_c | Rust (1.15.1) | AC | 300.0 | 1216 Byte | 38 ms |
+| [7257212](https://atcoder.jp/contests/abc139/submissions/7257212) | 2019-09-01 | 12:11:46 | abc139 | abc139_d | Rust (1.15.1) | AC | 400.0 | 987 Byte | 2 ms |
+| [7266729](https://atcoder.jp/contests/abc139/submissions/7266729) | 2019-09-01 | 12:26:16 | abc139 | abc139_e | Rust (1.15.1) | AC | 500.0 | 1959 Byte | 179 ms |
+| [7276550](https://atcoder.jp/contests/abc139/submissions/7276550) | 2019-09-01 | 12:52:41 | abc139 | abc139_f | Rust (1.15.1) | WA | 0.0 | 2020 Byte | 2106 ms |
+| [7285640](https://atcoder.jp/contests/abc139/submissions/7285640) | 2019-09-01 | 13:24:24 | abc139 | abc139_f | Rust (1.15.1) | TLE | 0.0 | 4504 Byte | 2105 ms |
+| [7287017](https://atcoder.jp/contests/abc139/submissions/7287017) | 2019-09-01 | 13:29:06 | abc139 | abc139_f | Rust (1.15.1) | TLE | 0.0 | 4816 Byte | 2106 ms |
+| [7288973](https://atcoder.jp/contests/abc139/submissions/7288973) | 2019-09-01 | 13:35:19 | abc139 | abc139_f | Rust (1.15.1) | TLE | 0.0 | 4012 Byte | 2104 ms |
+| [7289507](https://atcoder.jp/contests/abc139/submissions/7289507) | 2019-09-01 | 13:36:57 | abc139 | abc139_f | Rust (1.15.1) | AC | 600.0 | 4013 Byte | 3 ms |
+| [7294829](https://atcoder.jp/contests/abc139/submissions/7294829) | 2019-09-01 | 14:30:26 | abc139 | abc139_f | Rust (1.15.1) | TLE | 0.0 | 2295 Byte | 2104 ms |
+| [7295949](https://atcoder.jp/contests/abc139/submissions/7295949) | 2019-09-01 | 14:58:26 | abc139 | abc139_f | Rust (1.15.1) | WA | 0.0 | 1869 Byte | 2104 ms |
+| [7297415](https://atcoder.jp/contests/abc139/submissions/7297415) | 2019-09-01 | 15:54:00 | abc139 | abc139_f | Rust (1.15.1) | WA | 0.0 | 2459 Byte | 3 ms |
+| [7298951](https://atcoder.jp/contests/abc139/submissions/7298951) | 2019-09-01 | 17:46:35 | abc139 | abc139_f | Rust (1.15.1) | AC | 600.0 | 1981 Byte | 2 ms |
+| [7314237](https://atcoder.jp/contests/tenka1-2017/submissions/7314237) | 2019-09-02 | 14:54:22 | tenka1-2017 | tenka1_2017_c | Rust (1.15.1) | AC | 300.0 | 1369 Byte | 8 ms |
+| [7315170](https://atcoder.jp/contests/agc036/submissions/7315170) | 2019-09-02 | 16:00:04 | agc036 | agc036_b | Rust (1.15.1) | WA | 0.0 | 3085 Byte | 175 ms |
+| [7315338](https://atcoder.jp/contests/agc036/submissions/7315338) | 2019-09-02 | 16:19:03 | agc036 | agc036_b | Rust (1.15.1) | CE | 0.0 | 3121 Byte | nothing ms |
+| [7315341](https://atcoder.jp/contests/agc036/submissions/7315341) | 2019-09-02 | 16:19:17 | agc036 | agc036_b | Rust (1.15.1) | RE | 0.0 | 3083 Byte | 181 ms |
+| [7323333](https://atcoder.jp/contests/agc036/submissions/7323333) | 2019-09-03 | 08:53:07 | agc036 | agc036_b | Rust (1.15.1) | CE | 0.0 | 2496 Byte | nothing ms |
+| [7323345](https://atcoder.jp/contests/agc036/submissions/7323345) | 2019-09-03 | 08:54:17 | agc036 | agc036_b | Rust (1.15.1) | CE | 0.0 | 2558 Byte | nothing ms |
+| [7323365](https://atcoder.jp/contests/agc036/submissions/7323365) | 2019-09-03 | 08:56:05 | agc036 | agc036_b | Rust (1.15.1) | WA | 0.0 | 2533 Byte | 2103 ms |
+| [7323636](https://atcoder.jp/contests/agc036/submissions/7323636) | 2019-09-03 | 09:20:15 | agc036 | agc036_b | Rust (1.15.1) | WA | 0.0 | 2533 Byte | 384 ms |
+| [7328413](https://atcoder.jp/contests/agc036/submissions/7328413) | 2019-09-03 | 14:36:18 | agc036 | agc036_b | Rust (1.15.1) | WA | 0.0 | 2556 Byte | 385 ms |
+| [7328766](https://atcoder.jp/contests/agc036/submissions/7328766) | 2019-09-03 | 14:52:42 | agc036 | agc036_b | Rust (1.15.1) | AC | 700.0 | 3229 Byte | 368 ms |
+| [7329679](https://atcoder.jp/contests/agc036/submissions/7329679) | 2019-09-03 | 15:52:07 | agc036 | agc036_b | Rust (1.15.1) | AC | 700.0 | 3089 Byte | 175 ms |
+| [7339961](https://atcoder.jp/contests/arc060/submissions/7339961) | 2019-09-04 | 12:32:13 | arc060 | arc060_a | Rust (1.15.1) | AC | 300.0 | 1844 Byte | 10 ms |
+| [7355040](https://atcoder.jp/contests/code-festival-2017-quala/submissions/7355040) | 2019-09-05 | 14:55:04 | code-festival-2017-quala | code_festival_2017_quala_a | Rust (1.15.1) | AC | 100.0 | 1063 Byte | 2 ms |
+| [7355959](https://atcoder.jp/contests/dwacon5th-prelims/submissions/7355959) | 2019-09-05 | 16:23:44 | dwacon5th-prelims | dwacon5th_prelims_c | Rust (1.15.1) | AC | 600.0 | 3525 Byte | 2092 ms |
+| [7416300](https://atcoder.jp/contests/abc140/submissions/7416300) | 2019-09-08 | 06:00:35 | abc140 | abc140_a | Python (3.4.3) | WA | 0.0 | 16 Byte | 17 ms |
+| [7416326](https://atcoder.jp/contests/abc140/submissions/7416326) | 2019-09-08 | 06:02:17 | abc140 | abc140_a | Python (3.4.3) | AC | 100.0 | 29 Byte | 17 ms |
+| [7427592](https://atcoder.jp/contests/arc102/submissions/7427592) | 2019-09-08 | 17:03:19 | arc102 | arc102_c | Rust (1.15.1) | AC | 700.0 | 6555 Byte | 100 ms |
+| [7440296](https://atcoder.jp/contests/agc035/submissions/7440296) | 2019-09-09 | 14:35:29 | agc035 | agc035_b | Rust (1.15.1) | WA | 0.0 | 1897 Byte | 64 ms |
+| [7440858](https://atcoder.jp/contests/agc035/submissions/7440858) | 2019-09-09 | 15:07:18 | agc035 | agc035_b | Rust (1.15.1) | RE | 0.0 | 2545 Byte | 259 ms |
+| [7440875](https://atcoder.jp/contests/agc035/submissions/7440875) | 2019-09-09 | 15:08:23 | agc035 | agc035_b | Rust (1.15.1) | AC | 700.0 | 2545 Byte | 259 ms |
+| [7454623](https://atcoder.jp/contests/agc037/submissions/7454623) | 2019-09-10 | 14:52:53 | agc037 | agc037_c | Rust (1.15.1) | AC | 800.0 | 2024 Byte | 240 ms |
+| [7467098](https://atcoder.jp/contests/abc131/submissions/7467098) | 2019-09-11 | 14:42:38 | abc131 | abc131_a | Python (3.4.3) | AC | 100.0 | 101 Byte | 17 ms |
+| [7476929](https://atcoder.jp/contests/abc131/submissions/7476929) | 2019-09-12 | 12:20:22 | abc131 | abc131_f | Rust (1.15.1) | CE | 0.0 | 3265 Byte | nothing ms |
+| [7476930](https://atcoder.jp/contests/abc131/submissions/7476930) | 2019-09-12 | 12:20:39 | abc131 | abc131_f | Rust (1.15.1) | WA | 0.0 | 3238 Byte | 1241 ms |
+| [7477097](https://atcoder.jp/contests/abc131/submissions/7477097) | 2019-09-12 | 12:34:18 | abc131 | abc131_f | Rust (1.15.1) | WA | 0.0 | 3275 Byte | 1242 ms |
+| [7478395](https://atcoder.jp/contests/abc131/submissions/7478395) | 2019-09-12 | 14:04:45 | abc131 | abc131_f | Rust (1.15.1) | AC | 600.0 | 2698 Byte | 120 ms |
+| [7488963](https://atcoder.jp/contests/mujin-pc-2017/submissions/7488963) | 2019-09-13 | 12:16:09 | mujin-pc-2017 | mujin_pc_2017_b | Rust (1.15.1) | WA | 0.0 | 1425 Byte | 8 ms |
+| [7489642](https://atcoder.jp/contests/mujin-pc-2017/submissions/7489642) | 2019-09-13 | 13:19:58 | mujin-pc-2017 | mujin_pc_2017_b | Rust (1.15.1) | CE | 0.0 | 3209 Byte | nothing ms |
+| [7489663](https://atcoder.jp/contests/mujin-pc-2017/submissions/7489663) | 2019-09-13 | 13:22:01 | mujin-pc-2017 | mujin_pc_2017_b | Rust (1.15.1) | AC | 1300.0 | 3223 Byte | 8 ms |
+| [7515516](https://atcoder.jp/contests/abc141/submissions/7515516) | 2019-09-15 | 12:02:08 | abc141 | abc141_a | Rust (1.15.1) | AC | 100.0 | 1114 Byte | 2 ms |
+| [7518123](https://atcoder.jp/contests/abc141/submissions/7518123) | 2019-09-15 | 12:04:26 | abc141 | abc141_b | Rust (1.15.1) | AC | 200.0 | 1129 Byte | 2 ms |
+| [7521062](https://atcoder.jp/contests/abc141/submissions/7521062) | 2019-09-15 | 12:08:20 | abc141 | abc141_c | Rust (1.15.1) | AC | 300.0 | 1282 Byte | 189 ms |
+| [7523601](https://atcoder.jp/contests/abc141/submissions/7523601) | 2019-09-15 | 12:12:37 | abc141 | abc141_d | Rust (1.15.1) | AC | 400.0 | 1295 Byte | 48 ms |
+| [7537095](https://atcoder.jp/contests/abc141/submissions/7537095) | 2019-09-15 | 12:59:12 | abc141 | abc141_e | Rust (1.15.1) | CE | 0.0 | 3732 Byte | nothing ms |
+| [7537307](https://atcoder.jp/contests/abc141/submissions/7537307) | 2019-09-15 | 13:00:14 | abc141 | abc141_e | Rust (1.15.1) | AC | 500.0 | 3731 Byte | 12 ms |
+| [7549148](https://atcoder.jp/contests/abc141/submissions/7549148) | 2019-09-15 | 15:17:42 | abc141 | abc141_f | Rust (1.15.1) | AC | 600.0 | 1771 Byte | 89 ms |
+| [7632546](https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/7632546) | 2019-09-21 | 08:08:22 | yahoo-procon2019-qual | yahoo_procon2019_qual_e | Rust (1.15.1) | WA | 0.0 | 1987 Byte | 46 ms |
+| [7632589](https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/7632589) | 2019-09-21 | 08:11:15 | yahoo-procon2019-qual | yahoo_procon2019_qual_e | Rust (1.15.1) | WA | 0.0 | 1991 Byte | 45 ms |
+| [7632658](https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/7632658) | 2019-09-21 | 08:15:36 | yahoo-procon2019-qual | yahoo_procon2019_qual_e | Rust (1.15.1) | WA | 0.0 | 2037 Byte | 49 ms |
+| [7632678](https://atcoder.jp/contests/yahoo-procon2019-qual/submissions/7632678) | 2019-09-21 | 08:17:09 | yahoo-procon2019-qual | yahoo_procon2019_qual_e | Rust (1.15.1) | AC | 800.0 | 2055 Byte | 27 ms |
+| [7633250](https://atcoder.jp/contests/abc138/submissions/7633250) | 2019-09-21 | 09:00:42 | abc138 | abc138_f | Rust (1.15.1) | AC | 600.0 | 2963 Byte | 2 ms |
+| [7633590](https://atcoder.jp/contests/abc118/submissions/7633590) | 2019-09-21 | 09:28:03 | abc118 | abc118_d | Rust (1.15.1) | AC | 400.0 | 1908 Byte | 3 ms |
+| [7633867](https://atcoder.jp/contests/arc073/submissions/7633867) | 2019-09-21 | 09:51:43 | arc073 | arc073_c | Rust (1.15.1) | AC | 700.0 | 1945 Byte | 171 ms |
+| [7635650](https://atcoder.jp/contests/mujin-pc-2017/submissions/7635650) | 2019-09-21 | 11:57:28 | mujin-pc-2017 | mujin_pc_2017_a | Rust (1.15.1) | AC | 900.0 | 1334 Byte | 37 ms |
+| [7635757](https://atcoder.jp/contests/agc038/submissions/7635757) | 2019-09-21 | 12:05:01 | agc038 | agc038_a | Rust (1.15.1) | AC | 300.0 | 1415 Byte | 132 ms |
+| [7637429](https://atcoder.jp/contests/agc038/submissions/7637429) | 2019-09-21 | 12:31:33 | agc038 | agc038_b | Rust (1.15.1) | AC | 700.0 | 2377 Byte | 115 ms |
+| [7643000](https://atcoder.jp/contests/agc038/submissions/7643000) | 2019-09-21 | 13:37:47 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3595 Byte | 76 ms |
+| [7643159](https://atcoder.jp/contests/agc038/submissions/7643159) | 2019-09-21 | 13:39:26 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3626 Byte | 75 ms |
+| [7643183](https://atcoder.jp/contests/agc038/submissions/7643183) | 2019-09-21 | 13:39:41 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3622 Byte | 76 ms |
+| [7643268](https://atcoder.jp/contests/agc038/submissions/7643268) | 2019-09-21 | 13:40:31 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3622 Byte | 76 ms |
+| [7643663](https://atcoder.jp/contests/agc038/submissions/7643663) | 2019-09-21 | 13:44:28 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3630 Byte | 77 ms |
+| [7643802](https://atcoder.jp/contests/agc038/submissions/7643802) | 2019-09-21 | 13:45:46 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3707 Byte | 80 ms |
+| [7643919](https://atcoder.jp/contests/agc038/submissions/7643919) | 2019-09-21 | 13:46:37 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3708 Byte | 81 ms |
+| [7644151](https://atcoder.jp/contests/agc038/submissions/7644151) | 2019-09-21 | 13:48:28 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3743 Byte | 82 ms |
+| [7645739](https://atcoder.jp/contests/agc038/submissions/7645739) | 2019-09-21 | 14:23:48 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3053 Byte | 59 ms |
+| [7645833](https://atcoder.jp/contests/agc038/submissions/7645833) | 2019-09-21 | 14:27:28 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3139 Byte | 60 ms |
+| [7645888](https://atcoder.jp/contests/agc038/submissions/7645888) | 2019-09-21 | 14:30:05 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3236 Byte | 60 ms |
+| [7645965](https://atcoder.jp/contests/agc038/submissions/7645965) | 2019-09-21 | 14:32:57 | agc038 | agc038_d | Rust (1.15.1) | AC | 700.0 | 3378 Byte | 59 ms |
+| [7659243](https://atcoder.jp/contests/agc038/submissions/7659243) | 2019-09-22 | 14:55:05 | agc038 | agc038_c | Rust (1.15.1) | TLE | 0.0 | 5706 Byte | 2109 ms |
+| [7659320](https://atcoder.jp/contests/agc038/submissions/7659320) | 2019-09-22 | 14:59:59 | agc038 | agc038_c | Rust (1.15.1) | TLE | 0.0 | 5860 Byte | 2109 ms |
+| [7659329](https://atcoder.jp/contests/agc038/submissions/7659329) | 2019-09-22 | 15:00:49 | agc038 | agc038_c | Rust (1.15.1) | CE | 0.0 | 5866 Byte | nothing ms |
+| [7659341](https://atcoder.jp/contests/agc038/submissions/7659341) | 2019-09-22 | 15:01:16 | agc038 | agc038_c | Rust (1.15.1) | WA | 0.0 | 5872 Byte | 1811 ms |
+| [7659369](https://atcoder.jp/contests/agc038/submissions/7659369) | 2019-09-22 | 15:03:42 | agc038 | agc038_c | Rust (1.15.1) | TLE | 0.0 | 5888 Byte | 2110 ms |
+| [7659396](https://atcoder.jp/contests/agc038/submissions/7659396) | 2019-09-22 | 15:06:24 | agc038 | agc038_c | Rust (1.15.1) | AC | 700.0 | 5905 Byte | 1837 ms |
+| [7659436](https://atcoder.jp/contests/agc038/submissions/7659436) | 2019-09-22 | 15:08:59 | agc038 | agc038_c | Rust (1.15.1) | AC | 700.0 | 5947 Byte | 1821 ms |
+| [7664228](https://atcoder.jp/contests/tkppc4-2/submissions/7664228) | 2019-09-23 | 05:18:08 | tkppc4-2 | tkppc4_2_f | Rust (1.15.1) | AC | 700.0 | 2865 Byte | 54 ms |
+| [7664478](https://atcoder.jp/contests/jsc2019-qual/submissions/7664478) | 2019-09-23 | 05:43:40 | jsc2019-qual | jsc2019_qual_e | Rust (1.15.1) | WA | 0.0 | 2956 Byte | 86 ms |
+| [7664665](https://atcoder.jp/contests/jsc2019-qual/submissions/7664665) | 2019-09-23 | 06:02:31 | jsc2019-qual | jsc2019_qual_e | Rust (1.15.1) | AC | 800.0 | 3070 Byte | 89 ms |
+| [7666098](https://atcoder.jp/contests/abc107/submissions/7666098) | 2019-09-23 | 08:02:32 | abc107 | arc101_b | Rust (1.15.1) | AC | 700.0 | 3896 Byte | 1232 ms |
+| [7670119](https://atcoder.jp/contests/abc139/submissions/7670119) | 2019-09-23 | 13:11:19 | abc139 | abc139_f | Rust (1.15.1) | CE | 0.0 | 1593 Byte | nothing ms |
+| [7670231](https://atcoder.jp/contests/abc139/submissions/7670231) | 2019-09-23 | 13:18:12 | abc139 | abc139_f | Rust (1.15.1) | CE | 0.0 | 1612 Byte | nothing ms |
+| [7670244](https://atcoder.jp/contests/abc139/submissions/7670244) | 2019-09-23 | 13:18:58 | abc139 | abc139_f | Rust (1.15.1) | AC | 600.0 | 1613 Byte | 5 ms |
+| [7670597](https://atcoder.jp/contests/abc140/submissions/7670597) | 2019-09-23 | 13:44:20 | abc140 | abc140_f | Rust (1.15.1) | WA | 0.0 | 2153 Byte | 149 ms |
+| [7670685](https://atcoder.jp/contests/abc140/submissions/7670685) | 2019-09-23 | 13:51:36 | abc140 | abc140_f | Rust (1.15.1) | CE | 0.0 | 2222 Byte | nothing ms |
+| [7670698](https://atcoder.jp/contests/abc140/submissions/7670698) | 2019-09-23 | 13:52:49 | abc140 | abc140_f | Rust (1.15.1) | WA | 0.0 | 2228 Byte | 153 ms |
+| [7671649](https://atcoder.jp/contests/abc140/submissions/7671649) | 2019-09-23 | 14:59:12 | abc140 | abc140_f | Rust (1.15.1) | AC | 600.0 | 2405 Byte | 281 ms |
+| [7683634](https://atcoder.jp/contests/agc017/submissions/7683634) | 2019-09-24 | 14:54:03 | agc017 | agc017_d | Rust (1.15.1) | AC | 1100.0 | 1494 Byte | 66 ms |
+| [7684017](https://atcoder.jp/contests/agc036/submissions/7684017) | 2019-09-24 | 15:20:01 | agc036 | agc036_b | Rust (1.15.1) | TLE | 0.0 | 2502 Byte | 2104 ms |
+| [7684121](https://atcoder.jp/contests/agc036/submissions/7684121) | 2019-09-24 | 15:28:17 | agc036 | agc036_b | Rust (1.15.1) | TLE | 0.0 | 2561 Byte | 2103 ms |
+| [7684145](https://atcoder.jp/contests/agc036/submissions/7684145) | 2019-09-24 | 15:30:16 | agc036 | agc036_b | Rust (1.15.1) | RE | 0.0 | 2655 Byte | 65 ms |
+| [7684181](https://atcoder.jp/contests/agc036/submissions/7684181) | 2019-09-24 | 15:33:47 | agc036 | agc036_b | Rust (1.15.1) | TLE | 0.0 | 2510 Byte | 2107 ms |
+| [7684216](https://atcoder.jp/contests/agc036/submissions/7684216) | 2019-09-24 | 15:37:22 | agc036 | agc036_b | Rust (1.15.1) | TLE | 0.0 | 2477 Byte | 2103 ms |
+| [7684233](https://atcoder.jp/contests/agc036/submissions/7684233) | 2019-09-24 | 15:38:38 | agc036 | agc036_b | Rust (1.15.1) | TLE | 0.0 | 2512 Byte | 2103 ms |
+| [7684256](https://atcoder.jp/contests/agc036/submissions/7684256) | 2019-09-24 | 15:40:43 | agc036 | agc036_b | Rust (1.15.1) | TLE | 0.0 | 2651 Byte | 2103 ms |
+| [7684269](https://atcoder.jp/contests/agc036/submissions/7684269) | 2019-09-24 | 15:41:19 | agc036 | agc036_b | Rust (1.15.1) | AC | 700.0 | 2655 Byte | 114 ms |
+| [7686724](https://atcoder.jp/contests/agc035/submissions/7686724) | 2019-09-25 | 02:32:01 | agc035 | agc035_b | Rust (1.15.1) | WA | 0.0 | 2767 Byte | 313 ms |
+| [7686757](https://atcoder.jp/contests/agc035/submissions/7686757) | 2019-09-25 | 02:35:24 | agc035 | agc035_b | Rust (1.15.1) | RE | 0.0 | 2876 Byte | 299 ms |
+| [7686804](https://atcoder.jp/contests/agc035/submissions/7686804) | 2019-09-25 | 02:41:00 | agc035 | agc035_b | Rust (1.15.1) | RE | 0.0 | 2925 Byte | 297 ms |
+| [7686926](https://atcoder.jp/contests/agc035/submissions/7686926) | 2019-09-25 | 02:56:10 | agc035 | agc035_b | Rust (1.15.1) | CE | 0.0 | 2467 Byte | nothing ms |
+| [7686952](https://atcoder.jp/contests/agc035/submissions/7686952) | 2019-09-25 | 02:58:49 | agc035 | agc035_b | Rust (1.15.1) | RE | 0.0 | 2524 Byte | 2117 ms |
+| [7686977](https://atcoder.jp/contests/agc035/submissions/7686977) | 2019-09-25 | 03:02:37 | agc035 | agc035_b | Rust (1.15.1) | AC | 700.0 | 2705 Byte | 273 ms |
+| [7689353](https://atcoder.jp/contests/abc131/submissions/7689353) | 2019-09-25 | 06:47:08 | abc131 | abc131_f | Rust (1.15.1) | AC | 600.0 | 3168 Byte | 62 ms |
+| [7690693](https://atcoder.jp/contests/agc037/submissions/7690693) | 2019-09-25 | 08:21:11 | agc037 | agc037_c | Rust (1.15.1) | WA | 0.0 | 2030 Byte | 123 ms |
+| [7690755](https://atcoder.jp/contests/agc037/submissions/7690755) | 2019-09-25 | 08:27:23 | agc037 | agc037_c | Rust (1.15.1) | WA | 0.0 | 2020 Byte | 128 ms |
+| [7690807](https://atcoder.jp/contests/agc037/submissions/7690807) | 2019-09-25 | 08:32:24 | agc037 | agc037_c | Rust (1.15.1) | WA | 0.0 | 2094 Byte | 121 ms |
+| [7690863](https://atcoder.jp/contests/agc037/submissions/7690863) | 2019-09-25 | 08:37:05 | agc037 | agc037_c | Rust (1.15.1) | WA | 0.0 | 2079 Byte | 122 ms |
+| [7690902](https://atcoder.jp/contests/agc037/submissions/7690902) | 2019-09-25 | 08:40:25 | agc037 | agc037_c | Rust (1.15.1) | AC | 800.0 | 1951 Byte | 348 ms |
+| [7691518](https://atcoder.jp/contests/abc130/submissions/7691518) | 2019-09-25 | 09:40:47 | abc130 | abc130_f | Rust (1.15.1) | AC | 600.0 | 4146 Byte | 92 ms |
+| [7691763](https://atcoder.jp/contests/mujin-pc-2017/submissions/7691763) | 2019-09-25 | 10:05:53 | mujin-pc-2017 | mujin_pc_2017_b | Rust (1.15.1) | WA | 0.0 | 1662 Byte | 8 ms |
+| [7691843](https://atcoder.jp/contests/mujin-pc-2017/submissions/7691843) | 2019-09-25 | 10:15:18 | mujin-pc-2017 | mujin_pc_2017_b | Rust (1.15.1) | AC | 1300.0 | 1614 Byte | 9 ms |
+| [7695205](https://atcoder.jp/contests/abc140/submissions/7695205) | 2019-09-25 | 14:34:17 | abc140 | abc140_e | Bash (GNU bash v4.3.11) | AC | 500.0 | 123744 Byte | 66 ms |
+| [7702982](https://atcoder.jp/contests/abc141/submissions/7702982) | 2019-09-26 | 09:47:49 | abc141 | abc141_f | Rust (1.15.1) | AC | 600.0 | 1604 Byte | 89 ms |
+| [7703130](https://atcoder.jp/contests/agc038/submissions/7703130) | 2019-09-26 | 10:05:26 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3128 Byte | 58 ms |
+| [7703173](https://atcoder.jp/contests/agc038/submissions/7703173) | 2019-09-26 | 10:10:26 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3154 Byte | 58 ms |
+| [7703183](https://atcoder.jp/contests/agc038/submissions/7703183) | 2019-09-26 | 10:11:35 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3154 Byte | 58 ms |
+| [7703198](https://atcoder.jp/contests/agc038/submissions/7703198) | 2019-09-26 | 10:14:15 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3198 Byte | 58 ms |
+| [7703206](https://atcoder.jp/contests/agc038/submissions/7703206) | 2019-09-26 | 10:14:55 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3074 Byte | 58 ms |
+| [7703232](https://atcoder.jp/contests/agc038/submissions/7703232) | 2019-09-26 | 10:17:40 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3038 Byte | 63 ms |
+| [7703233](https://atcoder.jp/contests/agc038/submissions/7703233) | 2019-09-26 | 10:17:55 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3038 Byte | 64 ms |
+| [7703289](https://atcoder.jp/contests/agc038/submissions/7703289) | 2019-09-26 | 10:23:42 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3144 Byte | 61 ms |
+| [7703297](https://atcoder.jp/contests/agc038/submissions/7703297) | 2019-09-26 | 10:24:32 | agc038 | agc038_d | Rust (1.15.1) | RE | 0.0 | 3170 Byte | 58 ms |
+| [7703319](https://atcoder.jp/contests/agc038/submissions/7703319) | 2019-09-26 | 10:26:51 | agc038 | agc038_d | Rust (1.15.1) | WA | 0.0 | 3094 Byte | 61 ms |
+| [7703339](https://atcoder.jp/contests/agc038/submissions/7703339) | 2019-09-26 | 10:28:35 | agc038 | agc038_d | Rust (1.15.1) | AC | 700.0 | 3183 Byte | 59 ms |
+| [7704900](https://atcoder.jp/contests/agc038/submissions/7704900) | 2019-09-26 | 12:52:54 | agc038 | agc038_c | Rust (1.15.1) | AC | 700.0 | 5471 Byte | 444 ms |
+| [7706343](https://atcoder.jp/contests/tenka1-2019-beginner/submissions/7706343) | 2019-09-26 | 14:42:57 | tenka1-2019-beginner | tenka1_2019_d | Rust (1.15.1) | AC | 600.0 | 2629 Byte | 172 ms |
+| [7712749](https://atcoder.jp/contests/jsc2019-qual/submissions/7712749) | 2019-09-27 | 06:43:53 | jsc2019-qual | jsc2019_qual_e | Rust (1.15.1) | AC | 800.0 | 3125 Byte | 88 ms |
+| [7713024](https://atcoder.jp/contests/abc139/submissions/7713024) | 2019-09-27 | 07:06:59 | abc139 | abc139_f | Rust (1.15.1) | AC | 600.0 | 1523 Byte | 3 ms |
+| [7714773](https://atcoder.jp/contests/abs/submissions/7714773) | 2019-09-27 | 09:27:17 | abs | practice_1 | Haskell (GHC 7.10.3) | AC | 100.0 | 161 Byte | 2 ms |
+| [7715151](https://atcoder.jp/contests/abc140/submissions/7715151) | 2019-09-27 | 10:06:21 | abc140 | abc140_f | Rust (1.15.1) | AC | 600.0 | 1886 Byte | 229 ms |
+| [7731910](https://atcoder.jp/contests/agc017/submissions/7731910) | 2019-09-28 | 08:35:36 | agc017 | agc017_d | Rust (1.15.1) | AC | 1100.0 | 1839 Byte | 69 ms |
+| [7735371](https://atcoder.jp/contests/abc142/submissions/7735371) | 2019-09-28 | 12:01:38 | abc142 | abc142_a | Rust (1.15.1) | AC | 100.0 | 1009 Byte | 2 ms |
+| [7736560](https://atcoder.jp/contests/abc142/submissions/7736560) | 2019-09-28 | 12:02:50 | abc142 | abc142_b | Rust (1.15.1) | AC | 200.0 | 1134 Byte | 17 ms |
+| [7739616](https://atcoder.jp/contests/abc142/submissions/7739616) | 2019-09-28 | 12:05:19 | abc142 | abc142_c | Rust (1.15.1) | AC | 300.0 | 1270 Byte | 59 ms |
+| [7750737](https://atcoder.jp/contests/abc142/submissions/7750737) | 2019-09-28 | 12:24:51 | abc142 | abc142_d | Rust (1.15.1) | AC | 400.0 | 1466 Byte | 10 ms |
+| [7752699](https://atcoder.jp/contests/abc142/submissions/7752699) | 2019-09-28 | 12:31:09 | abc142 | abc142_e | Rust (1.15.1) | AC | 500.0 | 1704 Byte | 15 ms |
+| [7761002](https://atcoder.jp/contests/abc142/submissions/7761002) | 2019-09-28 | 13:04:52 | abc142 | abc142_f | Rust (1.15.1) | TLE | 0.0 | 2652 Byte | 2103 ms |
+| [7762805](https://atcoder.jp/contests/abc142/submissions/7762805) | 2019-09-28 | 13:12:46 | abc142 | abc142_f | Rust (1.15.1) | WA | 0.0 | 2750 Byte | 4 ms |
+| [7765319](https://atcoder.jp/contests/abc142/submissions/7765319) | 2019-09-28 | 13:24:36 | abc142 | abc142_f | Rust (1.15.1) | TLE | 0.0 | 3336 Byte | 2103 ms |
+| [7765847](https://atcoder.jp/contests/abc142/submissions/7765847) | 2019-09-28 | 13:27:06 | abc142 | abc142_f | Rust (1.15.1) | TLE | 0.0 | 3364 Byte | 2103 ms |
+| [7766340](https://atcoder.jp/contests/abc142/submissions/7766340) | 2019-09-28 | 13:29:16 | abc142 | abc142_f | Rust (1.15.1) | CE | 0.0 | 3543 Byte | nothing ms |
+| [7766799](https://atcoder.jp/contests/abc142/submissions/7766799) | 2019-09-28 | 13:31:21 | abc142 | abc142_f | Rust (1.15.1) | TLE | 0.0 | 3642 Byte | 2103 ms |
+| [7767403](https://atcoder.jp/contests/abc142/submissions/7767403) | 2019-09-28 | 13:34:00 | abc142 | abc142_f | Rust (1.15.1) | TLE | 0.0 | 3539 Byte | 2103 ms |
+| [7770517](https://atcoder.jp/contests/abc142/submissions/7770517) | 2019-09-28 | 13:54:42 | abc142 | abc142_f | Rust (1.15.1) | AC | 600.0 | 2324 Byte | 19 ms |
+| [7782508](https://atcoder.jp/contests/jsc2019-final-open/submissions/7782508) | 2019-09-29 | 05:53:57 | jsc2019-final-open | jsc2019_final_b | Rust (1.15.1) | AC | 400.0 | 3310 Byte | 254 ms |
+| [7782902](https://atcoder.jp/contests/jsc2019-final-open/submissions/7782902) | 2019-09-29 | 06:13:30 | jsc2019-final-open | jsc2019_final_a | Rust (1.15.1) | WA | 0.0 | 2208 Byte | 2103 ms |
+| [7798902](https://atcoder.jp/contests/jsc2019-final-open/submissions/7798902) | 2019-09-30 | 09:04:00 | jsc2019-final-open | jsc2019_final_a | Rust (1.15.1) | RE | 0.0 | 1455 Byte | 111 ms |
+| [7798911](https://atcoder.jp/contests/jsc2019-final-open/submissions/7798911) | 2019-09-30 | 09:04:59 | jsc2019-final-open | jsc2019_final_a | Rust (1.15.1) | WA | 0.0 | 1543 Byte | 2103 ms |
+| [7798928](https://atcoder.jp/contests/jsc2019-final-open/submissions/7798928) | 2019-09-30 | 09:06:31 | jsc2019-final-open | jsc2019_final_a | Rust (1.15.1) | AC | 300.0 | 1614 Byte | 118 ms |
+| [7815026](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815026) | 2019-10-01 | 15:19:01 | jsc2019-final-open | jsc2019_final_c | Rust (1.15.1) | CE | 0.0 | 5358 Byte | nothing ms |
+| [7815033](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815033) | 2019-10-01 | 15:19:32 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | RE | 0.0 | 137304 Byte | 138 ms |
+| [7815347](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815347) | 2019-10-01 | 15:54:29 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | RE | 0.0 | 136724 Byte | 137 ms |
+| [7815368](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815368) | 2019-10-01 | 15:57:34 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | WA | 0.0 | 133116 Byte | 811 ms |
+| [7815385](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815385) | 2019-10-01 | 16:00:28 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | RE | 0.0 | 136667 Byte | 135 ms |
+| [7815417](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815417) | 2019-10-01 | 16:04:43 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | RE | 0.0 | 135923 Byte | 152 ms |
+| [7815427](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815427) | 2019-10-01 | 16:05:47 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | RE | 0.0 | 136653 Byte | 118 ms |
+| [7815435](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815435) | 2019-10-01 | 16:06:59 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | WA | 0.0 | 136720 Byte | 859 ms |
+| [7815586](https://atcoder.jp/contests/jsc2019-final-open/submissions/7815586) | 2019-10-01 | 16:30:45 | jsc2019-final-open | jsc2019_final_c | Bash (GNU bash v4.3.11) | AC | 700.0 | 134899 Byte | 895 ms |
+| [7827186](https://atcoder.jp/contests/agc038/submissions/7827186) | 2019-10-02 | 15:44:55 | agc038 | agc038_a | C++14 (GCC 5.4.1) | CE | 0.0 | 694 Byte | nothing ms |
+| [7827372](https://atcoder.jp/contests/agc038/submissions/7827372) | 2019-10-02 | 16:13:56 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 8034 Byte | 22 ms |
+| [7827550](https://atcoder.jp/contests/agc038/submissions/7827550) | 2019-10-02 | 16:45:49 | agc038 | agc038_c | C++14 (Clang 3.8.0) | CE | 0.0 | 1389 Byte | nothing ms |
+| [7827553](https://atcoder.jp/contests/agc038/submissions/7827553) | 2019-10-02 | 16:46:14 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1389 Byte | nothing ms |
+| [7827708](https://atcoder.jp/contests/agc038/submissions/7827708) | 2019-10-02 | 17:20:33 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1374 Byte | nothing ms |
+| [7827728](https://atcoder.jp/contests/agc038/submissions/7827728) | 2019-10-02 | 17:25:12 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 1587 Byte | 101 ms |
+| [7827742](https://atcoder.jp/contests/agc038/submissions/7827742) | 2019-10-02 | 17:28:38 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 1589 Byte | 102 ms |
+| [7827761](https://atcoder.jp/contests/agc038/submissions/7827761) | 2019-10-02 | 17:32:57 | agc038 | agc038_c | C++14 (GCC 5.4.1) | WA | 0.0 | 1590 Byte | 103 ms |
+| [7827824](https://atcoder.jp/contests/agc038/submissions/7827824) | 2019-10-02 | 17:49:35 | agc038 | agc038_c | C++14 (GCC 5.4.1) | WA | 0.0 | 793 Byte | 1 ms |
+| [7827828](https://atcoder.jp/contests/agc038/submissions/7827828) | 2019-10-02 | 17:50:27 | agc038 | agc038_c | C++14 (GCC 5.4.1) | WA | 0.0 | 947 Byte | 7 ms |
+| [7827851](https://atcoder.jp/contests/agc038/submissions/7827851) | 2019-10-02 | 17:54:59 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1196 Byte | nothing ms |
+| [7827909](https://atcoder.jp/contests/agc038/submissions/7827909) | 2019-10-02 | 18:07:38 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1651 Byte | nothing ms |
+| [7827920](https://atcoder.jp/contests/agc038/submissions/7827920) | 2019-10-02 | 18:11:01 | agc038 | agc038_c | C++14 (GCC 5.4.1) | WA | 0.0 | 1819 Byte | 203 ms |
+| [7827975](https://atcoder.jp/contests/agc038/submissions/7827975) | 2019-10-02 | 18:34:10 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1621 Byte | nothing ms |
+| [7827984](https://atcoder.jp/contests/agc038/submissions/7827984) | 2019-10-02 | 18:39:29 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1875 Byte | nothing ms |
+| [7830797](https://atcoder.jp/contests/abc079/submissions/7830797) | 2019-10-03 | 04:39:32 | abc079 | abc079_d | Python (3.4.3) | RE | 0.0 | 486 Byte | 711 ms |
+| [7830807](https://atcoder.jp/contests/abc079/submissions/7830807) | 2019-10-03 | 04:40:44 | abc079 | abc079_d | Python (3.4.3) | WA | 0.0 | 301 Byte | 116 ms |
+| [7832944](https://atcoder.jp/contests/agc038/submissions/7832944) | 2019-10-03 | 07:30:55 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 1680 Byte | 103 ms |
+| [7832970](https://atcoder.jp/contests/agc038/submissions/7832970) | 2019-10-03 | 07:32:26 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 1710 Byte | 104 ms |
+| [7832997](https://atcoder.jp/contests/agc038/submissions/7832997) | 2019-10-03 | 07:34:19 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 1736 Byte | 106 ms |
+| [7833025](https://atcoder.jp/contests/agc038/submissions/7833025) | 2019-10-03 | 07:35:56 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1875 Byte | nothing ms |
+| [7833033](https://atcoder.jp/contests/agc038/submissions/7833033) | 2019-10-03 | 07:36:32 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1910 Byte | nothing ms |
+| [7833048](https://atcoder.jp/contests/agc038/submissions/7833048) | 2019-10-03 | 07:37:58 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 1898 Byte | 104 ms |
+| [7833248](https://atcoder.jp/contests/agc038/submissions/7833248) | 2019-10-03 | 07:51:47 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 2138 Byte | nothing ms |
+| [7833251](https://atcoder.jp/contests/agc038/submissions/7833251) | 2019-10-03 | 07:52:18 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 2139 Byte | nothing ms |
+| [7833276](https://atcoder.jp/contests/agc038/submissions/7833276) | 2019-10-03 | 07:54:02 | agc038 | agc038_c | C++14 (GCC 5.4.1) | CE | 0.0 | 1938 Byte | nothing ms |
+| [7833279](https://atcoder.jp/contests/agc038/submissions/7833279) | 2019-10-03 | 07:54:30 | agc038 | agc038_c | C++14 (GCC 5.4.1) | AC | 700.0 | 1957 Byte | 34 ms |
+| [7833679](https://atcoder.jp/contests/abc084/submissions/7833679) | 2019-10-03 | 08:23:19 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1124 Byte | 233 ms |
+| [7833700](https://atcoder.jp/contests/abc084/submissions/7833700) | 2019-10-03 | 08:24:48 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1161 Byte | 28 ms |
+| [7841989](https://atcoder.jp/contests/abc084/submissions/7841989) | 2019-10-04 | 03:22:44 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1183 Byte | 27 ms |
+| [7841994](https://atcoder.jp/contests/abc084/submissions/7841994) | 2019-10-04 | 03:23:36 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1200 Byte | 27 ms |
+| [7842009](https://atcoder.jp/contests/abc084/submissions/7842009) | 2019-10-04 | 03:26:28 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1386 Byte | 12 ms |
+| [7842301](https://atcoder.jp/contests/abc084/submissions/7842301) | 2019-10-04 | 04:04:19 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1392 Byte | 13 ms |
+| [7842327](https://atcoder.jp/contests/abc084/submissions/7842327) | 2019-10-04 | 04:07:30 | abc084 | abc084_d | C++14 (GCC 5.4.1) | AC | 400.0 | 1390 Byte | 12 ms |
+| [7850723](https://atcoder.jp/contests/agc035/submissions/7850723) | 2019-10-04 | 18:12:09 | agc035 | agc035_b | Rust (1.15.1) | AC | 700.0 | 2916 Byte | 245 ms |
+| [7850758](https://atcoder.jp/contests/agc037/submissions/7850758) | 2019-10-04 | 18:27:09 | agc037 | agc037_c | Rust (1.15.1) | AC | 800.0 | 2031 Byte | 262 ms |
+| [7850786](https://atcoder.jp/contests/mujin-pc-2017/submissions/7850786) | 2019-10-04 | 18:39:33 | mujin-pc-2017 | mujin_pc_2017_b | Rust (1.15.1) | AC | 1300.0 | 1636 Byte | 264 ms |
+| [7850927](https://atcoder.jp/contests/tenka1-2019-beginner/submissions/7850927) | 2019-10-04 | 19:25:45 | tenka1-2019-beginner | tenka1_2019_d | Rust (1.15.1) | AC | 600.0 | 2170 Byte | 116 ms |
+| [7856982](https://atcoder.jp/contests/jsc2019-qual/submissions/7856982) | 2019-10-05 | 09:42:26 | jsc2019-qual | jsc2019_qual_e | Rust (1.15.1) | AC | 800.0 | 3023 Byte | 86 ms |
+| [7857287](https://atcoder.jp/contests/agc038/submissions/7857287) | 2019-10-05 | 10:11:30 | agc038 | agc038_c | Rust (1.15.1) | AC | 700.0 | 5587 Byte | 547 ms |
+| [7858447](https://atcoder.jp/contests/abc142/submissions/7858447) | 2019-10-05 | 11:53:59 | abc142 | abc142_f | Rust (1.15.1) | CE | 0.0 | 2467 Byte | nothing ms |
+| [7858463](https://atcoder.jp/contests/abc142/submissions/7858463) | 2019-10-05 | 11:55:21 | abc142 | abc142_f | Rust (1.15.1) | WA | 0.0 | 2535 Byte | 20 ms |
+| [7858522](https://atcoder.jp/contests/abc142/submissions/7858522) | 2019-10-05 | 11:59:05 | abc142 | abc142_f | Rust (1.15.1) | AC | 600.0 | 2539 Byte | 21 ms |
+| [7858655](https://atcoder.jp/contests/agc039/submissions/7858655) | 2019-10-05 | 12:05:11 | agc039 | agc039_a | Rust (1.15.1) | WA | 0.0 | 1270 Byte | 2 ms |
+| [7864576](https://atcoder.jp/contests/agc039/submissions/7864576) | 2019-10-05 | 12:39:57 | agc039 | agc039_a | Rust (1.15.1) | TLE | 0.0 | 2323 Byte | 2105 ms |
+| [7866359](https://atcoder.jp/contests/agc039/submissions/7866359) | 2019-10-05 | 12:51:40 | agc039 | agc039_a | Rust (1.15.1) | WA | 0.0 | 1737 Byte | 2 ms |
+| [7866974](https://atcoder.jp/contests/agc039/submissions/7866974) | 2019-10-05 | 12:56:14 | agc039 | agc039_a | Rust (1.15.1) | WA | 0.0 | 1797 Byte | 2 ms |
+| [7867757](https://atcoder.jp/contests/agc039/submissions/7867757) | 2019-10-05 | 13:02:21 | agc039 | agc039_a | Rust (1.15.1) | WA | 0.0 | 1904 Byte | 2 ms |
+| [7868417](https://atcoder.jp/contests/agc039/submissions/7868417) | 2019-10-05 | 13:07:33 | agc039 | agc039_a | Rust (1.15.1) | WA | 0.0 | 1960 Byte | 2 ms |
+| [7868640](https://atcoder.jp/contests/agc039/submissions/7868640) | 2019-10-05 | 13:09:23 | agc039 | agc039_a | Rust (1.15.1) | AC | 300.0 | 2028 Byte | 2 ms |
+| [7870046](https://atcoder.jp/contests/agc039/submissions/7870046) | 2019-10-05 | 13:23:05 | agc039 | agc039_b | Rust (1.15.1) | AC | 500.0 | 2541 Byte | 101 ms |
+| [7878991](https://atcoder.jp/contests/agc039/submissions/7878991) | 2019-10-05 | 18:09:49 | agc039 | agc039_c | Rust (1.15.1) | AC | 800.0 | 6537 Byte | 205 ms |
+| [7897016](https://atcoder.jp/contests/jsc2019-final/submissions/7897016) | 2019-10-07 | 08:52:10 | jsc2019-final | jsc2019_final_a | Rust (1.15.1) | AC | 300.0 | 1606 Byte | 116 ms |
+| [7897126](https://atcoder.jp/contests/agc038/submissions/7897126) | 2019-10-07 | 09:04:12 | agc038 | agc038_d | Rust (1.15.1) | AC | 700.0 | 3076 Byte | 60 ms |
+| [7931611](https://atcoder.jp/contests/cf16-exhibition-final-open/submissions/7931611) | 2019-10-10 | 17:30:42 | cf16-exhibition-final-open | cf16_exhibition_final_g | Rust (1.15.1) | AC | 1000.0 | 1642 Byte | 3 ms |
+| [7931678](https://atcoder.jp/contests/abc139/submissions/7931678) | 2019-10-10 | 17:47:28 | abc139 | abc139_f | Rust (1.15.1) | AC | 600.0 | 1594 Byte | 2 ms |
+| [7931740](https://atcoder.jp/contests/abc140/submissions/7931740) | 2019-10-10 | 18:09:09 | abc140 | abc140_f | Rust (1.15.1) | AC | 600.0 | 1593 Byte | 169 ms |
+| [7931776](https://atcoder.jp/contests/abc140/submissions/7931776) | 2019-10-10 | 18:17:32 | abc140 | abc140_f | Rust (1.15.1) | WA | 0.0 | 1519 Byte | 139 ms |
+| [7931893](https://atcoder.jp/contests/agc017/submissions/7931893) | 2019-10-10 | 18:51:10 | agc017 | agc017_d | Rust (1.15.1) | AC | 1100.0 | 1506 Byte | 67 ms |
+| [7931978](https://atcoder.jp/contests/abc141/submissions/7931978) | 2019-10-10 | 19:23:46 | abc141 | abc141_f | Rust (1.15.1) | AC | 600.0 | 1616 Byte | 86 ms |
+| [7932075](https://atcoder.jp/contests/agc039/submissions/7932075) | 2019-10-10 | 20:11:54 | agc039 | agc039_c | Rust (1.15.1) | AC | 800.0 | 2982 Byte | 169 ms |
+| [8002440](https://atcoder.jp/contests/apc001/submissions/8002440) | 2019-10-17 | 16:26:40 | apc001 | apc001_e | Rust (1.15.1) | AC | 900.0 | 2430 Byte | 70 ms |
+| [8002479](https://atcoder.jp/contests/apc001/submissions/8002479) | 2019-10-17 | 16:32:10 | apc001 | apc001_e | Rust (1.15.1) | AC | 900.0 | 1971 Byte | 64 ms |
+| [8005982](https://atcoder.jp/contests/future-contest-2019-qual/submissions/8005982) | 2019-10-18 | 06:19:59 | future-contest-2019-qual | future_contest_2019_qual_b | Text (cat) | TLE | 0.0 | 1 Byte | 0 ms |
+| [8014164](https://atcoder.jp/contests/cf16-exhibition-final/submissions/8014164) | 2019-10-19 | 04:21:06 | cf16-exhibition-final | cf16_exhibition_final_g | Rust (1.15.1) | AC | 1000.0 | 1648 Byte | 2 ms |
+| [8014341](https://atcoder.jp/contests/abc093/submissions/8014341) | 2019-10-19 | 04:52:15 | abc093 | arc094_b | Rust (1.15.1) | WA | 0.0 | 2098 Byte | 3 ms |
+| [8014395](https://atcoder.jp/contests/abc093/submissions/8014395) | 2019-10-19 | 04:59:35 | abc093 | arc094_b | Rust (1.15.1) | AC | 700.0 | 2098 Byte | 2 ms |
+| [8020295](https://atcoder.jp/contests/abc143/submissions/8020295) | 2019-10-19 | 12:01:59 | abc143 | abc143_a | Rust (1.15.1) | AC | 100.0 | 1020 Byte | 2 ms |
+| [8022321](https://atcoder.jp/contests/abc143/submissions/8022321) | 2019-10-19 | 12:03:30 | abc143 | abc143_b | Rust (1.15.1) | AC | 200.0 | 1118 Byte | 2 ms |
+| [8024017](https://atcoder.jp/contests/abc143/submissions/8024017) | 2019-10-19 | 12:05:00 | abc143 | abc143_c | Rust (1.15.1) | AC | 300.0 | 1097 Byte | 4 ms |
+| [8028678](https://atcoder.jp/contests/abc143/submissions/8028678) | 2019-10-19 | 12:11:14 | abc143 | abc143_d | Rust (1.15.1) | AC | 400.0 | 1493 Byte | 10 ms |
+| [8035576](https://atcoder.jp/contests/abc143/submissions/8035576) | 2019-10-19 | 12:33:27 | abc143 | abc143_e | Rust (1.15.1) | AC | 500.0 | 2782 Byte | 708 ms |
+| [8045146](https://atcoder.jp/contests/abc143/submissions/8045146) | 2019-10-19 | 13:28:53 | abc143 | abc143_f | Rust (1.15.1) | WA | 0.0 | 2864 Byte | 1732 ms |
+| [8046645](https://atcoder.jp/contests/abc143/submissions/8046645) | 2019-10-19 | 13:37:29 | abc143 | abc143_f | Rust (1.15.1) | WA | 0.0 | 2363 Byte | 929 ms |
+| [8047072](https://atcoder.jp/contests/abc143/submissions/8047072) | 2019-10-19 | 13:39:20 | abc143 | abc143_f | Rust (1.15.1) | RE | 0.0 | 2398 Byte | 597 ms |
+| [8047300](https://atcoder.jp/contests/abc143/submissions/8047300) | 2019-10-19 | 13:39:50 | abc143 | abc143_f | Rust (1.15.1) | WA | 0.0 | 2376 Byte | 582 ms |
+| [8053518](https://atcoder.jp/contests/abc143/submissions/8053518) | 2019-10-19 | 17:50:39 | abc143 | abc143_e | Rust (1.15.1) | TLE | 500.0 | 2782 Byte | 2103 ms |
+| [8053659](https://atcoder.jp/contests/abc143/submissions/8053659) | 2019-10-19 | 18:06:46 | abc143 | abc143_e | Rust (1.15.1) | AC | 500.0 | 2305 Byte | 333 ms |
+| [8053859](https://atcoder.jp/contests/abc143/submissions/8053859) | 2019-10-19 | 18:36:51 | abc143 | abc143_f | Rust (1.15.1) | AC | 600.0 | 2098 Byte | 594 ms |
+| [8054009](https://atcoder.jp/contests/abc143/submissions/8054009) | 2019-10-19 | 19:02:08 | abc143 | abc143_f | Rust (1.15.1) | AC | 600.0 | 1753 Byte | 624 ms |
+| [8068952](https://atcoder.jp/contests/code-festival-2014-morning-easy/submissions/8068952) | 2019-10-21 | 06:20:27 | code-festival-2014-morning-easy | code_festival_morning_easy_c | Rust (1.15.1) | CE | 0.0 | 4916 Byte | nothing ms |
+| [8068958](https://atcoder.jp/contests/code-festival-2014-morning-easy/submissions/8068958) | 2019-10-21 | 06:21:19 | code-festival-2014-morning-easy | code_festival_morning_easy_c | Rust (1.15.1) | CE | 0.0 | 4943 Byte | nothing ms |
+| [8068963](https://atcoder.jp/contests/code-festival-2014-morning-easy/submissions/8068963) | 2019-10-21 | 06:21:57 | code-festival-2014-morning-easy | code_festival_morning_easy_c | Rust (1.15.1) | AC | 100.0 | 4944 Byte | 15 ms |
+| [8069773](https://atcoder.jp/contests/abc140/submissions/8069773) | 2019-10-21 | 07:35:35 | abc140 | abc140_f | Rust (1.15.1) | CE | 0.0 | 126480 Byte | nothing ms |
+| [8069779](https://atcoder.jp/contests/abc140/submissions/8069779) | 2019-10-21 | 07:35:57 | abc140 | abc140_f | Bash (GNU bash v4.3.11) | AC | 600.0 | 126480 Byte | 208 ms |
+| [8069968](https://atcoder.jp/contests/apc001/submissions/8069968) | 2019-10-21 | 07:55:12 | apc001 | apc001_e | Rust (1.15.1) | AC | 900.0 | 2044 Byte | 70 ms |
+| [8070658](https://atcoder.jp/contests/agc037/submissions/8070658) | 2019-10-21 | 08:53:53 | agc037 | agc037_b | Rust (1.15.1) | AC | 800.0 | 2146 Byte | 18 ms |
+| [8085485](https://atcoder.jp/contests/abc049/submissions/8085485) | 2019-10-22 | 10:55:08 | abc049 | arc065_b | Rust (1.15.1) | AC | 400.0 | 2949 Byte | 187 ms |
