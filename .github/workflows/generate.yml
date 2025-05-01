@@ -1,11 +1,11 @@
-name: atcoder_generate
+name: generate
 
 on:
   push:
     branches:
       - main
     paths:
-      - '.github/workflows/atcoder_generate.yml'
+      - '.github/workflows/generate.yml'
       - 'mkdocs.yml'
       - 'scripts/atcoder/generate.jl'
       - 'src/atcoder/**'
@@ -17,7 +17,7 @@ on:
       - completed
 
 concurrency:
-  group: atcoder_generate
+  group: generate
   cancel-in-progress: true
 
 permissions:

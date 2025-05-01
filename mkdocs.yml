@@ -92,5 +92,5 @@ plugins:
 
 nav:
   - Home:
-    - index.md
+  - Template:
   - AtCoder:
