@@ -363,6 +363,8 @@ function generate()
         file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.md")
         file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.md")
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
+            @show read(file_fetch_statement, String)
+            @show read(file_fetch_user, String)
             sdt = Dates.DateTime(read(file_fetch_statement, String))
             udt = Dates.DateTime(read(file_fetch_user, String))
 
