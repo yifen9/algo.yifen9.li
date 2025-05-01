@@ -149,9 +149,9 @@ function fetch_submission()
             date = Dates.format(date_time, "yyyy-mm-dd")
             time = Dates.format(date_time, "HH:MM:SS")
 
-            point_float = @sprintf("%d", round(point))
+            point_int = @sprintf("%d", round(point))
 
-            println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $date | $time | $contest | $task | $language | $result | $point_float | $length Byte | $execution_time ms |")
+            println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $date | $time | $contest | $task | $language | $result | $point_int | $length Byte | $execution_time ms |")
         end
     end
     println("[INFO] Fetched submission")
