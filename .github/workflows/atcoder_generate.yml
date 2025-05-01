@@ -88,13 +88,13 @@ jobs:
           key: ${{ runner.os }}-mkdocs-build
           restore-keys: |
             ${{ runner.os }}-mkdocs-build
-      
-      - name: Prune
-        run: rsync -ac --delete docs/ build/
 
       - name: Build
         run: |
           mkdocs build --dirty -d build
+
+      - name: Prune
+        run: rsync -ac --delete docs/ build/
       
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
