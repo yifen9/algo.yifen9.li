@@ -58,7 +58,7 @@ end
 
 function size_human_readable(size::Integer)::String
     if size < 1024
-        return "$size B"
+        return "$size Byte"
     elseif size < 1024^2
         return @sprintf("%d KiB", size / 1024)
     elseif size < 1024^3
