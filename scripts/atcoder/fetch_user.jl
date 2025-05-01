@@ -53,7 +53,7 @@ function fetch_info_basic()
 
     file = joinpath(DIR_SRC_ATCODER, "user_basic.md")
     open(file, "w") do f
-        println(f, "| $user | Count | Rank |")
+        println(f, "| [$USERNAME]($user) | Count | Rank |")
         println(f, "|-----------|-------|------|")
         println(f, "| [Accepted Count]($ac_rank_url) | $ac_rank_count | $ac_rank_rank |")
         println(f, "| [Rated Point Sum]($rated_point_sum_rank_url) | $rated_point_sum_rank_count | $rated_point_sum_rank_rank |")
