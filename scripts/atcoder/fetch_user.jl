@@ -96,8 +96,28 @@ function submission_list()
             step_iteration = step_iteration * 2
         end
         @show step_start
+        @show step_end
         @show step_iteration
         @show length(list)
+    end
+    if step_end > 0
+        while true
+            step_center = round((step_start + step_end) / 2)
+            list = submission_url_fetched(step_center)
+            @show step_start
+            @show step_center
+            @show step_end
+            if length(list) < 500
+                @show "step_start -> step_center"
+                step_start = step_center
+            else
+                @show "step_end -> step_center"
+                step_end = step_center
+            end
+            step_start == step_end && return list
+        end
+    else
+        return submission_url_fetched(0)
     end
 end
 
@@ -131,7 +151,7 @@ function fetch_submission()
 end
 
 function main()
-    submission_list()
+    @show submission_list()
     fetch_info_basic()
     fetch_language()
     fetch_submission()
