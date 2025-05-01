@@ -7,7 +7,6 @@ Pkg.add("JSON")
 using Dates
 using HTTP
 using JSON
-using Printf
 
 const USERNAME = "kenkoooo"
 
@@ -79,9 +78,9 @@ function fetch_language()
     println("[INFO] Fetched language")
 end
 
-function submission_url_fetched(second)
+function submission_url_fetched(second::Int)
     second_int = @sprintf("%.0f", second)
-    return fetch_with_retry(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second_int")
+    return fetch_with_retry(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second")
 end
 
 function submission_list()
@@ -105,7 +104,7 @@ function submission_list()
     @show "Hello"
     if step_end > 0
         while true
-            step_center = round((step_start + step_end) / 2)
+            step_center = div((step_start + step_end), 2)
             list = submission_url_fetched(step_center)
             @show step_start
             @show step_center
