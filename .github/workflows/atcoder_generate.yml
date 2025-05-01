@@ -101,10 +101,11 @@ jobs:
     needs: generate
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Download Artifact for Backup
         uses: actions/download-artifact@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: github-pages
           path: build
