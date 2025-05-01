@@ -83,7 +83,7 @@ jobs:
 
       - name: Build
         run: |
-          mkdocs build --dirty -d build
+          mkdocs build -d build
       
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
