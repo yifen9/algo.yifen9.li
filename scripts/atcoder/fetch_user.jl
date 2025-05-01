@@ -151,7 +151,7 @@ function fetch_submission()
 
             point_float = @sprintf("%d", round(point))
 
-            println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $date | $time | $contest | $task | $language | $result | $point | $length Byte | $execution_time ms |")
+            println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $date | $time | $contest | $task | $language | $result | $point_float | $length Byte | $execution_time ms |")
         end
     end
     println("[INFO] Fetched submission")
