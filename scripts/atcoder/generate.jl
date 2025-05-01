@@ -366,11 +366,14 @@ function generate()
             sdt = Dates.DateTime(split(read(file_fetch_statement, String), '\n', keepempty=false)[1])
             udt = Dates.DateTime(split(read(file_fetch_user, String), '\n', keepempty=false)[1])
 
+            st = Dates.Time(Dates.Hour(sdt), Dates.Minute(sdt), Dates.Second(sdt))
+            ut = Dates.Time(Dates.Hour(udt), Dates.Minute(udt), Dates.Second(udt))
+
             println(f, "\n## Latest Fetch\n")
-            println(f, "| UTC           | Date               | Time                                          |")
-            println(f, "|---------------|--------------------|-----------------------------------------------|")
-            println(f, "| **Statement** | $(Dates.Date(sdt)) | $(Dates.round(Dates.Time(sdt), Dates.Second)) |")
-            println(f, "| **User**      | $(Dates.Date(udt)) | $(Dates.round(Dates.Time(udt), Dates.Second)) |")
+            println(f, "| UTC           | Date               | Time |")
+            println(f, "|---------------|--------------------|------|")
+            println(f, "| **Statement** | $(Dates.Date(sdt)) | $st  |")
+            println(f, "| **User**      | $(Dates.Date(udt)) | $ut  |")
         end
 
         println(f, "\n## Classes\n")
