@@ -82,7 +82,7 @@ function fetch_submission()
             point          = content["point"]
             length         = content["length"]
             execution_time = content["execution_time"]
-            println(f, "| $id | $(Dates.epochms2datetime(time)) | $contest | $task | $language | $result | $point | $length | $execution_time |")
+            println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $(Dates.epochms2datetime(time * 1000)) | $contest | $task | $language | $result | $point | $length Byte | $execution_time ms |")
         end
     end
     println("[INFO] Fetched submission")
