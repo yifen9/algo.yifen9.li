@@ -37,11 +37,11 @@ function fetch_info_basic()
 
     file = joinpath(DIR_SRC_ATCODER, "user_basic.md")
     open(file, "w") do f
-        println(f, "| $USERNAME | Count | Rank | Source |")
-        println(f, "|-----------|-------|------|--------|")
-        println(f, "| Accepted Count | $ac_rank_count | $ac_rank_rank | [ac_rank]($ac_rank_url) |")
-        println(f, "| Rated Point Sum | $rated_point_sum_rank_count | $rated_point_sum_rank_rank | [rated_point_sum_rank]($rated_point_sum_rank_url) |")
-        println(f, "| Longest Streak (JST) Count | $streak_rank_count | $streak_rank_rank | [streak_rank_rank]($streak_rank_url) |")
+        println(f, "| $USERNAME | Count | Rank |")
+        println(f, "|-----------|-------|------|")
+        println(f, "| [Accepted Count]($ac_rank_url) | $ac_rank_count | $ac_rank_rank |")
+        println(f, "| [Rated Point Sum]($rated_point_sum_rank_url) | $rated_point_sum_rank_count | $rated_point_sum_rank_rank |")
+        println(f, "| [Longest Streak (JST) Count]($streak_rank_url) | $streak_rank_count | $streak_rank_rank |")
     end
     println("[INFO] Fetched info basic")
 end
@@ -52,32 +52,46 @@ function fetch_language()
 
     file = joinpath(DIR_SRC_ATCODER, "user_language.md")
     open(file, "w") do f
-        println(f, "| Language | Count | Rank | Source |")
-        println(f, "|----------|-------|------|--------|")
-
-        i = 0
+        println(f, "| [Language]($url) | Count | Rank |")
+        println(f, "|------------------|-------|------|")
         for content in list
             language = content["language"]
             count    = content["count"]
             rank     = content["rank"]
-
-            println(f, "| $language | $count | $rank | [$i]($url) |")
-
-            i += 1
+            println(f, "| $language | $count | $rank |")
         end
     end
     println("[INFO] Fetched language")
 end
 
 function fetch_submission()
+    url  = joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=1560046356"
+    list = fetch(url)
 
+    file = joinpath(DIR_SRC_ATCODER, "user_submission.md")
+    open(file, "w") do f
+        println(f, "| [ID]($url) | Time | Contest | Task | Language | Result | Point | Length | Execution Time |")
+        println(f, "|------------|------|---------|------|----------|--------|-------|--------|----------------|")
+        for content in list
+            id             = content["id"]
+            time           = content["epoch_second"]
+            contest        = content["contest_id"]
+            task           = content["problem_id"]
+            language       = content["language"]
+            result         = content["result"]
+            point          = content["point"]
+            length         = content["length"]
+            execution_time = content["execution_time"]
+            println(f, "| $id | $(Dates.epochms2datetime(time)) | $contest | $task | $language | $result | $point | $length | $execution_time |")
+        end
+    end
+    println("[INFO] Fetched submission")
 end
 
 function main()
     fetch_info_basic()
-
     fetch_language()
-
+    fetch_submission()
     println("[INFO] Fetched user")
 end
 
