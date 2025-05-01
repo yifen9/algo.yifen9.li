@@ -80,21 +80,10 @@ jobs:
       
       - name: Link /src
         run: ln -s ../src docs/src
-      
-      - name: Cache Build
-        uses: actions/cache@v4
-        with:
-          path: build
-          key: ${{ runner.os }}-mkdocs-build
-          restore-keys: |
-            ${{ runner.os }}-mkdocs-build
 
       - name: Build
         run: |
           mkdocs build --dirty -d build
-
-      - name: Prune
-        run: rsync -ac --delete docs/ build/
       
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
