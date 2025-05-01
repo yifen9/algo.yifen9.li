@@ -1,9 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    int S, T;
-    cin >> S >> T;
-    cout << (T - S) << "\n";
+int main(){
+    int H1, H2;
+    cin >> H1 >> H2;
+    cout << (H1 - H2) << "\n";
     return 0;
 }
