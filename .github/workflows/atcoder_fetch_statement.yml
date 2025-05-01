@@ -21,6 +21,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
 
       - name: Set up Git identity
         run: |
@@ -40,6 +43,12 @@ jobs:
       - name: Initialize
         run: julia scripts/atcoder/initialize.jl
       
+      - name: Sync with origin/main
+        run: |
+          git checkout main
+          git fetch origin main
+          git reset --hard origin/main
+      
       - name: Commit & Push changes
         run: |
           git add src/atcoder
@@ -48,6 +57,12 @@ jobs:
 
       - name: Fetch Statement
         run: julia scripts/atcoder/fetch_statement.jl
+      
+      - name: Sync with origin/main
+        run: |
+          git checkout main
+          git fetch origin main
+          git reset --hard origin/main
 
       - name: Commit & Push changes
         run: |

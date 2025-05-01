@@ -20,6 +20,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
 
       - name: Set up Git identity
         run: |
@@ -33,6 +36,12 @@ jobs:
 
       - name: Fetch User
         run: julia scripts/atcoder/fetch_user.jl
+      
+      - name: Sync with origin/main
+        run: |
+          git checkout main
+          git fetch origin main
+          git reset --hard origin/main
       
       - name: Commit & Push changes
         run: |
