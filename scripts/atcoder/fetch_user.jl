@@ -69,7 +69,7 @@ function submission_url_fetched(second)
 end
 
 function submission_list()
-    step_start = round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 0)), Dates.Second)
+    step_start = round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 1)), Dates.Second)
     step_end = step_start
     
     step_iteration = Dates.Second(1)
