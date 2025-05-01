@@ -131,14 +131,16 @@ function submission_list()
 end
 
 function fetch_submission()
-    url  = joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=1560046356"
-    list = fetch_with_retry(url)
+    list = submission_list()
+    list_sorted = sort(list; by = c -> c["id"], rev = true)
+
+    @show length(list)
 
     file = joinpath(DIR_SRC_ATCODER, "user_submission.md")
     open(file, "w") do f
         println(f, "| [ID]($url) | Date | Time | Contest | Task | Language | Result | Point | Length | Execution Time |")
         println(f, "|------------|------|------|---------|------|----------|--------|-------|--------|----------------|")
-        for content in list
+        for content in list_sorted
             id             = content["id"]
             epoch_second   = content["epoch_second"]
             contest        = content["contest_id"]
@@ -160,7 +162,6 @@ function fetch_submission()
 end
 
 function main()
-    @show submission_list()
     fetch_info_basic()
     fetch_language()
     fetch_submission()
