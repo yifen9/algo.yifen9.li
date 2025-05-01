@@ -52,7 +52,7 @@ function fetch_info_basic()
 
     user = joinpath("https://atcoder.jp/users", USERNAME)
 
-    file = joinpath(DIR_SRC_ATCODER, "user_basic.md")
+    file = joinpath(DIR_SRC_ATCODER, "fetch_user_basic.md")
     open(file, "w") do f
         println(f, "| [$USERNAME]($user) | Count | Rank |")
         println(f, "|-----------|-------|------|")
@@ -67,7 +67,7 @@ function fetch_language()
     url  = joinpath(DIR_BASE_ACP, "language_rank?user=") * USERNAME
     list = fetch_with_retry(url)
 
-    file = joinpath(DIR_SRC_ATCODER, "user_language.md")
+    file = joinpath(DIR_SRC_ATCODER, "fetch_user_language.md")
     open(file, "w") do f
         println(f, "| [Language]($url) | Count | Rank |")
         println(f, "|------------------|-------|------|")
@@ -130,7 +130,7 @@ function fetch_submission()
     list = submission_url_fetched(second)
     list_sorted = sort(list; by = c -> c["id"], rev = true)
 
-    file = joinpath(DIR_SRC_ATCODER, "user_submission.md")
+    file = joinpath(DIR_SRC_ATCODER, "fetch_user_submission.md")
     open(file, "w") do f
         println(f, "| [ID]($url) | Date | Time | Contest | Task | Language | Result | Point | Length | Execution Time |")
         println(f, "|------------|------|------|---------|------|----------|--------|-------|--------|----------------|")

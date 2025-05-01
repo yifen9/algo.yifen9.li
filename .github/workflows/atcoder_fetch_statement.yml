@@ -27,14 +27,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: true
-          fetch-depth: 0
+          fetch-depth: 1
       
       - name: Sync to origin/main
         run: |
           git fetch origin main
           git reset --hard origin/main
 
-      - name: Set up
+      - name: Set up Action Bot
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
@@ -43,6 +43,14 @@ jobs:
         uses: julia-actions/setup-julia@v2
         with:
           version: '1.10'
+      
+      - name: Cache Julia packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.julia
+          key: ${{ runner.os }}-julia-${{ hashFiles('scripts/atcoder/Project.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-julia-
 
       # - name: Install Pandoc
       #   run: |
