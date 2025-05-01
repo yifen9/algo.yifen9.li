@@ -57,11 +57,9 @@ jobs:
       - name: Install MkDocs and Plugins
         run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin
 
-      - name: Build site and Copy src/
+      - name: Build site
         run: |
-          mkdir -p build
           mkdocs build -d build
-          cp -r src build/src
 
       # - name: Deploy
       #   run: ghp-import -n -f -p build
