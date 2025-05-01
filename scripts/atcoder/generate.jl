@@ -364,8 +364,8 @@ function generate()
         file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.md")
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
             println(f, "\n## Latest Fetch\n")
-            println(f, "- **Statement: **", read(file_fetch_statement, Dates.DateTime))
-            println(f, "- **User:      **", read(file_fetch_user, Dates.DateTime))
+            println(f, "- **Statement: **", read(file_fetch_statement, String))
+            println(f, "- **User:      **", read(file_fetch_user, String))
         end
 
         println(f, "\n## Classes\n")
