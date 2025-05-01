@@ -79,7 +79,8 @@ function fetch_language()
 end
 
 function submission_url_fetched(second)
-    return fetch_with_retry(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second")
+    second_int = @sprintf("%.0f", second)
+    return fetch_with_retry(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second_int")
 end
 
 function submission_list()
@@ -91,15 +92,16 @@ function submission_list()
     while length(list) < 500 && step_end > 0
         step_end = step_end - step_iteration
         list = submission_url_fetched(step_end)
-        if length(list) < 500 && step_end > 0
-            step_start = step_end
-            step_iteration = step_iteration * 2
-        end
         @show step_start
         @show step_end
         @show step_iteration
         @show length(list)
+        if length(list) < 500 && step_end > 0
+            step_start = step_end
+            step_iteration = step_iteration * 2
+        end
     end
+    @show "Hello"
     if step_end > 0
         while true
             step_center = round((step_start + step_end) / 2)
