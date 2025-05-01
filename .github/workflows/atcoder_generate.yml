@@ -91,6 +91,8 @@ jobs:
 
       - name: Extract Pages artifact
         uses: yifen9/extract-artifact@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: github-pages
           path: build
