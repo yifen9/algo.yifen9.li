@@ -85,9 +85,12 @@ jobs:
         uses: actions/cache@v4
         with:
           path: build
-          key: ${{ runner.os }}-mkdocs-build-${{ hashFiles('mkdocs.yml','docs/atcoder/**','src/atcoder/**') }}
+          key: ${{ runner.os }}-mkdocs-build
           restore-keys: |
-            ${{ runner.os }}-mkdocs-build-
+            ${{ runner.os }}-mkdocs-build
+      
+      - name: Prune removed pages
+        run: rsync -ac --delete docs/ build/
 
       - name: Build
         run: |
