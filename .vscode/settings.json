@@ -2,6 +2,13 @@
     "files.associations": {
         "*.ml": "sml",
         "*.sml": "sml",
-        "*.cs": "sml"
+        "*.cs": "sml",
+        "array": "cpp",
+        "string_view": "cpp",
+        "span": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "functional": "cpp"
     }
 }
