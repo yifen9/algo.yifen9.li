@@ -56,6 +56,9 @@ jobs:
 
       - name: Install MkDocs and Plugins
         run: pip install mkdocs-material mkdocs-awesome-pages-plugin mkdocs-include-markdown-plugin
+      
+      - name: Link src for Markdown includes
+        run: ln -s ../src docs/src
 
       - name: Build site
         run: |
