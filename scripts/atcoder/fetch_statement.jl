@@ -200,9 +200,11 @@ function main()
     statement_fetch()
 
     file = joinpath(DIR_SRC_ATCODER, "fetch_statement.txt")
+    time = Dates.now()
     open(file, "w") do f
-        println(f, "$(Dates.now())")
+        println(f, "$time")
     end
+    print("[INFO] Fetched at $time")
 end
 
 main()

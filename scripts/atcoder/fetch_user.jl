@@ -168,9 +168,11 @@ function main()
     end
 
     file = joinpath(DIR_SRC_ATCODER, "fetch_user.txt")
+    time = Dates.now()
     open(file, "w") do f
-        println(f, "$(Dates.now())")
+        println(f, "$time")
     end
+    print("[INFO] Fetched at $time")
 end
 
 main()
