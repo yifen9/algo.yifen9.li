@@ -20,7 +20,7 @@ function fetch(url)
     return JSON.parse(String(resp.body))
 end
 
-function fetch_with_retry(url::String; max=16)
+function fetch_with_retry(url::String; max=4)
     delay = 1
     for attempt in 1:max
         try
