@@ -91,31 +91,22 @@ function submission_list()
     while length(list) < 500 && step_end > 0
         step_end = step_end - step_iteration
         list = submission_url_fetched(step_end)
-        @show step_start
-        @show step_end
-        @show step_iteration
-        @show length(list)
         if length(list) < 500 && step_end > 0
             step_start = step_end
             step_iteration = step_iteration * 2
         end
     end
-    @show "Hello"
     if step_end > 0
         while true
-            step_center = div((step_start + step_end), 2)
-            list = submission_url_fetched(step_center)
-            @show step_start
-            @show step_center
-            @show step_end
-            if length(list) < 500
-                @show "step_start -> step_center"
-                step_start = step_center
+            if (step_start - step_end) > 1
+                step_center = div((step_start + step_end), 2)
+                list = submission_url_fetched(step_center)
+                if length(list) < 500
+                    step_start = step_center
+                else
+                    step_end = step_center
+                end
             else
-                @show "step_end -> step_center"
-                step_end = step_center
-            end
-            if (step_start - step_end) <= 1
                 list_start = submission_url_fetched(step_start)
                 list_end   = submission_url_fetched(step_end)
                 if length(list_start) < 500
