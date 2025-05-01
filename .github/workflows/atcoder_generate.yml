@@ -89,8 +89,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download Artifact for Backup
-        uses: actions/download-artifact@v4
+      - name: Extract Pages artifact
+        uses: yifen9/extract-artifact@v1
         with:
           name: github-pages
           path: build
