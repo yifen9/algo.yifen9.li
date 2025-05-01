@@ -7,6 +7,7 @@ Pkg.add("JSON")
 using Dates
 using HTTP
 using JSON
+using Printf
 
 const USERNAME = "kenkoooo"
 
@@ -147,6 +148,8 @@ function fetch_submission()
             date_time = DateTime(1970,1,1) + Millisecond(epoch_second * 1000)
             date = Dates.format(date_time, "yyyy-mm-dd")
             time = Dates.format(date_time, "HH:MM:SS")
+
+            point_float = @sprintf("%d", round(point))
 
             println(f, "| [$id](https://atcoder.jp/contests/$(contest)/submissions/$(id)) | $date | $time | $contest | $task | $language | $result | $point | $length Byte | $execution_time ms |")
         end
