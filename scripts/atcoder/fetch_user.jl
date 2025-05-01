@@ -65,7 +65,7 @@ function fetch_language()
 end
 
 function submission_list()
-    start = Dates.datetime2epochms(Dates.now() - Dates.DateTime(1970, 0, 0, 0, 0, 0))
+    start = Dates.datetime2epochms(Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 0))
     @show start
 end
 
