@@ -86,7 +86,7 @@ function submission_list()
     step_start = Dates.value(round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 1)), Dates.Second))
     step_end = step_start
     
-    step_iteration = Dates.Second(1)
+    step_iteration = 1
     list = submission_url_fetched(step_start)
     while length(list) < 500 && step_end > 0
         step_end = step_end - step_iteration
