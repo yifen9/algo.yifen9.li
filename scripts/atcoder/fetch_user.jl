@@ -115,7 +115,15 @@ function submission_list()
                 @show "step_end -> step_center"
                 step_end = step_center
             end
-            step_start == step_end && return list
+            if (step_start - step_end) <= 1
+                list_start = submission_url_fetched(step_start)
+                list_end   = submission_url_fetched(step_end)
+                if length(list_start) < 500
+                    return list_end
+                else
+                    return list_start
+                end
+            end
         end
     else
         return submission_url_fetched(0)
