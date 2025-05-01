@@ -90,9 +90,15 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+      
+      - name: Delete Artifact
+        if: ${{ always() }}
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: github-pages
 
   backup:
-    needs: deploy
+    needs: generate
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact for Backup
@@ -114,25 +120,9 @@ jobs:
       - name: Backup to gh-pages
         run: |
           ghp-import -n -f -p -b gh-pages build
-    
-  delete-deploy:
-    needs:
-      - deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Delete Artifacts
+      
+      - name: Delete Artifact
+        if: ${{ always() }}
         uses: geekyeggo/delete-artifact@v5
         with:
-          name:
-            build
-  
-  delete-backup:
-    needs:
-      - backup
-    runs-on: ubuntu-latest
-    steps:
-      - name: Delete Artifacts
-        uses: geekyeggo/delete-artifact@v5
-        with:
-          name:
-            github-pages
+          name: artifact
