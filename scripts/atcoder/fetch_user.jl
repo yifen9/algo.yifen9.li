@@ -65,7 +65,7 @@ function fetch_language()
 end
 
 function submission_list()
-    start = Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 0)
+    start = round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 0)) / 1000)
     @show start
 end
 
