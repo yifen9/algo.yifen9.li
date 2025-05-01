@@ -19,19 +19,33 @@ function fetch(url)
     return JSON.parse(String(resp.body))
 end
 
+function fetch_with_retry(url::String; max=16)
+    delay = 1
+    for attempt in 1:max
+        try
+            return fetch(url)
+        catch
+            println("[WARN] Fetch failed, [Attempt]: $attempt, [Url]: $url")
+            sleep(delay * (rand() + 0.5))
+            delay *= 2
+        end
+    end
+    error()
+end
+
 function fetch_info_basic()
     ac_rank_url   = joinpath(DIR_BASE_ACP, "ac_rank?user=") * USERNAME
-    ac_rank       = fetch(ac_rank_url)
+    ac_rank       = fetch_with_retry(ac_rank_url)
     ac_rank_count = ac_rank["count"]
     ac_rank_rank  = ac_rank["rank"]
 
     rated_point_sum_rank_url   = joinpath(DIR_BASE_ACP, "rated_point_sum_rank?user=") * USERNAME
-    rated_point_sum_rank       = fetch(rated_point_sum_rank_url)
+    rated_point_sum_rank       = fetch_with_retry(rated_point_sum_rank_url)
     rated_point_sum_rank_count = rated_point_sum_rank["count"]
     rated_point_sum_rank_rank  = rated_point_sum_rank["rank"]
 
     streak_rank_url   = joinpath(DIR_BASE_ACP, "streak_rank?user=") * USERNAME
-    streak_rank       = fetch(streak_rank_url)
+    streak_rank       = fetch_with_retry(streak_rank_url)
     streak_rank_count = streak_rank["count"]
     streak_rank_rank  = streak_rank["rank"]
 
@@ -48,7 +62,7 @@ end
 
 function fetch_language()
     url  = joinpath(DIR_BASE_ACP, "language_rank?user=") * USERNAME
-    list = fetch(url)
+    list = fetch_with_retry(url)
 
     file = joinpath(DIR_SRC_ATCODER, "user_language.md")
     open(file, "w") do f
@@ -65,11 +79,11 @@ function fetch_language()
 end
 
 function submission_url_fetched(second)
-    return fetch(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second")
+    return fetch_with_retry(joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=$second")
 end
 
 function submission_list()
-    step_start = round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 1)), Dates.Second)
+    step_start = Dates.value(round((Dates.now() - Dates.DateTime(1970, 1, 1, 0, 0, 1)), Dates.Second))
     step_end = step_start
     
     step_iteration = Dates.Second(1)
@@ -89,7 +103,7 @@ end
 
 function fetch_submission()
     url  = joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=1560046356"
-    list = fetch(url)
+    list = fetch_with_retry(url)
 
     file = joinpath(DIR_SRC_ATCODER, "user_submission.md")
     open(file, "w") do f
