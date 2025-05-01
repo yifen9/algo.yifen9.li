@@ -39,6 +39,12 @@ jobs:
 
       - name: Initialize
         run: julia scripts/atcoder/initialize.jl
+      
+      - name: Commit & Push changes
+        run: |
+          git add src/atcoder
+          git diff --cached --quiet || git commit -m "chore: update fetched statement initialize"
+          git push
 
       - name: Fetch Statement
         run: julia scripts/atcoder/fetch_statement.jl
