@@ -22,7 +22,6 @@ const BROWSER_HEADERS = Dict(
 )
 
 function html_fetch(url::String)
-    sleep(rand() / 16)
     resp = HTTP.get(url; headers=BROWSER_HEADERS)
     resp.status == 200 || error()
     return parsehtml(String(resp.body))

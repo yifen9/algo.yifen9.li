@@ -64,6 +64,11 @@ function fetch_language()
     println("[INFO] Fetched language")
 end
 
+function submission_list()
+    start = Dates.datetime2epochms(Dates.now())
+    @show start
+end
+
 function fetch_submission()
     url  = joinpath(DIR_BASE_ACP, "submissions?user=") * USERNAME * "&from_second=1560046356"
     list = fetch(url)
@@ -94,6 +99,7 @@ function fetch_submission()
 end
 
 function main()
+    submission_list()
     fetch_info_basic()
     fetch_language()
     fetch_submission()

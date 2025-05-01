@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   build:
-    if: ${{ github.event_name == 'workflow_run' ? github.event.workflow_run.conclusion == 'success' : true }}
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'completed' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
