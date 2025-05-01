@@ -369,8 +369,8 @@ function generate()
             println(f, "\n## Latest Fetch\n")
             println(f, "| UTC           | Date               | Time               |")
             println(f, "|---------------|--------------------|--------------------|")
-            println(f, "| **Statement** | $(Dates.Date(sdt)) | $(round(Dates.Time(sdt), Dates.Second())) |")
-            println(f, "| **User**      | $(Dates.Date(udt)) | $(round(Dates.Time(udt), Dates.Second())) |")
+            println(f, "| **Statement** | $(Dates.Date(sdt)) | $(round(Dates.Time(sdt), Dates.Second)) |")
+            println(f, "| **User**      | $(Dates.Date(udt)) | $(round(Dates.Time(udt), Dates.Second)) |")
         end
 
         println(f, "\n## Classes\n")
