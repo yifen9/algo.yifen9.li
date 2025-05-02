@@ -89,15 +89,15 @@ jobs:
         run: du -ah build | sort -rh | head -n 50
       
       - name: Compress Build
-        run: zip -r build.zip build
+        run: zip -r artifact.zip build
       
       - name: Check Compressed Build Size
-        run: du -sh build.zip
+        run: du -sh artifact.zip
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          path: build.zip
+          path: artifact.zip
           retention-days: 1
 
   deploy:
@@ -131,14 +131,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: artifact
-          path: build
-
-      - name: Extract Artifact (again)
-        uses: yifen9/extract-artifact@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          name: build
           path: build
 
       - name: Set up Python
