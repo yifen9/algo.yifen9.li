@@ -87,17 +87,11 @@ jobs:
       
       - name: Check Build Size
         run: du -ah build | sort -rh | head -n 50
-      
-      - name: Compress Build
-        run: zip -r artifact.zip build
-      
-      - name: Check Compressed Build Size
-        run: du -sh artifact.zip
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: artifact.zip
+          path: build
           retention-days: 1
 
   deploy:
@@ -106,14 +100,6 @@ jobs:
     steps:
       - name: Configure Pages
         uses: actions/configure-pages@v5
-
-      - name: Extract Artifact
-        uses: yifen9/extract-artifact@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          name: artifact
-          path: build
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
@@ -130,7 +116,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: artifact
+          name: github-pages
           path: build
 
       - name: Set up Python
