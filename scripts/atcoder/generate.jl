@@ -525,7 +525,7 @@ end
 function main()
     generate()
 
-    mkdocs_nav()
+    # mkdocs_nav()
 
     println("[INFO] Generated AtCoder")
 end
