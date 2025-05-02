@@ -107,6 +107,14 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Extract Artifact
+        uses: yifen9/extract-artifact@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: artifact
+          path: build
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
 
@@ -122,7 +130,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: github-pages
+          name: artifact
           path: build
 
       - name: Set up Python
