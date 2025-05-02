@@ -84,6 +84,12 @@ jobs:
       - name: Build
         run: |
           mkdocs build -d build
+
+      - name: Check Build Size
+        run: du -sh build
+      
+      - name: Check Build Size (again)
+        run: du -ah build | sort -rh | head -n 50
       
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
