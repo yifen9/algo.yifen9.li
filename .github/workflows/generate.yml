@@ -84,17 +84,20 @@ jobs:
       - name: Build
         run: |
           mkdocs build -d build
-
-      - name: Check Build Size
-        run: du -sh build
       
-      - name: Check Build Size (again)
+      - name: Check Build Size
         run: du -ah build | sort -rh | head -n 50
       
+      - name: Compress Build
+        run: zip -r build.zip build
+      
+      - name: Check Compressed Build Size
+        run: du -sh build.zip
+
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          path: build
+          path: build.zip
           retention-days: 1
 
   deploy:
