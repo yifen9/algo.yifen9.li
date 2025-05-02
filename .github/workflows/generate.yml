@@ -133,6 +133,14 @@ jobs:
           name: artifact
           path: build
 
+      - name: Extract Artifact (again)
+        uses: yifen9/extract-artifact@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: build
+          path: build
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
