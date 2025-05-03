@@ -10,7 +10,7 @@ int main(){
     usi a, b;
     cin >> a >> b;
 
-    cout << "a " << (a > b ? ">" : (a == b ? "==" : "<")) << " b\n"; 
+    cout << "a " << ((a > b) ? ">" : ((a == b) ? "==" : "<")) << " b\n"; 
     
     return 0;
 }
