@@ -10,7 +10,7 @@ int main(){
     usi x;
     cin >> x;
 
-    cout << x * x * x << '\n';
+    cout << (x * x * x) << '\n';
 
     return 0;
 }
