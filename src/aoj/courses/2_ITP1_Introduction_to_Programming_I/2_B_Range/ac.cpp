@@ -10,7 +10,7 @@ int main(){
     usi a, b, c;
     cin >> a >> b >> c;
 
-    cout << ((a < b && b < c) ? "Yes" : "No") << '\n';
+    cout << (((a < b) && (b < c)) ? "Yes" : "No") << '\n';
 
     return 0;
 }
