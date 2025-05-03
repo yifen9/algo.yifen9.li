@@ -10,7 +10,7 @@ int main(){
     usi a, b;
     cin >> a >> b;
 
-    cout << a*b << ' ' << 2*(a+b) << '\n';
+    cout << (a * b) << ' ' << (2 * (a + b)) << '\n';
 
     return 0;
 }
