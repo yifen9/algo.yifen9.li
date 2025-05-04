@@ -12,7 +12,7 @@ using YAML
 
 const USER_ID = "yifen9"
 
-const DIR_BASE_ATCODER = "https://onlinejudge.u-aizu.ac.jp"
+const DIR_BASE_AOJ = "https://onlinejudge.u-aizu.ac.jp"
 
 const DIR_BASE_REPO = "https://github.com/yifen9/algo-notes/tree/main"
 
@@ -121,18 +121,19 @@ function solution_info_extract(sol::String)
 end
 
 function generate()
-    mkpath(DIR_DOCS_ATCODER)
+    mkpath(DIR_DOCS_AOJ)
 
-    file = joinpath(DIR_DOCS_ATCODER, "index.md")
+    file = joinpath(DIR_DOCS_AOJ, "index.md")
     open(file, "w") do f
-        println(f, "# AtCoder\n")
+        println(f, "# Aizu Online Judge\n")
 
         println(f, "## Basic Info\n")
-        println(f, "- **[Origin]($DIR_BASE_ATCODER)**")
-        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_ATCODER\" download>Download</a>**")
+        println(f, "- **[Origin]($DIR_BASE_AOJ)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ\" download>Download</a>**")
 
-        file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.txt")
-        file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.txt")
+        """
+        file_fetch_statement = joinpath(DIR_SRC_AOJ, "fetch_statement.txt")
+        file_fetch_user      = joinpath(DIR_SRC_AOJ, "fetch_user.txt")
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
             sdt = Dates.DateTime(split(read(file_fetch_statement, String), '\n', keepempty=false)[1])
             udt = Dates.DateTime(split(read(file_fetch_user,      String), '\n', keepempty=false)[1])
@@ -143,15 +144,15 @@ function generate()
             println(f, "\n## Latest Fetch\n")
             println(f, "| UTC           | Date               | Time |")
             println(f, "|---------------|--------------------|------|")
-            println(f, "| **Statement** | $(Dates.Date(sdt)) | $st  |")
-            println(f, "| **User**      | $(Dates.Date(udt)) | $ut  |")
+            println(f, "| **Statement** | \$(Dates.Date(sdt)) | \$st  |")
+            println(f, "| **User**      | \$(Dates.Date(udt)) | \$ut  |")
         end
 
         println(f, "\n## Classes\n")
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
-        for class in sort(readdir(DIR_SRC_ATCODER))
-            path_src_full = joinpath(DIR_SRC_ATCODER, class)
+        for class in sort(readdir(DIR_SRC_AOJ))
+            path_src_full = joinpath(DIR_SRC_AOJ, class)
             if isdir(path_src_full)
                 class_info = class_info_extract(class)
                 class_info_id = class_info.id
@@ -161,16 +162,17 @@ function generate()
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
 
-                class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
+                class_link = "https://atcoder.jp/contests/archive?ratedType=\$class_info_id"
 
-                println(f, "| [$(name_clean(class_info_name))](./$class/index.md) | $(uppercase(class_info_label)) | $class_info_id | $item_count | $size | [$class_info_label]($class_link) |")
+                println(f, "| [\$(name_clean(class_info_name))](./\$class/index.md) | \$(uppercase(class_info_label)) | \$class_info_id | \$item_count | \$size | [\$class_info_label](\$class_link) |")
             end
         end
+        """
     end
 
-    file_fetch_user_basic      = joinpath(DIR_SRC_ATCODER, "fetch_user_basic.md")
-    file_fetch_user_language   = joinpath(DIR_SRC_ATCODER, "fetch_user_language.md")
-    file_fetch_user_submission = joinpath(DIR_SRC_ATCODER, "fetch_user_submission.md")
+    file_fetch_user_basic      = joinpath(DIR_SRC_AOJ, "fetch_user_basic.md")
+    file_fetch_user_language   = joinpath(DIR_SRC_AOJ, "fetch_user_language.md")
+    file_fetch_user_submission = joinpath(DIR_SRC_AOJ, "fetch_user_submission.md")
     if isfile(file_fetch_user_basic) && isfile(file_fetch_user_language) && isfile(file_fetch_user_submission)
         open(file, "a") do f
             println(f, "\n## User Info\n")
@@ -186,8 +188,8 @@ function generate()
         end
     end
 
-    for class in sort(readdir(DIR_SRC_ATCODER))
-        isdir(joinpath(DIR_SRC_ATCODER, class)) && class_generate(class)
+    for class in sort(readdir(DIR_SRC_AOJ))
+        isdir(joinpath(DIR_SRC_AOJ, class)) && class_generate(class)
     end
 
     println("[INFO] Generated AtCoder pages")
