@@ -138,12 +138,58 @@ function course_info_extract(course::String)
     )
 end
 
+function course_generate(course::String)
+    dir_src = joinpath(DIR_SRC_AOJ_COURSES, course)
+    dir_docs = joinpath(DIR_DOCS_AOJ_COURSES, course)
+    mkpath(dir_docs)
+
+    course_info = course_info_extract(course)
+    course_info_id = course_info.id
+    course_info_label = course_info.label
+    course_info_name = course_info.name
+
+    file_docs = joinpath(dir_docs, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
+    course_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all")
+    open(file_docs, "w") do f
+        println(f, "# $(name_clean(course_info_name))\n")
+
+        println(f, "<small>[← Back](../index.md)</small>\n")
+
+        println(f, "## Basic Info\n")
+        println(f, "- **ID:    **", course_info_id)
+        println(f, "- **Label: **", course_info_label)
+        println(f, "- **[Origin]($course_link)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
+
+        println(f, "\n## Problems\n")
+        println(f, "| Contest | Item | Size | Link |")
+        println(f, "|---------|------|------|------|")
+        for contest in sort(readdir(dir_src))
+            path_src_full = joinpath(dir_src, contest)
+            if isdir(path_src_full)
+                item_count = dir_item_count(path_src_full)
+                size = size_human_readable(size_directory_get(path_src_full))
+
+                contest_link = "https://atcoder.jp/contests/$course_info_label$contest"
+
+                println(f, "| [$contest](./$contest/index.md) | $item_count | $size | [$course_info_label$(contest)]($contest_link) |")
+            end
+        end
+    end
+
+    for contest in sort(readdir(dir_src))
+        isdir(joinpath(dir_src, contest)) && contest_generate(contest, course)
+    end
+
+    println("[INFO] Generated $file_docs")
+end
+
 function courses_generate()
     mkpath(DIR_DOCS_AOJ_COURSES)
 
     file_docs = joinpath(DIR_DOCS_AOJ_COURSES, "index.md")
-
-    course_link = joinpath(DIR_BASE_AOJ, "courses/all", course_info_id, course_info_label, "all")
     open(file_docs, "w") do f
         println(f, "# Courses\n")
 
@@ -174,11 +220,9 @@ function courses_generate()
         end
     end
 
-    #=
-    for contest in sort(readdir(dir_src))
-        isdir(joinpath(dir_src, contest)) && contest_generate(contest, class)
+    for course in sort(readdir(DIR_SRC_AOJ_COURSES))
+        isdir(joinpath(DIR_SRC_AOJ_COURSES, course)) && course_generate(course)
     end
-    =#
 
     println("[INFO] Generated $file_docs")
 end
