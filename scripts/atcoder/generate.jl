@@ -10,6 +10,11 @@ using Printf
 using StringEncodings
 using YAML
 
+const USER_ID = "AntoLee"
+const USER_LABEL = "李芸峰"
+
+const DIR_BASE_ATCODER = "https://atcoder.jp"
+
 const DIR_BASE_REPO = "https://github.com/yifen9/algo-notes/tree/main"
 
 const DIR_BASE_DOWNLOAD = "https://download-directory.github.io/?url="
@@ -360,6 +365,10 @@ function generate()
     open(file, "w") do f
         println(f, "# AtCoder\n")
 
+        println(f, "## Basic Info\n")
+        println(f, "- **[Origin]($DIR_BASE_ATCODER)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_ATCODER\" download>Download</a>**")
+
         file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.txt")
         file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.txt")
         if isfile(file_fetch_statement) && isfile(file_fetch_user)
@@ -437,6 +446,7 @@ function nav_nested_build(path::String)
 
             class_children = Vector{Any}()
             contests = readdir(class; join=true, sort=true)
+            """
             for contest in contests
                 if isdir(contest)
                     contest_name = name_clean(basename(String(contest)))
@@ -472,6 +482,7 @@ function nav_nested_build(path::String)
                     push!(class_children, Dict("$(uppercase(class_info_label)) $contest_name" => vcat([contest_index], contest_children)))
                 end
             end
+            """
             push!(nav, Dict("$(name_clean(class_info_name))" => vcat([class_index], class_children)))
         end
     end
@@ -525,7 +536,7 @@ end
 function main()
     generate()
 
-    # mkdocs_nav()
+    mkdocs_nav()
 
     println("[INFO] Generated AtCoder")
 end
