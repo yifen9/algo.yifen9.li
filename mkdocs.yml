@@ -97,3 +97,5 @@ nav:
     - template/index.md
   - AtCoder:
     - atcoder/index.md
+  - AOJ:
+    - aoj/index.md

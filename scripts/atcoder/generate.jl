@@ -476,10 +476,10 @@ function nav_nested_build(path::String)
                                     push!(task_children, Dict(name_clean(sol_base) => [sol_index]))
                                 end
                             end
-                            push!(contest_children, Dict("$task_info_label $(name_clean(task_info_name))" => vcat([task_index], task_children)))
+                            push!(contest_children, Dict("\$task_info_label \$(name_clean(task_info_name))" => vcat([task_index], task_children)))
                         end
                     end
-                    push!(class_children, Dict("$(uppercase(class_info_label)) $contest_name" => vcat([contest_index], contest_children)))
+                    push!(class_children, Dict("\$(uppercase(class_info_label)) \$contest_name" => vcat([contest_index], contest_children)))
                 end
             end
             """
