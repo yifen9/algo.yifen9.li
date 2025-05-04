@@ -25,6 +25,12 @@ const DIR_DOCS = "docs"
 const DIR_SRC_AOJ = joinpath(DIR_SRC, "aoj")
 const DIR_DOCS_AOJ = joinpath(DIR_DOCS, "aoj")
 
+const DIR_SRC_AOJ_COURSES = joinpath(DIR_SRC_AOJ, "courses")
+const DIR_DOCS_AOJ_COURSES = joinpath(DIR_DOCS_AOJ, "courses")
+
+const DIR_SRC_AOJ_CHALLENGES = joinpath(DIR_SRC_AOJ, "challenges")
+const DIR_DOCS_AOJ_CHALLENGES = joinpath(DIR_DOCS_AOJ, "challenges")
+
 function name_clean(text::AbstractString)::String
     return replace(String(text), "_" => " ")
 end
@@ -120,8 +126,70 @@ function solution_info_extract(sol::String)
     end
 end
 
+function course_info_extract(course::String)
+    parts = split(course, "_", limit=3)
+    if length(parts) < 3
+        return nothing
+    end
+    return (
+        id = parts[1],
+        label = parts[2],
+        name = parts[3]
+    )
+end
+
+function course_generate(course::String)
+    dir_src = joinpath(DIR_SRC_AOJ, course)
+    dir_docs = joinpath(DIR_DOCS_AOJ, course)
+    mkpath(dir_docs)
+
+    class_info = class_info_extract(class)
+    class_info_id = class_info.id
+    class_info_label = class_info.label
+    class_info_name = class_info.name
+
+    file_docs = joinpath(dir_docs, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
+    class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
+    open(file_docs, "w") do f
+        println(f, "# $(name_clean(class_info_name))\n")
+
+        println(f, "<small>[← Back](../index.md)</small>\n")
+
+        println(f, "## Basic Info\n")
+        println(f, "- **ID:    **", class_info_id)
+        println(f, "- **Label: **", class_info_label)
+        println(f, "- **[Origin]($class_link)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
+
+        println(f, "\n## Contests\n")
+        println(f, "| Contest | Item | Size | Link |")
+        println(f, "|---------|------|------|------|")
+        for contest in sort(readdir(dir_src))
+            path_src_full = joinpath(dir_src, contest)
+            if isdir(path_src_full)
+                item_count = dir_item_count(path_src_full)
+                size = size_human_readable(size_directory_get(path_src_full))
+
+                contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
+
+                println(f, "| [$contest](./$contest/index.md) | $item_count | $size | [$class_info_label$(contest)]($contest_link) |")
+            end
+        end
+    end
+
+    for contest in sort(readdir(dir_src))
+        isdir(joinpath(dir_src, contest)) && contest_generate(contest, class)
+    end
+
+    println("[INFO] Generated $file_docs")
+end
+
 function generate()
     mkpath(DIR_DOCS_AOJ)
+
+
 
     file = joinpath(DIR_DOCS_AOJ, "index.md")
     open(file, "w") do f
@@ -130,11 +198,33 @@ function generate()
         println(f, "## Basic Info\n")
         println(f, "- **[Origin]($DIR_BASE_AOJ)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ\" download>Download</a>**")
+
+        println(f, "\n## Courses\n")
+        println(f, "| Name | Label | ID | Item | Size | Link |")
+        println(f, "|------|-------|----|------|------|------|")
+        for course in sort(readdir(DIR_SRC_AOJ_COURSES))
+            path_src_full = joinpath(DIR_SRC_AOJ_COURSES, course)
+            if isdir(path_src_full)
+                course_info = course_info_extract(course)
+                course_info_id = course_info.id
+                course_info_label = course_info.label
+                course_info_name = course_info.name
+
+                item_count = dir_item_count(path_src_full)
+                size = size_human_readable(size_directory_get(path_src_full))
+
+                course_link = joinpath(DIR_BASE_AOJ, "courses/all", course_info_id, course_info_label)
+
+                println(f, "| [$(name_clean(course_info_name))](./courses/$course/index.md) | $(uppercase(course_info_label)) | $course_info_id | $item_count | $size | [$(course_info_id)/$(uppercase(course_info_label))]($course_link) |")
+            end
+        end
     end
 
-    for class in sort(readdir(DIR_SRC_AOJ))
-        isdir(joinpath(DIR_SRC_AOJ, class)) && class_generate(class)
+    #=
+    for course in sort(readdir(DIR_SRC_AOJ))
+        isdir(joinpath(DIR_SRC_AOJ, course)) && course_generate(course)
     end
+    =#
 
     println("[INFO] Generated AtCoder pages")
 end

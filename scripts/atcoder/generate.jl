@@ -446,7 +446,7 @@ function nav_nested_build(path::String)
 
             class_children = Vector{Any}()
             contests = readdir(class; join=true, sort=true)
-            """
+            #=
             for contest in contests
                 if isdir(contest)
                     contest_name = name_clean(basename(String(contest)))
@@ -482,7 +482,7 @@ function nav_nested_build(path::String)
                     push!(class_children, Dict("\$(uppercase(class_info_label)) \$contest_name" => vcat([contest_index], contest_children)))
                 end
             end
-            """
+            =#
             push!(nav, Dict("$(name_clean(class_info_name))" => vcat([class_index], class_children)))
         end
     end
