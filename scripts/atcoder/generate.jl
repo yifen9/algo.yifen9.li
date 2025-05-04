@@ -202,7 +202,7 @@ function task_generate(task::String, contest::String, class::String)
     task_link = "https://atcoder.jp/contests/$class_info_label$contest/tasks/$class_info_label$(contest)_$task_info_id"
 
     open(file_docs, "w") do f
-        println(f, "# $class_info_label$contest > $(name_clean(task_info_name))\n")
+        println(f, "# $(uppercase(class_info_label))$contest > $(name_clean(task_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
