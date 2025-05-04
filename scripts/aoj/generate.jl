@@ -194,8 +194,9 @@ function generate()
         println(f, "- **[Origin]($DIR_BASE_AOJ)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ\" download>Download</a>**")
 
-        println(f, "| | Item | Size | Link |")
-        println(f, "|-|------|------|------|")
+        println(f, "\n## Content\n")
+        println(f, "| Type | Item | Size | Link |")
+        println(f, "|------|------|------|------|")
 
         println(f, "| Courses | $(dir_item_count(DIR_SRC_AOJ_COURSES)) | $(size_human_readable(size_directory_get(DIR_SRC_AOJ_COURSES))) | $(joinpath(DIR_BASE_AOJ, "courses"))")
     end
