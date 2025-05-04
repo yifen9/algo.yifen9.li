@@ -152,6 +152,42 @@ function course_info_extract(course::String)
     )
 end
 
+function solution_generate(file::String, problem::String, course::String)
+    dir_src = joinpath(DIR_SRC_AOJ_COURSES, course, problem, file)
+    dir_docs = joinpath(DIR_DOCS_AOJ_COURSES, course, problem,file)
+    mkpath(dir_docs)
+
+    file_ext = file_extension_get(file)
+    file_size = size_human_readable(stat(dir_src).size)
+
+    problem_info = problem_info_extract(problem)
+    problem_info_topic = problem_info.topic
+    problem_info_id = problem_info.id
+    problem_info_name = problem_info.name
+
+    file_docs = joinpath(dir_docs, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
+    open(file_docs, "w") do f
+        println(f, "# $(problem_info_topic)_$(problem_info_id) > `$(name_clean(file))`\n")
+
+        println(f, "<small>[← Back](../index.md)</small>\n")
+
+        println(f, "## Basic Info", "\n")
+        println(f, "- **Type:    **", file_ext)
+        println(f, "- **Problem: **", problem_info_name)
+        println(f, "- **[Origin]($file_origin)**", "\n")
+
+        link_download = joinpath(DIR_BASE, dir_src)
+        println(f, "- **<a href=\"$link_download\" download>Download</a>**")
+
+        println(f, "## Preview\n")
+        println(f, file_preview_generate(dir_src))
+    end
+
+    println("[INFO] Generated $file_docs")
+end
+
 function problem_generate(problem::String, course::String)
     dir_src = joinpath(DIR_SRC_AOJ_COURSES, course, problem)
     dir_docs = joinpath(DIR_DOCS_AOJ_COURSES, course, problem)
@@ -172,7 +208,7 @@ function problem_generate(problem::String, course::String)
 
     problem_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all", "$(course_info_label)_$(problem_info_topic)_$(problem_info_id)")
     open(file_docs, "w") do f
-        println(f, "# $(name_clean(problem_info_name))\n")
+        println(f, "# $(uppercase(course_info_label)) > $(name_clean(problem_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -181,6 +217,28 @@ function problem_generate(problem::String, course::String)
         println(f, "- **Topic: **", problem_info_topic)
         println(f, "- **[Origin]($problem_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
+
+        println(f, "\n## Solutions\n")
+        println(f, "| File | Type | Size | Result | Strategy | Performance |")
+        println(f, "|------|------|------|--------|----------|-------------|")
+
+        for sol in sort(readdir(dir_src))
+            ext = file_extension_get(sol)
+            if ext != "md"
+                size = size_human_readable(stat(joinpath(dir_src, sol)).size)
+
+                sol_info = solution_info_extract(splitext(sol)[1])
+                sol_info_result = sol_info.result
+                sol_info_strategy = sol_info.size >= 2 ? sol_info.strategy : "/"
+                sol_info_performance = sol_info.size >= 3 ? sol_info.performance : "/"
+
+                println(f, "| [`$sol`]($sol/index.md) | $ext | $size | $sol_info_result | $sol_info_strategy | $sol_info_performance |")
+            end
+        end
+    end
+
+    for sol in readdir(dir_src)
+        file_extension_get(sol) != "md" && solution_generate(sol, problem, course)
     end
 
     println("[INFO] Generated $file_docs")
@@ -244,6 +302,8 @@ function courses_generate()
     mkpath(DIR_DOCS_AOJ_COURSES)
 
     file_docs = joinpath(DIR_DOCS_AOJ_COURSES, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, DIR_DOCS_AOJ_COURSES)
+
     open(file_docs, "w") do f
         println(f, "# Courses\n")
 
@@ -251,7 +311,7 @@ function courses_generate()
 
         println(f, "## Basic Info\n")
         println(f, "- **[Origin]($DIR_BASE_AOJ_COURSES)**")
-        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ_COURSES\" download>Download</a>**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "\n## Courses\n")
         println(f, "| Name | Label | ID | Item | Size | Link |")
@@ -285,13 +345,15 @@ end
 function generate()
     mkpath(DIR_DOCS_AOJ)
 
+    file_origin = joinpath(DIR_BASE_REPO, DIR_DOCS_AOJ)
+
     file = joinpath(DIR_DOCS_AOJ, "index.md")
     open(file, "w") do f
         println(f, "# Aizu Online Judge\n")
 
         println(f, "## Basic Info\n")
         println(f, "- **[Origin]($DIR_BASE_AOJ)**")
-        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ\" download>Download</a>**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "\n## Content\n")
         println(f, "| Type | Item | Size | Link |")

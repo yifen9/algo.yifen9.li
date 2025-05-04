@@ -168,7 +168,7 @@ function solution_generate(file::String, task::String, contest::String, class::S
 
         println(f, "## Basic Info", "\n")
         println(f, "- **Type: **", file_ext)
-        println(f, "- **Task: **", task_info_name)
+        println(f, "- **Task: **", name_clean(task_info_name))
         println(f, "- **[Origin]($file_origin)**", "\n")
 
         link_download = joinpath(DIR_BASE, dir_src)
@@ -362,13 +362,15 @@ end
 function generate()
     mkpath(DIR_DOCS_ATCODER)
 
+    file_origin = joinpath(DIR_BASE_REPO, DIR_SRC_ATCODER)
+
     file = joinpath(DIR_DOCS_ATCODER, "index.md")
     open(file, "w") do f
         println(f, "# AtCoder\n")
 
         println(f, "## Basic Info\n")
         println(f, "- **[Origin]($DIR_BASE_ATCODER)**")
-        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_ATCODER\" download>Download</a>**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         file_fetch_statement = joinpath(DIR_SRC_ATCODER, "fetch_statement.txt")
         file_fetch_user      = joinpath(DIR_SRC_ATCODER, "fetch_user.txt")
@@ -389,7 +391,7 @@ function generate()
         println(f, "\n## Classes\n")
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
-        
+
         for class in sort(readdir(DIR_SRC_ATCODER))
             path_src_full = joinpath(DIR_SRC_ATCODER, class)
             if isdir(path_src_full)
