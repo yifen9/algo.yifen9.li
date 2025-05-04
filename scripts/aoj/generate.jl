@@ -260,7 +260,7 @@ function course_generate(course::String)
     course_link = joinpath(DIR_BASE_AOJ_COURSES, "all", course_info_id, course_info_label, "all")
 
     open(file_docs, "w") do f
-        println(f, "# $(name_clean(course_info_name))\n")
+        println(f, "# Courses > $(name_clean(course_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
@@ -270,6 +270,7 @@ function course_generate(course::String)
         println(f, "- **[Origin]($course_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
+        println(f, "\n## Problems\n")
         println(f, "| Name | Topic | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
 
