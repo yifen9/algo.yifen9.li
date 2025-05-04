@@ -179,9 +179,11 @@ function course_generate(course::String)
         end
     end
 
+    #=
     for contest in sort(readdir(dir_src))
         isdir(joinpath(dir_src, contest)) && contest_generate(contest, course)
     end
+    =#
 
     println("[INFO] Generated $file_docs")
 end
@@ -215,7 +217,7 @@ function courses_generate()
 
                 course_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all")
 
-                println(f, "| [$(name_clean(course_info_name))](./courses/$course/index.md) | $(uppercase(course_info_label)) | $course_info_id | $item_count | $size | [$(course_info_id)/$(uppercase(course_info_label))]($course_link) |")
+                println(f, "| [$(name_clean(course_info_name))](./$course/index.md) | $(uppercase(course_info_label)) | $course_info_id | $item_count | $size | [$(course_info_id)/$(uppercase(course_info_label))]($course_link) |")
             end
         end
     end
@@ -242,7 +244,7 @@ function generate()
         println(f, "| Type | Item | Size | Link |")
         println(f, "|------|------|------|------|")
 
-        println(f, "| Courses | $(dir_item_count(DIR_SRC_AOJ_COURSES)) | $(size_human_readable(size_directory_get(DIR_SRC_AOJ_COURSES))) | $(joinpath(DIR_BASE_AOJ, "courses"))")
+        println(f, "| [Courses](./courses/index.md) | $(dir_item_count(DIR_SRC_AOJ_COURSES)) | $(size_human_readable(size_directory_get(DIR_SRC_AOJ_COURSES))) | ($(joinpath(DIR_BASE_AOJ, "courses", "all")))")
     end
 
     courses_generate()
