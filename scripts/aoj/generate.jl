@@ -226,5 +226,15 @@ function generate()
     end
     =#
 
-    println("[INFO] Generated AtCoder pages")
+    println("[INFO] Generated AOJ pages")
 end
+
+function main()
+    generate()
+
+    # mkdocs_nav()
+
+    println("[INFO] Generated AOJ")
+end
+
+main()
