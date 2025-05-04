@@ -138,62 +138,16 @@ function course_info_extract(course::String)
     )
 end
 
-function course_generate(course::String)
-    dir_src = joinpath(DIR_SRC_AOJ, course)
-    dir_docs = joinpath(DIR_DOCS_AOJ, course)
-    mkpath(dir_docs)
+function courses_generate()
+    mkpath(DIR_DOCS_AOJ_COURSES)
 
-    class_info = class_info_extract(class)
-    class_info_id = class_info.id
-    class_info_label = class_info.label
-    class_info_name = class_info.name
+    file_docs = joinpath(DIR_DOCS_AOJ_COURSES, "index.md")
 
-    file_docs = joinpath(dir_docs, "index.md")
-    file_origin = joinpath(DIR_BASE_REPO, dir_src)
-
-    class_link = "https://atcoder.jp/contests/archive?ratedType=$class_info_id"
+    course_link = joinpath(DIR_BASE_AOJ, "courses/all", course_info_id, course_info_label, "all")
     open(file_docs, "w") do f
-        println(f, "# $(name_clean(class_info_name))\n")
+        println(f, "# Courses\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
-
-        println(f, "## Basic Info\n")
-        println(f, "- **ID:    **", class_info_id)
-        println(f, "- **Label: **", class_info_label)
-        println(f, "- **[Origin]($class_link)**")
-        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
-
-        println(f, "\n## Contests\n")
-        println(f, "| Contest | Item | Size | Link |")
-        println(f, "|---------|------|------|------|")
-        for contest in sort(readdir(dir_src))
-            path_src_full = joinpath(dir_src, contest)
-            if isdir(path_src_full)
-                item_count = dir_item_count(path_src_full)
-                size = size_human_readable(size_directory_get(path_src_full))
-
-                contest_link = "https://atcoder.jp/contests/$class_info_label$contest"
-
-                println(f, "| [$contest](./$contest/index.md) | $item_count | $size | [$class_info_label$(contest)]($contest_link) |")
-            end
-        end
-    end
-
-    for contest in sort(readdir(dir_src))
-        isdir(joinpath(dir_src, contest)) && contest_generate(contest, class)
-    end
-
-    println("[INFO] Generated $file_docs")
-end
-
-function generate()
-    mkpath(DIR_DOCS_AOJ)
-
-
-
-    file = joinpath(DIR_DOCS_AOJ, "index.md")
-    open(file, "w") do f
-        println(f, "# Aizu Online Judge\n")
 
         println(f, "## Basic Info\n")
         println(f, "- **[Origin]($DIR_BASE_AOJ)**")
@@ -213,7 +167,7 @@ function generate()
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
 
-                course_link = joinpath(DIR_BASE_AOJ, "courses/all", course_info_id, course_info_label)
+                course_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all")
 
                 println(f, "| [$(name_clean(course_info_name))](./courses/$course/index.md) | $(uppercase(course_info_label)) | $course_info_id | $item_count | $size | [$(course_info_id)/$(uppercase(course_info_label))]($course_link) |")
             end
@@ -221,10 +175,32 @@ function generate()
     end
 
     #=
-    for course in sort(readdir(DIR_SRC_AOJ))
-        isdir(joinpath(DIR_SRC_AOJ, course)) && course_generate(course)
+    for contest in sort(readdir(dir_src))
+        isdir(joinpath(dir_src, contest)) && contest_generate(contest, class)
     end
     =#
+
+    println("[INFO] Generated $file_docs")
+end
+
+function generate()
+    mkpath(DIR_DOCS_AOJ)
+
+    file = joinpath(DIR_DOCS_AOJ, "index.md")
+    open(file, "w") do f
+        println(f, "# Aizu Online Judge\n")
+
+        println(f, "## Basic Info\n")
+        println(f, "- **[Origin]($DIR_BASE_AOJ)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ\" download>Download</a>**")
+
+        println(f, "| | Item | Size | Link |")
+        println(f, "|-|------|------|------|")
+
+        println(f, "| Courses | $(dir_item_count(DIR_SRC_AOJ_COURSES)) | $(size_human_readable(size_directory_get(DIR_SRC_AOJ_COURSES))) | $(joinpath(DIR_BASE_AOJ, "courses"))")
+    end
+
+    courses_generate()
 
     println("[INFO] Generated AOJ pages")
 end
