@@ -135,7 +135,7 @@ function problem_info_extract(problem::String)
     end
     return (
         topic = parts[1],
-        id = parts[2],
+        label = parts[2],
         name = parts[3]
     )
 end
@@ -162,20 +162,20 @@ function solution_generate(file::String, problem::String, course::String)
 
     problem_info = problem_info_extract(problem)
     problem_info_topic = problem_info.topic
-    problem_info_id = problem_info.id
+    problem_info_label = problem_info.label
     problem_info_name = problem_info.name
 
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
     open(file_docs, "w") do f
-        println(f, "# $(problem_info_topic)_$(problem_info_id) > `$(name_clean(file))`\n")
+        println(f, "# $(problem_info_topic)_$(problem_info_label) > `$(name_clean(file))`\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
         println(f, "## Basic Info", "\n")
         println(f, "- **Type:    **", file_ext)
-        println(f, "- **Problem: **", problem_info_name)
+        println(f, "- **Problem: **", name_clean(problem_info_name))
         println(f, "- **[Origin]($file_origin)**", "\n")
 
         link_download = joinpath(DIR_BASE, dir_src)
@@ -195,7 +195,7 @@ function problem_generate(problem::String, course::String)
 
     problem_info = problem_info_extract(problem)
     problem_info_topic = problem_info.topic
-    problem_info_id = problem_info.id
+    problem_info_label = problem_info.label
     problem_info_name = problem_info.name
 
     course_info = course_info_extract(course)
@@ -206,14 +206,14 @@ function problem_generate(problem::String, course::String)
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
-    problem_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all", "$(course_info_label)_$(problem_info_topic)_$(problem_info_id)")
+    problem_link = joinpath(DIR_BASE_AOJ_COURSES, "all", course_info_id, course_info_label, "all", "$(course_info_label)_$(problem_info_topic)_$(problem_info_label)")
     open(file_docs, "w") do f
         println(f, "# $(uppercase(course_info_label)) > $(name_clean(problem_info_name))\n")
 
         println(f, "<small>[← Back](../index.md)</small>\n")
 
         println(f, "## Basic Info\n")
-        println(f, "- **ID:    **", problem_info_id)
+        println(f, "- **Label: **", problem_info_label)
         println(f, "- **Topic: **", problem_info_topic)
         println(f, "- **[Origin]($problem_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
@@ -271,23 +271,23 @@ function course_generate(course::String)
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
         println(f, "\n## Problems\n")
-        println(f, "| Name | Topic | ID | Item | Size | Link |")
-        println(f, "|------|-------|----|------|------|------|")
+        println(f, "| Name | Topic | Label | Item | Size | Link |")
+        println(f, "|------|-------|-------|------|------|------|")
 
         for problem in sort(readdir(dir_src))
             path_src_full = joinpath(dir_src, problem)
             if isdir(path_src_full)
                 problem_info = problem_info_extract(problem)
                 problem_info_topic = problem_info.topic
-                problem_info_id = problem_info.id
+                problem_info_label = problem_info.label
                 problem_info_name = problem_info.name
 
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
 
-                problem_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all", "$(course_info_label)_$(problem_info_topic)_$(problem_info_id)")
+                problem_link = joinpath(DIR_BASE_AOJ_COURSES, "all", course_info_id, course_info_label, "all", "$(course_info_label)_$(problem_info_topic)_$(problem_info_label)")
 
-                println(f, "| [$(name_clean(problem_info_name))](./$problem/index.md) | $problem_info_topic | $problem_info_id | $item_count | $size | [$(course_info_label)_$(problem_info_topic)_$(problem_info_id)]($problem_link) |")
+                println(f, "| [$(name_clean(problem_info_name))](./$problem/index.md) | $problem_info_topic | $problem_info_label | $item_count | $size | [$(course_info_label)_$(problem_info_topic)_$(problem_info_label)]($problem_link) |")
             end
         end
     end
@@ -303,7 +303,7 @@ function courses_generate()
     mkpath(DIR_DOCS_AOJ_COURSES)
 
     file_docs = joinpath(DIR_DOCS_AOJ_COURSES, "index.md")
-    file_origin = joinpath(DIR_BASE_REPO, DIR_DOCS_AOJ_COURSES)
+    file_origin = joinpath(DIR_BASE_REPO, DIR_SRC_AOJ_COURSES)
 
     open(file_docs, "w") do f
         println(f, "# Courses\n")
@@ -346,7 +346,7 @@ end
 function generate()
     mkpath(DIR_DOCS_AOJ)
 
-    file_origin = joinpath(DIR_BASE_REPO, DIR_DOCS_AOJ)
+    file_origin = joinpath(DIR_BASE_REPO, DIR_SRC_AOJ)
 
     file = joinpath(DIR_DOCS_AOJ, "index.md")
     open(file, "w") do f
@@ -366,6 +366,49 @@ function generate()
     courses_generate()
 
     println("[INFO] Generated AOJ pages")
+end
+
+function mkdocs_nav()
+    path_mkdocs = "mkdocs.yml"
+    path_backup = path_mkdocs * ".bak"
+    cp(path_mkdocs, path_backup; force=true)
+
+    lines_original = readlines(path_backup)
+    lines_post     = String[]
+    lines_final    = String[]
+
+    in_aoj = false
+    for line in lines_original
+        stripped = strip(line)
+
+        if in_aoj
+            push!(lines_post, line)
+        elseif startswith(stripped, "- AOJ:")
+            in_aoj = true
+        else
+            push!(lines_final, line)
+        end
+    end
+
+    aoj_nested = Any["aoj/index.md"]
+    append!(aoj_nested, nav_nested_build("docs/aoj"))
+    aoj_entry = Dict("AOJ" => aoj_nested)
+
+    lines_nav_yaml = split(YAML.write([aoj_entry]), "\n")
+
+    for line in lines_nav_yaml
+        push!(lines_final, "  " * line)
+    end
+
+    for line in lines_post
+        push!(lines_final, line)
+    end
+
+    open(path_mkdocs, "w") do f
+        write(f, join(lines_final, "\n"))
+    end
+
+    println("[INFO] Generated AOJ nav")
 end
 
 function main()
