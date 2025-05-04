@@ -130,62 +130,6 @@ function generate()
         println(f, "## Basic Info\n")
         println(f, "- **[Origin]($DIR_BASE_AOJ)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ\" download>Download</a>**")
-
-        """
-        file_fetch_statement = joinpath(DIR_SRC_AOJ, "fetch_statement.txt")
-        file_fetch_user      = joinpath(DIR_SRC_AOJ, "fetch_user.txt")
-        if isfile(file_fetch_statement) && isfile(file_fetch_user)
-            sdt = Dates.DateTime(split(read(file_fetch_statement, String), '\n', keepempty=false)[1])
-            udt = Dates.DateTime(split(read(file_fetch_user,      String), '\n', keepempty=false)[1])
-
-            st = Dates.Time(Dates.Hour(sdt), Dates.Minute(sdt), Dates.Second(sdt))
-            ut = Dates.Time(Dates.Hour(udt), Dates.Minute(udt), Dates.Second(udt))
-
-            println(f, "\n## Latest Fetch\n")
-            println(f, "| UTC           | Date               | Time |")
-            println(f, "|---------------|--------------------|------|")
-            println(f, "| **Statement** | \$(Dates.Date(sdt)) | \$st  |")
-            println(f, "| **User**      | \$(Dates.Date(udt)) | \$ut  |")
-        end
-
-        println(f, "\n## Classes\n")
-        println(f, "| Name | Label | ID | Item | Size | Link |")
-        println(f, "|------|-------|----|------|------|------|")
-        for class in sort(readdir(DIR_SRC_AOJ))
-            path_src_full = joinpath(DIR_SRC_AOJ, class)
-            if isdir(path_src_full)
-                class_info = class_info_extract(class)
-                class_info_id = class_info.id
-                class_info_label = class_info.label
-                class_info_name = class_info.name
-
-                item_count = dir_item_count(path_src_full)
-                size = size_human_readable(size_directory_get(path_src_full))
-
-                class_link = "https://atcoder.jp/contests/archive?ratedType=\$class_info_id"
-
-                println(f, "| [\$(name_clean(class_info_name))](./\$class/index.md) | \$(uppercase(class_info_label)) | \$class_info_id | \$item_count | \$size | [\$class_info_label](\$class_link) |")
-            end
-        end
-        """
-    end
-
-    file_fetch_user_basic      = joinpath(DIR_SRC_AOJ, "fetch_user_basic.md")
-    file_fetch_user_language   = joinpath(DIR_SRC_AOJ, "fetch_user_language.md")
-    file_fetch_user_submission = joinpath(DIR_SRC_AOJ, "fetch_user_submission.md")
-    if isfile(file_fetch_user_basic) && isfile(file_fetch_user_language) && isfile(file_fetch_user_submission)
-        open(file, "a") do f
-            println(f, "\n## User Info\n")
-
-            println(f, "\n### Basic\n")
-            println(f, read(file_fetch_user_basic, String))
-
-            println(f, "\n### Language\n")
-            println(f, read(file_fetch_user_language, String))
-
-            println(f, "\n### Submission\n")
-            println(f, read(file_fetch_user_submission, String))
-        end
     end
 
     for class in sort(readdir(DIR_SRC_AOJ))
