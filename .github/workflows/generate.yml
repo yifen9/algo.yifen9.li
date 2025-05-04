@@ -58,8 +58,11 @@ jobs:
       #     restore-keys: |
       #       ${{ runner.os }}-julia-
       
-      - name: Generate
+      - name: Generate AtCoder
         run: julia scripts/atcoder/generate.jl
+
+      - name: Generate AOJ
+        run: julia scripts/aoj/generate.jl
 
       - name: Set up Python
         uses: actions/setup-python@v5
