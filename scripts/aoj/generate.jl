@@ -13,6 +13,8 @@ using YAML
 const USER_ID = "yifen9"
 
 const DIR_BASE_AOJ = "https://onlinejudge.u-aizu.ac.jp"
+const DIR_BASE_AOJ_COURSES = joinpath(DIR_BASE_AOJ, "courses")
+const DIR_BASE_AOJ_CHALLENGES = joinpath(DIR_BASE_AOJ, "challenges")
 
 const DIR_BASE_REPO = "https://github.com/yifen9/algo-notes/tree/main"
 
@@ -126,6 +128,18 @@ function solution_info_extract(sol::String)
     end
 end
 
+function problem_info_extract(problem::String)
+    parts = split(problem, "_", limit=3)
+    if length(parts) < 3
+        return nothing
+    end
+    return (
+        topic = parts[1],
+        id = parts[2],
+        name = parts[3]
+    )
+end
+
 function course_info_extract(course::String)
     parts = split(course, "_", limit=3)
     if length(parts) < 3
@@ -136,6 +150,40 @@ function course_info_extract(course::String)
         label = parts[2],
         name = parts[3]
     )
+end
+
+function problem_generate(problem::String, course::String)
+    dir_src = joinpath(DIR_SRC_AOJ_COURSES, course, problem)
+    dir_docs = joinpath(DIR_DOCS_AOJ_COURSES, course, problem)
+    mkpath(dir_docs)
+
+    problem_info = problem_info_extract(problem)
+    problem_info_topic = problem_info.topic
+    problem_info_id = problem_info.id
+    problem_info_name = problem_info.name
+
+    course_info = course_info_extract(course)
+    course_info_id = course_info.id
+    course_info_label = course_info.label
+    course_info_name = course_info.name
+
+    file_docs = joinpath(dir_docs, "index.md")
+    file_origin = joinpath(DIR_BASE_REPO, dir_src)
+
+    problem_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all", "$(course_info_label)_$(problem_info_topic)_$(problem_info_id)")
+    open(file_docs, "w") do f
+        println(f, "# $(name_clean(problem_info_name))\n")
+
+        println(f, "<small>[← Back](../index.md)</small>\n")
+
+        println(f, "## Basic Info\n")
+        println(f, "- **ID:    **", problem_info_id)
+        println(f, "- **Topic: **", problem_info_topic)
+        println(f, "- **[Origin]($problem_link)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
+    end
+
+    println("[INFO] Generated $file_docs")
 end
 
 function course_generate(course::String)
@@ -151,7 +199,8 @@ function course_generate(course::String)
     file_docs = joinpath(dir_docs, "index.md")
     file_origin = joinpath(DIR_BASE_REPO, dir_src)
 
-    course_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all")
+    course_link = joinpath(DIR_BASE_AOJ_COURSES, "all", course_info_id, course_info_label, "all")
+
     open(file_docs, "w") do f
         println(f, "# $(name_clean(course_info_name))\n")
 
@@ -163,27 +212,30 @@ function course_generate(course::String)
         println(f, "- **[Origin]($course_link)**")
         println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$file_origin\" download>Download</a>**")
 
-        println(f, "\n## Problems\n")
-        println(f, "| Contest | Item | Size | Link |")
-        println(f, "|---------|------|------|------|")
-        for contest in sort(readdir(dir_src))
-            path_src_full = joinpath(dir_src, contest)
+        println(f, "| Name | Topic | ID | Item | Size | Link |")
+        println(f, "|------|-------|----|------|------|------|")
+
+        for problem in sort(readdir(dir_src))
+            path_src_full = joinpath(dir_src, problem)
             if isdir(path_src_full)
+                problem_info = problem_info_extract(problem)
+                problem_info_topic = problem_info.topic
+                problem_info_id = problem_info.id
+                problem_info_name = problem_info.name
+
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
 
-                contest_link = "https://atcoder.jp/contests/$course_info_label$contest"
+                problem_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all", "$(course_info_label)_$(problem_info_topic)_$(problem_info_id)")
 
-                println(f, "| [$contest](./$contest/index.md) | $item_count | $size | [$course_info_label$(contest)]($contest_link) |")
+                println(f, "| [$(name_clean(problem_info_name))](./$problem/index.md) | $problem_info_topic | $problem_info_id | $item_count | $size | [$(course_info_label)_$(problem_info_topic)_$(problem_info_id)]($problem_link) |")
             end
         end
     end
 
-    #=
-    for contest in sort(readdir(dir_src))
-        isdir(joinpath(dir_src, contest)) && contest_generate(contest, course)
+    for problem in sort(readdir(dir_src))
+        isdir(joinpath(dir_src, problem)) && problem_generate(problem, course)
     end
-    =#
 
     println("[INFO] Generated $file_docs")
 end
@@ -198,12 +250,13 @@ function courses_generate()
         println(f, "<small>[← Back](../index.md)</small>\n")
 
         println(f, "## Basic Info\n")
-        println(f, "- **[Origin]($DIR_BASE_AOJ)**")
-        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ\" download>Download</a>**")
+        println(f, "- **[Origin]($DIR_BASE_AOJ_COURSES)**")
+        println(f, "- **<a href=\"$DIR_BASE_DOWNLOAD$DIR_SRC_AOJ_COURSES\" download>Download</a>**")
 
         println(f, "\n## Courses\n")
         println(f, "| Name | Label | ID | Item | Size | Link |")
         println(f, "|------|-------|----|------|------|------|")
+
         for course in sort(readdir(DIR_SRC_AOJ_COURSES))
             path_src_full = joinpath(DIR_SRC_AOJ_COURSES, course)
             if isdir(path_src_full)
@@ -215,7 +268,7 @@ function courses_generate()
                 item_count = dir_item_count(path_src_full)
                 size = size_human_readable(size_directory_get(path_src_full))
 
-                course_link = joinpath(DIR_BASE_AOJ, "all", course_info_id, course_info_label, "all")
+                course_link = joinpath(DIR_BASE_AOJ_COURSES, "all", course_info_id, course_info_label, "all")
 
                 println(f, "| [$(name_clean(course_info_name))](./$course/index.md) | $(uppercase(course_info_label)) | $course_info_id | $item_count | $size | [$(course_info_id)/$(uppercase(course_info_label))]($course_link) |")
             end
@@ -244,7 +297,7 @@ function generate()
         println(f, "| Type | Item | Size | Link |")
         println(f, "|------|------|------|------|")
 
-        println(f, "| [Courses](./courses/index.md) | $(dir_item_count(DIR_SRC_AOJ_COURSES)) | $(size_human_readable(size_directory_get(DIR_SRC_AOJ_COURSES))) | ($(joinpath(DIR_BASE_AOJ, "courses", "all")))")
+        println(f, "| [Courses](./courses/index.md) | $(dir_item_count(DIR_SRC_AOJ_COURSES)) | $(size_human_readable(size_directory_get(DIR_SRC_AOJ_COURSES))) | [courses]($(DIR_BASE_AOJ_COURSES))")
     end
 
     courses_generate()
