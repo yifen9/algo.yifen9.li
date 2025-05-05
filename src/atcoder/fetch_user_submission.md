@@ -13,3 +13,18 @@
 | [65413002](https://atcoder.jp/contests/abc403/submissions/65413002) | 2025-05-03 | 06:24:10 | abc403 | abc403_a | C++ 20 (gcc 12.2) | AC | 100 | 349 Byte | 1 ms |
 | [65412393](https://atcoder.jp/contests/abc403/submissions/65412393) | 2025-05-03 | 05:48:00 | abc403 | abc403_a | C++ 20 (gcc 12.2) | AC | 100 | 425 Byte | 1 ms |
 | [65412363](https://atcoder.jp/contests/abc403/submissions/65412363) | 2025-05-03 | 05:46:28 | abc403 | abc403_a | C++ 20 (gcc 12.2) | WA | 0 | 423 Byte | 1 ms |
+| [65387866](https://atcoder.jp/contests/abc001/submissions/65387866) | 2025-05-01 | 23:31:03 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 70 Byte | 153 ms |
+| [65387861](https://atcoder.jp/contests/abc001/submissions/65387861) | 2025-05-01 | 23:30:14 | abc001 | abc001_1 | Julia (Julia 1.9.2) | RE | 0 | 53 Byte | 1704 ms |
+| [65387819](https://atcoder.jp/contests/abc001/submissions/65387819) | 2025-05-01 | 23:22:23 | abc001 | abc001_1 | Rust (rustc 1.70.0) | AC | 100 | 93 Byte | 1 ms |
+| [65387783](https://atcoder.jp/contests/abc001/submissions/65387783) | 2025-05-01 | 23:14:55 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 56 Byte | 165 ms |
+| [65387779](https://atcoder.jp/contests/abc001/submissions/65387779) | 2025-05-01 | 23:14:12 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 129 Byte | 166 ms |
+| [65387768](https://atcoder.jp/contests/abc001/submissions/65387768) | 2025-05-01 | 23:12:18 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 103 Byte | 169 ms |
+| [65387745](https://atcoder.jp/contests/abc001/submissions/65387745) | 2025-05-01 | 23:05:42 | abc001 | abc001_1 | Julia (Julia 1.9.2) | RE | 0 | 66 Byte | 1648 ms |
+| [65387737](https://atcoder.jp/contests/abc001/submissions/65387737) | 2025-05-01 | 23:03:52 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 94 Byte | 181 ms |
+| [65387731](https://atcoder.jp/contests/abc001/submissions/65387731) | 2025-05-01 | 23:03:05 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 56 Byte | 143 ms |
+| [65387723](https://atcoder.jp/contests/abc001/submissions/65387723) | 2025-05-01 | 23:00:09 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 195 Byte | 186 ms |
+| [65387717](https://atcoder.jp/contests/abc001/submissions/65387717) | 2025-05-01 | 22:58:29 | abc001 | abc001_1 | Julia (Julia 1.9.2) | TLE | 0 | 247 Byte | 2226 ms |
+| [65387690](https://atcoder.jp/contests/abc001/submissions/65387690) | 2025-05-01 | 22:52:07 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 118 Byte | 156 ms |
+| [65387675](https://atcoder.jp/contests/abc001/submissions/65387675) | 2025-05-01 | 22:50:05 | abc001 | abc001_1 | Julia (Julia 1.9.2) | MLE | 0 | 103 Byte | 167 ms |
+| [65387602](https://atcoder.jp/contests/abc001/submissions/65387602) | 2025-05-01 | 22:37:27 | abc001 | abc001_1 | Julia (Julia 1.9.2) | RE | 0 | 116 Byte | 1737 ms |
+| [65387559](https://atcoder.jp/contests/abc001/submissions/65387559) | 2025-05-01 | 22:29:42 | abc001 | abc001_1 | C++ 20 (gcc 12.2) | AC | 100 | 145 Byte | 1 ms |
