@@ -371,7 +371,7 @@ end
 function nav_nested_build(path::String)
     nav = Vector{Any}()
 
-    type_index_courses = joinpath("aoj", relpath(readdir(joinpath(path, "courses")), path), "index.md")
+    type_index_courses = joinpath("aoj", relpath(joinpath(path, "courses"), path), "index.md")
     type_children_courses = Vector{Any}()
     courses = readdir(joinpath(path, "courses"); join=true, sort=true)
     for course in courses
