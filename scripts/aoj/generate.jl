@@ -370,12 +370,14 @@ end
 
 function nav_nested_build(path::String)
     nav = Vector{Any}()
+
+    type_children = Vector{Any}()
     courses = readdir(joinpath(path, "courses"); join=true, sort=true)
     for course in courses
         if isdir(course)
             course_base = basename(String(course))
             course_index = joinpath("aoj", relpath(course, "docs/aoj"), "index.md")
-
+z
             course_info = course_info_extract(course)
             course_info_id = course_info.id
             course_info_label = course_info.label
@@ -383,9 +385,11 @@ function nav_nested_build(path::String)
 
             course_children = Vector{Any}()
 
-            push!(nav, Dict("$(name_clean(course_info_name))" => vcat([course_index], course_children)))
+            push!(type_children, Dict("$course_info_id $(name_clean(course_info_name))" => vcat([course_index], course_children)))
         end
     end
+    push!(nav, Dict("Courses" => vcat(joinpath("aoj", relpath("courses", "docs/aoj"), "index.md"), type_children)))
+
     return nav
 end
 
