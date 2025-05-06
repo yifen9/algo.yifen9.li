@@ -441,7 +441,7 @@ function nav_nested_build(path::String)
     for class in classes
         if isdir(class)
             class_base = basename(String(class))
-            class_index = joinpath("atcoder", relpath(class, "docs/atcoder"), "index.md")
+            class_index = joinpath("atcoder", relpath(class, path), "index.md")
 
             class_info = class_info_extract(class_base)
             class_info_id = class_info.id
@@ -454,14 +454,14 @@ function nav_nested_build(path::String)
             for contest in contests
                 if isdir(contest)
                     contest_name = name_clean(basename(String(contest)))
-                    contest_index = joinpath("atcoder", relpath(contest, "docs/atcoder"), "index.md")
+                    contest_index = joinpath("atcoder", relpath(contest, path), "index.md")
 
                     contest_children = Vector{Any}()
                     tasks = readdir(contest; join=true, sort=true)
                     for task in tasks
                         if isdir(task)
                             task_name = basename(String(task))
-                            task_index = joinpath("atcoder", relpath(task, "docs/atcoder"), "index.md")
+                            task_index = joinpath("atcoder", relpath(task, path), "index.md")
 
                             task_info = task_info_extract(task_name)
                             task_info_id = task_info.id
@@ -473,7 +473,7 @@ function nav_nested_build(path::String)
                             for sol in sols
                                 if isdir(sol)
                                     sol_base = basename(sol)
-                                    sol_index = joinpath("atcoder", relpath(sol, "docs/atcoder"), "index.md")
+                                    sol_index = joinpath("atcoder", relpath(sol, path), "index.md")
                                     sol_name = name_clean(splitext(sol_base)[1])
                                     sol_ext = file_extension_get(sol_base)
 
