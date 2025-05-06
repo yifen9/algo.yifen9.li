@@ -368,6 +368,26 @@ function generate()
     println("[INFO] Generated AOJ pages")
 end
 
+function nav_nested_build(path::String)
+    nav = Vector{Any}()
+    courses = readdir(joinpath(path, "courses"); join=true, sort=true)
+    for course in courses
+        if isdir(course)
+            course_base = basename(String(course))
+            course_index = joinpath("aoj", relpath(course, "docs/aoj"), "index.md")
+
+            course_info = course_info_extract(course)
+            course_info_id = course_info.id
+            course_info_label = course_info.label
+            course_info_name = course_info.name
+
+            course_children = Vector{Any}()
+
+            push!(nav, Dict("$(name_clean(course_info_name))" => vcat([course_index], course_children)))
+    end
+    return nav
+end
+
 function mkdocs_nav()
     path_mkdocs = "mkdocs.yml"
     path_backup = path_mkdocs * ".bak"
@@ -414,7 +434,7 @@ end
 function main()
     generate()
 
-    # mkdocs_nav()
+    mkdocs_nav()
 
     println("[INFO] Generated AOJ")
 end
