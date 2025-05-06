@@ -339,7 +339,7 @@ function class_generate(class::String)
         println(f, "| Contest | Item | Size | Link |")
         println(f, "|---------|------|------|------|")
 
-        for contest in sort(readdir(dir_src))
+        for contest in sort(readdir(dir_src); rev = true)
             path_src_full = joinpath(dir_src, contest)
             if isdir(path_src_full)
                 item_count = dir_item_count(path_src_full)
