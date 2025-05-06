@@ -384,6 +384,7 @@ function nav_nested_build(path::String)
             course_children = Vector{Any}()
 
             push!(nav, Dict("$(name_clean(course_info_name))" => vcat([course_index], course_children)))
+        end
     end
     return nav
 end
