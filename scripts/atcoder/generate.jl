@@ -440,7 +440,6 @@ function nav_nested_build(path::String)
     classes = readdir(path; join=true, sort=true)
     for class in classes
         if isdir(class)
-            @show class
             class_base = basename(String(class))
             class_index = joinpath("atcoder", relpath(class, path), "index.md")
 
@@ -491,6 +490,8 @@ function nav_nested_build(path::String)
             push!(nav, Dict("$(name_clean(class_info_name))" => vcat([class_index], class_children)))
         end
     end
+
+    @show nav
 
     return nav
 end

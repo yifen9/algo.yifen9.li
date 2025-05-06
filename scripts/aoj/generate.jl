@@ -379,17 +379,25 @@ function nav_nested_build(path::String)
             course_base = basename(String(course))
             course_index = joinpath("aoj", relpath(course, path), "index.md")
 
+            @show course
+            @show course_base
+            @show course_index
+
             course_info = course_info_extract(course_base)
             course_info_id = course_info.id
             course_info_label = course_info.label
             course_info_name = course_info.name
 
-            course_children = Vector{Any}()
-
-            push!(type_children_courses, Dict("$course_info_id $(name_clean(course_info_name))" => vcat([course_index], course_children)))
+            push!(type_children_courses, Dict("$course_info_id $(name_clean(course_info_name))" => [course_index]))
         end
     end
+
+    @show type_index_courses
+    @show type_children_courses
+
     push!(nav, Dict("Courses" => vcat([type_index_courses], type_children_courses)))
+
+    @show nav
 
     return nav
 end
