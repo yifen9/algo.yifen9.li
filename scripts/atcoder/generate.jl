@@ -440,6 +440,7 @@ function nav_nested_build(path::String)
     classes = readdir(path; join=true, sort=true)
     for class in classes
         if isdir(class)
+            @show class
             class_base = basename(String(class))
             class_index = joinpath("atcoder", relpath(class, path), "index.md")
 
