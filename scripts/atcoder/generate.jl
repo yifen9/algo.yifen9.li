@@ -491,8 +491,6 @@ function nav_nested_build(path::String)
         end
     end
 
-    @show nav
-
     return nav
 end
 
