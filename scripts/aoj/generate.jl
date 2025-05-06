@@ -377,7 +377,7 @@ function nav_nested_build(path::String)
         if isdir(course)
             course_base = basename(String(course))
             course_index = joinpath("aoj", relpath(course, "docs/aoj"), "index.md")
-z
+
             course_info = course_info_extract(course)
             course_info_id = course_info.id
             course_info_label = course_info.label
