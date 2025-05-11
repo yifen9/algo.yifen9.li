@@ -2,4 +2,4 @@
 |-----------|-------|------|
 | [Accepted Count](https://kenkoooo.com/atcoder/atcoder-api/v3/user/ac_rank?user=AntoLee) | 4 | 327165 |
 | [Rated Point Sum](https://kenkoooo.com/atcoder/atcoder-api/v3/user/rated_point_sum_rank?user=AntoLee) | 450 | 322476 |
-| [Longest Streak (JST) Count](https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=AntoLee) | 2 | 125427 |
+| [Longest Streak (JST) Count](https://kenkoooo.com/atcoder/atcoder-api/v3/user/streak_rank?user=AntoLee) | 2 | 125430 |
