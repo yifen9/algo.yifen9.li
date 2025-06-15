@@ -1,4 +1,4 @@
 | [Language](https://kenkoooo.com/atcoder/atcoder-api/v3/user/language_rank?user=AntoLee) | Count | Rank |
 |------------------|-------|------|
-| C++ | 13 | 140543 |
-| Rust | 1 | 6955 |
+| C++ | 13 | 140542 |
+| Rust | 1 | 6952 |
